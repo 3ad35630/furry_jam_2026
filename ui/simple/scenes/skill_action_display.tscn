@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://cdc64l2yt2i8e"]
+
+[ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="1_ig7cr"]
+
+[sub_resource type="GDScript" id="GDScript_m4hf5"]
+script/source = "extends MarginContainer
+
+signal skill_die_removed(data)
+
+var _action : SkillAction
+var action : SkillAction :
+	set(new):
+		_action = new
+		update()
+	get:
+		return _action
+
+@export var name_label : Label
+@export var skill_label : Label
+@export var target_number_label : Label
+@export var description_label : Label
+@export var die_target : ColorRect
+@export var die_display : SimpleDieDisplay
+
+var dice_data : 
+	get :
+		return die_display.data
+
+func update():
+	name_label.text = \"Name: \" + action.resource_name
+	skill_label.text = \"Skill: \" + Enums.Skills.keys()[action.skill]
+	target_number_label.text = \"Target Number: \" + str(action.target_number)
+	description_label.text = action.description
+
+func _on_do_action_pressed() -> void:
+	var data = dice_data
+	die_display.data = {}
+	SkillDice.use_skill_die_on_action(action, data)
+
+# this is when we REMOVE a die
+func _on_die_display_drag_ended(_display: SimpleDieDisplay, data : Dictionary, _success: bool) -> void:
+	skill_die_removed.emit(data)
+"
+
+[sub_resource type="GDScript" id="GDScript_6ccxr"]
+script/source = "extends ColorRect
+
+@export var display : SimpleDieDisplay
+
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	return typeof(data) == TYPE_DICTIONARY and data.has('die_value')
+
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+	display.data = data
+"
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Control
+
+@export var display : SimpleDieDisplay
+
+func _on_die_display_data_changed(data: Variant) -> void:
+	visible = typeof(data) == TYPE_DICTIONARY and not data.is_empty()
+"
+
+[sub_resource type="GDScript" id="GDScript_ig7cr"]
+script/source = "extends Button
+
+func _on_die_display_data_changed(data: Variant) -> void:
+	disabled = not (typeof(data) == TYPE_DICTIONARY and not data.is_empty())
+"
+
+[node name="SkillActionDisplay" type="MarginContainer" unique_id=582566562 node_paths=PackedStringArray("name_label", "skill_label", "target_number_label", "description_label", "die_target", "die_display")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = SubResource("GDScript_m4hf5")
+name_label = NodePath("VBoxContainer/NameLabel")
+skill_label = NodePath("VBoxContainer/SkillLabel")
+target_number_label = NodePath("VBoxContainer/TargetNumberLabel")
+description_label = NodePath("VBoxContainer/DescriptionLabel")
+die_target = NodePath("VBoxContainer/HBoxContainer2/MarginContainer/DieTarget")
+die_display = NodePath("VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1961338815]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1351288122]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=1207532850]
+layout_mode = 2
+text = "Title:"
+
+[node name="SkillLabel" type="Label" parent="VBoxContainer" unique_id=1062710231]
+layout_mode = 2
+text = "Skill: "
+
+[node name="TargetNumberLabel" type="Label" parent="VBoxContainer" unique_id=1331073318]
+layout_mode = 2
+text = "Target Number:"
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer" unique_id=391491264]
+layout_mode = 2
+text = "Description:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1418797710]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2" unique_id=1717833432]
+layout_mode = 2
+
+[node name="DieTarget" type="ColorRect" parent="VBoxContainer/HBoxContainer2/MarginContainer" unique_id=1122948684 node_paths=PackedStringArray("display")]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+script = SubResource("GDScript_6ccxr")
+display = NodePath("../DieDisplayParent/DieDisplay")
+
+[node name="DieDisplayParent" type="Control" parent="VBoxContainer/HBoxContainer2/MarginContainer" unique_id=56125280 node_paths=PackedStringArray("display")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+script = SubResource("GDScript_16uew")
+display = NodePath("DieDisplay")
+
+[node name="DieDisplay" parent="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" unique_id=1864076286 instance=ExtResource("1_ig7cr")]
+layout_mode = 0
+
+[node name="DoAction" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=677246513]
+layout_mode = 2
+disabled = true
+text = "Do!"
+script = SubResource("GDScript_ig7cr")
+
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_die_display_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" method="_on_die_display_data_changed"]
+[connection signal="drag_ended" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="." method="_on_die_display_drag_ended"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/DoAction" to="." method="_on_do_action_pressed"]

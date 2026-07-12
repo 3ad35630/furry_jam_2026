@@ -24,3 +24,12 @@ enum DieActionOutcomeTypes {
 	NEUTRAL,
 	GOOD,
 }
+
+
+enum GameplayMode {
+	MENU,
+	MAP,
+	LOCATION,
+	NARRATIVE,
+	CONVERSATION # currently unused
+}

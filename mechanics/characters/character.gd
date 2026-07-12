@@ -7,10 +7,21 @@ signal dice_updated(character : Character)
 var current_energy : int
 @export var name : String
 @export var icon : Texture2D
+@export var color : Color
 @export var skills : Dictionary[Enums.Skills, int]
 
 var dice : Array[int]
-var selected_die : int = -1
+var dice_dicts : Array[Dictionary]:
+	get:
+		var result : Array[Dictionary] = []
+		for x in range(dice.size()):
+			result.append({
+				'character':self,
+				'die_value':dice[x], 
+				'index':x})
+		return result
+
+
 
 func reset_energy():
 	current_energy = max_energy
@@ -30,3 +41,12 @@ func spend_die(index) -> void:
 	assert(index < dice.size())
 	dice.remove_at(index)
 	dice_updated.emit(self)
+
+func get_dice_dictionary() -> Array[Dictionary]:
+	var result : Array[Dictionary] = []
+	for x in range(dice.size()):
+		result.append({
+			'character':self,
+			'die_value':dice[x], 
+			'index':x})
+	return result

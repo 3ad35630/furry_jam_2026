@@ -4,6 +4,15 @@ var location_directory = "res://resources/locations/"
 var locations : Dictionary[String,Location]
 var clocks : Dictionary[String,Clock]
 
+var accessible_locations : Array[Location] : 
+	get :
+		var result : Array[Location] = []
+		for location in locations.values():
+			if location.accessible:
+				result.append(location)
+		return result
+
+
 func _ready() -> void:
 	# gets all locations in folder
 	var location_resources = ResourceLoader.list_directory(location_directory)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dp88r1qxgob61"]
+
+[ext_resource type="StyleBox" uid="uid://dg5hal7ts1ewc" path="res://ui/simple/scenes/style_box_unfinished.tres" id="1_t5a5o"]
+
+[node name="ClockSegment" type="PanelContainer" unique_id=1656987897]
+custom_minimum_size = Vector2(15.705, 5.9)
+theme_override_styles/panel = ExtResource("1_t5a5o")

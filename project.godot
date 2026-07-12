@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="furry_jam_2026"
+run/main_scene="uid://bt613xfgvlc5d"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +24,7 @@ ScratchPad="*uid://cggrchivk6j0b"
 Locations="*uid://ddyxn8h62u28x"
 Characters="*uid://1v1d26jy4yfc"
 SkillDice="*uid://b6e8eq7x5hum2"
+Modes="*uid://likd0f662swj"
 
 [display]
 

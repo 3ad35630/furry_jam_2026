@@ -12,3 +12,7 @@ func _ready() -> void:
 		TurnSystem.round_ended.connect(new_character.roll_dice) 
 		characters.append(new_character)
 		
+
+func reset_all_energy() -> void:
+	for character in characters:
+		character.reset_energy()

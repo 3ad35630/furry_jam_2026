@@ -3,66 +3,115 @@
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="1_434og"]
 [ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="2_aa2hm"]
 [ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="3_2ltwx"]
-[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="4_6c3kq"]
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="5_6c3kq"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="5_wrtbt"]
-[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="6_45mtt"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="6_wrtbt"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="7_vvyop"]
 
-[sub_resource type="Resource" id="Resource_gaudv"]
+[sub_resource type="Resource" id="Resource_36tix"]
 script = ExtResource("2_aa2hm")
-clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+clock_id = "CL_EXPLORE_THE_WOODS"
 metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
 
-[sub_resource type="Resource" id="Resource_56kpk"]
+[sub_resource type="Resource" id="Resource_v2r2b"]
 script = ExtResource("1_434og")
-test = SubResource("Resource_gaudv")
+test = SubResource("Resource_36tix")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
 
-[sub_resource type="Resource" id="Resource_pixql"]
+[sub_resource type="Resource" id="Resource_aa2hm"]
 script = ExtResource("5_wrtbt")
-clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
-metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
-
-[sub_resource type="Resource" id="Resource_6c3kq"]
-script = ExtResource("6_45mtt")
-effects = Array[ExtResource("4_6c3kq")]([SubResource("Resource_pixql")])
-metadata/_custom_type_script = "uid://bchlp1lq87y8u"
-
-[sub_resource type="Resource" id="Resource_wrtbt"]
-script = ExtResource("5_wrtbt")
-clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+clock_id = "CL_EXPLORE_THE_WOODS"
 metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
 
 [sub_resource type="Resource" id="Resource_2ltwx"]
 script = ExtResource("5_wrtbt")
-clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+clock_id = "CL_EXPLORE_THE_WOODS"
 amount = 2
 metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
 
-[sub_resource type="Resource" id="Resource_s3n1p"]
+[sub_resource type="Resource" id="Resource_hxpo2"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 3
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_vimbc"]
+resource_name = "Send cats into the woods"
 script = ExtResource("7_vvyop")
 target_number = 4
-skill = 4
-positive = SubResource("Resource_2ltwx")
-neutral = SubResource("Resource_wrtbt")
-negative = SubResource("Resource_6c3kq")
+skill = 2
+positive = SubResource("Resource_hxpo2")
+neutral = SubResource("Resource_2ltwx")
+negative = SubResource("Resource_aa2hm")
+description = "Cats don't make the best scouts, but they are enthusiastic about seeking out things that squeak and cheep."
+access_test = SubResource("Resource_v2r2b")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
-[sub_resource type="Resource" id="Resource_xl30r"]
+[sub_resource type="Resource" id="Resource_vvyop"]
+script = ExtResource("2_aa2hm")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_6c3kq"]
+script = ExtResource("1_434og")
+test = SubResource("Resource_vvyop")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_wrtbt"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_45mtt"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_pixql"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 3
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_pj2kx"]
+resource_name = "Search methodically and carefully"
+script = ExtResource("7_vvyop")
+target_number = 4
+skill = 3
+positive = SubResource("Resource_pixql")
+neutral = SubResource("Resource_45mtt")
+negative = SubResource("Resource_wrtbt")
+description = "It will take a little while, but if you're careful and diligent and fill out your map, you'll find your way eventually."
+access_test = SubResource("Resource_6c3kq")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_y0vbl"]
+script = ExtResource("2_aa2hm")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_lducf"]
+resource_name = "Hang out"
+script = ExtResource("7_vvyop")
+skill = 1
+description = "Hang out! Make some music. You know your way around now."
+access_test = SubResource("Resource_y0vbl")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_k3n4s"]
+resource_name = "Explore the Woods"
 script = ExtResource("5_6c3kq")
-title = "Explore the woods"
-clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+clock_id = "CL_EXPLORE_THE_WOODS"
+description = "These woods are gentle, but the paths are few and confusing."
 max_segments = 8
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]
 script = ExtResource("6_wrtbt")
-name = "Test Location"
-description = "A test location"
-location_id = "test_location"
-access_test = SubResource("Resource_56kpk")
-actions = Array[ExtResource("3_2ltwx")]([SubResource("Resource_s3n1p")])
-clocks = Array[ExtResource("5_6c3kq")]([SubResource("Resource_xl30r")])
+name = "Woodland Landing Site"
+description = "A small meadow clearing in the forest provides just enough space to land the BROOMSTICK. There is birdsong, warm sunlight, and the smell of leaves."
+location_id = "test_location_a"
+actions = Array[ExtResource("3_2ltwx")]([SubResource("Resource_vimbc"), SubResource("Resource_pj2kx"), SubResource("Resource_lducf")])
+clocks = Array[ExtResource("5_6c3kq")]([SubResource("Resource_k3n4s")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

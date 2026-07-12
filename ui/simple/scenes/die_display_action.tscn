@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://4lhokr6pseyp"]
+
+[ext_resource type="Script" uid="uid://bcc4w7utybeyx" path="res://ui/simple/scripts/draggable_die_display.gd" id="1_reewh"]
+[ext_resource type="PackedScene" uid="uid://dfdth2aijxb2f" path="res://ui/simple/scenes/die_drag_display.tscn" id="2_3tngf"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Node
+
+func _on_die_display_drag_ended(display : SimpleDieDisplay, data : Dictionary, success: bool) -> void:
+	if not success:
+		display.data = {}
+"
+
+[node name="DieDisplay" type="MarginContainer" unique_id=1864076286 node_paths=PackedStringArray("label", "color_rect")]
+custom_minimum_size = Vector2(55, 55)
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_reewh")
+draggable = ExtResource("2_3tngf")
+label = NodePath("Color/CenterContainer/DieValueLabel")
+color_rect = NodePath("Color")
+
+[node name="Color" type="ColorRect" parent="." unique_id=1078944298]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.6523857, 0.20807877, 0.26839596, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Color" unique_id=399533060]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="DieValueLabel" type="Label" parent="Color/CenterContainer" unique_id=1998947084]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "4"
+
+[node name="WipeDataWhenFailed" type="Control" parent="." unique_id=259452665]
+layout_mode = 2
+mouse_filter = 2
+script = SubResource("GDScript_16uew")
+
+[connection signal="drag_ended" from="." to="WipeDataWhenFailed" method="_on_die_display_drag_ended"]

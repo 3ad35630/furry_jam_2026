@@ -2,15 +2,16 @@ extends Resource
 class_name Clock
 
 signal ticked(segments : int)
-signal completed
+signal completed(clock : Clock)
 
-@export var title : String
 @export var clock_id : String
 @export var description : String
 
 @export var access_test : AccessTest = null
 var accessible : 
 	get:
+		if complete:
+			return false
 		if access_test != null:
 			return access_test.accessible
 		return true
@@ -28,8 +29,9 @@ func tick(amount):
 	current_segments += amount
 	ticked.emit(current_segments)
 	if complete:
-		effect.do()
-		completed.emit()
+		if effect != null:
+			effect.do()
+		completed.emit(self)
 
 func round_end() -> void:
 	if tick_on_round_end:

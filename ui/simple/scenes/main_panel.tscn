@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://bt613xfgvlc5d"]
+
+[ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
+[ext_resource type="PackedScene" uid="uid://cdc64l2yt2i8e" path="res://ui/simple/scenes/skill_action_display.tscn" id="1_k3n4s"]
+[ext_resource type="PackedScene" uid="uid://7akhxguitpid" path="res://ui/simple/scenes/clock_display.tscn" id="2_vimbc"]
+
+[sub_resource type="GDScript" id="GDScript_vimbc"]
+script/source = "extends Control
+
+func _ready() -> void:
+	Characters.reset_all_energy()
+	SkillDice.roll_all_dice()
+"
+
+[sub_resource type="GDScript" id="GDScript_gof1d"]
+resource_name = "mode_label"
+script/source = "extends Label
+
+func _ready() -> void:
+	Modes.gameplay_mode_changed.connect(on_gameplay_mode_changed)
+	update()
+	
+func on_gameplay_mode_changed(_new_mode : Enums.GameplayMode) -> void:
+	update()
+
+func update() -> void:
+	match Modes.current_mode:
+		Enums.GameplayMode.MENU : 
+			self.text = \"MODE: Menu\"
+		Enums.GameplayMode.MAP : 
+			self.text = \"MODE: Map\"
+		Enums.GameplayMode.LOCATION : 
+			self.text = \"MODE: Location\"
+		Enums.GameplayMode.NARRATIVE : 
+			self.text = \"MODE: Narrative\"
+		Enums.GameplayMode.CONVERSATION : 
+			self.text = \"MODE: Conversation\"
+"
+
+[sub_resource type="GDScript" id="GDScript_s3n1p"]
+script/source = "extends Label
+
+func _ready() -> void:
+	TurnSystem.round_started.connect(on_round_started)
+	update()
+	
+func update():
+	text = \"Round: \" + str(TurnSystem.current_round)
+
+func on_round_started():
+	update()
+"
+
+[sub_resource type="GDScript" id="GDScript_g6gw2"]
+script/source = "extends Control
+
+@export var location_control : Control
+@export var map_control : Control
+
+func _ready() -> void:
+	Modes.gameplay_mode_changed.connect(on_gameplay_mode_changed)
+	update()
+	
+func on_gameplay_mode_changed(_new_mode : Enums.GameplayMode) -> void:
+	update()
+
+func update() -> void:
+	match Modes.current_mode:
+		Enums.GameplayMode.MENU : 
+			location_control.visible = false
+			map_control.visible = false
+		Enums.GameplayMode.MAP : 
+			location_control.visible = false
+			map_control.visible = true
+		Enums.GameplayMode.LOCATION : 
+			location_control.visible = true
+			map_control.visible = false
+		Enums.GameplayMode.NARRATIVE : 
+			location_control.visible = false
+			map_control.visible = false
+		Enums.GameplayMode.CONVERSATION : 
+			location_control.visible = false
+			map_control.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_k3n4s"]
+script/source = "extends VBoxContainer
+
+@export var action_container : VBoxContainer
+@export var clock_container : VBoxContainer
+@export var dice_container : HBoxContainer
+@export var description_label : Label
+
+@export var action_display : PackedScene
+@export var clock_display : PackedScene
+
+func _ready() -> void:
+	visibility_changed.connect(on_visibility_changed)
+
+func on_visibility_changed():
+	if visible:
+		update()
+	else:
+		clear()
+
+func update() -> void:
+	assert(Modes.current_mode == Enums.GameplayMode.LOCATION)
+	assert(Modes.current_location != null)
+	
+	description_label.text = \"Description: \\n\" + Modes.current_location.description
+	
+	for action in Modes.current_location.accessible_actions:
+		create_action_display(action)
+	for clock in Modes.current_location.accessible_clocks:
+		create_clock_display(clock)
+
+func create_action_display(action : Action) -> void:
+	assert(action_display != null)
+	var new = action_display.instantiate()
+	new.action = action
+	new.skill_die_removed.connect(dice_container.on_skill_die_removed)
+	action_container.add_child(new)
+
+func create_clock_display(clock : Clock) -> void:
+	assert(clock_display != null)
+	var new = clock_display.instantiate()
+	new.clock = clock
+	clock.completed.connect(on_clock_completed)
+	clock_container.add_child(new)
+	
+func on_clock_completed(_clock : Clock) -> void:
+	clear()
+	update()
+	
+func clear() -> void:
+	for child in action_container.get_children():
+		action_container.remove_child(child)
+		child.queue_free()
+	for child in clock_container.get_children():
+		clock_container.remove_child(child)
+		child.queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_g746w"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	Modes.exit_location()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3n4s"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends VBoxContainer
+
+func _ready() -> void:
+	visibility_changed.connect(on_visibility_changed)
+
+func on_visibility_changed():
+	if visible:
+		update()
+	else:
+		clear()
+
+func update() -> void:
+	for location in Locations.accessible_locations:
+		create_button(location)
+
+func create_button(location : Location) -> void:
+	var new_button = LocationButton.new()
+	new_button.location = location
+	add_child(new_button)
+
+func clear() -> void:
+	for child in get_children():
+		remove_child(child)
+		child.queue_free()
+"
+
+[sub_resource type="GDScript" id="GDScript_6ccxr"]
+script/source = "extends HBoxContainer
+
+var hbox_dict : Dictionary[Character, HBoxContainer] = {}
+@export var dice_display : PackedScene
+
+func _ready() -> void:
+	for character in Characters.characters:
+		character.dice_updated.connect(update_dice_display_for_character)
+		var new_hbox = HBoxContainer.new()
+		add_child(new_hbox)
+		hbox_dict[character] = new_hbox
+		update_dice_display_for_character(character)
+		
+func update_dice_display_for_character(character : Character) -> void:
+	for child in hbox_dict[character].get_children():
+		hbox_dict[character].remove_child(child)
+		child.queue_free()
+	for die in character.dice_dicts:
+		var new_dice_display = dice_display.instantiate()
+		new_dice_display.data = die
+		hbox_dict[character].add_child(new_dice_display)
+
+func on_skill_die_removed(data):
+	for display in hbox_dict[data['character']].get_children():
+		if display.data['index'] == data['index']:
+			display.visible = true
+"
+
+[sub_resource type="GDScript" id="GDScript_y0vbl"]
+script/source = "extends Button
+func _on_pressed() -> void:
+	TurnSystem.end_round()
+"
+
+[node name="MainPanel" type="Control" unique_id=89919495]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_vimbc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1641253063]
+custom_minimum_size = Vector2(0, 83.54)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=286026299]
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=472682053]
+layout_mode = 2
+text = "Mode : "
+script = SubResource("GDScript_gof1d")
+
+[node name="RoundLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2096347812]
+layout_mode = 2
+script = SubResource("GDScript_s3n1p")
+
+[node name="ModeContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer" unique_id=1962669242 node_paths=PackedStringArray("location_control", "map_control")]
+propagate_maximum_size = false
+layout_mode = 2
+script = SubResource("GDScript_g6gw2")
+location_control = NodePath("LocationDisplay")
+map_control = NodePath("MapDisplay")
+
+[node name="LocationDisplay" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer" unique_id=800125287 node_paths=PackedStringArray("action_container", "clock_container", "dice_container", "description_label")]
+layout_mode = 2
+script = SubResource("GDScript_k3n4s")
+action_container = NodePath("VBoxContainer/ActionContainer")
+clock_container = NodePath("VBoxContainer2/ClockContainer")
+dice_container = NodePath("../../HBoxContainer/DiceContainer")
+description_label = NodePath("DescriptionLabel")
+action_display = ExtResource("1_k3n4s")
+clock_display = ExtResource("2_vimbc")
+
+[node name="ReturnToMap" type="Button" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1734645095]
+layout_mode = 2
+text = "Return to Map!"
+script = SubResource("GDScript_g746w")
+
+[node name="DescriptionLabel" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1759866784]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_k3n4s")
+text = "Description:"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=567580889]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=2009674196]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=1087212446]
+layout_mode = 2
+text = "Actions"
+
+[node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=205929822]
+layout_mode = 2
+
+[node name="SkillActionDisplay" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer/ActionContainer" unique_id=582566562 instance=ExtResource("1_k3n4s")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1075277486]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=363688428]
+layout_mode = 2
+text = "Clocks"
+
+[node name="ClockContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=1325684546]
+layout_mode = 2
+
+[node name="MapDisplay" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer" unique_id=681935883]
+visible = false
+layout_mode = 2
+script = SubResource("GDScript_16uew")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1762278210]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1336763976]
+layout_mode = 2
+text = "Drag dice onto actions:"
+
+[node name="DiceContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=280159870]
+layout_mode = 2
+script = SubResource("GDScript_6ccxr")
+dice_display = ExtResource("1_g6gw2")
+
+[node name="EndTurnButton" type="Button" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=58382004]
+layout_mode = 2
+text = "End Hour"
+script = SubResource("GDScript_y0vbl")
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" to="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" method="_on_pressed"]

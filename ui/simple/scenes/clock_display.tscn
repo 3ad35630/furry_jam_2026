@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://7akhxguitpid"]
+
+[ext_resource type="PackedScene" uid="uid://dp88r1qxgob61" path="res://ui/simple/scenes/clock_segment.tscn" id="1_s0jhm"]
+[ext_resource type="StyleBox" uid="uid://dg5hal7ts1ewc" path="res://ui/simple/scenes/style_box_unfinished.tres" id="2_uyp0c"]
+[ext_resource type="StyleBox" uid="uid://bfwhytpkoub5a" path="res://ui/simple/scenes/style_box_finished.tres" id="3_8cpw3"]
+
+[sub_resource type="GDScript" id="GDScript_b47o6"]
+script/source = "extends Control
+
+var _clock : Clock
+var clock : Clock :
+	set(val) :
+		_clock = val
+		_clock.ticked.connect(on_clock_ticked)
+		update()
+	get :
+		return _clock
+
+var segment_displays : Array[PanelContainer]
+
+
+@export var title_label : Label
+@export var description_label : Label
+@export var clock_segment_scene : PackedScene
+@export var segment_container : HBoxContainer
+
+@export var uncomplete_color : StyleBoxFlat
+@export var complete_color : StyleBoxFlat
+
+func clear() -> void: # this is not optimal but it's a jam, I don't have time
+	for child in segment_container.get_children():
+		child.queue_free()
+
+func on_clock_ticked(_segment : int) -> void:
+	update()
+
+func update() -> void:
+	clear()
+	title_label.text = clock.resource_name
+	description_label.text = clock.description
+	for x in range(clock.max_segments):
+		var new = clock_segment_scene.instantiate()
+		segment_container.add_child(new)
+		if x < clock.current_segments:
+			new['theme_override_styles/panel'] = complete_color
+		else:
+			new['theme_override_styles/panel'] = uncomplete_color
+"
+
+[node name="clock_display" type="PanelContainer" unique_id=78072703 node_paths=PackedStringArray("title_label", "description_label", "segment_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_b47o6")
+title_label = NodePath("VBoxContainer/Title")
+description_label = NodePath("VBoxContainer/Description")
+clock_segment_scene = ExtResource("1_s0jhm")
+segment_container = NodePath("VBoxContainer/MarginContainer/SegmentContainer")
+uncomplete_color = ExtResource("2_uyp0c")
+complete_color = ExtResource("3_8cpw3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1985402394]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=929526611]
+layout_mode = 2
+text = "Title"
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=895277569]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Description: "
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1990585855]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SegmentContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=309526353]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2

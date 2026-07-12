@@ -23,19 +23,23 @@ func do_action(roll_data):
 	match output: # this is probably going to be tweaked
 		Enums.DieActionOutcomeTypes.GOOD:
 			if result_roll >= 0.5:
-				positive.do()
+				do_effect(positive)
 			else:
-				neutral.do()
+				do_effect(neutral)
 		Enums.DieActionOutcomeTypes.NEUTRAL:
 			if result_roll >= 0.75:
-				positive.do()
+				do_effect(positive)
 			elif result_roll >= 0.25:
-				neutral.do()
+				do_effect(neutral)
 			else:
-				negative.do()
+				do_effect(negative)
 		Enums.DieActionOutcomeTypes.BAD:
 			if result_roll <= 0.75:
-				negative.do()
+				do_effect(negative)
 			else:
-				neutral.do()
+				do_effect(neutral)
 	super(roll_data)
+
+func do_effect(effect):
+	if effect:
+		effect.do()

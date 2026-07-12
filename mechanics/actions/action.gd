@@ -3,7 +3,6 @@ class_name Action
 
 signal action_done
 
-@export var name : String
 @export var description : String 
 var action_count : int = 0
 @export var access_test : AccessTest = null
