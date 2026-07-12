@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://cwdqgjr5summu"]
+
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="1_434og"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="2_aa2hm"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="3_2ltwx"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="4_6c3kq"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="5_6c3kq"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="5_wrtbt"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="6_45mtt"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="6_wrtbt"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="7_vvyop"]
+
+[sub_resource type="Resource" id="Resource_gaudv"]
+script = ExtResource("2_aa2hm")
+clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_56kpk"]
+script = ExtResource("1_434og")
+test = SubResource("Resource_gaudv")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_pixql"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_6c3kq"]
+script = ExtResource("6_45mtt")
+effects = Array[ExtResource("4_6c3kq")]([SubResource("Resource_pixql")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_wrtbt"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_2ltwx"]
+script = ExtResource("5_wrtbt")
+clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_s3n1p"]
+script = ExtResource("7_vvyop")
+target_number = 4
+skill = 4
+positive = SubResource("Resource_2ltwx")
+neutral = SubResource("Resource_wrtbt")
+negative = SubResource("Resource_6c3kq")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_xl30r"]
+script = ExtResource("5_6c3kq")
+title = "Explore the woods"
+clock_id = "CL_TEST_LOCATION_EXPLORING_THE_WOODS"
+max_segments = 8
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("6_wrtbt")
+name = "Test Location"
+description = "A test location"
+location_id = "test_location"
+access_test = SubResource("Resource_56kpk")
+actions = Array[ExtResource("3_2ltwx")]([SubResource("Resource_s3n1p")])
+clocks = Array[ExtResource("5_6c3kq")]([SubResource("Resource_xl30r")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

@@ -1,0 +1,32 @@
+extends Resource
+class_name Character
+
+signal dice_updated(character : Character)
+
+@export var max_energy : int
+var current_energy : int
+@export var name : String
+@export var icon : Texture2D
+@export var skills : Dictionary[Enums.Skills, int]
+
+var dice : Array[int]
+var selected_die : int = -1
+
+func reset_energy():
+	current_energy = max_energy
+
+func get_skill(skill_type : Enums.Skills) -> int:
+	if skills.has(skill_type):
+		return skills[skill_type]
+	return 0
+
+func roll_dice() -> void:
+	dice.clear()
+	for x in range(current_energy):
+		dice.append(randi_range(1,6))
+	dice_updated.emit(self)
+
+func spend_die(index) -> void:
+	assert(index < dice.size())
+	dice.remove_at(index)
+	dice_updated.emit(self)

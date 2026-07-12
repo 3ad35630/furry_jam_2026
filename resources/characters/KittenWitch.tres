@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Character" format=3 uid="uid://c2xj1g6inhls1"]
+
+[ext_resource type="Texture2D" uid="uid://dh04lvimur34w" path="res://icon.svg" id="1_7n4nj"]
+[ext_resource type="Script" uid="uid://cxdw6osj350ux" path="res://mechanics/characters/character.gd" id="1_fwx7q"]
+
+[resource]
+script = ExtResource("1_fwx7q")
+max_energy = 2
+name = "Kat"
+icon = ExtResource("1_7n4nj")
+skills = Dictionary[int, int]({
+1: -1,
+2: 1
+})
+metadata/_custom_type_script = "uid://cxdw6osj350ux"

@@ -1,0 +1,40 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="furry_jam_2026"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+TurnSystem="*uid://q5wxrj87pdd5"
+Enums="*uid://ds51d5cfacgd3"
+Inventory="*uid://c4vmm0pviivkv"
+ScratchPad="*uid://cggrchivk6j0b"
+Locations="*uid://ddyxn8h62u28x"
+Characters="*uid://1v1d26jy4yfc"
+SkillDice="*uid://b6e8eq7x5hum2"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
