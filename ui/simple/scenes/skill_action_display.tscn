@@ -139,7 +139,7 @@ disabled = true
 text = "Do!"
 script = SubResource("GDScript_ig7cr")
 
-[connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_die_display_data_changed"]
 [connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" method="_on_die_display_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_die_display_data_changed"]
 [connection signal="drag_ended" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="." method="_on_die_display_drag_ended"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/DoAction" to="." method="_on_do_action_pressed"]
