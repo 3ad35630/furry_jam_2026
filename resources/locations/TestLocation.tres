@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="5_6c3kq"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="5_wrtbt"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="6_wrtbt"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="7_2ltwx"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="7_vvyop"]
 
 [sub_resource type="Resource" id="Resource_36tix"]
@@ -99,12 +100,18 @@ description = "Hang out! Make some music. You know your way around now."
 access_test = SubResource("Resource_y0vbl")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
+[sub_resource type="Resource" id="Resource_hu3pf"]
+script = ExtResource("7_2ltwx")
+path = "narrative_moment_test"
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
 [sub_resource type="Resource" id="Resource_k3n4s"]
 resource_name = "Explore the Woods"
 script = ExtResource("5_6c3kq")
 clock_id = "CL_EXPLORE_THE_WOODS"
 description = "These woods are gentle, but the paths are few and confusing."
 max_segments = 8
+effect = SubResource("Resource_hu3pf")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]

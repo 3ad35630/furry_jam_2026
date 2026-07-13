@@ -25,9 +25,13 @@ enum DieActionOutcomeTypes {
 	GOOD,
 }
 
+enum GameMode {
+	GAME,
+	MENU
+}
+
 
 enum GameplayMode {
-	MENU,
 	MAP,
 	LOCATION,
 	NARRATIVE,

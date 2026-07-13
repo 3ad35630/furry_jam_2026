@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://cdc64l2yt2i8e" path="res://ui/simple/scenes/skill_action_display.tscn" id="1_k3n4s"]
 [ext_resource type="PackedScene" uid="uid://7akhxguitpid" path="res://ui/simple/scenes/clock_display.tscn" id="2_vimbc"]
-[ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative_panel.tscn" id="4_y0vbl"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
 script/source = "extends Control
@@ -65,6 +64,9 @@ func on_gameplay_mode_changed(_new_mode : Enums.GameplayMode) -> void:
 
 func update() -> void:
 	match Modes.current_mode:
+		Enums.GameplayMode.MENU : 
+			location_control.visible = false
+			map_control.visible = false
 		Enums.GameplayMode.MAP : 
 			location_control.visible = false
 			map_control.visible = true
@@ -100,15 +102,15 @@ func on_visibility_changed():
 		clear()
 
 func update() -> void:
-	if Modes.current_mode == Enums.GameplayMode.LOCATION:
-		assert(Modes.current_location != null)
-		
-		description_label.text = \"Description: \\n\" + Modes.current_location.description
-		
-		for action in Modes.current_location.accessible_actions:
-			create_action_display(action)
-		for clock in Modes.current_location.accessible_clocks:
-			create_clock_display(clock)
+	assert(Modes.current_mode == Enums.GameplayMode.LOCATION)
+	assert(Modes.current_location != null)
+	
+	description_label.text = \"Description: \\n\" + Modes.current_location.description
+	
+	for action in Modes.current_location.accessible_actions:
+		create_action_display(action)
+	for clock in Modes.current_location.accessible_clocks:
+		create_clock_display(clock)
 
 func create_action_display(action : Action) -> void:
 	assert(action_display != null)
@@ -315,10 +317,15 @@ layout_mode = 2
 text = "End Hour"
 script = SubResource("GDScript_y0vbl")
 
-[node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
-visible = false
+[node name="Panel" type="Panel" parent="." unique_id=1664784199]
+custom_minimum_size = Vector2(486.745, 0)
 layout_mode = 1
-offset_transform_enabled = true
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" to="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" method="_on_pressed"]

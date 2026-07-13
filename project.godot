@@ -26,6 +26,7 @@ Characters="*uid://1v1d26jy4yfc"
 SkillDice="*uid://b6e8eq7x5hum2"
 Modes="*uid://likd0f662swj"
 InkRuntime="*uid://d07nagcdcann2"
+NarrativeSystem="*uid://bx6v06jafjhcp"
 
 [display]
 
@@ -39,6 +40,15 @@ enabled=PackedStringArray("res://addons/inkgd/plugin.cfg")
 [inkgd]
 
 register_templates=true
+
+[input]
+
+advance_narrative={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":16,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":16,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [physics]
 

@@ -1,6 +1,5 @@
 extends ActionEffect
 class_name StoryMoment
-# this effect is eventually going to run a narrative text adventure moment
-
+@export var path : String
 func do() -> void:
-	pass
+	NarrativeSystem.start_narrative(path)

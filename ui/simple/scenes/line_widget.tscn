@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://crallti1cqkmn"]
+
+[sub_resource type="GDScript" id="GDScript_8skgf"]
+script/source = "extends MarginContainer
+
+@export var label : RichTextLabel
+
+var _line : String
+var line : String :
+	set(val):
+		_line = val
+		label.text = _line
+	get : 
+		return _line
+"
+
+[node name="LineWidget" type="MarginContainer" unique_id=1838856270 node_paths=PackedStringArray("label")]
+theme_override_constants/margin_top = 20
+script = SubResource("GDScript_8skgf")
+label = NodePath("LineLabel")
+
+[node name="LineLabel" type="RichTextLabel" parent="." unique_id=730696564]
+layout_mode = 2
+bbcode_enabled = true
+text = "This is a rich text label."
+fit_content = true

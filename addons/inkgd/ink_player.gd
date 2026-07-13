@@ -315,7 +315,6 @@ func _exit_tree():
 ## Creates the _story, based on the value of `ink_file`. The result of this
 ## method is reported through the 'loaded' signal.
 func create_story():
-	print('calling create_story')
 	if ink_file == null:
 		_push_error("'ink_file' is null, did Godot import the resource correctly?")
 		call_deferred("emit_signal", "loaded", false)
