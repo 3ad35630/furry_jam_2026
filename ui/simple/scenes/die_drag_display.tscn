@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dfdth2aijxb2f"]
 
 [ext_resource type="Script" uid="uid://dp7n5l5go01mt" path="res://ui/simple/scripts/die_display.gd" id="1_ilma4"]
+[ext_resource type="Texture2D" uid="uid://chwfkoqfr62q7" path="res://ui/dice/Dice2.png" id="2_vfast"]
 
-[node name="DieDisplay" type="MarginContainer" unique_id=1864076286 node_paths=PackedStringArray("label", "color_rect")]
+[node name="DieDisplay" type="MarginContainer" unique_id=1864076286 node_paths=PackedStringArray("label", "color_rect", "icon")]
 custom_minimum_size = Vector2(55, 55)
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -11,6 +12,7 @@ theme_override_constants/margin_bottom = 5
 script = ExtResource("1_ilma4")
 label = NodePath("Color/CenterContainer/DieValueLabel")
 color_rect = NodePath("Color")
+icon = NodePath("Color/CenterContainer/Sprite2D")
 
 [node name="Color" type="ColorRect" parent="." unique_id=1078944298]
 layout_mode = 2
@@ -23,6 +25,13 @@ offset_right = 45.0
 offset_bottom = 45.0
 
 [node name="DieValueLabel" type="Label" parent="Color/CenterContainer" unique_id=1998947084]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "4"
+
+[node name="Sprite2D" type="Sprite2D" parent="Color/CenterContainer" unique_id=1682775544]
+position = Vector2(20.5, 20.875)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_vfast")
+hframes = 6

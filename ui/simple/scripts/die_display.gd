@@ -15,7 +15,9 @@ var data : Dictionary :
 
 @export var label : Label
 @export var color_rect : ColorRect
+@export var icon : Sprite2D
 
 func update() -> void:
 	color_rect.color = data['character'].color
 	label.text = str(data['die_value'])
+	icon.frame = int(data['die_value']) - 1
