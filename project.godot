@@ -25,11 +25,20 @@ Locations="*uid://ddyxn8h62u28x"
 Characters="*uid://1v1d26jy4yfc"
 SkillDice="*uid://b6e8eq7x5hum2"
 Modes="*uid://likd0f662swj"
+InkRuntime="*uid://d07nagcdcann2"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/inkgd/plugin.cfg")
+
+[inkgd]
+
+register_templates=true
 
 [physics]
 
