@@ -44,7 +44,7 @@ text = "4"
 
 [node name="Sprite2D" type="Sprite2D" parent="Color/CenterContainer" unique_id=397147199]
 texture_filter = 1
-position = Vector2(20.500002, 20.875)
+position = Vector2(19, 20.875)
 scale = Vector2(0.125, 0.124)
 texture = ExtResource("3_cnihe")
 hframes = 6

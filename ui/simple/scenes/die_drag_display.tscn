@@ -31,7 +31,7 @@ theme_override_font_sizes/font_size = 28
 text = "4"
 
 [node name="Sprite2D" type="Sprite2D" parent="Color/CenterContainer" unique_id=1682775544]
-position = Vector2(20.5, 20.875)
+position = Vector2(21, 22.5)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_vfast")
 hframes = 6
