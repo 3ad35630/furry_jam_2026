@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://cdc64l2yt2i8e" path="res://ui/simple/scenes/skill_action_display.tscn" id="1_k3n4s"]
 [ext_resource type="PackedScene" uid="uid://7akhxguitpid" path="res://ui/simple/scenes/clock_display.tscn" id="2_vimbc"]
+[ext_resource type="AudioStream" uid="uid://8eepv04n4cw5" path="res://ui/ui_sfx/i-am-the-mouse.mp3" id="4_v2r2b"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative_panel.tscn" id="4_y0vbl"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
@@ -206,6 +207,7 @@ func on_skill_die_removed(data):
 script/source = "extends Button
 func _on_pressed() -> void:
 	TurnSystem.end_round()
+	$\"../Button SFX\".play()
 "
 
 [node name="MainPanel" type="Control" unique_id=89919495]
@@ -314,6 +316,9 @@ dice_display = ExtResource("1_g6gw2")
 layout_mode = 2
 text = "End Hour"
 script = SubResource("GDScript_y0vbl")
+
+[node name="Button SFX" type="AudioStreamPlayer" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=706792698]
+stream = ExtResource("4_v2r2b")
 
 [node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
 visible = false
