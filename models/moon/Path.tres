@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cdple2j8ff0r8"]
+
+[resource]
+resource_name = "Path"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063355, 0.767318, 0.4432878, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

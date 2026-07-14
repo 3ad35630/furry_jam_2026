@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://by6yql2umertj"]
+
+[ext_resource type="PackedScene" uid="uid://i76gf7gfb40o" path="res://models/moon/MoonBase.fbx" id="1_khvpm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_khvpm"]
+sky_top_color = Color(0.44432476, 0.33510795, 0.86305386, 1)
+sky_horizon_color = Color(1.2474909, 1.1381936, 1.3215445, 1)
+ground_bottom_color = Color(0.9313588, 0.6033862, 0.8088444, 1)
+ground_horizon_color = Color(1.2474909, 1.1381936, 1.3215445, 1)
+energy_multiplier = 0.85
+
+[sub_resource type="Sky" id="Sky_tsr5y"]
+sky_material = SubResource("ProceduralSkyMaterial_khvpm")
+
+[sub_resource type="Environment" id="Environment_mcndj"]
+background_mode = 2
+sky = SubResource("Sky_tsr5y")
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
+fog_density = 1.0
+
+[node name="Moon" type="Node3D" unique_id=1671707619]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
+environment = SubResource("Environment_mcndj")
+
+[node name="Model" parent="." unique_id=869522192 instance=ExtResource("1_khvpm")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1562214062]
+transform = Transform3D(1, 0, 0, 0, 0.65466374, 0.75592023, 0, -0.75592023, 0.65466374, 0, 0, 0)
+light_color = Color(0.98, 0.49, 0, 1)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1629387108]
+transform = Transform3D(0.90814316, 0.012785243, 0.41846454, 0, 0.9995336, -0.030538501, -0.4186598, 0.027733332, 0.9077196, 17.918415, -1.5710125, 29.312912)

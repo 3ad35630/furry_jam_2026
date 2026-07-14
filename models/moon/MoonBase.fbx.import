@@ -1,0 +1,104 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://i76gf7gfb40o"
+path="res://.godot/imported/MoonBase.fbx-3d8f83f5cd21e8392ef61350556ea3cd.scn"
+
+[deps]
+
+source_file="res://models/moon/MoonBase.fbx"
+dest_files=["res://.godot/imported/MoonBase.fbx-3d8f83f5cd21e8392ef61350556ea3cd.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+mesh_library/use_node_names_as_mesh_names=false
+array_mesh/deduplicate_surfaces=true
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"materials": {
+"Base mat": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Base mat.tres",
+"use_external/path": "uid://3m8kkofdkk5e"
+},
+"Cloth": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Cloth.tres",
+"use_external/path": "uid://dtvqiqf4273id"
+},
+"Concreat": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Concreat.tres",
+"use_external/path": "uid://5xafgwqe2md0"
+},
+"Foladge": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Foladge.tres",
+"use_external/path": "uid://dsyxdhqul3brh"
+},
+"Grass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Grass.tres",
+"use_external/path": "uid://lxwqsuemj3nt"
+},
+"Material": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Material.tres",
+"use_external/path": "uid://du7p6juujm88v"
+},
+"Path": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Path.tres",
+"use_external/path": "uid://cdple2j8ff0r8"
+},
+"Rock": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Rock.tres",
+"use_external/path": "uid://cufwkik25kgo6"
+},
+"Rope": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Rope.tres",
+"use_external/path": "uid://dnri6susbud37"
+},
+"Water": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Water.tres",
+"use_external/path": "uid://dfmx8alsxec31"
+},
+"Wood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/Wood.tres",
+"use_external/path": "uid://cstrxr18n2mqr"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
