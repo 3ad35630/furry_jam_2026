@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c5jbevs3ipdaa"]
+
+[sub_resource type="GDScript" id="GDScript_8skgf"]
+script/source = "extends MarginContainer
+
+@export var button : Button
+
+var _choice : InkChoice
+var choice : InkChoice :
+	set(val):
+		_choice = val
+		button.text = str(choice.index+1) + \". \" + _choice.text
+	get : 
+		return _choice
+
+func _on_button_pressed() -> void:
+	NarrativeSystem.choose_choice_index(choice.index)
+	NarrativeSystem.advance_narrative()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g746w"]
+bg_color = Color(0.57, 0.1881, 0.21355997, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmn2s"]
+bg_color = Color(0.81, 0.23490001, 0.2636551, 1)
+
+[node name="ChoiceWidget" type="MarginContainer" unique_id=1838856270 node_paths=PackedStringArray("button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+script = SubResource("GDScript_8skgf")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="." unique_id=1405587539]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_g746w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lmn2s")
+text = "This is a choice"
+alignment = 0
+autowrap_mode = 3
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

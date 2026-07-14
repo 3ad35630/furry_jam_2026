@@ -1,5 +1,9 @@
 extends InkPlayer
 
+var should_return_to_game : bool : 
+	get :
+		return not (has_choices or can_continue)
+
 func _ready() -> void:
 	ink_file = load("res://resources/story/story.json")
 	connect("loaded",_on_loaded)
@@ -19,6 +23,7 @@ func start_narrative(path : String) -> void:
 	advance_narrative()
 	
 func advance_narrative():
-	if not can_continue:
+	if should_return_to_game:
 		Modes.change_gameplay_mode(Modes.previous_mode)
-	continue_story()
+	if can_continue:
+		continue_story()

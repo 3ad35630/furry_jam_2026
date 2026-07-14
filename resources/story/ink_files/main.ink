@@ -9,4 +9,12 @@ So is this!
 Mirabelle: And this is a line of dialog!
 Mirabelle: Hurrah!
 
++   [This is a choice!]
+    Mirabelle: It sure is!
+
++   [This is another choice!]
+    Mirabelle: Ooh! Daring!
+
+- And they lived happily ever after.
+
 -> DONE

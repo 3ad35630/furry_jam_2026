@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bltswcx4yopx1"]
 
-[ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/line_widget.tscn" id="1_hu3pf"]
+[ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/line_widget.tscn" id="1_hu3pf"]
+[ext_resource type="PackedScene" uid="uid://c5jbevs3ipdaa" path="res://ui/simple/scenes/narrative/choice_widget.tscn" id="2_rnsc6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vimbc"]
 bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
@@ -21,35 +22,67 @@ func change_mode(mode : Enums.GameplayMode) -> void:
 [sub_resource type="GDScript" id="GDScript_g746w"]
 script/source = "extends ScrollContainer
 
-@export var line_widget : PackedScene
+
 @export var button_control : Control
 @export var line_container : VBoxContainer
+@export var choice_container : VBoxContainer
 
 func _ready() -> void:
-	get_window().size_changed.connect(update)
-	call_deferred(\"update\")
-	Modes.gameplay_mode_changed.connect(change_mode)
-	NarrativeSystem.continued.connect(add_line)
+	get_window().size_changed.connect(update_size)
+	NarrativeSystem.continued.connect(scroll_to_end)
+	call_deferred(\"update_size\")
 
-func update() -> void: 
+func update_size() -> void: 
 	var button_y = button_control.size.y
 	custom_minimum_size = Vector2(0.0, get_window().size.y - button_y)
 
+func scroll_to_end(_text, _tags) -> void:
+	scroll_vertical = int(get_v_scroll_bar().max_value)
+"
+
+[sub_resource type="GDScript" id="GDScript_lmn2s"]
+script/source = "extends VBoxContainer
+@export var line_widget : PackedScene
+
+func _ready() -> void :
+	Modes.gameplay_mode_changed.connect(change_mode)
+	NarrativeSystem.continued.connect(update_narrative)
+	
 func change_mode(mode : Enums.GameplayMode) -> void:
 	if mode == Enums.GameplayMode.NARRATIVE:
-		clear_lines()
-
-func add_line(text, _tags) -> void:
+		for child in get_children():
+			child.queue_free()
+	
+func update_narrative(text, _tags) -> void:
 	var new_line_widget = line_widget.instantiate()
 	new_line_widget.line = text
-	line_container.add_child(new_line_widget)
+	add_child(new_line_widget)
+			
+"
 
-func clear_lines() -> void:
-	for child in line_container.get_children():
-		child.queue_free()
+[sub_resource type="GDScript" id="GDScript_s3n1p"]
+script/source = "extends VBoxContainer
+@export var choice_widget : PackedScene
 
-func scroll_to_end() -> void:
-	scroll_vertical = int(get_v_scroll_bar().max_value)
+func _ready() -> void :
+	Modes.gameplay_mode_changed.connect(change_mode)
+	NarrativeSystem.continued.connect(update_narrative)
+	
+func change_mode(mode : Enums.GameplayMode) -> void:
+	if mode == Enums.GameplayMode.NARRATIVE:
+		for child in get_children():
+			child.queue_free()
+	
+func update_narrative(text, _tags) -> void:
+	if NarrativeSystem.has_choices:
+		for choice in NarrativeSystem.current_choices:
+			var new_choice = choice_widget.instantiate()
+			new_choice.choice = choice
+			add_child(new_choice)
+	else: # if there are no choices just make sure we've cleared them
+		for child in get_children():
+			child.queue_free()
+			
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16uew"]
@@ -57,8 +90,14 @@ bg_color = Color(0.76128906, 0.4103079, 0.98066896, 1)
 
 [sub_resource type="GDScript" id="GDScript_16uew"]
 script/source = "extends Button
+func _ready() -> void:
+	NarrativeSystem.continued.connect(update)
+	
+func update(_text,_tags) -> void:
+	visible = not NarrativeSystem.has_choices
+
 func _on_pressed() -> void:
-	if Modes.current_mode == Enums.GameplayMode.NARRATIVE:
+	if Modes.current_mode == Enums.GameplayMode.NARRATIVE and not NarrativeSystem.has_choices:
 		NarrativeSystem.advance_narrative()
 "
 
@@ -88,9 +127,8 @@ propagate_maximum_size = true
 layout_mode = 2
 size_flags_vertical = 3
 script = SubResource("GDScript_g746w")
-line_widget = ExtResource("1_hu3pf")
 button_control = NodePath("../ContinueButton_Margins")
-line_container = NodePath("NarrativeLines_Margins/NarrativeLines")
+line_container = NodePath("NarrativeLines_Margins/VBoxContainer/NarrativeLines")
 
 [node name="NarrativeLines_Margins" type="MarginContainer" parent="NarrativeBox/NarrativeContainer" unique_id=2050756723]
 layout_mode = 2
@@ -99,9 +137,19 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 40
 
-[node name="NarrativeLines" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins" unique_id=587205956]
+[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins" unique_id=1462386985]
+layout_mode = 2
+
+[node name="NarrativeLines" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
 layout_mode = 2
 alignment = 1
+script = SubResource("GDScript_lmn2s")
+line_widget = ExtResource("1_hu3pf")
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
+layout_mode = 2
+script = SubResource("GDScript_s3n1p")
+choice_widget = ExtResource("2_rnsc6")
 
 [node name="ContinueButton_Margins" type="MarginContainer" parent="NarrativeBox" unique_id=1227112551]
 layout_mode = 2
