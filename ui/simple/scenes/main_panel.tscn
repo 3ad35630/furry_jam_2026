@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://cdc64l2yt2i8e" path="res://ui/simple/scenes/skill_action_display.tscn" id="1_k3n4s"]
 [ext_resource type="PackedScene" uid="uid://7akhxguitpid" path="res://ui/simple/scenes/clock_display.tscn" id="2_vimbc"]
-[ext_resource type="AudioStream" uid="uid://8eepv04n4cw5" path="res://ui/ui_sfx/i-am-the-mouse.mp3" id="4_v2r2b"]
+[ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="4_v2r2b"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative_panel.tscn" id="4_y0vbl"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
@@ -241,7 +241,6 @@ layout_mode = 2
 script = SubResource("GDScript_s3n1p")
 
 [node name="ModeContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer" unique_id=1962669242 node_paths=PackedStringArray("location_control", "map_control")]
-propagate_maximum_size = false
 layout_mode = 2
 script = SubResource("GDScript_g6gw2")
 location_control = NodePath("LocationDisplay")
@@ -323,7 +322,6 @@ stream = ExtResource("4_v2r2b")
 [node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
 visible = false
 layout_mode = 1
-offset_transform_enabled = true
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" to="ScrollContainer/VBoxContainer/HBoxContainer/EndTurnButton" method="_on_pressed"]

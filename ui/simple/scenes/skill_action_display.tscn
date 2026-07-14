@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdc64l2yt2i8e"]
 
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="1_ig7cr"]
+[ext_resource type="AudioStream" uid="uid://dvtsdpvvkiquv" path="res://audio/ui_sfx/dice.ogg" id="2_q8yy3"]
 
 [sub_resource type="GDScript" id="GDScript_m4hf5"]
 script/source = "extends MarginContainer
@@ -68,6 +69,9 @@ script/source = "extends Button
 
 func _on_die_display_data_changed(data: Variant) -> void:
 	disabled = not (typeof(data) == TYPE_DICTIONARY and not data.is_empty())
+
+func _on_pressed() -> void:
+	$\"../dicerolled\".play()
 "
 
 [node name="SkillActionDisplay" type="MarginContainer" unique_id=582566562 node_paths=PackedStringArray("name_label", "skill_label", "target_number_label", "description_label", "die_target", "die_display")]
@@ -139,7 +143,11 @@ disabled = true
 text = "Do!"
 script = SubResource("GDScript_ig7cr")
 
+[node name="dicerolled" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer2" unique_id=576698281]
+stream = ExtResource("2_q8yy3")
+
 [connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" method="_on_die_display_data_changed"]
 [connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_die_display_data_changed"]
 [connection signal="drag_ended" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="." method="_on_die_display_drag_ended"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/DoAction" to="." method="_on_do_action_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/DoAction" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_pressed"]
