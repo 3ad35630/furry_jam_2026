@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfdth2aijxb2f"]
 
 [ext_resource type="Script" uid="uid://dp7n5l5go01mt" path="res://ui/simple/scripts/die_display.gd" id="1_ilma4"]
-[ext_resource type="Texture2D" uid="uid://chwfkoqfr62q7" path="res://ui/dice/Dice2.png" id="2_vfast"]
+[ext_resource type="Texture2D" uid="uid://cqivw8uvbcm2l" path="res://ui/dice/Dice5.png" id="2_vfast"]
 
 [node name="DieDisplay" type="MarginContainer" unique_id=1864076286 node_paths=PackedStringArray("label", "color_rect", "icon")]
 custom_minimum_size = Vector2(55, 55)
