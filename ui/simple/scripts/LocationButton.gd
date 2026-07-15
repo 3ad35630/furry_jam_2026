@@ -1,7 +1,7 @@
 extends Button
 class_name LocationButton
 
-var _location : Location
+@export var _location : Location
 
 var location : Location :
 	set(new_location):

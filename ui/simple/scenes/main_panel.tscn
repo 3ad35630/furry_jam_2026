@@ -13,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
 [ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/LaserWitch.tres" id="10_h5prc"]
 [ext_resource type="Texture2D" uid="uid://daw8sd3hfg643" path="res://ui/character_profiles/ProfileTemp3.png" id="11_icdsa"]
+[ext_resource type="Texture2D" uid="uid://djlwlo0ubwce7" path="res://ui/boxes/Screenshot 2026-07-14 165944.png" id="14_iemfu"]
+[ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="15_c1mnc"]
+[ext_resource type="Texture2D" uid="uid://glvbgxw5utut" path="res://ui/boxes/Screenshot 2026-07-14 165937.png" id="16_s8cea"]
+[ext_resource type="Texture2D" uid="uid://s1ynkl5sq7n1" path="res://ui/boxes/Screenshot 2026-07-14 165931.png" id="17_3kxh1"]
+[ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="17_c1mnc"]
+[ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
 script/source = "extends Control
@@ -158,14 +164,14 @@ func _on_pressed() -> void:
 [sub_resource type="GDScript" id="GDScript_16uew"]
 script/source = "extends VBoxContainer
 
-func _ready() -> void:
-	visibility_changed.connect(on_visibility_changed)
+#func _ready() -> void:
+#	visibility_changed.connect(on_visibility_changed)
 
-func on_visibility_changed():
-	if visible:
-		update()
-	else:
-		clear()
+#func on_visibility_changed():
+#	if visible:
+#		update()
+#	else:
+#		clear()
 
 func update() -> void:
 	for location in Locations.accessible_locations:
@@ -269,6 +275,7 @@ action_display = ExtResource("1_k3n4s")
 clock_display = ExtResource("2_vimbc")
 
 [node name="ReturnToMap" type="Button" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1734645095]
+visible = false
 layout_mode = 2
 text = "Return to Map!"
 script = SubResource("GDScript_g746w")
@@ -398,6 +405,38 @@ script = ExtResource("7_isi12")
 char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("10_h5prc")
 
+[node name="GridContainer" type="GridContainer" parent="." unique_id=323151439]
+layout_mode = 0
+offset_left = 425.00003
+offset_top = 2.000001
+offset_right = 2281.0
+offset_bottom = 522.0
+scale = Vector2(0.17, 0.17)
+columns = 4
+
+[node name="ReturnToMap" type="Button" parent="GridContainer" unique_id=1531691174]
+layout_mode = 2
+icon = ExtResource("14_iemfu")
+script = SubResource("GDScript_g746w")
+
+[node name="LocationButton" type="Button" parent="GridContainer" unique_id=1263363124]
+layout_mode = 2
+text = "Woodland Landing Site"
+icon = ExtResource("18_rtwym")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("15_c1mnc")
+_location = ExtResource("17_c1mnc")
+metadata/_custom_type_script = "uid://bydmhhunt2n6w"
+
+[node name="Button3" type="Button" parent="GridContainer" unique_id=1205582336]
+layout_mode = 2
+icon = ExtResource("17_3kxh1")
+
+[node name="Button4" type="Button" parent="GridContainer" unique_id=1534490631]
+layout_mode = 2
+icon = ExtResource("16_s8cea")
+
 [node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
 visible = false
 layout_mode = 1
@@ -405,3 +444,6 @@ offset_left = -500.0
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="EndTurnButton" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/ReturnToMap" to="GridContainer/ReturnToMap" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="GridContainer/Button4" to="." method="_on_button_pressed"]
