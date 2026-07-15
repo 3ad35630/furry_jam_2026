@@ -15,6 +15,7 @@ var location : Location :
 	set(val) : 
 		_location = val
 		title_label.text = val.name
+		position.x = -(title_label.size.x / 2)
 
 var scene_camera : Camera3D
 var camera : Camera3D
@@ -29,6 +30,12 @@ func _process(_delta: float) -> void:
 	if Modes.current_mode == Enums.GameplayMode.MAP and not scene_camera.is_position_behind(camera.position):
 		var screen_pos = scene_camera.unproject_position(camera.position)
 		position = screen_pos
+
+func _on_texture_button_mouse_entered() -> void:
+	title_label.visible = true
+
+func _on_texture_button_mouse_exited() -> void:
+	title_label.visible = false
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x670l"]
@@ -43,30 +50,29 @@ grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
 script = SubResource("GDScript_sasra")
-title_label = NodePath("CenterContainer/VBoxContainer/Label")
+title_label = NodePath("Label")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=467845970]
+[node name="Label" type="Label" parent="." unique_id=213892267]
+visible = false
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-use_top_left = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1001123681]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=213892267]
-layout_mode = 2
+offset_left = -43.0
+offset_top = -52.0
+offset_right = 43.0
+offset_bottom = -29.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_x670l")
 text = "Spirit Farm"
 
-[node name="MarginContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=1861327503]
-layout_mode = 2
-
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1174835562]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1174835562]
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+layout_mode = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 texture_normal = ExtResource("1_x1kkm")
 texture_pressed = ExtResource("2_hnxtg")
 texture_hover = ExtResource("3_n0uvr")
 
-[connection signal="button_up" from="CenterContainer/VBoxContainer/MarginContainer/TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
