@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpuelh5rp4oc6"
+path="res://.godot/imported/moon lake ultra clean.ogg-569da9d31a816bed2a3bcbfcf0d9e603.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/ui_sfx/moon lake ultra clean.ogg"
+dest_files=["res://.godot/imported/moon lake ultra clean.ogg-569da9d31a816bed2a3bcbfcf0d9e603.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
