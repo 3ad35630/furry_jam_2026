@@ -27,6 +27,7 @@ SkillDice="*uid://b6e8eq7x5hum2"
 Modes="*uid://likd0f662swj"
 InkRuntime="*uid://d07nagcdcann2"
 NarrativeSystem="*uid://bx6v06jafjhcp"
+CameraTransition="*uid://dk8d1faij34qg"
 
 [display]
 

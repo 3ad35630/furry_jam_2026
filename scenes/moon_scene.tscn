@@ -30,9 +30,6 @@ fog_density = 1.0
 [node name="Moon" type="Node3D" unique_id=1671707619 node_paths=PackedStringArray("cameras")]
 script = ExtResource("1_mcndj")
 cameras = [NodePath("WorldCamera"), NodePath("FarmCamera"), NodePath("DockCamera"), NodePath("WoodlandsCamera")]
-_dock = ExtResource("5_i0w5l")
-_farm = ExtResource("3_2cude")
-_woods = ExtResource("7_d1xcf")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
 environment = SubResource("Environment_mcndj")
