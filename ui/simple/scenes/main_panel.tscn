@@ -14,11 +14,13 @@
 [ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/LaserWitch.tres" id="10_h5prc"]
 [ext_resource type="Texture2D" uid="uid://daw8sd3hfg643" path="res://ui/character_profiles/ProfileTemp3.png" id="11_icdsa"]
 [ext_resource type="Texture2D" uid="uid://djlwlo0ubwce7" path="res://ui/boxes/Screenshot 2026-07-14 165944.png" id="14_iemfu"]
+[ext_resource type="AudioStream" uid="uid://bbill2uuieyse" path="res://audio/ui_sfx/location moon.ogg" id="14_s8cea"]
 [ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="15_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://glvbgxw5utut" path="res://ui/boxes/Screenshot 2026-07-14 165937.png" id="16_s8cea"]
 [ext_resource type="Texture2D" uid="uid://s1ynkl5sq7n1" path="res://ui/boxes/Screenshot 2026-07-14 165931.png" id="17_3kxh1"]
 [ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="17_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
+[ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
 script/source = "extends Control
@@ -26,6 +28,10 @@ script/source = "extends Control
 func _ready() -> void:
 	Characters.reset_all_energy()
 	SkillDice.roll_all_dice()
+
+
+func _on_location_button_pressed() -> void:
+	$\"Button SFX\".play()
 "
 
 [sub_resource type="GDScript" id="GDScript_gof1d"]
@@ -157,6 +163,8 @@ script/source = "extends Button
 
 func _on_pressed() -> void:
 	Modes.exit_location()
+	$\"Ret\".play()
+	
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3n4s"]
@@ -438,13 +446,27 @@ icon = ExtResource("17_3kxh1")
 layout_mode = 2
 icon = ExtResource("16_s8cea")
 
+[node name="Swoosh" type="AudioStreamPlayer" parent="GridContainer" unique_id=1013233229]
+stream = ExtResource("14_s8cea")
+
+[node name="Ret" type="AudioStreamPlayer" parent="GridContainer" unique_id=1257971124]
+stream = ExtResource("14_s8cea")
+pitch_scale = 2.8
+
 [node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
 visible = false
 layout_mode = 1
 offset_left = -500.0
 
+[node name="MoonLakeUltra" type="AudioStreamPlayer" parent="." unique_id=144380484]
+stream = ExtResource("21_3kxh1")
+volume_db = -12.0
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="EndTurnButton" to="EndTurnButton" method="_on_pressed"]
-[connection signal="pressed" from="GridContainer/ReturnToMap" to="GridContainer/ReturnToMap" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/LocationButton" to="." method="_on_location_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button3" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GridContainer/Button4" to="." method="_on_button_pressed"]
