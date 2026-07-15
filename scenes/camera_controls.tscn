@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://d1p0qwf8hr5g8"]
+
+[sub_resource type="GDScript" id="GDScript_s3n1p"]
+script/source = "extends Node3D
+
+@export var max_speed : int = 14
+@export var accelleration : int = 10
+@export var velocity_decay : int = 6
+
+var velocity : float = 0.0
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed(\"camera_move_left\"):
+		velocity += -accelleration * delta
+	elif Input.is_action_pressed(\"camera_move_right\"):
+		velocity += accelleration * delta
+	else:
+		if abs(velocity) <= 0.3:
+			velocity = 0
+		else:
+			if velocity > 0:
+				velocity -= velocity_decay * delta
+			else:
+				velocity += velocity_decay * delta
+	velocity = clampf(velocity, -max_speed, max_speed)
+	rotation.y = deg_to_rad(rad_to_deg(rotation.y) + velocity)
+"
+
+[sub_resource type="GDScript" id="GDScript_js7sh"]
+script/source = "extends Node3D
+
+@export var max_speed : int = 14
+@export var accelleration : int = 10
+@export var velocity_decay : int = 6
+@export var max_height : float = 60
+@export var min_height : float = -60
+
+var velocity : float = 0.0
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed(\"camera_move_up\"):
+		velocity += accelleration * delta
+	elif Input.is_action_pressed(\"camera_move_down\"):
+		velocity += -accelleration * delta
+	else:
+		if abs(velocity) <= 0.3:
+			velocity = 0
+		else:
+			if velocity > 0:
+				velocity -= velocity_decay * delta
+			else:
+				velocity += velocity_decay * delta
+	velocity = clampf(velocity, -max_speed, max_speed)
+	rotation.z = clamp(
+		deg_to_rad(rad_to_deg(rotation.z) + velocity), 
+		deg_to_rad(min_height), 
+		deg_to_rad(max_height))
+"
+
+[sub_resource type="GDScript" id="GDScript_d1xcf"]
+script/source = "extends Node3D
+
+@export var max_speed : int = 14
+@export var accelleration : int = 10
+@export var max_distance : float = 40
+@export var min_distance : float = 20
+@export var velocity_decay : int = 16
+
+var velocity : float = 0.0
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed(\"camera_move_in\"):
+		velocity += -accelleration * delta
+	elif Input.is_action_pressed(\"camera_move_out\"):
+		velocity += accelleration * delta
+	else:
+		if abs(velocity) <= 0.3:
+			velocity = 0
+		else:
+			if velocity > 0:
+				velocity -= velocity_decay * delta
+			else:
+				velocity += velocity_decay * delta
+	velocity = clamp(velocity, -max_speed, max_speed)
+	position.x = clamp(position.x + velocity, min_distance, max_distance)
+"
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Node3D
+
+@export var target : Node3D
+
+func _process(_delta: float) -> void:
+	look_at(target.position)
+"
+
+[sub_resource type="GDScript" id="GDScript_jtt53"]
+script/source = "extends Camera3D
+
+signal camera_transition_started
+signal camera_transition_ended
+
+var location_cameras : Dictionary[String, Camera3D]
+var default_fov : float
+
+func _ready() -> void:
+	var location_camera_node = get_tree().get_root().find_child(\"LocationCameras\", true, false)
+	if location_camera_node:
+		for child_camera in location_camera_node.get_children():
+			location_cameras[child_camera.name] = child_camera
+	default_fov = fov
+
+func tween_to_location(new_location : Location, duration : float = 1.0) -> void:
+	assert(not location_cameras.is_empty())
+	assert(location_cameras.has(new_location.location_id))
+	camera_transition_started.emit()
+	var target_camera = location_cameras[new_location.location_id]
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, \"global_position\", target_camera.global_position, duration).from(global_position)
+	tween.tween_property(self, \"global_rotation\", target_camera.global_rotation, duration).from(global_rotation)
+	tween.tween_property(self, \"fov\", target_camera.fov, duration).from(fov)
+	await tween.finished
+	camera_transition_ended.emit()
+
+func tween_to_map(duration : float = 1.0) -> void:
+	camera_transition_started.emit()
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, \"position\", Vector3(), duration).from(position)
+	tween.tween_property(self, \"rotation\", Vector3(), duration).from(rotation)
+	tween.tween_property(self, \"fov\", default_fov, duration).from(fov)
+	await tween.finished
+	camera_transition_ended.emit()
+"
+
+[node name="CameraRotation" type="Node3D" unique_id=517386831]
+
+[node name="CameraHorizontal" type="Node3D" parent="." unique_id=2133474499]
+transform = Transform3D(0.5434694, 0, -0.83942896, 0, 1, 0, 0.83942896, 0, 0.5434694, 0, 0, 0)
+script = SubResource("GDScript_s3n1p")
+accelleration = 20
+velocity_decay = 26
+
+[node name="CameraVertical" type="Node3D" parent="CameraHorizontal" unique_id=426651091]
+script = SubResource("GDScript_js7sh")
+max_speed = 8
+accelleration = 16
+velocity_decay = 20
+
+[node name="CameraTranslation" type="Node3D" parent="CameraHorizontal/CameraVertical" unique_id=1353609533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+script = SubResource("GDScript_d1xcf")
+
+[node name="CameraLookat" type="Node3D" parent="CameraHorizontal/CameraVertical/CameraTranslation" unique_id=1323991814 node_paths=PackedStringArray("target")]
+transform = Transform3D(1.0000001, 0, 2.9802322e-08, 7.450581e-09, 1.0000001, 0, -2.9802322e-08, 7.450581e-09, 1, 0, 0, 0)
+script = SubResource("GDScript_16uew")
+target = NodePath("../../../..")
+
+[node name="WorldCamera" type="Camera3D" parent="CameraHorizontal/CameraVertical/CameraTranslation/CameraLookat" unique_id=2104011842]
+transform = Transform3D(1, 7.450581e-09, 0, 7.450581e-09, 1, -7.450581e-09, 2.9802322e-08, -1.4901161e-08, 1.0000001, 0, 0, 0)
+current = true
+script = SubResource("GDScript_jtt53")

@@ -5,6 +5,7 @@ var transitioning: bool = false
 
 func _ready() -> void:
 	camera3D.current = false
+	find_cameras()
 
 func transition_camera(from: Camera3D, to: Camera3D, duration: float = 1.0) -> void:
 	if transitioning: return
@@ -30,3 +31,16 @@ func transition_camera(from: Camera3D, to: Camera3D, duration: float = 1.0) -> v
 	
 	to.current = true
 	transitioning = false
+
+
+func _process(_delta: float) -> void:
+	#find_cameras()
+	pass
+
+func print_children(n):
+	print(n)
+	for child in n.get_children():
+		print_children(child)
+
+func find_cameras() -> void:
+	print_children(get_tree().get_root().find_child("LocationCameras", true, false))

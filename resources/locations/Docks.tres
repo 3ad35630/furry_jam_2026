@@ -116,9 +116,9 @@ metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]
 script = ExtResource("8_ir2oy")
-name = "Docks"
+name = "The Docks"
 description = "The main dock on the moon. A singular port made of stone and wood stands over the edge, with the river being carried up and through space."
-location_id = "location_a"
+location_id = "l_docks"
 actions = Array[ExtResource("1_je4f3")]([SubResource("Resource_vimbc"), SubResource("Resource_pj2kx"), SubResource("Resource_lducf")])
 clocks = Array[ExtResource("6_5fl8u")]([SubResource("Resource_k3n4s")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

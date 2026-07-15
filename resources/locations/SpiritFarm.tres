@@ -116,9 +116,9 @@ metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]
 script = ExtResource("8_8khma")
-name = "Farmhouse"
-description = "The farmhouse nearby the woods. Many animals are raised there, f"
-location_id = "location_a"
+name = "The Spirit Farm"
+description = "A spirit farm, for cows of various mortalities."
+location_id = "l_spiritfarm"
 actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_vimbc"), SubResource("Resource_pj2kx"), SubResource("Resource_lducf")])
 clocks = Array[ExtResource("6_bsk6t")]([SubResource("Resource_k3n4s")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

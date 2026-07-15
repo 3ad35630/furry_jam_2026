@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://dfpqwejrvedly"]
-
-[ext_resource type="Script" uid="uid://bx6v06jafjhcp" path="res://mechanics/globals/narrative_system.gd" id="1_ia1lp"]
-
-[node name="Node2D" type="Node2D" unique_id=801645675]
-script = ExtResource("1_ia1lp")
-loads_in_background = false
-
-[connection signal="loaded" from="." to="." method="_on_loaded"]

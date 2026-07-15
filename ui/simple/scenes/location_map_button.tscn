@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dfpqwejrvedly"]
+
+[ext_resource type="Texture2D" uid="uid://wdjtoohrwn8t" path="res://ui/icons/circle_base.png" id="1_x1kkm"]
+[ext_resource type="Texture2D" uid="uid://dpyysab4i2kny" path="res://ui/icons/circle_pressed.png" id="2_hnxtg"]
+[ext_resource type="Texture2D" uid="uid://ddvv3mr17fsuh" path="res://ui/icons/circle_hover.png" id="3_n0uvr"]
+
+[sub_resource type="GDScript" id="GDScript_sasra"]
+script/source = "extends Control
+
+@export var title_label : Label
+
+var _location : Location
+var location : Location :
+	get : return _location
+	set(val) : 
+		_location = val
+		title_label.text = val.name
+
+var scene_camera : Camera3D
+var camera : Camera3D
+
+func _ready() -> void:
+	scene_camera = get_viewport().get_camera_3d()
+
+func _on_texture_button_button_up() -> void:
+	Modes.enter_location(location)
+
+func _process(_delta: float) -> void:
+	if Modes.current_mode == Enums.GameplayMode.MAP and not scene_camera.is_position_behind(camera.position):
+		var screen_pos = scene_camera.unproject_position(camera.position)
+		position = screen_pos
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x670l"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="LocationMapButton" type="Control" unique_id=2084751210 node_paths=PackedStringArray("title_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+script = SubResource("GDScript_sasra")
+title_label = NodePath("CenterContainer/VBoxContainer/Label")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=467845970]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1001123681]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=213892267]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x670l")
+text = "Spirit Farm"
+
+[node name="MarginContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=1861327503]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1174835562]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("1_x1kkm")
+texture_pressed = ExtResource("2_hnxtg")
+texture_hover = ExtResource("3_n0uvr")
+
+[connection signal="button_up" from="CenterContainer/VBoxContainer/MarginContainer/TextureButton" to="." method="_on_texture_button_button_up"]

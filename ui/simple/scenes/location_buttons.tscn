@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://5mmt1t7y4b2s"]
+
+[ext_resource type="PackedScene" uid="uid://dfpqwejrvedly" path="res://ui/simple/scenes/location_map_button.tscn" id="1_7g2ml"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Control
+
+@export var location_map_button_scene : PackedScene
+
+var location_cameras : Dictionary[String, Camera3D]
+
+func _ready() -> void:
+	var location_camera_node = get_tree().get_root().find_child(\"LocationCameras\", true, false)
+	if location_camera_node:
+		for child_camera in location_camera_node.get_children():
+			location_cameras[child_camera.name] = child_camera	
+	Modes.gameplay_mode_changed.connect(update)
+	update(Modes.current_mode)
+
+func update(new_mode : Enums.GameplayMode) -> void:
+	for child in get_children():
+		child.queue_free()
+	match new_mode:
+		Enums.GameplayMode.MAP:
+			visible = true
+			for location in Locations.accessible_locations:
+				var new_button = location_map_button_scene.instantiate()
+				new_button.location = location
+				new_button.camera = location_cameras[location.location_id]
+				add_child(new_button)
+		_ : 
+			visible = false
+"
+
+[node name="LocationButtons" type="Control" unique_id=123706040]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_16uew")
+location_map_button_scene = ExtResource("1_7g2ml")
