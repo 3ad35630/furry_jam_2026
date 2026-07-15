@@ -341,10 +341,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_pb32r")
 
 [node name="EndTurnButton" type="Button" parent="." unique_id=58382004]
 layout_mode = 0
-offset_left = 886.0
-offset_top = 552.0
-offset_right = 1003.0
-offset_bottom = 644.0
+offset_left = 888.0
+offset_top = 549.0
+offset_right = 1005.0
+offset_bottom = 648.0
 text = "End Hour"
 script = SubResource("GDScript_y0vbl")
 
@@ -406,6 +406,7 @@ char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("10_h5prc")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=323151439]
+visible = false
 layout_mode = 0
 offset_left = 425.00003
 offset_top = 2.000001

@@ -15,3 +15,6 @@ func _ready() -> void:
 	
 func go_to_location() -> void:
 	Modes.enter_location(location)
+
+func get_location() -> Location:
+	return _location
