@@ -19,8 +19,8 @@
 shader = ExtResource("2_ugxro")
 shader_parameter/day_top_color = Color(0.66520697, 0.5027283, 0.8164693, 1)
 shader_parameter/day_bottom_color = Color(0.6666667, 0.5019608, 0.8156863, 1)
-shader_parameter/sunset_top_color = Color(0.8627607, 0.7660115, 0.3332371, 1)
-shader_parameter/sunset_bottom_color = Color(0.8061279, 0.6463608, 0.63924855, 1)
+shader_parameter/sunset_top_color = Color(0.8964028, 0.6899389, 0.8539022, 1)
+shader_parameter/sunset_bottom_color = Color(0.9474545, 0.549255, 0.697786, 1)
 shader_parameter/night_top_color = Color(0.12437653, 0.07422561, 0.21553484, 1)
 shader_parameter/night_bottom_color = Color(0.12806377, 0.06386508, 0.18061778, 1)
 shader_parameter/horizon_color = Color(0.67583627, 0.50336325, 0.79092145, 1)
@@ -39,7 +39,7 @@ shader_parameter/clouds_bottom_color = Color(0.83, 0.83, 0.94, 1)
 shader_parameter/clouds_speed = 2.0
 shader_parameter/clouds_direction = 0.2
 shader_parameter/clouds_scale = 1.0
-shader_parameter/clouds_cutoff = 0.3
+shader_parameter/clouds_cutoff = 0.6
 shader_parameter/clouds_fuzziness = 0.5
 shader_parameter/clouds_weight = 0.0
 shader_parameter/clouds_blur = 0.25
@@ -62,11 +62,14 @@ fog_density = 1.0
 
 [node name="Moon" type="Node3D" unique_id=1671707619]
 script = ExtResource("1_ltsy3")
-day_time = 14.3959
-latitude = -27.549999999999997
-planet_axial_tilt = -25.53
+day_time = 5.8509
+latitude = -90.0
+planet_axial_tilt = -17.139999999999986
+moon_orbital_inclination = -29.139999999999986
+moon_orbital_period = 120.1
+clouds_cutoff = 0.6
 sun_base_enegry = 1.0
-moon_base_enegry = 1.0
+moon_base_enegry = 1.77
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
 environment = SubResource("Environment_mcndj")
@@ -74,17 +77,25 @@ environment = SubResource("Environment_mcndj")
 [node name="Model" parent="." unique_id=869522192 instance=ExtResource("1_khvpm")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Model" unique_id=504600553]
+light_color = Color(0.7840259, 0.5236658, 0.8944897, 1)
+light_energy = 0.312
+light_angular_distance = 90.0
+light_specular = 0.0
+sky_mode = 1
+
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1562214062]
-transform = Transform3D(0.64554876, -0.271462, 0.71384525, -0.72238654, -0.5203644, 0.455388, 0.24783918, -0.80964714, -0.53202134, 0, 0, 0)
+transform = Transform3D(0.011273339, 0.99923784, -0.03736059, -0.95736504, -4.3678074e-08, -0.28888053, -0.28866044, 0.03902436, 0.9566359, 0, 0, 0)
 rotation_order = 4
-light_color = Color(0.98, 0.49, 0, 1)
+light_color = Color(0.98039216, 0.49019608, 0, 1)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=1631743486]
-transform = Transform3D(0.85120726, 0.44366974, -0.2803618, -0.49854827, 0.85046875, -0.16778661, 0.16399708, 0.28259528, 0.9451159, 0, 0, 0)
+transform = Transform3D(0.2070076, -0.10391674, 0.9728043, -0.97809976, 4.542345e-09, 0.20813444, -0.021628657, -0.994586, -0.10164094, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
-light_energy = 0.0
+light_energy = 1.77
 shadow_enabled = true
 
 [node name="CameraRotation" parent="." unique_id=517386831 instance=ExtResource("3_jtt53")]
