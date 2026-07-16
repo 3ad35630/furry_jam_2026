@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b0rw1lepvwpcj"]
+
+[ext_resource type="Script" uid="uid://cf6jpub3ivh6k" path="res://ui/widgets/scripts/item_slot.gd" id="1_qj432"]
+[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="2_pyjm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq8tk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fhyq"]
+resource_local_to_scene = true
+atlas = ExtResource("2_pyjm7")
+region = Rect2(144, 48, 48, 48)
+
+[node name="ItemSlot" type="PanelContainer" unique_id=640340084]
+custom_minimum_size = Vector2(48, 64)
+offset_right = 48.0
+offset_bottom = 72.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jq8tk")
+script = ExtResource("1_qj432")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=736762699]
+layout_mode = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_6fhyq")
+
+[node name="Label" type="Label" parent="." unique_id=625319017]
+layout_mode = 2
+size_flags_vertical = 8
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Add" type="Button" parent="." unique_id=1734477218]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "-"
+
+[node name="Subtract" type="Button" parent="." unique_id=2130100017]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "+"

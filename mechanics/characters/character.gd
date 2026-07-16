@@ -12,14 +12,7 @@ var current_energy : int
 
 var dice : Array[int]
 var dice_dicts : Array[Dictionary]:
-	get:
-		var result : Array[Dictionary] = []
-		for x in range(dice.size()):
-			result.append({
-				'character':self,
-				'die_value':dice[x], 
-				'index':x})
-		return result
+	get = get_dice_dictionary
 
 
 

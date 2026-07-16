@@ -16,8 +16,16 @@ enum ResultTypes{
 
 
 enum ItemTypes{
-	UNDEFINED
+	UNDEFINED,
+	MONEY,
+	FISH,
+	MILK,
+	TEA,
+	CINNAMON,
+	OIL,
+	BLOSSOMS
 }
+
 
 enum DieActionOutcomeTypes {
 	BAD,
