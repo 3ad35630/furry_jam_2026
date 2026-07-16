@@ -32,6 +32,20 @@ script/source = "extends Control
 func _ready() -> void:
 	Characters.reset_all_energy()
 	SkillDice.roll_all_dice()
+	Modes.gameplay_mode_changed.connect(_on_mode_changed)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_cancel\"):
+		match(Modes.current_mode):
+			Enums.GameplayMode.MAP:
+				Modes.change_gameplay_mode(Enums.GameplayMode.MAINMENU)
+			Enums.GameplayMode.LOCATION:
+				Modes.exit_location()
+
+
+func _on_mode_changed(mode : Enums.GameplayMode) -> void:
+	visible = mode != Enums.GameplayMode.MAINMENU
 
 
 func _on_location_button_pressed() -> void:

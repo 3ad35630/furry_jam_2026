@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://b1gcjp0uthfca" path="res://resources/locations/Docks.tres" id="5_i0w5l"]
 [ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="6_2cude"]
 [ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="7_d1xcf"]
+[ext_resource type="PackedScene" uid="uid://cjehic72qfqx2" path="res://ui/widgets/scenes/main_menu.tscn" id="13_3l5yu"]
+[ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
 shader = ExtResource("2_ugxro")
@@ -39,7 +41,7 @@ shader_parameter/clouds_direction = 0.2
 shader_parameter/clouds_scale = 1.0
 shader_parameter/clouds_cutoff = 0.3
 shader_parameter/clouds_fuzziness = 0.5
-shader_parameter/clouds_weight = 0.70999998413008
+shader_parameter/clouds_weight = 0.0
 shader_parameter/clouds_blur = 0.25
 shader_parameter/stars_texture = ExtResource("3_ugxro")
 shader_parameter/stars_speed = 1.0
@@ -63,6 +65,8 @@ script = ExtResource("1_ltsy3")
 day_time = 14.3959
 latitude = -27.549999999999997
 planet_axial_tilt = -25.53
+sun_base_enegry = 1.0
+moon_base_enegry = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
 environment = SubResource("Environment_mcndj")
@@ -71,13 +75,16 @@ environment = SubResource("Environment_mcndj")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=1562214062]
-transform = Transform3D(1, 0, 0, 0, 0.65466374, 0.75592023, 0, -0.75592023, 0.65466374, 0, 0, 0)
+transform = Transform3D(0.64554876, -0.271462, 0.71384525, -0.72238654, -0.5203644, 0.455388, 0.24783918, -0.80964714, -0.53202134, 0, 0, 0)
+rotation_order = 4
 light_color = Color(0.98, 0.49, 0, 1)
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=1631743486]
-transform = Transform3D(1, 0, 0, 0, 0.65466374, 0.75592023, 0, -0.75592023, 0.65466374, 0, -0.2361517, 0)
+transform = Transform3D(0.85120726, 0.44366974, -0.2803618, -0.49854827, 0.85046875, -0.16778661, 0.16399708, 0.28259528, 0.9451159, 0, 0, 0)
+rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="CameraRotation" parent="." unique_id=517386831 instance=ExtResource("3_jtt53")]
@@ -98,6 +105,7 @@ transform = Transform3D(0.5075384, -0.4045104, 0.76077336, 0, 0.8829476, 0.46947
 transform = Transform3D(-0.15056881, 0.96113056, 0.23142415, 0.082124494, 0.24544425, -0.9659258, -0.9851825, -0.12643272, -0.11588861, -3.786, -2.463, -3.832)
 
 [node name="MainPanel" parent="." unique_id=89919495 instance=ExtResource("2_tsr5y")]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainPanel" unique_id=1871287508]
 visible = false
@@ -142,6 +150,9 @@ offset_right = 876.0
 offset_bottom = 545.0
 text = "Return"
 script = ExtResource("4_0pwpi")
+
+[node name="MainMenu" parent="." unique_id=1857706283 instance=ExtResource("13_3l5yu")]
+script = ExtResource("14_722th")
 
 [node name="LocationButtons" parent="." unique_id=123706040 instance=ExtResource("3_js7sh")]
 

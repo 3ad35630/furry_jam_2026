@@ -2,7 +2,7 @@ extends Node
 
 signal gameplay_mode_changed(new_mode : Enums.GameplayMode)
 
-var current_mode : Enums.GameplayMode = Enums.GameplayMode.MAP
+var current_mode : Enums.GameplayMode = Enums.GameplayMode.MAINMENU
 var previous_mode : Enums.GameplayMode = Enums.GameplayMode.MAP
 var current_location : Location = null
 

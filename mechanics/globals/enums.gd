@@ -40,6 +40,7 @@ enum GameMode {
 
 
 enum GameplayMode {
+	MAINMENU,
 	MAP,
 	LOCATION,
 	NARRATIVE,
