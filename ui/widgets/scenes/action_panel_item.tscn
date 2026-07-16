@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://ciedwldk1c5ko"]
+
+[ext_resource type="Script" uid="uid://csw6bf61qdlab" path="res://ui/widgets/scripts/action_panel_item.gd" id="1_sblgw"]
+[ext_resource type="StyleBox" uid="uid://bjr0qak1eq5g1" path="res://ui/Themes/dice_slot_panel.tres" id="2_y1ccu"]
+[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="3_ep3a7"]
+[ext_resource type="AudioStream" uid="uid://dvtsdpvvkiquv" path="res://audio/ui_sfx/dice.ogg" id="4_y1ccu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ey2a"]
+
+[node name="ActionPanelItem" type="Panel" unique_id=1587315691]
+offset_right = 224.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3ey2a")
+script = ExtResource("1_sblgw")
+
+[node name="ItemLabel" type="Label" parent="." unique_id=75418814]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 208.0
+offset_bottom = 40.0
+text = "Cinnamon"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1409080748]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 72.0
+theme_override_styles/panel = ExtResource("2_y1ccu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=1339837031]
+position = Vector2(28, 28)
+scale = Vector2(1.1666666, 1.1666666)
+texture = ExtResource("3_ep3a7")
+hframes = 5
+vframes = 5
+frame = 3
+
+[node name="Button" type="Button" parent="." unique_id=893289174]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 80.0
+offset_right = 216.0
+offset_bottom = 112.0
+text = "Confirm"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=446410553]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 136.0
+offset_bottom = 112.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=996060332]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CountLabels" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=473553601]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Needed" type="Label" parent="PanelContainer/MarginContainer/CountLabels" unique_id=1869938327]
+modulate = Color(0.6662731, 0.5532349, 1, 1)
+layout_mode = 2
+text = "Needed:"
+
+[node name="Inventory" type="Label" parent="PanelContainer/MarginContainer/CountLabels" unique_id=1859229353]
+modulate = Color(0.6662731, 0.5532349, 1, 1)
+layout_mode = 2
+text = "Current:"
+
+[node name="CountValues" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1667881893]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Needed" type="Label" parent="PanelContainer/MarginContainer/CountValues" unique_id=1008518972]
+modulate = Color(0.6662731, 0.5532349, 1, 1)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 2
+
+[node name="Inventory" type="Label" parent="PanelContainer/MarginContainer/CountValues" unique_id=1438856917]
+modulate = Color(0.6662731, 0.5532349, 1, 1)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="dicerolled" type="AudioStreamPlayer" parent="." unique_id=1684815874]
+stream = ExtResource("4_y1ccu")

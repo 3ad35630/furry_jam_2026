@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://34rc83qfboyn"]
+
+[ext_resource type="Script" uid="uid://bp6xs7xodeenq" path="res://ui/widgets/scripts/action_panel.gd" id="1_hb8ws"]
+[ext_resource type="PackedScene" uid="uid://b463palr64gl4" path="res://ui/widgets/scenes/action_panel_info.tscn" id="2_wsoa6"]
+[ext_resource type="PackedScene" uid="uid://uu4lp2fcx673" path="res://ui/widgets/scenes/action_panel_skill.tscn" id="3_a2f6j"]
+[ext_resource type="PackedScene" uid="uid://ciedwldk1c5ko" path="res://ui/widgets/scenes/action_panel_item.tscn" id="4_wsoa6"]
+
+[node name="ActionPanel" type="Panel" unique_id=2049888376]
+offset_right = 256.0
+offset_bottom = 288.0
+script = ExtResource("1_hb8ws")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1512109105]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 144.0
+offset_right = 232.0
+offset_bottom = 146.0
+color = Color(0.446777, 0.44677705, 0.44677705, 1)
+
+[node name="ActionPanelInfo" parent="." unique_id=2071027896 instance=ExtResource("2_wsoa6")]
+layout_mode = 0
+
+[node name="ActionPanelSkill" parent="." unique_id=721529462 instance=ExtResource("3_a2f6j")]
+layout_mode = 0
+offset_top = 144.0
+offset_bottom = 288.0
+
+[node name="ActionPanelItem" parent="." unique_id=1587315691 instance=ExtResource("4_wsoa6")]
+layout_mode = 0
+offset_top = 144.0
+offset_bottom = 264.0

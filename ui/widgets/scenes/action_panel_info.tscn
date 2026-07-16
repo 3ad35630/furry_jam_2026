@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b463palr64gl4"]
+
+[ext_resource type="Script" uid="uid://bdi8r5ths6t7t" path="res://ui/widgets/scripts/action_panel_info.gd" id="1_4uipe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu8qa"]
+
+[node name="ActionPanelInfo" type="Panel" unique_id=2071027896]
+offset_right = 256.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fu8qa")
+script = ExtResource("1_4uipe")
+
+[node name="NameLabel" type="Label" parent="." unique_id=731321564]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 31.0
+text = "Action Name"
+clip_text = true
+
+[node name="SkillLabel" type="Label" parent="." unique_id=1175735808]
+modulate = Color(0.6662731, 0.5532349, 1, 1)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 55.0
+text = "skill"
+horizontal_alignment = 2
+
+[node name="DescriptionLabel" type="Label" parent="." unique_id=178581097]
+layout_mode = 0
+offset_left = 15.999999
+offset_top = 56.000008
+offset_right = 335.99997
+offset_bottom = 158.85712
+scale = Vector2(0.7, 0.7)
+text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+autowrap_mode = 2

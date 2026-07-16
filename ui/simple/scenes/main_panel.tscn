@@ -21,9 +21,9 @@
 [ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="17_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
+[ext_resource type="PackedScene" uid="uid://34rc83qfboyn" path="res://ui/widgets/scenes/action_panel.tscn" id="22_a4q2h"]
 [ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="23_wo1nn"]
 [ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="24_a4q2h"]
-[ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="24_imvmo"]
 [ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="25_a4q2h"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
@@ -343,6 +343,7 @@ text = "Return to Map!"
 script = SubResource("GDScript_g746w")
 
 [node name="DescriptionLabel" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1759866784]
+visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_k3n4s")
@@ -350,6 +351,7 @@ text = "Description:"
 autowrap_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=567580889]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=2009674196]
@@ -547,100 +549,12 @@ layout_mode = 2
 text = "Round: "
 script = SubResource("GDScript_s3n1p")
 
-[node name="ActionPanel" type="Panel" parent="." unique_id=31194194]
-visible = false
+[node name="ActionPanel" parent="." unique_id=2049888376 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 144.0
-offset_right = 240.0
-offset_bottom = 360.0
-
-[node name="TitleLabel" type="Label" parent="ActionPanel" unique_id=1806805487]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 102.0
-offset_bottom = 31.0
-text = "Action Name"
-
-[node name="SkillLabel" type="Label" parent="ActionPanel" unique_id=1759979588]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 0
-offset_left = 120.0
-offset_top = 8.0
-offset_right = 206.0
-offset_bottom = 31.0
-text = "skill"
-horizontal_alignment = 2
-
-[node name="Description" type="Label" parent="ActionPanel" unique_id=915651763]
-layout_mode = 0
-offset_left = 15.999999
-offset_top = 39.999996
-offset_right = 301.71426
-offset_bottom = 142.85712
-scale = Vector2(0.7, 0.7)
-text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-autowrap_mode = 2
-
-[node name="DieDisplay" parent="ActionPanel" unique_id=1864076286 instance=ExtResource("24_imvmo")]
-layout_mode = 0
-offset_left = 152.0
-offset_top = 120.0
-offset_right = 207.0
-offset_bottom = 175.0
-
-[node name="Button" type="Button" parent="ActionPanel" unique_id=1617967560]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 176.0
-offset_right = 215.0
-offset_bottom = 207.0
-text = "Confirm"
-
-[node name="ChanceLabels" type="VBoxContainer" parent="ActionPanel" unique_id=1100233381]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 128.0
-offset_right = 81.0
-offset_bottom = 205.0
-
-[node name="Fail" type="Label" parent="ActionPanel/ChanceLabels" unique_id=436136525]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "Fail:"
-
-[node name="Neutral" type="Label" parent="ActionPanel/ChanceLabels" unique_id=2137350554]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "Neutral:"
-
-[node name="Success" type="Label" parent="ActionPanel/ChanceLabels" unique_id=1539890260]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "Success:"
-
-[node name="ChanceValues" type="VBoxContainer" parent="ActionPanel" unique_id=258593949]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 128.0
-offset_right = 153.0
-offset_bottom = 205.0
-
-[node name="Fail" type="Label" parent="ActionPanel/ChanceValues" unique_id=264179840]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
-
-[node name="Neutral" type="Label" parent="ActionPanel/ChanceValues" unique_id=1564985221]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
-
-[node name="Success" type="Label" parent="ActionPanel/ChanceValues" unique_id=986650358]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
+offset_left = 888.0
+offset_top = 224.0
+offset_right = 1144.0
+offset_bottom = 512.0
 
 [node name="Inventory" type="MarginContainer" parent="." unique_id=473912101]
 layout_mode = 0

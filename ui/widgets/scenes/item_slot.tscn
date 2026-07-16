@@ -34,14 +34,14 @@ vertical_alignment = 2
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "-"
+text = "+"
 
 [node name="Subtract" type="Button" parent="." unique_id=2130100017]
 visible = false
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "+"
+text = "-"

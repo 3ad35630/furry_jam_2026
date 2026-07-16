@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bu7iilhhjfa0m"]
+
+[ext_resource type="Script" uid="uid://b16xvh65fhips" path="res://ui/widgets/scripts/dice_slot.gd" id="1_toclk"]
+[ext_resource type="StyleBox" uid="uid://bjr0qak1eq5g1" path="res://ui/Themes/dice_slot_panel.tres" id="2_lev2n"]
+[ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="2_v5mvh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uylq5"]
+
+[node name="DiceSlot" type="PanelContainer" unique_id=173719601]
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uylq5")
+script = ExtResource("1_toclk")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1956233453]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ColorRect" type="Panel" parent="MarginContainer" unique_id=2049066328]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_lev2n")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=857149944]
+layout_mode = 2
+
+[node name="DieDisplay" parent="CenterContainer" unique_id=1864076286 instance=ExtResource("2_v5mvh")]
+layout_mode = 2
