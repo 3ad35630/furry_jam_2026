@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://cdc64l2yt2i8e" path="res://ui/simple/scenes/skill_action_display.tscn" id="1_k3n4s"]
 [ext_resource type="PackedScene" uid="uid://7akhxguitpid" path="res://ui/simple/scenes/clock_display.tscn" id="2_vimbc"]
-[ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="4_v2r2b"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
 [ext_resource type="Texture2D" uid="uid://dmld3w8yju7sj" path="res://ui/boxes/UI_Box.png" id="5_36tix"]
+[ext_resource type="PackedScene" uid="uid://drdeqhwwvm4s4" path="res://ui/simple/scenes/end_turn_widget.tscn" id="6_a4q2h"]
 [ext_resource type="Texture2D" uid="uid://ca6lte6hryk73" path="res://ui/character_profiles/ProfileTemp1.png" id="6_h5prc"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
@@ -246,13 +246,6 @@ func on_skill_die_removed(data):
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
 texture = ExtResource("5_36tix")
 
-[sub_resource type="GDScript" id="GDScript_y0vbl"]
-script/source = "extends Button
-func _on_pressed() -> void:
-	TurnSystem.end_round()
-	$\"Button SFX\".play()
-"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4q2h"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
@@ -413,17 +406,6 @@ offset_right = 888.0
 offset_bottom = 99.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pb32r")
 
-[node name="EndTurnButton" type="Button" parent="CharacterBar" unique_id=58382004]
-layout_mode = 0
-offset_left = 888.0
-offset_right = 1005.0
-offset_bottom = 99.0
-text = "End Hour"
-script = SubResource("GDScript_y0vbl")
-
-[node name="Button SFX" type="AudioStreamPlayer" parent="CharacterBar/EndTurnButton" unique_id=706792698]
-stream = ExtResource("4_v2r2b")
-
 [node name="BellWitch" type="HBoxContainer" parent="CharacterBar" unique_id=1891987525]
 layout_mode = 0
 offset_left = 22.0
@@ -477,6 +459,11 @@ layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("10_h5prc")
+
+[node name="EndTurnWidget" parent="CharacterBar" unique_id=1747784301 instance=ExtResource("6_a4q2h")]
+layout_mode = 0
+offset_left = 1024.0
+offset_right = 1151.9993
 
 [node name="NavButtons" type="GridContainer" parent="." unique_id=323151439]
 visible = false
@@ -728,7 +715,6 @@ horizontal_alignment = 1
 script = ExtResource("25_a4q2h")
 
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
-[connection signal="pressed" from="CharacterBar/EndTurnButton" to="CharacterBar/EndTurnButton" method="_on_pressed"]
 [connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button3" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button4" to="." method="_on_button_pressed"]

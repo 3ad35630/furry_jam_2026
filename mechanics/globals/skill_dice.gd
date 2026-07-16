@@ -1,5 +1,8 @@
 extends Node
 
+signal dice_rerolled()
+
+
 func _ready() -> void:
 	TurnSystem.round_ended.connect(roll_all_dice)
 
@@ -16,3 +19,4 @@ func use_skill_die_on_action(action : Action, die : Dictionary) -> void:
 func roll_all_dice() -> void:
 	for character in Characters.characters:
 		character.roll_dice()
+	dice_rerolled.emit()

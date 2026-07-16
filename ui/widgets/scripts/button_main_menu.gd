@@ -14,6 +14,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
+	if disabled : return
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_ease(Tween.EASE_IN_OUT)
