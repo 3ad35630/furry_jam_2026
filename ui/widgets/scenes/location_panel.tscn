@@ -43,12 +43,18 @@ func on_round_started():
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xd07"]
 
-[node name="LocationPanel" type="PanelContainer" unique_id=1116726895]
+[node name="LocationPanel" type="PanelContainer" unique_id=1116726895 node_paths=PackedStringArray("infoButton", "clockButton", "infoContainer", "clockContainer", "clockList", "infoLabel")]
 custom_minimum_size = Vector2(288, 115)
 offset_right = 288.0
 offset_bottom = 115.0
 mouse_filter = 1
 script = ExtResource("1_yt5od")
+infoButton = NodePath("MarginContainer/ButtonContainer/HBoxContainer/InfoButton")
+clockButton = NodePath("MarginContainer/ButtonContainer/HBoxContainer/ClockButton")
+infoContainer = NodePath("MarginContainer/VBoxContainer/InfoContainer")
+clockContainer = NodePath("MarginContainer/VBoxContainer/ClockContainer")
+clockList = NodePath("MarginContainer/VBoxContainer/ClockContainer/ClockList")
+infoLabel = NodePath("MarginContainer/VBoxContainer/InfoContainer/MarginContainer/InfoLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=621073139]
 layout_mode = 2
@@ -81,19 +87,41 @@ layout_mode = 2
 text = "Round: "
 script = SubResource("GDScript_s3n1p")
 
-[node name="ClockList" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1317609058]
+[node name="InfoContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=320974660]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/ClockList" unique_id=158703505]
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=1143732238]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.47007585, 0.47007585, 0.47007585, 1)
 
-[node name="ClockContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ClockList" unique_id=646910685]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/InfoContainer" unique_id=1651230222]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer/InfoContainer/MarginContainer" unique_id=1044268017]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+autowrap_mode = 2
+
+[node name="ClockContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1317609058]
+visible = false
 layout_mode = 2
 
-[node name="ClockWidget" parent="MarginContainer/VBoxContainer/ClockList/ClockContainer" unique_id=1818651294 instance=ExtResource("1_5ltb5")]
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/ClockContainer" unique_id=158703505]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.47007585, 0.47007585, 0.47007585, 1)
+
+[node name="ClockList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ClockContainer" unique_id=646910685]
+layout_mode = 2
+
+[node name="ClockWidget" parent="MarginContainer/VBoxContainer/ClockContainer/ClockList" unique_id=1818651294 instance=ExtResource("1_5ltb5")]
 layout_mode = 2
 
 [node name="ButtonContainer" type="PanelContainer" parent="MarginContainer" unique_id=1805319825]
@@ -104,9 +132,21 @@ size_flags_vertical = 0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_3xd07")
 
-[node name="Button" type="Button" parent="MarginContainer/ButtonContainer" unique_id=381433474]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ButtonContainer" unique_id=2068098767]
+layout_mode = 2
+
+[node name="InfoButton" type="Button" parent="MarginContainer/ButtonContainer/HBoxContainer" unique_id=381433474]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+toggle_mode = true
+text = "Info"
+
+[node name="ClockButton" type="Button" parent="MarginContainer/ButtonContainer/HBoxContainer" unique_id=454682076]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+toggle_mode = true
 text = "Clocks"
