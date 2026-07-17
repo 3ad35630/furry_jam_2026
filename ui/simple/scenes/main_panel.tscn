@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
 [ext_resource type="PackedScene" uid="uid://34rc83qfboyn" path="res://ui/widgets/scenes/action_panel.tscn" id="22_a4q2h"]
+[ext_resource type="PackedScene" uid="uid://65y728nmjlag" path="res://ui/widgets/scenes/location_panel.tscn" id="22_dvm1c"]
 [ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="23_wo1nn"]
 [ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="24_a4q2h"]
 [ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="25_a4q2h"]
@@ -246,37 +247,37 @@ func on_skill_die_removed(data):
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
 texture = ExtResource("5_36tix")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4q2h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvm1c"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvm1c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlui7"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlui7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsy"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bskcy"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bskcy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xlfh"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xlfh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw6n6"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(48, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw6n6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iye4"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 0, 48, 48)
@@ -297,7 +298,8 @@ autoplay = true
 playback_type = 1
 parameters/looping = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1641253063]
+[node name="LegacyUI" type="ScrollContainer" parent="." unique_id=1641253063]
+visible = false
 custom_minimum_size = Vector2(0, 83.54)
 layout_mode = 1
 anchors_preset = 15
@@ -307,26 +309,26 @@ offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=286026299]
+[node name="VBoxContainer" type="VBoxContainer" parent="LegacyUI" unique_id=286026299]
 layout_mode = 2
 
-[node name="ModeLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=472682053]
+[node name="ModeLabel" type="Label" parent="LegacyUI/VBoxContainer" unique_id=472682053]
 layout_mode = 2
 text = "Mode : "
 script = SubResource("GDScript_gof1d")
 
-[node name="RoundLabel" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2096347812]
+[node name="RoundLabel" type="Label" parent="LegacyUI/VBoxContainer" unique_id=2096347812]
 layout_mode = 2
 text = "Round: "
 script = SubResource("GDScript_s3n1p")
 
-[node name="ModeContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer" unique_id=1962669242 node_paths=PackedStringArray("location_control", "map_control")]
+[node name="ModeContainer" type="MarginContainer" parent="LegacyUI/VBoxContainer" unique_id=1962669242 node_paths=PackedStringArray("location_control", "map_control")]
 layout_mode = 2
 script = SubResource("GDScript_g6gw2")
 location_control = NodePath("LocationDisplay")
 map_control = NodePath("MapDisplay")
 
-[node name="LocationDisplay" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer" unique_id=800125287 node_paths=PackedStringArray("action_container", "clock_container", "dice_container", "description_label")]
+[node name="LocationDisplay" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer" unique_id=800125287 node_paths=PackedStringArray("action_container", "clock_container", "dice_container", "description_label")]
 layout_mode = 2
 script = SubResource("GDScript_k3n4s")
 action_container = NodePath("VBoxContainer/ActionContainer")
@@ -336,13 +338,13 @@ description_label = NodePath("DescriptionLabel")
 action_display = ExtResource("1_k3n4s")
 clock_display = ExtResource("2_vimbc")
 
-[node name="ReturnToMap" type="Button" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1734645095]
+[node name="ReturnToMap" type="Button" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1734645095]
 visible = false
 layout_mode = 2
 text = "Return to Map!"
 script = SubResource("GDScript_g746w")
 
-[node name="DescriptionLabel" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1759866784]
+[node name="DescriptionLabel" type="Label" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1759866784]
 visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -350,47 +352,47 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_k3n4s")
 text = "Description:"
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=567580889]
+[node name="HBoxContainer" type="HBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay" unique_id=567580889]
 visible = false
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=2009674196]
+[node name="VBoxContainer" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay" unique_id=2009674196]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=1087212446]
+[node name="Label" type="Label" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=1087212446]
 layout_mode = 2
 text = "Actions"
 
-[node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=205929822]
+[node name="ActionContainer" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer" unique_id=205929822]
 layout_mode = 2
 
-[node name="SkillActionDisplay" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer/ActionContainer" unique_id=582566562 instance=ExtResource("1_k3n4s")]
+[node name="SkillActionDisplay" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer/ActionContainer" unique_id=582566562 instance=ExtResource("1_k3n4s")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1075277486]
+[node name="VBoxContainer2" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay" unique_id=1075277486]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=363688428]
+[node name="Label" type="Label" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=363688428]
 layout_mode = 2
 text = "Clocks"
 
-[node name="ClockContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=1325684546]
+[node name="ClockContainer" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/VBoxContainer2" unique_id=1325684546]
 layout_mode = 2
 
-[node name="MapDisplay" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/ModeContainer" unique_id=681935883]
+[node name="MapDisplay" type="VBoxContainer" parent="LegacyUI/VBoxContainer/ModeContainer" unique_id=681935883]
 visible = false
 layout_mode = 2
 script = SubResource("GDScript_16uew")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1762278210]
+[node name="HBoxContainer" type="HBoxContainer" parent="LegacyUI/VBoxContainer" unique_id=1762278210]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1336763976]
+[node name="Label" type="Label" parent="LegacyUI/VBoxContainer/HBoxContainer" unique_id=1336763976]
 visible = false
 layout_mode = 2
 text = "Drag dice onto actions:"
 
-[node name="DiceContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer" unique_id=280159870]
+[node name="DiceContainer" type="HBoxContainer" parent="LegacyUI/VBoxContainer/HBoxContainer" unique_id=280159870]
 visible = false
 layout_mode = 2
 script = SubResource("GDScript_6ccxr")
@@ -512,42 +514,12 @@ visible = false
 layout_mode = 1
 offset_left = -500.0
 
-[node name="QuestPanel" type="PanelContainer" parent="." unique_id=1897994582]
+[node name="LocationPanel" parent="." unique_id=1116726895 instance=ExtResource("22_dvm1c")]
 layout_mode = 0
-offset_left = 920.0
-offset_top = 96.0
-offset_right = 1144.0
-offset_bottom = 211.0
-
-[node name="MarginContainer" type="MarginContainer" parent="QuestPanel" unique_id=1607829900]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestPanel/MarginContainer" unique_id=1241296036]
-layout_mode = 2
-
-[node name="TitleLabel" type="Label" parent="QuestPanel/MarginContainer/VBoxContainer" unique_id=1393242929]
-layout_mode = 2
-text = "Quest Name"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="QuestPanel/MarginContainer/VBoxContainer" unique_id=167066401]
-custom_minimum_size = Vector2(0, 2)
-layout_mode = 2
-color = Color(0.47007585, 0.47007585, 0.47007585, 1)
-
-[node name="ModeLabel" type="Label" parent="QuestPanel/MarginContainer/VBoxContainer" unique_id=924461641]
-layout_mode = 2
-text = "Mode : "
-script = SubResource("GDScript_gof1d")
-
-[node name="RoundLabel" type="Label" parent="QuestPanel/MarginContainer/VBoxContainer" unique_id=1183496566]
-layout_mode = 2
-text = "Round: "
-script = SubResource("GDScript_s3n1p")
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 123.0
 
 [node name="ActionPanel" parent="." unique_id=2049888376 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
@@ -574,49 +546,49 @@ layout_mode = 2
 itemKey = 1
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_a4q2h")
+texture = SubResource("AtlasTexture_dvm1c")
 
 [node name="ItemSlot2" parent="Inventory/HBoxContainer" unique_id=973219394 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 2
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot2" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_dvm1c")
+texture = SubResource("AtlasTexture_qlui7")
 
 [node name="ItemSlot3" parent="Inventory/HBoxContainer" unique_id=643666149 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 3
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot3" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qlui7")
+texture = SubResource("AtlasTexture_7hvsy")
 
 [node name="ItemSlot4" parent="Inventory/HBoxContainer" unique_id=1381656101 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 4
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot4" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_7hvsy")
+texture = SubResource("AtlasTexture_bskcy")
 
 [node name="ItemSlot5" parent="Inventory/HBoxContainer" unique_id=1580215998 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 5
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot5" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_bskcy")
+texture = SubResource("AtlasTexture_3xlfh")
 
 [node name="ItemSlot6" parent="Inventory/HBoxContainer" unique_id=798999143 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 6
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot6" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_3xlfh")
+texture = SubResource("AtlasTexture_qw6n6")
 
 [node name="ItemSlot7" parent="Inventory/HBoxContainer" unique_id=640340084 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 7
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot7" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qw6n6")
+texture = SubResource("AtlasTexture_5iye4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Inventory" unique_id=172637083]
 layout_mode = 2
@@ -628,7 +600,7 @@ text = "Ingredients: 5/5"
 horizontal_alignment = 1
 script = ExtResource("25_a4q2h")
 
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="ScrollContainer/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
+[connection signal="pressed" from="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button3" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button4" to="." method="_on_button_pressed"]
