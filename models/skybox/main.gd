@@ -73,7 +73,7 @@ const DAYS_IN_YEAR : int = 365
 		moon_base_enegry = value
 		_update_shader()
 
-@onready var environment : WorldEnvironment = $WorldEnvironment
+@onready var environment : WorldEnvironment = $"../WorldEnvironment"
 @onready var sun : DirectionalLight3D = $Sun
 @onready var moon : DirectionalLight3D = $Moon
 
