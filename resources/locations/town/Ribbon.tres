@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://bh8ogw6wn4bwd"]
+
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_lnk0c"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_y53yx"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_kntae"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_e2ygs"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_gy532"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="4_ellrp"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_goyih"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="5_b0mxf"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="6_vdynt"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="7_fw238"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="8_wu2h0"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="9_fsmd6"]
+
+[sub_resource type="Resource" id="Resource_rt1kv"]
+script = ExtResource("1_lnk0c")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_1jjbk"]
+script = ExtResource("4_ellrp")
+clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_qls7o"]
+script = ExtResource("3_gy532")
+test = SubResource("Resource_1jjbk")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_71yox"]
+script = ExtResource("5_b0mxf")
+clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_oi1bc"]
+script = ExtResource("7_fw238")
+item_type = 2
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_s6xhd"]
+script = ExtResource("5_b0mxf")
+clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_eatcb"]
+script = ExtResource("8_wu2h0")
+effects = Array[ExtResource("6_vdynt")]([SubResource("Resource_oi1bc"), SubResource("Resource_s6xhd")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_64cfc"]
+resource_name = "Try to fish"
+script = ExtResource("9_fsmd6")
+target_number = 5
+skill = 5
+positive = SubResource("Resource_eatcb")
+neutral = SubResource("Resource_71yox")
+action_clock_id = "learning_to_fish_the_ribbon"
+access_test = SubResource("Resource_qls7o")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_q33pw"]
+script = ExtResource("4_ellrp")
+clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_2gx6s"]
+script = ExtResource("7_fw238")
+item_type = 2
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_xc77l"]
+script = ExtResource("7_fw238")
+item_type = 2
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_jutr1"]
+script = ExtResource("7_fw238")
+item_type = 2
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_6wrq2"]
+resource_name = "Fish the ribbon"
+script = ExtResource("9_fsmd6")
+target_number = 3
+skill = 5
+positive = SubResource("Resource_jutr1")
+neutral = SubResource("Resource_xc77l")
+negative = SubResource("Resource_2gx6s")
+access_test = SubResource("Resource_q33pw")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_8mvnj"]
+script = ExtResource("4_goyih")
+path = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_xw21o"]
+resource_name = "Learn to fish"
+script = ExtResource("2_kntae")
+clock_id = "learning_to_fish_the_ribbon"
+max_segments = 8
+effect = SubResource("Resource_8mvnj")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_e2ygs")
+name = "Sailing the Ribbon"
+location_id = "ribbon"
+access_test = SubResource("Resource_rt1kv")
+actions = Array[ExtResource("1_y53yx")]([SubResource("Resource_64cfc"), SubResource("Resource_6wrq2")])
+clocks = Array[ExtResource("2_kntae")]([SubResource("Resource_xw21o")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

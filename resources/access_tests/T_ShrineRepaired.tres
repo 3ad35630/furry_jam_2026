@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AccessTestClockCompleted" format=3 uid="uid://cdyoeumdqu4ix"]
+
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="1_vusds"]
+
+[resource]
+resource_name = "You've repaired the shrine"
+script = ExtResource("1_vusds")
+clock_id = "shrine_repairs"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"

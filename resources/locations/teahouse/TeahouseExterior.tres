@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://bsdehf7f2dewo"]
+
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_ps74c"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="2_jii7u"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_te1he"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="2_ya4x8"]
+[ext_resource type="Script" uid="uid://dtij1c6ftyb3a" path="res://mechanics/access_tests/ink_path_visited.gd" id="3_a48kk"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="3_jaxoa"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_jii7u"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_a48kk"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="6_avmgi"]
+
+[sub_resource type="Resource" id="Resource_paspp"]
+script = ExtResource("3_a48kk")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("2_ya4x8")
+test = SubResource("Resource_paspp")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_avmgi"]
+script = ExtResource("4_a48kk")
+path = "story_intro"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_xx0bf"]
+script = ExtResource("4_a48kk")
+path = "story_intro"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_lu4dx"]
+script = ExtResource("4_a48kk")
+path = "story_intro"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_hnxtg"]
+resource_name = "Knock on the door!"
+script = ExtResource("3_jaxoa")
+positive = SubResource("Resource_lu4dx")
+neutral = SubResource("Resource_xx0bf")
+negative = SubResource("Resource_avmgi")
+description = "Knock on the door, you're here to help!"
+access_test = SubResource("Resource_jkl28")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_a14y6"]
+script = ExtResource("6_avmgi")
+clock_id = "main_ingredient_clock"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_rt1kv"]
+resource_name = "Deliver Ingredients"
+script = ExtResource("2_jii7u")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_b2fl3"]
+resource_name = "Deliver Ingredients"
+script = ExtResource("3_jaxoa")
+positive = SubResource("Resource_rt1kv")
+neutral = SubResource("Resource_rt1kv")
+negative = SubResource("Resource_rt1kv")
+access_test = SubResource("Resource_a14y6")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+script = ExtResource("3_a48kk")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+resource_name = "all_ingredients_found"
+script = ExtResource("2_jii7u")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+resource_name = "main_ingredient_clock"
+script = ExtResource("2_te1he")
+clock_id = "main_ingredient_clock"
+description = "You should probably find all those ingredients!"
+access_test = SubResource("Resource_4t3wr")
+max_segments = 5
+effect = SubResource("Resource_x4jqs")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_jii7u")
+name = "Tea House"
+location_id = "teahouse_exterior"
+actions = Array[ExtResource("1_ps74c")]([SubResource("Resource_hnxtg"), SubResource("Resource_b2fl3")])
+clocks = Array[ExtResource("2_te1he")]([SubResource("Resource_2mcle")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

@@ -1,0 +1,173 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://cmi7yg7i1umym"]
+
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_atocs"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_dg7bk"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_ft207"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_xf7k1"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_iexha"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="3_mixmm"]
+[ext_resource type="Script" uid="uid://dybcll7k5xh4r" path="res://mechanics/access_tests/access_tests_or.gd" id="4_udg7n"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="5_b43s1"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="6_aer11"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="8_34n4x"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="9_mg8xx"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="10_ht5tt"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="11_iykc2"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_nl5oy"]
+
+[sub_resource type="Resource" id="Resource_wpyvr"]
+resource_name = "We've explored the farm"
+script = ExtResource("3_mixmm")
+ink_path = "explore_farm"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_slvjm"]
+script = ExtResource("6_aer11")
+clock_id = "accessible_cats"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_euc77"]
+script = ExtResource("5_b43s1")
+test = SubResource("Resource_slvjm")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_ijh5j"]
+script = ExtResource("6_aer11")
+clock_id = "sacks_of_grain"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_aawoh"]
+script = ExtResource("5_b43s1")
+test = SubResource("Resource_ijh5j")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_ly1ii"]
+resource_name = "There's still cats or grain here."
+script = ExtResource("4_udg7n")
+tests = Array[ExtResource("2_ft207")]([SubResource("Resource_euc77"), SubResource("Resource_aawoh")])
+metadata/_custom_type_script = "uid://dybcll7k5xh4r"
+
+[sub_resource type="Resource" id="Resource_gawdx"]
+script = ExtResource("1_atocs")
+tests = Array[ExtResource("2_ft207")]([SubResource("Resource_wpyvr"), SubResource("Resource_ly1ii")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_oltps"]
+script = ExtResource("9_mg8xx")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_um47t"]
+script = ExtResource("10_ht5tt")
+clock_id = "sacks_of_grain"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_2pbeo"]
+script = ExtResource("11_iykc2")
+effects = Array[ExtResource("8_34n4x")]([SubResource("Resource_oltps"), SubResource("Resource_um47t")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_26b3s"]
+script = ExtResource("9_mg8xx")
+item_type = 1
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_foim5"]
+script = ExtResource("10_ht5tt")
+clock_id = "sacks_of_grain"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_msqny"]
+script = ExtResource("11_iykc2")
+effects = Array[ExtResource("8_34n4x")]([SubResource("Resource_26b3s"), SubResource("Resource_foim5")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_7tyld"]
+script = ExtResource("9_mg8xx")
+item_type = 1
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_7ig2a"]
+resource_name = "Mill some of the remaining grain"
+script = ExtResource("12_nl5oy")
+target_number = 4
+skill = 5
+positive = SubResource("Resource_7tyld")
+neutral = SubResource("Resource_msqny")
+negative = SubResource("Resource_2pbeo")
+action_clock_id = "sacks_of_grain"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_kfpcl"]
+script = ExtResource("9_mg8xx")
+item_type = 3
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_flkcp"]
+script = ExtResource("10_ht5tt")
+clock_id = "accessible_cats"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_a81vo"]
+script = ExtResource("11_iykc2")
+effects = Array[ExtResource("8_34n4x")]([SubResource("Resource_kfpcl"), SubResource("Resource_flkcp")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_77m4b"]
+script = ExtResource("9_mg8xx")
+item_type = 3
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_incod"]
+script = ExtResource("10_ht5tt")
+clock_id = "accessible_cats"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_tkwif"]
+script = ExtResource("11_iykc2")
+effects = Array[ExtResource("8_34n4x")]([SubResource("Resource_77m4b"), SubResource("Resource_incod")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_vog37"]
+script = ExtResource("9_mg8xx")
+item_type = 3
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_ca3af"]
+resource_name = "Speak with the Cats"
+script = ExtResource("12_nl5oy")
+skill = 2
+positive = SubResource("Resource_vog37")
+neutral = SubResource("Resource_tkwif")
+negative = SubResource("Resource_a81vo")
+action_clock_id = "accessible_cats"
+description = "Cats get everywhere and know everything. The trick is getting them to talk."
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_div1f"]
+resource_name = "Cats in the mill"
+script = ExtResource("2_xf7k1")
+clock_id = "accessible_cats"
+max_segments = 5
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[sub_resource type="Resource" id="Resource_vf4k1"]
+resource_name = "Sacks of grain"
+script = ExtResource("2_xf7k1")
+clock_id = "sacks_of_grain"
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_iexha")
+name = "Creaking Windmill"
+location_id = "farm_windmill"
+access_test = SubResource("Resource_gawdx")
+actions = Array[ExtResource("1_dg7bk")]([SubResource("Resource_7ig2a"), SubResource("Resource_ca3af")])
+clocks = Array[ExtResource("2_xf7k1")]([SubResource("Resource_div1f"), SubResource("Resource_vf4k1")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

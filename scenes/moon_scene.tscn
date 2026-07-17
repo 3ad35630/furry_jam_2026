@@ -4,16 +4,23 @@
 [ext_resource type="Script" uid="uid://cf8y83e2jaf2s" path="res://models/skybox/main.gd" id="1_ltsy3"]
 [ext_resource type="PackedScene" uid="uid://bt613xfgvlc5d" path="res://ui/simple/scenes/main_panel.tscn" id="2_tsr5y"]
 [ext_resource type="Shader" uid="uid://8c51s2di2x41" path="res://models/skybox/sky.gdshader" id="2_ugxro"]
-[ext_resource type="Resource" uid="uid://dowuxym4323ae" path="res://resources/locations/SpiritFarm.tres" id="3_2cude"]
+[ext_resource type="Resource" uid="uid://dowuxym4323ae" path="res://resources/locations/farm/Farmhouse.tres" id="3_2cude"]
 [ext_resource type="PackedScene" uid="uid://5mmt1t7y4b2s" path="res://ui/simple/scenes/location_buttons.tscn" id="3_js7sh"]
 [ext_resource type="PackedScene" uid="uid://d1p0qwf8hr5g8" path="res://scenes/camera_controls.tscn" id="3_jtt53"]
 [ext_resource type="Texture2D" uid="uid://dgduacdiqttv1" path="res://models/skybox/stars.png" id="3_ugxro"]
 [ext_resource type="Script" uid="uid://hkoqfw1w4t6l" path="res://ui/simple/scripts/button.gd" id="4_0pwpi"]
-[ext_resource type="Resource" uid="uid://b1gcjp0uthfca" path="res://resources/locations/Docks.tres" id="5_i0w5l"]
+[ext_resource type="Resource" uid="uid://b1gcjp0uthfca" path="res://resources/locations/town/Docks.tres" id="5_i0w5l"]
 [ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="6_2cude"]
-[ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="7_d1xcf"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="8_7571q"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="9_8d8a0"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="10_l5b7g"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="11_t4u08"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_8ccd6"]
 [ext_resource type="PackedScene" uid="uid://cjehic72qfqx2" path="res://ui/widgets/scenes/main_menu.tscn" id="13_3l5yu"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="13_cwjr2"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="14_6ip1q"]
 [ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="15_uj7eb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
 shader = ExtResource("2_ugxro")
@@ -60,12 +67,125 @@ fog_mode = 1
 fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
 fog_density = 1.0
 
+[sub_resource type="Resource" id="Resource_36tix"]
+script = ExtResource("10_l5b7g")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_v2r2b"]
+script = ExtResource("9_8d8a0")
+test = SubResource("Resource_36tix")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_aa2hm"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_2ltwx"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_hxpo2"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 3
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_vimbc"]
+resource_name = "Send cats into the woods"
+script = ExtResource("12_8ccd6")
+target_number = 4
+skill = 2
+positive = SubResource("Resource_hxpo2")
+neutral = SubResource("Resource_2ltwx")
+negative = SubResource("Resource_aa2hm")
+description = "Cats don't make the best scouts, but they are enthusiastic about seeking out things that squeak and cheep."
+access_test = SubResource("Resource_v2r2b")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_vvyop"]
+script = ExtResource("10_l5b7g")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_6c3kq"]
+script = ExtResource("9_8d8a0")
+test = SubResource("Resource_vvyop")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_wrtbt"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_45mtt"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_pixql"]
+script = ExtResource("11_t4u08")
+clock_id = "CL_EXPLORE_THE_WOODS"
+amount = 3
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_pj2kx"]
+resource_name = "Search methodically and carefully"
+script = ExtResource("12_8ccd6")
+target_number = 4
+skill = 3
+positive = SubResource("Resource_pixql")
+neutral = SubResource("Resource_45mtt")
+negative = SubResource("Resource_wrtbt")
+description = "It will take a little while, but if you're careful and diligent and fill out your map, you'll find your way eventually."
+access_test = SubResource("Resource_6c3kq")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_y0vbl"]
+script = ExtResource("10_l5b7g")
+clock_id = "CL_EXPLORE_THE_WOODS"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_lducf"]
+resource_name = "Hang out"
+script = ExtResource("12_8ccd6")
+skill = 1
+description = "Hang out! Make some music. You know your way around now."
+access_test = SubResource("Resource_y0vbl")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_hu3pf"]
+script = ExtResource("14_6ip1q")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_k3n4s"]
+resource_name = "Explore the Woods"
+script = ExtResource("13_cwjr2")
+clock_id = "CL_EXPLORE_THE_WOODS"
+description = "These woods are gentle, but the paths are few and confusing."
+max_segments = 8
+effect = SubResource("Resource_hu3pf")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[sub_resource type="Resource" id="Resource_x507s"]
+script = ExtResource("15_uj7eb")
+name = "Woodland Landing Site"
+description = "A small meadow clearing in the forest provides just enough space to land the BROOMSTICK. There is birdsong, warm sunlight, and the smell of leaves."
+location_id = "test_location_a"
+actions = Array[ExtResource("8_7571q")]([SubResource("Resource_vimbc"), SubResource("Resource_pj2kx"), SubResource("Resource_lducf")])
+clocks = Array[ExtResource("13_cwjr2")]([SubResource("Resource_k3n4s")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"
+
 [node name="Moon" type="Node3D" unique_id=1671707619]
 script = ExtResource("1_ltsy3")
 day_time = 5.8509
 latitude = -90.0
 planet_axial_tilt = -17.139999999999986
-moon_orbital_inclination = -29.139999999999986
+moon_orbital_inclination = -29.139999999999983
 moon_orbital_period = 120.1
 clouds_cutoff = 0.6
 sun_base_enegry = 1.0
@@ -92,7 +212,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="." unique_id=1631743486]
-transform = Transform3D(0.2070076, -0.10391674, 0.9728043, -0.97809976, 4.542345e-09, 0.20813444, -0.021628657, -0.994586, -0.10164094, 0, 0, 0)
+transform = Transform3D(0.20700747, -0.10391674, 0.97280353, -0.9780991, 4.542345e-09, 0.20813428, -0.021628644, -0.994586, -0.10164086, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
 light_energy = 1.77
@@ -106,14 +226,54 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="l_spiritfarm" type="Camera3D" parent="LocationCameras" unique_id=2074081210]
-transform = Transform3D(-0.1917341, 0.55638003, 0.80850434, 0.27479386, 0.8212724, -0.50000006, -0.9421924, 0.12630497, -0.31035572, -2.826, -2.068, 4.244)
+[node name="farm_windmill" type="Camera3D" parent="LocationCameras" unique_id=2074081210]
+transform = Transform3D(0.30901673, 0.44649425, 0.83973306, 0, 0.8829475, -0.46947178, -0.9510566, 0.14507464, 0.27284557, -2.6477718, -2.0680003, 6.229522)
 
-[node name="l_docks" type="Camera3D" parent="LocationCameras" unique_id=1233754310]
-transform = Transform3D(0.5075384, -0.4045104, 0.76077336, 0, 0.8829476, 0.46947157, -0.8616291, -0.23827486, 0.4481298, 8.608, -7.476, 5.018)
+[node name="farm_house" type="Camera3D" parent="LocationCameras" unique_id=1418838503]
+transform = Transform3D(0.104526885, 0.73029995, 0.67508227, 0, 0.6788007, -0.73432255, -0.99452204, 0.07675645, 0.07095292, -3.089222, -2.6023521, 4.5531697)
 
-[node name="test_location_a" type="Camera3D" parent="LocationCameras" unique_id=649853311]
-transform = Transform3D(-0.15056881, 0.96113056, 0.23142415, 0.082124494, 0.24544425, -0.9659258, -0.9851825, -0.12643272, -0.11588861, -3.786, -2.463, -3.832)
+[node name="farm_pond" type="Camera3D" parent="LocationCameras" unique_id=116105330]
+transform = Transform3D(0.11753752, 0.28204593, 0.9521739, 0, 0.95882, -0.28401458, -0.99306846, 0.03338237, 0.112697326, -2.0903797, -2.860907, 1.3004106)
+visible = false
+
+[node name="cave_entrance" type="Camera3D" parent="LocationCameras" unique_id=1059095770]
+transform = Transform3D(0.13484588, 0.5934921, 0.7934632, 0, 0.80077696, -0.59896266, -0.9908666, 0.08076765, 0.10798147, 0.6488304, -7.3177304, 3.105158)
+
+[node name="cave_shrine" type="Camera3D" parent="LocationCameras" unique_id=270337060]
+transform = Transform3D(-0.0348997, 0.41444042, 0.9094071, 0, 0.9099614, -0.41469303, -0.99939084, -0.0144726625, -0.03175738, -1.8833933, -3.3738747, -2.8652887)
+
+[node name="cave_interior" type="Camera3D" parent="LocationCameras" unique_id=2118019445]
+transform = Transform3D(0.8115736, 0.18296593, 0.55486196, 0, 0.94969916, -0.31316367, -0.5842502, 0.25415537, 0.7707508, -1.9185915, -5.489797, 4.097971)
+
+[node name="teahouse_exterior" type="Camera3D" parent="LocationCameras" unique_id=1289412217]
+transform = Transform3D(0.9575716, -0.028873852, -0.2867454, 0, 0.9949685, -0.100188434, 0.28819546, 0.0959376, 0.9527536, -0.6603279, 14.474445, 5.9991045)
+
+[node name="teahouse_interior" type="Camera3D" parent="LocationCameras" unique_id=214190281]
+transform = Transform3D(0.6658809, -0.24289249, 0.7054118, 0, 0.9455187, 0.3255678, -0.74605805, -0.2167894, 0.62960285, 3.4499607, 14.179094, 1.6276803)
+
+[node name="town_docks" type="Camera3D" parent="LocationCameras" unique_id=1233754310]
+transform = Transform3D(0.5075384, -0.40451038, 0.76077336, 0, 0.88294756, 0.46947157, -0.8616291, -0.23827484, 0.44812977, 8.608, -7.476, 5.0179996)
+
+[node name="town_highstreet" type="Camera3D" parent="LocationCameras" unique_id=138532890]
+transform = Transform3D(0.46561375, -0.394249, 0.79232043, 0, 0.89528936, 0.4454851, -0.88498807, -0.20742399, 0.41685903, 8.774575, -5.9889283, 2.0844936)
+
+[node name="town_festival" type="Camera3D" parent="LocationCameras" unique_id=746227871]
+transform = Transform3D(-0.8767273, 0.41010955, -0.25131541, 0, 0.5224985, 0.8526402, 0.48098782, 0.74753296, -0.45808867, 6.971136, -5.9820757, 0.86014366)
+
+[node name="town_warehouse" type="Camera3D" parent="LocationCameras" unique_id=797267476]
+transform = Transform3D(-0.16934954, -0.004300318, 0.98554665, 0, 0.99999046, 0.004363342, -0.98555607, 0.00073892996, -0.16934793, 4.7757435, -8.041828, 2.7336655)
+
+[node name="ribbon" type="Camera3D" parent="LocationCameras" unique_id=100088583]
+transform = Transform3D(0.5735769, -0.16331272, 0.80270696, 0, 0.9799247, 0.1993681, -0.8191517, -0.11435294, 0.5620622, 8.914329, -6.572899, 13.104167)
+
+[node name="mountain_base" type="Camera3D" parent="LocationCameras" unique_id=2122873587]
+transform = Transform3D(-0.25594974, 0.9666898, 0.00076975813, 0.22636972, 0.060709845, -0.9721477, -0.939812, -0.24864669, -0.23436797, -4.293434, -1.9882451, -4.104409)
+
+[node name="mountain_heights" type="Camera3D" parent="LocationCameras" unique_id=1669898432]
+transform = Transform3D(-0.005441627, 0.9999849, 0.0007962625, 0, 0.0007962743, -0.9999997, -0.9999852, -0.0054416256, -4.333028e-06, -2.753743, -1.5765228, -1.2169021)
+
+[node name="mountain_valley" type="Camera3D" parent="LocationCameras" unique_id=1997197925]
+transform = Transform3D(-0.20896642, 0.9779225, 0.00077869475, 0, 0.0007962743, -0.9999997, -0.9779228, -0.20896636, -0.00016639459, -1.9434198, 1.9221573, -1.426454)
 
 [node name="MainPanel" parent="." unique_id=89919495 instance=ExtResource("2_tsr5y")]
 visible = false
@@ -129,7 +289,7 @@ offset_right = 599.0
 offset_bottom = 332.0
 text = "Woods"
 script = ExtResource("6_2cude")
-_location = ExtResource("7_d1xcf")
+_location = SubResource("Resource_x507s")
 metadata/_custom_type_script = "uid://bydmhhunt2n6w"
 
 [node name="FarmButton" type="Button" parent="MainPanel/CanvasLayer" unique_id=1093661616]

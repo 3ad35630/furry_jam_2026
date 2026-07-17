@@ -1,0 +1,176 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://cnwvw41nps2j8"]
+
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_0odj7"]
+[ext_resource type="Script" uid="uid://dtij1c6ftyb3a" path="res://mechanics/access_tests/ink_path_visited.gd" id="1_1nih7"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_5np8m"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_f2a7q"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_iydsy"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="4_7rdun"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="5_dd61v"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="6_31t04"]
+[ext_resource type="Resource" uid="uid://c0ex60bciqr1s" path="res://resources/access_tests/T_PumpkinIsntMadAtYou.tres" id="7_pq1a3"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="7_vvcu5"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="8_pq1a3"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_38kbb"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_chyld"]
+[ext_resource type="Script" uid="uid://dybcll7k5xh4r" path="res://mechanics/access_tests/access_tests_or.gd" id="11_dbufb"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="12_yq3dt"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="13_8p111"]
+[ext_resource type="Resource" uid="uid://cdyoeumdqu4ix" path="res://resources/access_tests/T_ShrineRepaired.tres" id="13_38kbb"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="16_chyld"]
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+script = ExtResource("1_1nih7")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_paspp"]
+script = ExtResource("4_7rdun")
+ink_path = "explore_cave"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("3_f2a7q")
+test = SubResource("Resource_paspp")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_a48kk"]
+resource_name = "explore_cave"
+script = ExtResource("5_dd61v")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_ya4x8"]
+resource_name = "explore_cave"
+script = ExtResource("6_31t04")
+positive = SubResource("Resource_a48kk")
+neutral = SubResource("Resource_a48kk")
+negative = SubResource("Resource_a48kk")
+access_test = SubResource("Resource_jkl28")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_imvmo"]
+resource_name = "She gets mad"
+script = ExtResource("9_38kbb")
+clock_id = "pumpkin_irritation"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_xl3xl"]
+script = ExtResource("9_38kbb")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_hlyre"]
+script = ExtResource("9_38kbb")
+clock_id = "pumpkin_irritation"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_18k85"]
+resource_name = "You make friends but you're bothering her"
+script = ExtResource("10_chyld")
+effects = Array[ExtResource("8_pq1a3")]([SubResource("Resource_xl3xl"), SubResource("Resource_hlyre")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_4ff2f"]
+resource_name = "You make friends a bit"
+script = ExtResource("9_38kbb")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_7ndyd"]
+resource_name = "Try to convince her with the power of Friendship!"
+script = ExtResource("6_31t04")
+target_number = 5
+skill = 3
+positive = SubResource("Resource_4ff2f")
+neutral = SubResource("Resource_18k85")
+negative = SubResource("Resource_imvmo")
+action_clock_id = "friends_with_pumpkin"
+access_test = ExtResource("7_pq1a3")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_nv76p"]
+script = ExtResource("11_dbufb")
+tests = Array[ExtResource("12_yq3dt")]([ExtResource("7_pq1a3"), ExtResource("13_38kbb")])
+metadata/_custom_type_script = "uid://dybcll7k5xh4r"
+
+[sub_resource type="Resource" id="Resource_b5f48"]
+script = ExtResource("9_38kbb")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_xtktx"]
+resource_name = "Bribe her with fish!"
+script = ExtResource("13_8p111")
+item_type = 2
+result = SubResource("Resource_b5f48")
+action_clock_id = "friends_with_pumpkin"
+access_test = SubResource("Resource_nv76p")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_22uva"]
+script = ExtResource("11_dbufb")
+tests = Array[ExtResource("12_yq3dt")]([ExtResource("7_pq1a3"), ExtResource("13_38kbb")])
+metadata/_custom_type_script = "uid://dybcll7k5xh4r"
+
+[sub_resource type="Resource" id="Resource_g7je5"]
+script = ExtResource("9_38kbb")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_vsw7n"]
+resource_name = "Tell her some juicy stories"
+script = ExtResource("13_8p111")
+item_type = 3
+required_number = 2
+result = SubResource("Resource_g7je5")
+action_clock_id = "friends_with_pumpkin"
+access_test = SubResource("Resource_22uva")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_yq3dt"]
+script = ExtResource("7_vvcu5")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_8p111"]
+script = ExtResource("16_chyld")
+item_type = 3
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_dbufb"]
+resource_name = "Trade fish for some juicy gossip"
+script = ExtResource("13_8p111")
+item_type = 2
+result = SubResource("Resource_8p111")
+access_test = SubResource("Resource_yq3dt")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_vvcu5"]
+resource_name = "Explored The Cave"
+script = ExtResource("4_7rdun")
+ink_path = "explore_cave"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_pq1a3"]
+resource_name = "FriendsWithPumpkin"
+script = ExtResource("2_5np8m")
+clock_id = "friends_with_pumpkin"
+access_test = SubResource("Resource_vvcu5")
+max_segments = 18
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[sub_resource type="Resource" id="Resource_aihph"]
+resource_name = "Pumpkin Irritation"
+script = ExtResource("2_5np8m")
+clock_id = "pumpkin_irritation"
+max_segments = 6
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_iydsy")
+name = "Cave Entrance"
+location_id = "cave_entrance"
+access_test = SubResource("Resource_2mcle")
+actions = Array[ExtResource("1_0odj7")]([SubResource("Resource_ya4x8"), SubResource("Resource_7ndyd"), SubResource("Resource_xtktx"), SubResource("Resource_vsw7n"), SubResource("Resource_dbufb")])
+clocks = Array[ExtResource("2_5np8m")]([SubResource("Resource_pq1a3"), SubResource("Resource_aihph")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

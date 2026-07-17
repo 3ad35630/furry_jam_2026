@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AccessTests_NOT" format=3 uid="uid://c0ex60bciqr1s"]
+
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="1_hy2wf"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="2_wlela"]
+
+[sub_resource type="Resource" id="Resource_a4q2h"]
+script = ExtResource("2_wlela")
+clock_id = "pumpkin_irritation"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_imvmo"]
+script = ExtResource("1_hy2wf")
+test = SubResource("Resource_a4q2h")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[resource]
+resource_name = "Pumpkin isn't mad at you"
+script = ExtResource("1_hy2wf")
+test = SubResource("Resource_imvmo")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"

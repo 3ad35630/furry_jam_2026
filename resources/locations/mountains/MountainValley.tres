@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b2jajifm248q"]
+
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_5b5tj"]
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_vtvur"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_c8tkn"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_hrpx5"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="3_3fc04"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_yqyhv"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_h4e3s"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="5_ii6op"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_oeblf"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="8_vkrjc"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="9_p7cw3"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_5nptn"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="11_q0fqv"]
+
+[sub_resource type="Resource" id="Resource_dp31f"]
+resource_name = "Found the path"
+script = ExtResource("3_3fc04")
+clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_y23a2"]
+script = ExtResource("5_ii6op")
+item_type = 8
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_qhxa6"]
+resource_name = "Not found the sweet blossoms"
+script = ExtResource("4_h4e3s")
+test = SubResource("Resource_y23a2")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_r7ikn"]
+script = ExtResource("1_vtvur")
+tests = Array[ExtResource("2_hrpx5")]([SubResource("Resource_dp31f"), SubResource("Resource_qhxa6")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_u3pif"]
+script = ExtResource("8_vkrjc")
+item_type = 8
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_2ddsb"]
+script = ExtResource("9_p7cw3")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_4pj0a"]
+script = ExtResource("10_5nptn")
+effects = Array[ExtResource("7_oeblf")]([SubResource("Resource_u3pif"), SubResource("Resource_2ddsb")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_2lxnl"]
+resource_name = "Harvest blossoms"
+script = ExtResource("11_q0fqv")
+target_number = 5
+skill = 4
+positive = SubResource("Resource_4pj0a")
+description = "It is difficult to pick them for they are fragile and so very cold."
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[resource]
+script = ExtResource("3_yqyhv")
+name = "The Hidden Valley"
+location_id = "mountain_valley"
+access_test = SubResource("Resource_r7ikn")
+actions = Array[ExtResource("1_5b5tj")]([SubResource("Resource_2lxnl")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

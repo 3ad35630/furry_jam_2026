@@ -27,6 +27,7 @@ var complete :
 
 func tick(amount):
 	current_segments += amount
+	current_segments = clamp(current_segments, 0, max_segments)
 	ticked.emit(current_segments)
 	if complete:
 		if effect != null:
@@ -37,5 +38,8 @@ func round_end() -> void:
 	if tick_on_round_end:
 		tick(1)
 		
+var _subscribed_to_turn_system : bool = false
 func subscribe_to_turn_system() -> void:
-	TurnSystem.round_ended.connect(round_end)
+	if not _subscribed_to_turn_system:
+		TurnSystem.round_ended.connect(round_end)
+		_subscribed_to_turn_system = true

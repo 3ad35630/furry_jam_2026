@@ -22,6 +22,7 @@ func start_narrative(path : String) -> void:
 	choose_path(path)
 	advance_narrative()
 	
+	
 func advance_narrative():
 	if should_return_to_game:
 		Modes.change_gameplay_mode(Modes.previous_mode)

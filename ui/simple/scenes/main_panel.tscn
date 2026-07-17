@@ -11,14 +11,13 @@
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
 [ext_resource type="Resource" uid="uid://c2xj1g6inhls1" path="res://resources/characters/KittenWitch.tres" id="8_sjyj4"]
 [ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
-[ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/LaserWitch.tres" id="10_h5prc"]
+[ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/FlowerWitch.tres" id="10_h5prc"]
 [ext_resource type="Texture2D" uid="uid://daw8sd3hfg643" path="res://ui/character_profiles/ProfileTemp3.png" id="11_icdsa"]
 [ext_resource type="Texture2D" uid="uid://djlwlo0ubwce7" path="res://ui/boxes/Screenshot 2026-07-14 165944.png" id="14_iemfu"]
 [ext_resource type="AudioStream" uid="uid://bbill2uuieyse" path="res://audio/ui_sfx/location moon.ogg" id="14_s8cea"]
 [ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="15_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://glvbgxw5utut" path="res://ui/boxes/Screenshot 2026-07-14 165937.png" id="16_s8cea"]
 [ext_resource type="Texture2D" uid="uid://s1ynkl5sq7n1" path="res://ui/boxes/Screenshot 2026-07-14 165931.png" id="17_3kxh1"]
-[ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="17_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
 [ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="23_wo1nn"]
@@ -246,37 +245,40 @@ func on_skill_die_removed(data):
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
 texture = ExtResource("5_36tix")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4q2h"]
+[sub_resource type="Resource" id="Resource_imvmo"]
+metadata/__load_path__ = "res://resources/locations/TestLocation.tres"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imvmo"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvm1c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4q2h"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlui7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvm1c"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlui7"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 96, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bskcy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsy"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xlfh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bskcy"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(48, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw6n6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xlfh"]
 resource_local_to_scene = true
 atlas = ExtResource("24_a4q2h")
 region = Rect2(96, 0, 48, 48)
@@ -487,7 +489,7 @@ icon = ExtResource("18_rtwym")
 icon_alignment = 1
 vertical_icon_alignment = 0
 script = ExtResource("15_c1mnc")
-_location = ExtResource("17_c1mnc")
+_location = SubResource("Resource_imvmo")
 metadata/_custom_type_script = "uid://bydmhhunt2n6w"
 
 [node name="Button3" type="Button" parent="NavButtons" unique_id=1205582336]
@@ -660,49 +662,49 @@ layout_mode = 2
 itemKey = 1
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_a4q2h")
+texture = SubResource("AtlasTexture_imvmo")
 
 [node name="ItemSlot2" parent="Inventory/HBoxContainer" unique_id=973219394 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 2
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot2" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_dvm1c")
+texture = SubResource("AtlasTexture_a4q2h")
 
 [node name="ItemSlot3" parent="Inventory/HBoxContainer" unique_id=643666149 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 3
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot3" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qlui7")
+texture = SubResource("AtlasTexture_dvm1c")
 
 [node name="ItemSlot4" parent="Inventory/HBoxContainer" unique_id=1381656101 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 4
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot4" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_7hvsy")
+texture = SubResource("AtlasTexture_qlui7")
 
 [node name="ItemSlot5" parent="Inventory/HBoxContainer" unique_id=1580215998 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 5
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot5" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_bskcy")
+texture = SubResource("AtlasTexture_7hvsy")
 
 [node name="ItemSlot6" parent="Inventory/HBoxContainer" unique_id=798999143 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 6
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot6" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_3xlfh")
+texture = SubResource("AtlasTexture_bskcy")
 
 [node name="ItemSlot7" parent="Inventory/HBoxContainer" unique_id=640340084 instance=ExtResource("23_wo1nn")]
 layout_mode = 2
 itemKey = 7
 
 [node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot7" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qw6n6")
+texture = SubResource("AtlasTexture_3xlfh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Inventory" unique_id=172637083]
 layout_mode = 2
