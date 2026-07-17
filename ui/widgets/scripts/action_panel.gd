@@ -8,6 +8,7 @@ class_name ActionPanel
 @onready var infoPanel : ActionPanelInfo = $ActionPanelInfo
 @onready var skillPanel : ActionPanelSkill = $ActionPanelSkill
 @onready var itemPanel : ActionPanelItem = $ActionPanelItem
+@onready var rewards : VBoxContainer = $Rewards
 
 var _action : Action
 var action : Action :
@@ -18,6 +19,12 @@ var action : Action :
 		return _action
 var active : bool = false
 var actionIndex : int = 0
+
+const cardKeys : Array[Enums.EffectClasses] = [
+	Enums.EffectClasses.POSITIVE,
+	Enums.EffectClasses.NEUTRAL,
+	Enums.EffectClasses.NEGATIVE
+]
 
 
 func _ready() -> void:
@@ -31,10 +38,26 @@ func update():
 		itemPanel.hide()
 		skillPanel.show()
 		skillPanel.update(action)
+		
+		var effects = [action.positive,action.neutral,action.negative]
+		for i in range(rewards.get_child_count()):
+			var card : RewardCard = rewards.get_child(i)
+			if i < effects.size():
+				card.show()
+				card.update(cardKeys[i],effects[i])
+			else:
+				card.hide()
+				
 	elif action is ItemAction:
 		skillPanel.hide()
 		itemPanel.show()
 		itemPanel.update(action)
+		
+		var card : RewardCard = rewards.get_child(0)
+		card.show()
+		card.update(Enums.EffectClasses.COMPLETED,action.result)
+		for i in range(1,rewards.get_child_count()):
+			rewards.get_child(i).hide()
 
 
 func _input(event: InputEvent) -> void:

@@ -1,4 +1,5 @@
 extends Control
+class_name ClockWidget
 
 @export var bg_color : StyleBoxFlat
 @export var fill_color : StyleBoxFlat
