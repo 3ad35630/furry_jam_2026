@@ -19,6 +19,7 @@ enum ItemTypes{
 	UNDEFINED,
 	MONEY,
 	FISH,
+	GOSSIP,
 	MILK,
 	TEA,
 	CINNAMON,

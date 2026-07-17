@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ciedwldk1c5ko"]
 
 [ext_resource type="Script" uid="uid://csw6bf61qdlab" path="res://ui/widgets/scripts/action_panel_item.gd" id="1_sblgw"]
-[ext_resource type="StyleBox" uid="uid://bjr0qak1eq5g1" path="res://ui/Themes/dice_slot_panel.tres" id="2_y1ccu"]
-[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="3_ep3a7"]
+[ext_resource type="PackedScene" uid="uid://buoglioitqu1l" path="res://ui/widgets/scenes/item_display.tscn" id="2_sblgw"]
 [ext_resource type="AudioStream" uid="uid://dvtsdpvvkiquv" path="res://audio/ui_sfx/dice.ogg" id="4_y1ccu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ey2a"]
@@ -22,22 +21,6 @@ offset_bottom = 40.0
 text = "Cinnamon"
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="." unique_id=1409080748]
-layout_mode = 0
-offset_left = 152.0
-offset_top = 16.0
-offset_right = 208.0
-offset_bottom = 72.0
-theme_override_styles/panel = ExtResource("2_y1ccu")
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=1339837031]
-position = Vector2(28, 28)
-scale = Vector2(1.1666666, 1.1666666)
-texture = ExtResource("3_ep3a7")
-hframes = 5
-vframes = 5
-frame = 3
-
 [node name="Button" type="Button" parent="." unique_id=893289174]
 layout_mode = 0
 offset_left = 144.0
@@ -45,6 +28,13 @@ offset_top = 80.0
 offset_right = 216.0
 offset_bottom = 112.0
 text = "Confirm"
+
+[node name="ItemDisplay" parent="." unique_id=1678320037 instance=ExtResource("2_sblgw")]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 16.0
+offset_right = 208.0
+offset_bottom = 72.0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=446410553]
 layout_mode = 0

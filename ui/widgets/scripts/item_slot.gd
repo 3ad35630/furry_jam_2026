@@ -26,6 +26,8 @@ func update() -> void:
 		var ct = Inventory.count(itemKey)
 		label.text = str(ct)
 		label.visible = true#ct > 1
+		tooltip_text = Enums.ItemTypes.keys()[itemKey]
 	else:
 		texture.modulate = Color.BLACK
 		label.visible = false
+		tooltip_text = '???'

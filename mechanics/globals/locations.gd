@@ -11,6 +11,13 @@ var accessible_locations : Array[Location] :
 			if location.accessible:
 				result.append(location)
 		return result
+var accessible_clocks : Array[Clock] :
+	get : 
+		var result : Array[Clock] = []
+		for clock : Clock in clocks.values():
+			if clock.accessible:
+				result.append(clock)
+		return result
 
 
 func _ready() -> void:

@@ -2,6 +2,8 @@ extends Control
 
 @export var bg_color : StyleBoxFlat
 @export var fill_color : StyleBoxFlat
+@export var reward_color : StyleBoxFlat
+@export var penalty_color : StyleBoxFlat
 
 @export_subgroup("Nodes")
 @export var title_label : Label
@@ -43,7 +45,7 @@ func on_clock_ticked(_segment : int) -> void:
 	update()
 
 
-func update() -> void:
+func update(rewardSegs : int = 0) -> void:
 	# update labels
 	title_label.text = clock.resource_name
 	title_label_info.text = clock.resource_name
@@ -60,12 +62,16 @@ func update() -> void:
 	# update segment states
 	for x in range(segment_container.get_child_count()):
 		var seg = segment_container.get_child(x)
-		if x < clock.current_segments:
-			seg.show()
-			seg['theme_override_styles/panel'] = fill_color
+		var c = bg_color
+		seg.show()
+		if x < clock.current_segments and x >= clock.current_segments + rewardSegs:
+			c = penalty_color
+		elif x < clock.current_segments:
+			c = fill_color
+		elif x < clock.max_segments and x < clock.current_segments + rewardSegs:
+			c = reward_color
 		elif x < clock.max_segments:
-			seg.show()
-			seg['theme_override_styles/panel'] = bg_color
+			pass
 		else:
 			seg.hide()
-			
+		seg['theme_override_styles/panel'] = c

@@ -35,13 +35,11 @@ func _on_mode_changed(mode : Enums.GameplayMode) -> void:
 	match(mode):
 		Enums.GameplayMode.LOCATION:
 			infoLabel.text = Modes.current_location.description
-			infoButton.show()
 			clocks = Modes.current_location.accessible_clocks
 		Enums.GameplayMode.MAP:
-			infoLabel.text = ''
-			infoButton.hide()
-			# TODO: get all clocks in Map view
-			pass
+			# TODO: put this text somewhere sensible
+			infoLabel.text = 'Objective: You gotta go get those ingredients and bring them back to Mme. Oolong, critters!'
+			clocks = Locations.accessible_clocks
 	
 	if clocks.is_empty():
 		#_show_clocks(false)

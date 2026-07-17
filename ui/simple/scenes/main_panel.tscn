@@ -23,9 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
 [ext_resource type="PackedScene" uid="uid://34rc83qfboyn" path="res://ui/widgets/scenes/action_panel.tscn" id="22_a4q2h"]
 [ext_resource type="PackedScene" uid="uid://65y728nmjlag" path="res://ui/widgets/scenes/location_panel.tscn" id="22_dvm1c"]
-[ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="23_wo1nn"]
-[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="24_a4q2h"]
-[ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="25_a4q2h"]
+[ext_resource type="Script" uid="uid://dd6h7bqtik610" path="res://ui/widgets/scripts/action_panel_manager.gd" id="24_a4q2h"]
+[ext_resource type="PackedScene" uid="uid://cntixcp24qe0k" path="res://ui/widgets/scenes/inventory.tscn" id="24_imvmo"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
 script/source = "extends Control
@@ -246,41 +245,6 @@ func on_skill_die_removed(data):
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
 texture = ExtResource("5_36tix")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvm1c"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlui7"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hvsy"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bskcy"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3xlfh"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw6n6"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(48, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5iye4"]
-resource_local_to_scene = true
-atlas = ExtResource("24_a4q2h")
-region = Rect2(96, 0, 48, 48)
 
 [node name="MainPanel" type="Control" unique_id=89919495]
 layout_mode = 3
@@ -521,94 +485,37 @@ offset_top = 8.0
 offset_right = 296.0
 offset_bottom = 123.0
 
-[node name="ActionPanel" parent="." unique_id=2049888376 instance=ExtResource("22_a4q2h")]
+[node name="Inventory" parent="." unique_id=1248200590 instance=ExtResource("24_imvmo")]
+layout_mode = 0
+offset_left = 720.0
+offset_right = 1148.0
+
+[node name="ActionPanelManager" type="Control" parent="." unique_id=265062037]
+anchors_preset = 0
+script = ExtResource("24_a4q2h")
+
+[node name="ActionPanel" parent="ActionPanelManager" unique_id=2049888376 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
 offset_left = 888.0
-offset_top = 224.0
+offset_top = 88.0
 offset_right = 1144.0
-offset_bottom = 512.0
+offset_bottom = 360.0
 
-[node name="Inventory" type="MarginContainer" parent="." unique_id=473912101]
+[node name="ActionPanel2" parent="ActionPanelManager" unique_id=1316076641 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
-offset_left = 768.0
-offset_right = 1152.0
-offset_bottom = 88.0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
+offset_left = 624.0
+offset_top = 88.0
+offset_right = 880.0
+offset_bottom = 360.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Inventory" unique_id=1218213410]
-layout_mode = 2
-size_flags_vertical = 0
-alignment = 2
-
-[node name="ItemSlot" parent="Inventory/HBoxContainer" unique_id=1791229314 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 1
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_dvm1c")
-
-[node name="ItemSlot2" parent="Inventory/HBoxContainer" unique_id=973219394 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 2
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot2" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qlui7")
-
-[node name="ItemSlot3" parent="Inventory/HBoxContainer" unique_id=643666149 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 3
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot3" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_7hvsy")
-
-[node name="ItemSlot4" parent="Inventory/HBoxContainer" unique_id=1381656101 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 4
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot4" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_bskcy")
-
-[node name="ItemSlot5" parent="Inventory/HBoxContainer" unique_id=1580215998 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 5
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot5" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_3xlfh")
-
-[node name="ItemSlot6" parent="Inventory/HBoxContainer" unique_id=798999143 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 6
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot6" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_qw6n6")
-
-[node name="ItemSlot7" parent="Inventory/HBoxContainer" unique_id=640340084 instance=ExtResource("23_wo1nn")]
-layout_mode = 2
-itemKey = 7
-
-[node name="TextureRect" parent="Inventory/HBoxContainer/ItemSlot7" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_5iye4")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory" unique_id=172637083]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="IngredientCounter" type="Label" parent="Inventory/VBoxContainer" unique_id=1894703602]
-layout_mode = 2
-text = "Ingredients: 5/5"
-horizontal_alignment = 1
-script = ExtResource("25_a4q2h")
+[node name="ActionPanel3" parent="ActionPanelManager" unique_id=1044755012 instance=ExtResource("22_a4q2h")]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 88.0
+offset_right = 616.0
+offset_bottom = 360.0
 
 [connection signal="pressed" from="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button3" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button4" to="." method="_on_button_pressed"]
-
-[editable path="Inventory/HBoxContainer/ItemSlot"]
-[editable path="Inventory/HBoxContainer/ItemSlot2"]
-[editable path="Inventory/HBoxContainer/ItemSlot3"]
-[editable path="Inventory/HBoxContainer/ItemSlot4"]
-[editable path="Inventory/HBoxContainer/ItemSlot5"]
-[editable path="Inventory/HBoxContainer/ItemSlot6"]
-[editable path="Inventory/HBoxContainer/ItemSlot7"]

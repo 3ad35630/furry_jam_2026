@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://cntixcp24qe0k"]
+
+[ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="1_righx"]
+[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="2_ulbew"]
+[ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="3_7o0yc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_righx"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulbew"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o0yc"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i0cs"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w4ff"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oefu"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfcbt"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fky7s"]
+resource_local_to_scene = true
+atlas = ExtResource("2_ulbew")
+region = Rect2(96, 96, 48, 48)
+
+[node name="Inventory" type="MarginContainer" unique_id=1248200590]
+offset_right = 384.0
+offset_bottom = 88.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1908044846]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="Money" parent="HBoxContainer" unique_id=640340084 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 1
+
+[node name="TextureRect" parent="HBoxContainer/Money" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_righx")
+
+[node name="Fish" parent="HBoxContainer" unique_id=556314243 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 2
+
+[node name="TextureRect" parent="HBoxContainer/Fish" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_ulbew")
+
+[node name="Gossip" parent="HBoxContainer" unique_id=1684646445 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 3
+
+[node name="TextureRect" parent="HBoxContainer/Gossip" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_7o0yc")
+
+[node name="Milk" parent="HBoxContainer" unique_id=1791147285 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 4
+
+[node name="TextureRect" parent="HBoxContainer/Milk" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_6i0cs")
+
+[node name="Tea" parent="HBoxContainer" unique_id=35603356 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 5
+
+[node name="TextureRect" parent="HBoxContainer/Tea" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_8w4ff")
+
+[node name="Cinnamon" parent="HBoxContainer" unique_id=565246109 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 6
+
+[node name="TextureRect" parent="HBoxContainer/Cinnamon" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_0oefu")
+
+[node name="Oil" parent="HBoxContainer" unique_id=862336681 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 7
+
+[node name="TextureRect" parent="HBoxContainer/Oil" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_pfcbt")
+
+[node name="Blossoms" parent="HBoxContainer" unique_id=693267511 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 7
+
+[node name="TextureRect" parent="HBoxContainer/Blossoms" index="0" unique_id=736762699]
+texture = SubResource("AtlasTexture_fky7s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1309717206]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="IngredientCounter" type="Label" parent="VBoxContainer" unique_id=909211553]
+layout_mode = 2
+text = "Ingredients: 5/5"
+horizontal_alignment = 1
+script = ExtResource("3_7o0yc")
+
+[editable path="HBoxContainer/Money"]
+[editable path="HBoxContainer/Fish"]
+[editable path="HBoxContainer/Gossip"]
+[editable path="HBoxContainer/Milk"]
+[editable path="HBoxContainer/Tea"]
+[editable path="HBoxContainer/Cinnamon"]
+[editable path="HBoxContainer/Oil"]
+[editable path="HBoxContainer/Blossoms"]

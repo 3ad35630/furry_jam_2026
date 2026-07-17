@@ -4,18 +4,35 @@
 [ext_resource type="PackedScene" uid="uid://b463palr64gl4" path="res://ui/widgets/scenes/action_panel_info.tscn" id="2_wsoa6"]
 [ext_resource type="PackedScene" uid="uid://uu4lp2fcx673" path="res://ui/widgets/scenes/action_panel_skill.tscn" id="3_a2f6j"]
 [ext_resource type="PackedScene" uid="uid://ciedwldk1c5ko" path="res://ui/widgets/scenes/action_panel_item.tscn" id="4_wsoa6"]
+[ext_resource type="PackedScene" uid="uid://bvy06nv17ronb" path="res://ui/widgets/scenes/clock_widget.tscn" id="5_c125g"]
+[ext_resource type="PackedScene" uid="uid://buoglioitqu1l" path="res://ui/widgets/scenes/item_display.tscn" id="6_bkapc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xd07"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ey2a"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkapc"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq8tk"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
 
 [node name="ActionPanel" type="Panel" unique_id=2049888376]
+offset_top = 8.0
 offset_right = 256.0
-offset_bottom = 288.0
+offset_bottom = 280.0
 script = ExtResource("1_hb8ws")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1512109105]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 144.0
+offset_top = 128.0
 offset_right = 232.0
-offset_bottom = 146.0
+offset_bottom = 130.0
 color = Color(0.446777, 0.44677705, 0.44677705, 1)
 
 [node name="ActionPanelInfo" parent="." unique_id=2071027896 instance=ExtResource("2_wsoa6")]
@@ -23,10 +40,178 @@ layout_mode = 0
 
 [node name="ActionPanelSkill" parent="." unique_id=721529462 instance=ExtResource("3_a2f6j")]
 layout_mode = 0
-offset_top = 144.0
-offset_bottom = 288.0
+offset_top = 128.0
+offset_bottom = 272.0
 
 [node name="ActionPanelItem" parent="." unique_id=1587315691 instance=ExtResource("4_wsoa6")]
 layout_mode = 0
-offset_top = 144.0
-offset_bottom = 264.0
+offset_top = 128.0
+offset_bottom = 248.0
+
+[node name="Rewards" type="VBoxContainer" parent="." unique_id=2011396892]
+layout_mode = 0
+offset_top = 276.0
+offset_right = 256.0
+offset_bottom = 444.0
+
+[node name="ClockReward" type="PanelContainer" parent="Rewards" unique_id=735222602]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ClockWidget" parent="Rewards/ClockReward" unique_id=1818651294 instance=ExtResource("5_c125g")]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3xd07")
+
+[node name="MarginContainer" parent="Rewards/ClockReward/ClockWidget" index="0" unique_id=504875065]
+offset_bottom = 60.0
+
+[node name="TitleLabel" parent="Rewards/ClockReward/ClockWidget/MarginContainer" index="0" unique_id=399684174]
+horizontal_alignment = 1
+
+[node name="Segment" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="0" unique_id=495767319]
+custom_minimum_size = Vector2(16, 16)
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ey2a")
+
+[node name="Segment2" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="1" unique_id=1892993610]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkapc")
+
+[node name="Segment3" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="2" unique_id=933716277]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment4" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="3" unique_id=1013652181]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment5" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="4" unique_id=838740144]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment6" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="5" unique_id=1411071714]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment7" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="6" unique_id=945165117]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment8" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="7" unique_id=2048008619]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment9" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="8" unique_id=1698335013]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment10" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="9" unique_id=117081293]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment11" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="10" unique_id=1326334588]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="Segment12" type="Panel" parent="Rewards/ClockReward/ClockWidget/MarginContainer/Segments" parent_id_path=PackedInt32Array(1818651294, 449653738) index="11" unique_id=1283709924]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="ConditionLabel" type="Label" parent="Rewards/ClockReward/ClockWidget/MarginContainer" index="3" unique_id=1806736598]
+modulate = Color(0.069579676, 0.8664099, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Success"
+
+[node name="ItemReward" type="PanelContainer" parent="Rewards" unique_id=798073249]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Rewards/ItemReward" unique_id=880401208]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Rewards/ItemReward/MarginContainer" unique_id=1011842171]
+modulate = Color(0.8382763, 0.57556677, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Neutral"
+
+[node name="ItemLabel" type="Label" parent="Rewards/ItemReward/MarginContainer" unique_id=293472474]
+layout_mode = 2
+text = "Cinnamon +7"
+horizontal_alignment = 1
+
+[node name="ItemDisplay" parent="Rewards/ItemReward/MarginContainer" unique_id=1678320037 instance=ExtResource("6_bkapc")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Sprite2D" parent="Rewards/ItemReward/MarginContainer/ItemDisplay" index="0" unique_id=1540598611]
+position = Vector2(16.000002, 16.000011)
+scale = Vector2(0.6666667, 0.6666671)
+
+[node name="StatusReward" type="PanelContainer" parent="Rewards" unique_id=1208663406]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Rewards/StatusReward" unique_id=611929855]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Rewards/StatusReward/MarginContainer" unique_id=1307982292]
+modulate = Color(0.9999998, 0.1104702, 0.36702108, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Failure"
+
+[node name="StatusLabel" type="Label" parent="Rewards/StatusReward/MarginContainer" unique_id=1064748182]
+layout_mode = 2
+text = "Injury!"
+horizontal_alignment = 1
+
+[node name="ItemDisplay" parent="Rewards/StatusReward/MarginContainer" unique_id=1699529769 instance=ExtResource("6_bkapc")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Sprite2D" parent="Rewards/StatusReward/MarginContainer/ItemDisplay" index="0" unique_id=1540598611]
+position = Vector2(16, 16)
+scale = Vector2(0.6666667, 0.6666663)
+frame = 0
+
+[editable path="Rewards/ClockReward/ClockWidget"]
+[editable path="Rewards/ItemReward/MarginContainer/ItemDisplay"]
+[editable path="Rewards/StatusReward/MarginContainer/ItemDisplay"]

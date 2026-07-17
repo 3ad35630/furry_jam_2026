@@ -3,7 +3,7 @@ class_name ActionPanelItem
 
 
 @onready var itemLabel : Label = $ItemLabel
-@onready var sprite : Sprite2D = $Panel/Sprite2D
+@onready var itemDisplay : ItemDisplay = $ItemDisplay
 @onready var button : Button = $Button
 @onready var neededLabel : Label = $PanelContainer/MarginContainer/CountLabels/Needed
 @onready var inventoryLabel : Label = $PanelContainer/MarginContainer/CountLabels/Inventory
@@ -19,9 +19,11 @@ func _ready() -> void:
 
 func update(a : ItemAction):
 	action = a
+	itemDisplay.update(a.item_type)
 	itemLabel.text = _format_item_label(action.item_type)
 	neededLabel.text = str(action.required_number)
 	inventoryLabel.text = str(Inventory.count(action.item_type))
+	button.disabled = not a.can_afford_action()
 
 
 func _format_item_label(item : Enums.ItemTypes) -> String:

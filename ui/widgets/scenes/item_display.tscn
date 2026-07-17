@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://buoglioitqu1l"]
+
+[ext_resource type="StyleBox" uid="uid://bjr0qak1eq5g1" path="res://ui/Themes/dice_slot_panel.tres" id="1_csj3b"]
+[ext_resource type="Script" uid="uid://lqvg1v4uk46n" path="res://ui/widgets/scripts/item_display.gd" id="2_p4min"]
+[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="2_wuprn"]
+
+[node name="ItemDisplay" type="Panel" unique_id=1678320037]
+custom_minimum_size = Vector2(56, 56)
+offset_right = 56.0
+offset_bottom = 56.0
+theme_override_styles/panel = ExtResource("1_csj3b")
+script = ExtResource("2_p4min")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1540598611]
+position = Vector2(28, 28)
+scale = Vector2(1.1666666, 1.1666666)
+texture = ExtResource("2_wuprn")
+hframes = 5
+vframes = 5
+frame = 3
