@@ -35,7 +35,7 @@ func update(valueKey : Enums.EffectClasses, effect : ActionEffect) -> void:
 	
 	# reset components
 	rewardInfo.hide()
-	clockWidget.hide()
+	clockInfo.hide()
 	
 	# update components
 	# TODO: un-hard-code the sprite frame values without making the code 30% uglier
@@ -51,7 +51,7 @@ func update(valueKey : Enums.EffectClasses, effect : ActionEffect) -> void:
 		infoLabel.text = item + ' (-' + str(effect.amount) + ')'
 		itemDisplay.update(effect.item_type)
 	elif effect is TickClock:
-		clockWidget.show()
+		clockInfo.show()
 		clockWidget.clock = Locations.clocks[effect.clock_id]
 		clockWidget.update(effect.amount)
 	elif effect is SetGlobalFlag:
