@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bvy06nv17ronb"]
+
+[ext_resource type="Script" uid="uid://eu2vd14qnoe" path="res://ui/widgets/scripts/clock_widget.gd" id="1_xaj82"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaj82"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1bnx"]
+bg_color = Color(0.62352943, 0.49411765, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkapc"]
+bg_color = Color(2.2621452e-06, 0.7090545, 0.4898252, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ey2a"]
+bg_color = Color(1, 0.22500128, 0.6951095, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq8tk"]
+resource_local_to_scene = true
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xd07"]
+font_size = 12
+
+[node name="ClockWidget" type="Panel" unique_id=1818651294 node_paths=PackedStringArray("title_label", "button", "title_label_info", "description_label", "segment_container", "infoPanel")]
+custom_minimum_size = Vector2(256, 80)
+offset_right = 256.0
+offset_bottom = 80.0
+script = ExtResource("1_xaj82")
+bg_color = SubResource("StyleBoxFlat_xaj82")
+fill_color = SubResource("StyleBoxFlat_a1bnx")
+reward_color = SubResource("StyleBoxFlat_bkapc")
+penalty_color = SubResource("StyleBoxFlat_3ey2a")
+title_label = NodePath("MarginContainer/TitleLabel")
+button = NodePath("MarginContainer/Button")
+title_label_info = NodePath("InfoPanel/MarginContainer/VBoxContainer/Title")
+description_label = NodePath("InfoPanel/MarginContainer/VBoxContainer/MarginContainer/Description")
+segment_container = NodePath("MarginContainer/Segments")
+infoPanel = NodePath("InfoPanel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=504875065]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 80.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TitleLabel" type="Label" parent="MarginContainer" unique_id=399684174]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Clock Name"
+
+[node name="Button" type="PanelContainer" parent="MarginContainer" unique_id=246296619]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Button" unique_id=1730656587]
+layout_mode = 2
+text = "?"
+horizontal_alignment = 1
+
+[node name="Segments" type="HBoxContainer" parent="MarginContainer" unique_id=449653738]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Segment" type="Panel" parent="MarginContainer/Segments" unique_id=495767319]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
+
+[node name="InfoPanel" type="PanelContainer" parent="." unique_id=2017454084]
+visible = false
+layout_mode = 0
+offset_left = 256.0
+offset_right = 448.0
+offset_bottom = 80.0
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPanel" unique_id=892126742]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/MarginContainer" unique_id=213597372]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer" unique_id=451131530]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Clock Name"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="InfoPanel/MarginContainer/VBoxContainer" unique_id=1377719886]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.39308554, 0.39308554, 0.39308533, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPanel/MarginContainer/VBoxContainer" unique_id=1895319949]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Description" type="Label" parent="InfoPanel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1113027942]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+label_settings = SubResource("LabelSettings_3xd07")
+autowrap_mode = 2

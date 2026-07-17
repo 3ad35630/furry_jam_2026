@@ -50,3 +50,11 @@ enum GameplayMode {
 	CONVERSATION, # currently unused
 	CAMERA_MOVEMENT
 }
+
+
+enum EffectClasses {
+	POSITIVE,
+	NEUTRAL,
+	NEGATIVE,
+	COMPLETED
+}
