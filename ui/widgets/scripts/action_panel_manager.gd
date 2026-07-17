@@ -18,6 +18,11 @@ const panelPosition : Dictionary[String,Array] = {
 		Vector2(360,112),
 	]
 }
+const defaults = [
+	Vector2(888,88),
+	Vector2(624,88),
+	Vector2(360,88),
+]
 
 
 func _ready() -> void:
@@ -34,7 +39,10 @@ func _on_mode_changed(mode : Enums.GameplayMode) -> void:
 				if i < actions.size():
 					panel.action = actions[i]
 					var key = Modes.current_location.location_id
-					panel.position = panelPosition[key][i]
+					if key in panelPosition.keys():
+						panel.position = panelPosition[key][i]
+					else:
+						panel.position = defaults[i]
 					panel.show()
 				else:
 					panel.hide()
