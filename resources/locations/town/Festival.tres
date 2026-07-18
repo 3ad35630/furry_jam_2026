@@ -1,0 +1,153 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://dlfoloeokgik7"]
+
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_6uktn"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_75igq"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_d7s2v"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_75igq"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_ins3x"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_ewnnw"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_d5yrb"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="5_6g73k"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="7_v017y"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="8_rfu6o"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_chlwj"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="10_65rfi"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="11_5bpjm"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_gkyry"]
+
+[sub_resource type="Resource" id="Resource_vnwtw"]
+script = ExtResource("1_75igq")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_watsn"]
+script = ExtResource("5_6g73k")
+clock_id = "kicked_out_of_the_festival"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_kh636"]
+script = ExtResource("4_d5yrb")
+test = SubResource("Resource_watsn")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_wffqv"]
+script = ExtResource("1_6uktn")
+tests = Array[ExtResource("2_ins3x")]([SubResource("Resource_vnwtw"), SubResource("Resource_kh636")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_h0typ"]
+script = ExtResource("7_v017y")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_wbdjj"]
+resource_name = "Tell stories"
+script = ExtResource("8_rfu6o")
+item_type = 3
+result = SubResource("Resource_h0typ")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_1uilk"]
+script = ExtResource("9_chlwj")
+clock_id = "kicked_out_of_the_festival"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_2mryd"]
+script = ExtResource("7_v017y")
+item_type = 1
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_pke3u"]
+script = ExtResource("9_chlwj")
+clock_id = "kicked_out_of_the_festival"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_bkiji"]
+script = ExtResource("11_5bpjm")
+effects = Array[ExtResource("10_65rfi")]([SubResource("Resource_2mryd"), SubResource("Resource_pke3u")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_q368j"]
+script = ExtResource("7_v017y")
+item_type = 1
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_pkqvc"]
+resource_name = "Perform music"
+script = ExtResource("12_gkyry")
+is_risky = true
+target_number = 3
+skill = 1
+positive = SubResource("Resource_q368j")
+neutral = SubResource("Resource_bkiji")
+negative = SubResource("Resource_1uilk")
+description = "It's eye catching and ear catching."
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_vf4k1"]
+script = ExtResource("9_chlwj")
+clock_id = "kicked_out_of_the_festival"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_cmaql"]
+script = ExtResource("7_v017y")
+item_type = 1
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_bj1qg"]
+script = ExtResource("9_chlwj")
+clock_id = "kicked_out_of_the_festival"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_j1qi7"]
+script = ExtResource("11_5bpjm")
+effects = Array[ExtResource("10_65rfi")]([SubResource("Resource_cmaql"), SubResource("Resource_bj1qg")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_i7xln"]
+script = ExtResource("7_v017y")
+item_type = 1
+amount = 4
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_16hc1"]
+script = ExtResource("9_chlwj")
+clock_id = "kicked_out_of_the_festival"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_lks2n"]
+script = ExtResource("11_5bpjm")
+effects = Array[ExtResource("10_65rfi")]([SubResource("Resource_i7xln"), SubResource("Resource_16hc1")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_c1crs"]
+resource_name = "Sell magical potato chips"
+script = ExtResource("12_gkyry")
+target_number = 4
+skill = 4
+positive = SubResource("Resource_lks2n")
+neutral = SubResource("Resource_j1qi7")
+negative = SubResource("Resource_vf4k1")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_uq6wx"]
+resource_name = "Festival Security"
+script = ExtResource("2_75igq")
+clock_id = "kicked_out_of_the_festival"
+max_segments = 5
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_ewnnw")
+name = "The Last Day Of The Festival"
+description = "It's the last day so nobody is really checking tickets, but you do not have one."
+location_id = "town_festival"
+access_test = SubResource("Resource_wffqv")
+actions = Array[ExtResource("1_d7s2v")]([SubResource("Resource_wbdjj"), SubResource("Resource_pkqvc"), SubResource("Resource_c1crs")])
+clocks = Array[ExtResource("2_75igq")]([SubResource("Resource_uq6wx")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

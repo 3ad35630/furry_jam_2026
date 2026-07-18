@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Character" format=3 uid="uid://7dpgfl3brqjl"]
+
+[ext_resource type="Texture2D" uid="uid://dh04lvimur34w" path="res://icon.svg" id="1_rva83"]
+[ext_resource type="Script" uid="uid://cxdw6osj350ux" path="res://mechanics/characters/character.gd" id="2_wdb3w"]
+
+[resource]
+script = ExtResource("2_wdb3w")
+max_energy = 3
+name = "Laserina"
+icon = ExtResource("1_rva83")
+color = Color(0.5723619, 0.81575286, 7.70092e-07, 1)
+skills = Dictionary[int, int]({
+2: -1,
+4: 1
+})
+metadata/_custom_type_script = "uid://cxdw6osj350ux"

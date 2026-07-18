@@ -64,7 +64,7 @@ func update(valueKey : Enums.EffectClasses, effect : ActionEffect) -> void:
 		itemDisplay.sprite.frame = 19 # cheese wedge
 	elif effect is StoryMoment:
 		rewardInfo.show()
-		infoLabel.text = effect.key
+		infoLabel.text = effect.path
 		itemDisplay.sprite.frame = 8 # pumpkin
 	elif effect is MultipleActionEffects:
 		rewardInfo.show()

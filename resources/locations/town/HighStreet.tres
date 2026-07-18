@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://bwjeypwyu48vb"]
+
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_2pcgd"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_4ev8a"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="4_bgoi0"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_dnujq"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_3pgym"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="5_dnujq"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="6_p6i3w"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="7_3pgym"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_7el5q"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="8_p6i3w"]
+[ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="9_nl8s1"]
+[ext_resource type="Script" uid="uid://dybcll7k5xh4r" path="res://mechanics/access_tests/access_tests_or.gd" id="10_7el5q"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="11_mf60b"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="12_ycba2"]
+
+[sub_resource type="Resource" id="Resource_b2fl3"]
+script = ExtResource("1_2pcgd")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_goyih"]
+resource_name = "Chat with the locals"
+script = ExtResource("5_3pgym")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_cx67q"]
+script = ExtResource("5_dnujq")
+item_type = 2
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_am1cn"]
+script = ExtResource("4_dnujq")
+clock_id = "fish_for_sale"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_hhmcg"]
+script = ExtResource("7_3pgym")
+effects = Array[ExtResource("4_bgoi0")]([SubResource("Resource_cx67q"), SubResource("Resource_am1cn")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_xw21o"]
+resource_name = "Buy some fish"
+script = ExtResource("8_p6i3w")
+item_type = 1
+required_number = 2
+result = SubResource("Resource_hhmcg")
+action_clock_id = "fish_for_sale"
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_7el5q"]
+script = ExtResource("9_nl8s1")
+location_id = "town_highstreet"
+key = "rented_oil_press"
+metadata/_custom_type_script = "uid://bacgob3gjxf2j"
+
+[sub_resource type="Resource" id="Resource_nl8s1"]
+resource_name = "Rent an Oil Press"
+script = ExtResource("8_p6i3w")
+item_type = 1
+required_number = 5
+result = SubResource("Resource_7el5q")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("10_7el5q")
+metadata/_custom_type_script = "uid://dybcll7k5xh4r"
+
+[sub_resource type="Resource" id="Resource_84ka5"]
+script = ExtResource("5_dnujq")
+item_type = 7
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_dfh30"]
+script = ExtResource("12_ycba2")
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_ycba2"]
+resource_name = "Press the fish"
+script = ExtResource("7_3pgym")
+effects = Array[ExtResource("4_bgoi0")]([SubResource("Resource_84ka5"), SubResource("Resource_dfh30")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_mf60b"]
+resource_name = "Press the fish"
+script = ExtResource("8_p6i3w")
+item_type = 2
+required_number = 10
+result = SubResource("Resource_ycba2")
+access_test = SubResource("Resource_jkl28")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_7fuam"]
+resource_name = "Fish For Sale"
+script = ExtResource("6_p6i3w")
+clock_id = "fish_for_sale"
+max_segments = 6
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("8_7el5q")
+name = "The Highstreet"
+location_id = "town_highstreet"
+access_test = SubResource("Resource_b2fl3")
+actions = Array[ExtResource("1_4ev8a")]([SubResource("Resource_goyih"), SubResource("Resource_xw21o"), SubResource("Resource_nl8s1"), SubResource("Resource_mf60b")])
+clocks = Array[ExtResource("6_p6i3w")]([SubResource("Resource_7fuam")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

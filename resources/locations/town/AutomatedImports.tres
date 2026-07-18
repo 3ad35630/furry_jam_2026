@@ -1,0 +1,143 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b5ben2nvbplbg"]
+
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_iwix4"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_rkmn0"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_iwix4"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_2cvnt"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_rcfo6"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_c0kwb"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_3ymir"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="6_34bww"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_fts65"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="8_g5qek"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="9_865m0"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="10_pt4k1"]
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+script = ExtResource("1_iwix4")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_s6xhd"]
+script = ExtResource("1_iwix4")
+ink_path = "explore_warehouse"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_oi1bc"]
+script = ExtResource("3_rcfo6")
+test = SubResource("Resource_s6xhd")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_eatcb"]
+script = ExtResource("4_c0kwb")
+path = "explore_warehouse"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_64cfc"]
+resource_name = "Explore"
+script = ExtResource("5_3ymir")
+positive = SubResource("Resource_eatcb")
+neutral = SubResource("Resource_eatcb")
+negative = SubResource("Resource_eatcb")
+access_test = SubResource("Resource_oi1bc")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_jutr1"]
+script = ExtResource("6_34bww")
+item_type = 6
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_6wrq2"]
+script = ExtResource("3_rcfo6")
+test = SubResource("Resource_jutr1")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_2gx6s"]
+script = ExtResource("8_g5qek")
+item_type = 6
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_q33pw"]
+script = ExtResource("4_c0kwb")
+path = "buy_cinnamon"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_xc77l"]
+script = ExtResource("9_865m0")
+effects = Array[ExtResource("7_fts65")]([SubResource("Resource_2gx6s"), SubResource("Resource_q33pw")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_71yox"]
+resource_name = "Buy cinnamon"
+script = ExtResource("10_pt4k1")
+item_type = 1
+required_number = 15
+result = SubResource("Resource_xc77l")
+access_test = SubResource("Resource_6wrq2")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+script = ExtResource("1_iwix4")
+ink_path = "explore_warehouse"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_uqodp"]
+script = ExtResource("8_g5qek")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_t4f7e"]
+script = ExtResource("8_g5qek")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_j18bt"]
+script = ExtResource("8_g5qek")
+item_type = 3
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_npw3c"]
+script = ExtResource("9_865m0")
+effects = Array[ExtResource("7_fts65")]([SubResource("Resource_t4f7e"), SubResource("Resource_j18bt")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_b2fl3"]
+script = ExtResource("8_g5qek")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_rt1kv"]
+script = ExtResource("8_g5qek")
+item_type = 3
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+script = ExtResource("9_865m0")
+effects = Array[ExtResource("7_fts65")]([SubResource("Resource_b2fl3"), SubResource("Resource_rt1kv")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_paspp"]
+resource_name = "Carry boxes in the warehouse"
+script = ExtResource("5_3ymir")
+target_number = 4
+skill = 5
+positive = SubResource("Resource_x4jqs")
+neutral = SubResource("Resource_npw3c")
+negative = SubResource("Resource_uqodp")
+description = "The hour is long and the pay is not very good, but sometimes the workers tell interesting stories."
+access_test = SubResource("Resource_2mcle")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[resource]
+script = ExtResource("3_2cvnt")
+name = "Automated Imports Warehouse and Day Spa"
+location_id = "town_warehouse"
+access_test = SubResource("Resource_4t3wr")
+actions = Array[ExtResource("1_rkmn0")]([SubResource("Resource_64cfc"), SubResource("Resource_71yox"), SubResource("Resource_paspp")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

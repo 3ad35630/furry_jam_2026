@@ -5,7 +5,8 @@ enum Skills {
 	BELLS,
 	KITTENS,
 	CANDLES,
-	LASERS
+	FLOWERS,
+	RAIN
 }
 
 enum ResultTypes{
@@ -24,7 +25,8 @@ enum ItemTypes{
 	TEA,
 	CINNAMON,
 	OIL,
-	BLOSSOMS
+	BLOSSOMS,
+	PUMPKINS_MAGIC_STICK
 }
 
 

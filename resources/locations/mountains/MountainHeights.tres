@@ -1,0 +1,208 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b7eqbvbhoassj"]
+
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_ij07w"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="1_v522e"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_w88f2"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_68286"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_o3hvl"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="3_e8qyl"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_yf74f"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_eqem1"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_tycou"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="5_it5ub"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="6_ecxp1"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="7_5jljg"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="9_rp7we"]
+[ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_w0iyi"]
+[ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="12_n8qgr"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="14_68286"]
+
+[sub_resource type="Resource" id="Resource_8ssvk"]
+script = ExtResource("1_v522e")
+clock_id = "path_to_the_heights"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_8cpcs"]
+script = ExtResource("1_v522e")
+clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_r32jt"]
+script = ExtResource("4_tycou")
+test = SubResource("Resource_8cpcs")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_yhefo"]
+script = ExtResource("1_ij07w")
+tests = Array[ExtResource("2_68286")]([SubResource("Resource_8ssvk"), SubResource("Resource_r32jt")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("4_eqem1")
+clock_id = "danger_of_avalanche"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_etwf7"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_ij07w"]
+script = ExtResource("4_eqem1")
+clock_id = "danger_of_avalanche"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_5jljg"]
+script = ExtResource("5_it5ub")
+effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_etwf7"), SubResource("Resource_ij07w")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_ecxp1"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_v522e"]
+resource_name = "Listen for echoes"
+script = ExtResource("6_ecxp1")
+is_risky = true
+target_number = 4
+skill = 1
+positive = SubResource("Resource_ecxp1")
+neutral = SubResource("Resource_5jljg")
+negative = SubResource("Resource_jkl28")
+action_clock_id = "danger_of_avalanche"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+resource_name = "Tell tales to the wind spirits"
+script = ExtResource("7_5jljg")
+item_type = 3
+result = SubResource("Resource_x4jqs")
+action_clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_cd7hs"]
+script = ExtResource("4_eqem1")
+clock_id = "danger_of_avalanche"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_3rhko"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_6yn2q"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_pnlif"]
+resource_name = "Dig a path, slow and steady"
+script = ExtResource("6_ecxp1")
+is_risky = true
+target_number = 4
+skill = 5
+positive = SubResource("Resource_6yn2q")
+neutral = SubResource("Resource_3rhko")
+negative = SubResource("Resource_cd7hs")
+action_clock_id = "path_to_the_hidden_valley"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_t1s1m"]
+script = ExtResource("11_w0iyi")
+location_id = "mountain_heights"
+key = "used_magic_stick"
+metadata/_custom_type_script = "uid://deia8b341vkjq"
+
+[sub_resource type="Resource" id="Resource_sc1f2"]
+resource_name = "You can only use this one."
+script = ExtResource("4_tycou")
+test = SubResource("Resource_t1s1m")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_iiemc"]
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+amount = 4
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_q5j16"]
+script = ExtResource("12_n8qgr")
+location_id = "mountain_heights"
+key = "used_magic_stick"
+metadata/_custom_type_script = "uid://bacgob3gjxf2j"
+
+[sub_resource type="Resource" id="Resource_fy56g"]
+script = ExtResource("5_it5ub")
+effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_iiemc"), SubResource("Resource_q5j16")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_yycqj"]
+resource_name = "Use Pumpkin's Magic Stick!"
+script = ExtResource("7_5jljg")
+item_type = 9
+result = SubResource("Resource_fy56g")
+spend_items = false
+access_test = SubResource("Resource_sc1f2")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_sx0ym"]
+script = ExtResource("14_68286")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_tycou"]
+resource_name = "A path to the Hidden Valley"
+script = ExtResource("2_o3hvl")
+clock_id = "path_to_the_hidden_valley"
+max_segments = 12
+effect = SubResource("Resource_sx0ym")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[sub_resource type="Resource" id="Resource_yf74f"]
+resource_name = "Reset this clock"
+script = ExtResource("4_eqem1")
+clock_id = "danger_of_avalanche"
+amount = -4
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_o3hvl"]
+resource_name = "Push back the path clock"
+script = ExtResource("4_eqem1")
+clock_id = "path_to_the_hidden_valley"
+amount = -4
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_68286"]
+script = ExtResource("9_rp7we")
+path = "avalanche"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_w88f2"]
+script = ExtResource("5_it5ub")
+effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_yf74f"), SubResource("Resource_o3hvl"), SubResource("Resource_68286")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_b8sha"]
+resource_name = "The danger of Avalanche"
+script = ExtResource("2_o3hvl")
+clock_id = "danger_of_avalanche"
+max_segments = 4
+effect = SubResource("Resource_w88f2")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_yf74f")
+name = "The Mountain Heights"
+location_id = "mountain_heights"
+access_test = SubResource("Resource_yhefo")
+actions = Array[ExtResource("1_w88f2")]([SubResource("Resource_v522e"), SubResource("Resource_4t3wr"), SubResource("Resource_pnlif"), SubResource("Resource_yycqj")])
+clocks = Array[ExtResource("2_o3hvl")]([SubResource("Resource_tycou"), SubResource("Resource_b8sha")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

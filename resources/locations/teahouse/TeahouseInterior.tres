@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://jm37hda4i3op"]
+
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_1jijw"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_6fyxa"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_favlx"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="3_trora"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_y5nlt"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="4_meypx"]
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("1_6fyxa")
+ink_path = "deliver_ingredients"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_t4f7e"]
+script = ExtResource("3_trora")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_npw3c"]
+resource_name = "Make Tea"
+script = ExtResource("4_meypx")
+positive = SubResource("Resource_t4f7e")
+neutral = SubResource("Resource_t4f7e")
+negative = SubResource("Resource_t4f7e")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[resource]
+script = ExtResource("3_y5nlt")
+name = "Inside the Teahouse"
+location_id = "teahouse_interior"
+access_test = SubResource("Resource_jkl28")
+actions = Array[ExtResource("1_1jijw")]([SubResource("Resource_npw3c")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

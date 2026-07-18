@@ -1,0 +1,131 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b1gcjp0uthfca"]
+
+[ext_resource type="Script" uid="uid://dtij1c6ftyb3a" path="res://mechanics/access_tests/ink_path_visited.gd" id="1_4afpb"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_g73gj"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="2_4afpb"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="4_4urkh"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_72w5p"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_8mvnj"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="5_72w5p"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="6_0aqbr"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="7_4afpb"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="8_4urkh"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_64cfc"]
+
+[sub_resource type="Resource" id="Resource_hh1f7"]
+script = ExtResource("1_4afpb")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+script = ExtResource("4_4urkh")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_paspp"]
+script = ExtResource("2_4afpb")
+test = SubResource("Resource_2mcle")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("5_72w5p")
+path = "explore_docks"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_yhclw"]
+resource_name = "Explore the docks"
+script = ExtResource("5_8mvnj")
+positive = SubResource("Resource_jkl28")
+neutral = SubResource("Resource_jkl28")
+negative = SubResource("Resource_jkl28")
+access_test = SubResource("Resource_paspp")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_fsmd6"]
+script = ExtResource("4_4urkh")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_wu2h0"]
+script = ExtResource("7_4afpb")
+item_type = 1
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_fw238"]
+script = ExtResource("7_4afpb")
+item_type = 1
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_vdynt"]
+script = ExtResource("7_4afpb")
+item_type = 1
+amount = 3
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_b0mxf"]
+resource_name = "Chase birds away from the catch"
+script = ExtResource("5_8mvnj")
+target_number = 4
+skill = 2
+positive = SubResource("Resource_vdynt")
+neutral = SubResource("Resource_fw238")
+negative = SubResource("Resource_wu2h0")
+access_test = SubResource("Resource_fsmd6")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_72w5p"]
+script = ExtResource("4_4urkh")
+ink_path = "explore_docks"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+script = ExtResource("7_4afpb")
+item_type = 1
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+resource_name = "Sell some rainbow trout"
+script = ExtResource("8_4urkh")
+item_type = 2
+result = SubResource("Resource_x4jqs")
+description = "They always sell for a high price"
+access_test = SubResource("Resource_72w5p")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_hhmcg"]
+script = ExtResource("4_72w5p")
+clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_7fuam"]
+resource_name = "Seek the advice of the fisherfolk"
+script = ExtResource("8_4urkh")
+item_type = 1
+result = SubResource("Resource_hhmcg")
+action_clock_id = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_8mvnj"]
+script = ExtResource("5_72w5p")
+path = "learning_to_fish_the_ribbon"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_0aqbr"]
+resource_name = "Learn to fish"
+script = ExtResource("6_0aqbr")
+clock_id = "learning_to_fish_the_ribbon"
+max_segments = 8
+effect = SubResource("Resource_8mvnj")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("8_64cfc")
+name = "The Docks"
+description = "The main dock on the moon. A singular port made of stone and wood stands over the edge, with the river being carried up and through space."
+location_id = "town_docks"
+access_test = SubResource("Resource_hh1f7")
+actions = Array[ExtResource("1_g73gj")]([SubResource("Resource_yhclw"), SubResource("Resource_b0mxf"), SubResource("Resource_4t3wr"), SubResource("Resource_7fuam")])
+clocks = Array[ExtResource("6_0aqbr")]([SubResource("Resource_0aqbr")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

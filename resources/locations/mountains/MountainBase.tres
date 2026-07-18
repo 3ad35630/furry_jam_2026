@@ -1,0 +1,138 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b56jhtl02kiww"]
+
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_1ss57"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_qx4n4"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_km0f0"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_r1uyr"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_mwuf5"]
+[ext_resource type="Script" uid="uid://dtij1c6ftyb3a" path="res://mechanics/access_tests/ink_path_visited.gd" id="3_sx0ym"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_b8sha"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="5_r7ikn"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="7_dp31f"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="8_qhxa6"]
+[ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="9_sx0ym"]
+[ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="9_y23a2"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="11_2lxnl"]
+[ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="11_b8sha"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="12_4pj0a"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="13_u3pif"]
+
+[sub_resource type="Resource" id="Resource_h0typ"]
+script = ExtResource("3_sx0ym")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_uq6wx"]
+script = ExtResource("5_r7ikn")
+clock_id = "path_to_the_heights"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_pkqvc"]
+script = ExtResource("4_b8sha")
+test = SubResource("Resource_uq6wx")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_wbdjj"]
+script = ExtResource("1_1ss57")
+tests = Array[ExtResource("2_km0f0")]([SubResource("Resource_h0typ"), SubResource("Resource_pkqvc")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_kh636"]
+script = ExtResource("7_dp31f")
+clock_id = "path_to_the_heights"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_wffqv"]
+script = ExtResource("7_dp31f")
+clock_id = "path_to_the_heights"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+resource_name = "Search Carefully"
+script = ExtResource("8_qhxa6")
+target_number = 4
+skill = 5
+positive = SubResource("Resource_wffqv")
+neutral = SubResource("Resource_kh636")
+action_clock_id = "path_to_the_heights"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_3xlfh"]
+script = ExtResource("9_sx0ym")
+location_id = "mountain_base"
+key = "used_magic_stick"
+metadata/_custom_type_script = "uid://deia8b341vkjq"
+
+[sub_resource type="Resource" id="Resource_bskcy"]
+resource_name = "You can only use this one."
+script = ExtResource("4_b8sha")
+test = SubResource("Resource_3xlfh")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_r7ikn"]
+script = ExtResource("7_dp31f")
+clock_id = "path_to_the_heights"
+amount = 6
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_7hvsy"]
+script = ExtResource("11_b8sha")
+location_id = "mountain_base"
+key = "used_magic_stick"
+metadata/_custom_type_script = "uid://bacgob3gjxf2j"
+
+[sub_resource type="Resource" id="Resource_dvm1c"]
+script = ExtResource("13_u3pif")
+effects = Array[ExtResource("11_2lxnl")]([SubResource("Resource_r7ikn"), SubResource("Resource_7hvsy")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_imvmo"]
+resource_name = "Use Pumpkin's Magic Stick!"
+script = ExtResource("9_y23a2")
+item_type = 9
+result = SubResource("Resource_dvm1c")
+spend_items = false
+access_test = SubResource("Resource_bskcy")
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_npw3c"]
+script = ExtResource("7_dp31f")
+clock_id = "path_to_the_heights"
+amount = 3
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_a14y6"]
+resource_name = "Pay a local guide"
+script = ExtResource("9_y23a2")
+item_type = 1
+required_number = 3
+result = SubResource("Resource_npw3c")
+action_clock_id = "path_to_the_heights"
+description = "The guides are well travelled. For coins they will lead the way."
+metadata/_custom_type_script = "uid://qu5fc5nubcdh"
+
+[sub_resource type="Resource" id="Resource_j18bt"]
+script = ExtResource("12_4pj0a")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_t4f7e"]
+script = ExtResource("13_u3pif")
+effects = Array[ExtResource("11_2lxnl")]([SubResource("Resource_j18bt")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+resource_name = "Find a path to the heights"
+script = ExtResource("2_r1uyr")
+clock_id = "path_to_the_heights"
+max_segments = 12
+effect = SubResource("Resource_t4f7e")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_mwuf5")
+name = "The Base of the Mountains"
+location_id = "mountain_base"
+access_test = SubResource("Resource_wbdjj")
+actions = Array[ExtResource("1_qx4n4")]([SubResource("Resource_4t3wr"), SubResource("Resource_imvmo"), SubResource("Resource_a14y6")])
+clocks = Array[ExtResource("2_r1uyr")]([SubResource("Resource_2mcle")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

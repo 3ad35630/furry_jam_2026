@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_0at2u")
 max_energy = 3
-name = "Bella"
+name = "Mirabelle"
 icon = ExtResource("1_b6y8r")
 color = Color(0.4766041, 0.5067471, 0.9658118, 1)
 skills = Dictionary[int, int]({

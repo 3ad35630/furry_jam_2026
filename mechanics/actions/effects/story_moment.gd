@@ -1,5 +1,4 @@
 extends ActionEffect
-class_name StoryMoment
-@export var path : String
+class_name ExitLocation
 func do() -> void:
-	NarrativeSystem.start_narrative(path)
+	Modes.exit_location()

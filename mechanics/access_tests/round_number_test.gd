@@ -1,7 +1,7 @@
 extends AccessTest
-class_name AccessTestRoundNumber
+class_name AccessTestHasItem
 
-@export var round_accessed : int = 1
+@export var item_type : Enums.ItemTypes
 
 func _is_accessible() -> bool:
-	return TurnSystem.current_round >= round_accessed
+	return Inventory.has(item_type, 1)

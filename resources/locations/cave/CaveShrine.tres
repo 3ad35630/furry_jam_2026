@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://b8d2i0fbdmqly"]
+
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_7ndyd"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_s7par"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_ux3v1"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_35qk5"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_vsyhn"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="4_d21ua"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_yrg63"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="7_35qk5"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_vsw7n"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="9_g7je5"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_n5ec7"]
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+script = ExtResource("1_7ndyd")
+ink_path = "explore_cave"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_a14y6"]
+script = ExtResource("1_7ndyd")
+ink_path = "explore_shrine"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_rt1kv"]
+resource_name = "Haven't explored the shrine yet"
+script = ExtResource("3_35qk5")
+test = SubResource("Resource_a14y6")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_b2fl3"]
+resource_name = "explore_shrine"
+script = ExtResource("4_d21ua")
+path = "explore_shrine"
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+resource_name = "explore_shrine"
+script = ExtResource("5_yrg63")
+positive = SubResource("Resource_b2fl3")
+neutral = SubResource("Resource_b2fl3")
+negative = SubResource("Resource_b2fl3")
+access_test = SubResource("Resource_rt1kv")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_k6a1l"]
+script = ExtResource("1_7ndyd")
+ink_path = "explore_shrine"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_7dg7n"]
+script = ExtResource("7_35qk5")
+clock_id = "friends_with_pumpkin"
+amount = 12
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_paspp"]
+script = ExtResource("9_g7je5")
+item_type = 9
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+script = ExtResource("10_n5ec7")
+effects = Array[ExtResource("7_vsw7n")]([SubResource("Resource_7dg7n"), SubResource("Resource_paspp")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_d21ua"]
+resource_name = "Shrine Repairs"
+script = ExtResource("2_ux3v1")
+clock_id = "shrine_repairs"
+access_test = SubResource("Resource_k6a1l")
+max_segments = 8
+effect = SubResource("Resource_jkl28")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("3_vsyhn")
+name = "Otter Shrine"
+location_id = "cave_shrine"
+access_test = SubResource("Resource_4t3wr")
+actions = Array[ExtResource("1_s7par")]([SubResource("Resource_x4jqs")])
+clocks = Array[ExtResource("2_ux3v1")]([SubResource("Resource_d21ua")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

@@ -1,0 +1,187 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://dowuxym4323ae"]
+
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_s7ajs"]
+[ext_resource type="Script" uid="uid://dtij1c6ftyb3a" path="res://mechanics/access_tests/ink_path_visited.gd" id="1_sudli"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="2_fki5g"]
+[ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="3_rjrsa"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="3_ujqdw"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_spvmj"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_sudli"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_7mkxp"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="6_bsk6t"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_8khma"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="8_hh1f7"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="9_flyg6"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_yhclw"]
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="11_2agq0"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="12_0yt3h"]
+
+[sub_resource type="Resource" id="Resource_nj27u"]
+script = ExtResource("1_sudli")
+metadata/_custom_type_script = "uid://dtij1c6ftyb3a"
+
+[sub_resource type="Resource" id="Resource_t4f7e"]
+script = ExtResource("3_rjrsa")
+ink_path = "explore_farm"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_npw3c"]
+script = ExtResource("2_fki5g")
+test = SubResource("Resource_t4f7e")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_j18bt"]
+resource_name = "explore_farm"
+script = ExtResource("4_sudli")
+path = "explore_farm"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_a14y6"]
+resource_name = "Explore the Farm"
+script = ExtResource("5_7mkxp")
+positive = SubResource("Resource_j18bt")
+neutral = SubResource("Resource_j18bt")
+negative = SubResource("Resource_j18bt")
+description = "The farm is quiet and still."
+access_test = SubResource("Resource_npw3c")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_h0typ"]
+script = ExtResource("4_spvmj")
+clock_id = "rooster_bothered"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_wbdjj"]
+script = ExtResource("4_spvmj")
+clock_id = "rooster_bothered"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_4t3wr"]
+resource_name = "Bother the Rooster"
+script = ExtResource("5_7mkxp")
+target_number = 3
+skill = 1
+positive = SubResource("Resource_wbdjj")
+neutral = SubResource("Resource_h0typ")
+action_clock_id = "rooster_bothered"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_h6sh2"]
+script = ExtResource("4_spvmj")
+clock_id = "awaken_the_cows"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_q368j"]
+script = ExtResource("4_spvmj")
+clock_id = "awaken_the_cows"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_watsn"]
+resource_name = "Make a lot of noise!"
+script = ExtResource("5_7mkxp")
+target_number = 4
+skill = 1
+positive = SubResource("Resource_q368j")
+neutral = SubResource("Resource_h6sh2")
+action_clock_id = "awaken_the_cows"
+description = "Make enough noise to wake the dead!"
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_q2mwc"]
+script = ExtResource("4_spvmj")
+clock_id = "awaken_the_cows"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_2mryd"]
+script = ExtResource("4_spvmj")
+clock_id = "awaken_the_cows"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_bkiji"]
+resource_name = "Sing them the song of their people (this involves mooing a lot)!"
+script = ExtResource("5_7mkxp")
+target_number = 4
+skill = 3
+positive = SubResource("Resource_2mryd")
+neutral = SubResource("Resource_q2mwc")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_2mcle"]
+script = ExtResource("3_rjrsa")
+ink_path = "explore_farm"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_lks2n"]
+resource_name = "Get ye milk!"
+script = ExtResource("9_flyg6")
+item_type = 4
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_i7xln"]
+resource_name = "Milk the spirit cows"
+script = ExtResource("4_sudli")
+path = "milk_the_spirit_cows"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_c1crs"]
+script = ExtResource("10_yhclw")
+effects = Array[ExtResource("8_hh1f7")]([SubResource("Resource_lks2n"), SubResource("Resource_i7xln")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_jkl28"]
+resource_name = "Awaken the Cows"
+script = ExtResource("6_bsk6t")
+clock_id = "awaken_the_cows"
+description = "Rise from your field!"
+access_test = SubResource("Resource_2mcle")
+max_segments = 10
+effect = SubResource("Resource_c1crs")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[sub_resource type="Resource" id="Resource_uq6wx"]
+script = ExtResource("3_rjrsa")
+ink_path = "explore_farm"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_kh636"]
+script = ExtResource("3_ujqdw")
+clock_id = "awaken_the_cows"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_wffqv"]
+script = ExtResource("2_fki5g")
+test = SubResource("Resource_kh636")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_pkqvc"]
+script = ExtResource("11_2agq0")
+tests = Array[ExtResource("12_0yt3h")]([SubResource("Resource_uq6wx"), SubResource("Resource_wffqv")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_uqodp"]
+script = ExtResource("4_spvmj")
+clock_id = "awaken_the_cows"
+amount = 6
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_x4jqs"]
+resource_name = "Get the rooster to crow"
+script = ExtResource("6_bsk6t")
+clock_id = "rooster_bothered"
+description = "He is proud and usually only crows at dawn."
+access_test = SubResource("Resource_pkqvc")
+effect = SubResource("Resource_uqodp")
+metadata/_custom_type_script = "uid://54wgke734i1m"
+
+[resource]
+script = ExtResource("8_8khma")
+name = "The Spirit Farm"
+location_id = "farm_house"
+access_test = SubResource("Resource_nj27u")
+actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji")])
+clocks = Array[ExtResource("6_bsk6t")]([SubResource("Resource_jkl28"), SubResource("Resource_x4jqs")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

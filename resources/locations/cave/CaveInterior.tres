@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="Location" format=3 uid="uid://7mg0hf163v3w"]
+
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="1_8pc6m"]
+[ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_pntl0"]
+[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="1_wmvmc"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="2_0p6g4"]
+[ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_rw068"]
+[ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_g2nxb"]
+[ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="3_uufw8"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_2s6tx"]
+[ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="4_kicwl"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="5_1crc3"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_1crc3"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="9_1p5gj"]
+[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_sa07i"]
+
+[sub_resource type="Resource" id="Resource_1p5gj"]
+resource_name = "You are Pumpkins friend"
+script = ExtResource("1_wmvmc")
+clock_id = "friends_with_pumpkin"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_a4q2h"]
+script = ExtResource("5_1crc3")
+item_type = 5
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_sa07i"]
+resource_name = "Only if you have no tea"
+script = ExtResource("4_2s6tx")
+test = SubResource("Resource_a4q2h")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_dvm1c"]
+script = ExtResource("1_8pc6m")
+tests = Array[ExtResource("2_0p6g4")]([SubResource("Resource_1p5gj"), SubResource("Resource_sa07i")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_imvmo"]
+resource_name = "Only if you have no tea"
+script = ExtResource("4_2s6tx")
+test = SubResource("Resource_a4q2h")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_w3eda"]
+script = ExtResource("3_uufw8")
+item_type = 5
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_rhac4"]
+script = ExtResource("9_1p5gj")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_flaac"]
+resource_name = "Get the tea and leave"
+script = ExtResource("10_sa07i")
+effects = Array[ExtResource("7_1crc3")]([SubResource("Resource_w3eda"), SubResource("Resource_rhac4")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_0ouyt"]
+resource_name = "Get the tea and leave"
+script = ExtResource("10_sa07i")
+effects = Array[ExtResource("7_1crc3")]([SubResource("Resource_w3eda"), SubResource("Resource_rhac4")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_qmwbj"]
+resource_name = "Get the tea and leave"
+script = ExtResource("10_sa07i")
+effects = Array[ExtResource("7_1crc3")]([SubResource("Resource_w3eda"), SubResource("Resource_rhac4")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+
+[sub_resource type="Resource" id="Resource_yq3dt"]
+resource_name = "Gather the tea"
+script = ExtResource("4_kicwl")
+positive = SubResource("Resource_qmwbj")
+neutral = SubResource("Resource_0ouyt")
+negative = SubResource("Resource_flaac")
+access_test = SubResource("Resource_imvmo")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[resource]
+script = ExtResource("3_g2nxb")
+name = "Cave Interior"
+location_id = "cave_interior"
+access_test = SubResource("Resource_dvm1c")
+actions = Array[ExtResource("1_pntl0")]([SubResource("Resource_yq3dt")])
+metadata/_custom_type_script = "uid://cv41k7b1vqdkw"
