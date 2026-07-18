@@ -7,25 +7,28 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb8ws"]
 
 [node name="ActionPanelSkill" type="Panel" unique_id=2049888376]
-offset_right = 224.0
-offset_bottom = 144.0
+offset_right = 88.0
+offset_bottom = 128.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hb8ws")
 script = ExtResource("1_uylq5")
 
 [node name="TargetLabel" type="Label" parent="." unique_id=1894591452]
+visible = false
 layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 208.0
-offset_bottom = 31.0
-text = "Target Number:"
+offset_top = -16.0
+offset_right = 80.0
+offset_bottom = 8.0
+text = "- 6 -"
+horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1676959159]
+custom_minimum_size = Vector2(0, 21)
 layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 136.0
-offset_bottom = 136.0
+offset_left = 112.00001
+offset_top = 8.0
+offset_right = 218.66666
+offset_bottom = 29.333332
+scale = Vector2(0.75, 0.75)
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1560952939]
 layout_mode = 2
@@ -38,54 +41,38 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Fail" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=644068895]
+[node name="Bonus" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=834244553]
 modulate = Color(0.6662731, 0.5532349, 1, 1)
 layout_mode = 2
-text = "Fail:"
+text = "Bonus: +10"
 
-[node name="Neutral" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=1761878714]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
+[node name="Pos" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=644068895]
+modulate = Color(0.4267911, 0.74041706, 0, 1)
 layout_mode = 2
-text = "Neutral:"
+text = "Pos: 100%"
 
-[node name="Success" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=1510131926]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
+[node name="Neu" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=1761878714]
+modulate = Color(0.9227854, 0.53208196, 1.1551381e-06, 1)
 layout_mode = 2
-text = "Success:"
+text = "Neu: 100%"
 
-[node name="ChanceValues" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=627563468]
+[node name="Neg" type="Label" parent="PanelContainer/MarginContainer/ChanceLabels" unique_id=1510131926]
+modulate = Color(0.912847, 0.21179098, 0.4351836, 1)
 layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Fail" type="Label" parent="PanelContainer/MarginContainer/ChanceValues" unique_id=981434709]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
-
-[node name="Neutral" type="Label" parent="PanelContainer/MarginContainer/ChanceValues" unique_id=314015962]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
-
-[node name="Success" type="Label" parent="PanelContainer/MarginContainer/ChanceValues" unique_id=1582729335]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100%"
+text = "Neg: 100%"
 
 [node name="DiceSlot" parent="." unique_id=173719601 instance=ExtResource("4_uylq5")]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 32.0
-offset_right = 216.0
-offset_bottom = 104.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 80.0
 
 [node name="Button" type="Button" parent="." unique_id=677666473]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 215.0
-offset_bottom = 135.0
-text = "Confirm"
+offset_top = 72.0
+offset_right = 96.0
+offset_bottom = 103.0
+text = "Target : 6"
 
 [node name="dicerolled" type="AudioStreamPlayer" parent="." unique_id=1194698253]
 stream = ExtResource("4_br685")

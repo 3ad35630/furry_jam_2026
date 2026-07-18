@@ -6,15 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://ciedwldk1c5ko" path="res://ui/widgets/scenes/action_panel_item.tscn" id="4_wsoa6"]
 [ext_resource type="PackedScene" uid="uid://bo2d5di4n27rh" path="res://ui/widgets/scenes/reward_card.tscn" id="7_3ey2a"]
 
-[node name="ActionPanel" type="Panel" unique_id=1996519557]
-offset_right = 320.0
-offset_bottom = 320.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu8qa"]
+
+[node name="ActionPanel" type="Panel" unique_id=1499358185]
+offset_right = 336.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fu8qa")
 script = ExtResource("1_hb8ws")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1434978798]
 layout_mode = 0
-offset_right = 320.0
-offset_bottom = 312.0
+offset_right = 336.0
+offset_bottom = 152.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1895211604]
 layout_mode = 2
@@ -27,18 +30,13 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 
 [node name="ActionPanelInfo" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2071027896 instance=ExtResource("2_wsoa6")]
+custom_minimum_size = Vector2(320, 136)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1512109105]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.446777, 0.44677705, 0.44677705, 1)
-
-[node name="ActionPanelSkill" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=721529462 instance=ExtResource("3_a2f6j")]
-layout_mode = 2
-
-[node name="ActionPanelItem" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1587315691 instance=ExtResource("4_wsoa6")]
-layout_mode = 2
 
 [node name="Rewards" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2011396892]
 layout_mode = 2
@@ -51,3 +49,17 @@ layout_mode = 2
 
 [node name="RewardCard3" parent="PanelContainer/MarginContainer/VBoxContainer/Rewards" unique_id=1242483779 instance=ExtResource("7_3ey2a")]
 layout_mode = 2
+
+[node name="ActionPanelSkill" parent="." unique_id=721529462 instance=ExtResource("3_a2f6j")]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 144.0
+
+[node name="ActionPanelItem" parent="." unique_id=1587315691 instance=ExtResource("4_wsoa6")]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 152.0

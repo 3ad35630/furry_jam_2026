@@ -27,7 +27,7 @@ func _show_clocks(state : bool = true) -> void:
 
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:
-	_show_clocks(false)
+	_show_clocks(true)
 	_show_info(false)
 	
 	# get relevant clocks and set location-dependent data

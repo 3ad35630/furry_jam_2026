@@ -40,9 +40,14 @@ size_flags_vertical = 0
 text = "Action Name"
 clip_text = true
 
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer" unique_id=1020002705]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.446777, 0.44677705, 0.44677705, 1)
+
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=178581097]
 custom_minimum_size = Vector2(256, 0)
-custom_maximum_size = Vector2(200, -1)
+custom_maximum_size = Vector2(216, -1)
 layout_mode = 2
 text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 label_settings = SubResource("LabelSettings_3xd07")

@@ -7,12 +7,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ey2a"]
 
 [node name="ActionPanelItem" type="Panel" unique_id=1587315691]
-offset_right = 224.0
-offset_bottom = 120.0
+offset_right = 104.0
+offset_bottom = 112.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_3ey2a")
 script = ExtResource("1_sblgw")
 
 [node name="ItemLabel" type="Label" parent="." unique_id=75418814]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 8.0
@@ -23,62 +24,23 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="." unique_id=893289174]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 80.0
-offset_right = 216.0
-offset_bottom = 112.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 96.0
 text = "Confirm"
 
 [node name="ItemDisplay" parent="." unique_id=1678320037 instance=ExtResource("2_sblgw")]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 0
-offset_left = 152.0
-offset_top = 16.0
-offset_right = 208.0
-offset_bottom = 72.0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 72.0
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=446410553]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 136.0
-offset_bottom = 112.0
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=996060332]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="CountLabels" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=473553601]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Needed" type="Label" parent="PanelContainer/MarginContainer/CountLabels" unique_id=1869938327]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "Needed:"
-
-[node name="Inventory" type="Label" parent="PanelContainer/MarginContainer/CountLabels" unique_id=1859229353]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "Current:"
-
-[node name="CountValues" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1667881893]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Needed" type="Label" parent="PanelContainer/MarginContainer/CountValues" unique_id=1008518972]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "100"
-horizontal_alignment = 2
-
-[node name="Inventory" type="Label" parent="PanelContainer/MarginContainer/CountValues" unique_id=1438856917]
-modulate = Color(0.6662731, 0.5532349, 1, 1)
-layout_mode = 2
-text = "0"
-horizontal_alignment = 2
+[node name="Sprite2D" parent="ItemDisplay" index="0" unique_id=1540598611]
+position = Vector2(24, 24)
+scale = Vector2(1, 1)
 
 [node name="dicerolled" type="AudioStreamPlayer" parent="." unique_id=1684815874]
 stream = ExtResource("4_y1ccu")
+
+[editable path="ItemDisplay"]

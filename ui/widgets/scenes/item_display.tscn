@@ -18,3 +18,13 @@ texture = ExtResource("2_wuprn")
 hframes = 5
 vframes = 5
 frame = 3
+
+[node name="Label" type="Label" parent="." unique_id=1795674838]
+visible = false
+layout_mode = 0
+offset_right = 56.0
+offset_bottom = 56.0
+mouse_filter = 1
+text = "5/5"
+horizontal_alignment = 1
+vertical_alignment = 2

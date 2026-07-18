@@ -27,9 +27,9 @@ bg_color = Color(0, 0, 0, 1)
 font_size = 12
 
 [node name="ClockWidget" type="Panel" unique_id=1818651294 node_paths=PackedStringArray("title_label", "button", "title_label_info", "description_label", "segment_container", "infoPanel")]
-custom_minimum_size = Vector2(256, 80)
+custom_minimum_size = Vector2(256, 56)
 offset_right = 256.0
-offset_bottom = 80.0
+offset_bottom = 56.0
 script = ExtResource("1_xaj82")
 bg_color = SubResource("StyleBoxFlat_xaj82")
 fill_color = SubResource("StyleBoxFlat_a1bnx")
@@ -45,7 +45,7 @@ infoPanel = NodePath("InfoPanel")
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=504875065]
 layout_mode = 0
 offset_right = 256.0
-offset_bottom = 80.0
+offset_bottom = 56.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -68,7 +68,7 @@ text = "?"
 horizontal_alignment = 1
 
 [node name="Segments" type="HBoxContainer" parent="MarginContainer" unique_id=449653738]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_vertical = 8
 
