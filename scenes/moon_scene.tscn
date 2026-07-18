@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://cf8y83e2jaf2s" path="res://models/skybox/main.gd" id="1_ltsy3"]
 [ext_resource type="PackedScene" uid="uid://bt613xfgvlc5d" path="res://ui/simple/scenes/main_panel.tscn" id="2_tsr5y"]
 [ext_resource type="Shader" uid="uid://8c51s2di2x41" path="res://models/skybox/sky.gdshader" id="2_ugxro"]
-[ext_resource type="Resource" uid="uid://dowuxym4323ae" path="res://resources/locations/SpiritFarm.tres" id="3_2cude"]
+[ext_resource type="Resource" uid="uid://dowuxym4323ae" path="res://resources/locations/farm/Farmhouse.tres" id="3_2cude"]
 [ext_resource type="PackedScene" uid="uid://5mmt1t7y4b2s" path="res://ui/simple/scenes/location_buttons.tscn" id="3_js7sh"]
 [ext_resource type="PackedScene" uid="uid://d1p0qwf8hr5g8" path="res://scenes/camera_controls.tscn" id="3_jtt53"]
 [ext_resource type="Texture2D" uid="uid://dgduacdiqttv1" path="res://models/skybox/stars.png" id="3_ugxro"]
 [ext_resource type="Script" uid="uid://hkoqfw1w4t6l" path="res://ui/simple/scripts/button.gd" id="4_0pwpi"]
-[ext_resource type="Resource" uid="uid://b1gcjp0uthfca" path="res://resources/locations/Docks.tres" id="5_i0w5l"]
+[ext_resource type="Resource" uid="uid://b1gcjp0uthfca" path="res://resources/locations/town/Docks.tres" id="5_i0w5l"]
 [ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="6_2cude"]
-[ext_resource type="Resource" uid="uid://cwdqgjr5summu" path="res://resources/locations/TestLocation.tres" id="7_d1xcf"]
+[ext_resource type="PackedScene" uid="uid://c1j0u208k8hun" path="res://scenes/location_cameras.tscn" id="6_722th"]
 [ext_resource type="PackedScene" uid="uid://cjehic72qfqx2" path="res://ui/widgets/scenes/main_menu.tscn" id="13_3l5yu"]
 [ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
 
@@ -60,6 +60,9 @@ fog_mode = 1
 fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
 fog_density = 1.0
 
+[sub_resource type="Resource" id="Resource_p7y8p"]
+metadata/__load_path__ = "res://resources/locations/TestLocation.tres"
+
 [node name="Moon" type="Node3D" unique_id=1671707619]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
@@ -94,7 +97,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.20700762, -0.10391674, 0.97280425, -0.9780998, 4.542345e-09, 0.20813443, -0.02162866, -0.994586, -0.10164093, 0, 0, 0)
+transform = Transform3D(0.20700759, -0.10391674, 0.9728041, -0.9780997, 4.542345e-09, 0.20813441, -0.021628655, -0.994586, -0.101640925, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
 light_energy = 1.77
@@ -102,20 +105,7 @@ shadow_enabled = true
 
 [node name="CameraRotation" parent="." unique_id=517386831 instance=ExtResource("3_jtt53")]
 
-[node name="LocationCameras" type="Control" parent="." unique_id=2059082455]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="l_spiritfarm" type="Camera3D" parent="LocationCameras" unique_id=2074081210]
-transform = Transform3D(-0.1917341, 0.55638003, 0.80850434, 0.27479386, 0.8212724, -0.50000006, -0.9421924, 0.12630497, -0.31035572, -2.826, -2.068, 4.244)
-
-[node name="l_docks" type="Camera3D" parent="LocationCameras" unique_id=1233754310]
-transform = Transform3D(0.5075384, -0.4045104, 0.76077336, 0, 0.8829476, 0.46947157, -0.8616291, -0.23827486, 0.4481298, 8.608, -7.476, 5.018)
-
-[node name="test_location_a" type="Camera3D" parent="LocationCameras" unique_id=649853311]
-transform = Transform3D(-0.15056881, 0.96113056, 0.23142415, 0.082124494, 0.24544425, -0.9659258, -0.9851825, -0.12643272, -0.11588861, -3.786, -2.463, -3.832)
+[node name="LocationCameras" parent="." unique_id=2122730447 instance=ExtResource("6_722th")]
 
 [node name="MainPanel" parent="." unique_id=89919495 instance=ExtResource("2_tsr5y")]
 visible = false
@@ -131,7 +121,7 @@ offset_right = 599.0
 offset_bottom = 332.0
 text = "Woods"
 script = ExtResource("6_2cude")
-_location = ExtResource("7_d1xcf")
+_location = SubResource("Resource_p7y8p")
 metadata/_custom_type_script = "uid://bydmhhunt2n6w"
 
 [node name="FarmButton" type="Button" parent="MainPanel/CanvasLayer" unique_id=1093661616]
