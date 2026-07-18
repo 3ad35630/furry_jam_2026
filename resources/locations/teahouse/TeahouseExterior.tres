@@ -73,7 +73,7 @@ script = ExtResource("2_jii7u")
 metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
 
 [sub_resource type="Resource" id="Resource_2mcle"]
-resource_name = "main_ingredient_clock"
+resource_name = "Find the Ingredients"
 script = ExtResource("2_te1he")
 clock_id = "main_ingredient_clock"
 description = "You should probably find all those ingredients!"

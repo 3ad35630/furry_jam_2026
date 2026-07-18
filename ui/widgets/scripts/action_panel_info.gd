@@ -6,9 +6,10 @@ class_name ActionPanelInfo
 @export var description_label : Label
 
 func update(action : Action):
-	name_label.text = action.resource_name
-	if action is SkillAction:
-		skill_label.text = Enums.Skills.keys()[action.skill].to_lower()
-	elif action is ItemAction:
-		skill_label.text = 'item'
-	description_label.text = action.description
+	if action:
+		name_label.text = action.resource_name
+		if action is SkillAction:
+			skill_label.text = Enums.Skills.keys()[action.skill].to_lower()
+		elif action is ItemAction:
+			skill_label.text = 'item'
+		description_label.text = action.description

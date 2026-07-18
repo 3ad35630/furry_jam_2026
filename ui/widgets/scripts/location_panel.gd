@@ -1,65 +1,79 @@
-extends PanelContainer
+extends Control
 
-## number of non-clocks at the start of the container
+var action_widgets : Array[ActionPanel]
+var clock_widgets : Array[ClockWidget]
+var used_action_widgets : Array[ActionPanel]
+var used_clock_widgets : Array[ClockWidget]
 
-@export var infoButton : Button
-@export var clockButton : Button
-@export var infoContainer : Control
-@export var clockContainer : Control
-@export var clockList : VBoxContainer
-@export var infoLabel : Label
+var visible_actions :
+	get:
+		var result = []
+		for widget in used_action_widgets:
+			result.append(widget)
+		return result
 
+var visible_clocks :
+	get:
+		var result = []
+		for widget in used_clock_widgets:
+			result.append(widget)
+		return result
 
 func _ready() -> void:
-	infoButton.toggled.connect(_show_info)
-	clockButton.toggled.connect(_show_clocks)
 	Modes.gameplay_mode_changed.connect(_on_mode_changed)
-
-
-func _show_info(state : bool = true) -> void:
-	infoContainer.visible = state
-	infoButton.button_pressed = state
-
-
-func _show_clocks(state : bool = true) -> void:
-	clockContainer.visible = state
-	clockButton.button_pressed = state
-
+	for action in Modes.current_location.actions:
+		action.action_done.connect(update_display)
+	for clock in Modes.current_location.clocks:
+		clock.completed.connect(update_display)
+	for child in get_children():
+		if child is ActionPanel:
+			action_widgets.append(child)
+		if child is ClockWidget:
+			clock_widgets.append(child)
+		child.hide()
+	update_display()
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:
-	_show_clocks(true)
-	_show_info(false)
+	if mode != Enums.GameplayMode.LOCATION:
+		queue_free()
+
+func next_widget(all, used):
+	for widget in all:
+		if not widget in used:
+			return widget
+
+func update_display() -> void:
+	update_actions()
+	update_clocks()
 	
-	# get relevant clocks and set location-dependent data
-	var clocks : Array[Clock] = []
-	match(mode):
-		Enums.GameplayMode.LOCATION:
-			infoLabel.text = Modes.current_location.description
-			clocks = Modes.current_location.accessible_clocks
-		Enums.GameplayMode.MAP:
-			# TODO: put this text somewhere sensible
-			infoLabel.text = 'Objective: You gotta go get those ingredients and bring them back to Mme. Oolong, critters!'
-			clocks = Locations.accessible_clocks
+func update_actions() -> void:
+	var actions = Modes.current_location.accessible_actions
+	for panel in action_widgets: # have we lost an action?
+		if not panel.action in actions:
+			panel.action = null
+			used_action_widgets.remove_at(used_action_widgets.find(panel))
+			panel.hide()
+	var va = visible_actions
+	for action in actions:
+		if not action in va:
+			var next_available = next_widget(action_widgets, used_action_widgets)
+			assert(next_available != null)
+			used_action_widgets.append(next_available)
+			next_available.action = action
+			next_available.show()
 	
-	if clocks.is_empty():
-		#_show_clocks(false)
-		clockButton.disabled = true
-	else:
-		clockButton.disabled = false
-		
-		# add more widgets if necessary
-		var delta = clocks.size() - clockList.get_child_count()
-		if delta > 0:
-			var template = clockList.get_child(0)
-			for i in range(delta):
-				var newWidget = template.duplicate()
-				clockList.add_child(newWidget)
-	
-		# update widgets
-		for i in range(clockList.get_child_count()):
-			var widget = clockList.get_child(i)
-			if i < clocks.size():
-				widget.show()
-				widget.clock = clocks[i]
-			else:
-				widget.hide()
+func update_clocks() -> void:
+	var clocks = Modes.current_location.accessible_clocks
+	for panel in clock_widgets: # have we lost an action?
+		if not panel.clock in clocks:
+			panel.clock = null
+			used_clock_widgets.remove_at(used_clock_widgets.find(panel))
+			panel.hide()
+	var vc = visible_clocks
+	for clock in clocks:
+		if not clock in vc:
+			var next_available = next_widget(clock_widgets, used_clock_widgets)
+			assert(next_available != null)
+			used_clock_widgets.append(next_available)
+			next_available.clock = clock
+			next_available.show()

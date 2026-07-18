@@ -39,6 +39,7 @@ layout_mode = 2
 color = Color(0.446777, 0.44677705, 0.44677705, 1)
 
 [node name="Rewards" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2011396892]
+visible = false
 layout_mode = 2
 
 [node name="RewardCard" parent="PanelContainer/MarginContainer/VBoxContainer/Rewards" unique_id=1464444904 instance=ExtResource("7_3ey2a")]

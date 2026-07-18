@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ckymjbamevrha"]
+
+[ext_resource type="Script" uid="uid://dvxpy50cy71rh" path="res://ui/widgets/scripts/location_panel.gd" id="1_fgqo8"]
+[ext_resource type="PackedScene" uid="uid://34rc83qfboyn" path="res://ui/widgets/scenes/action_panel.tscn" id="2_oww7b"]
+[ext_resource type="PackedScene" uid="uid://bvy06nv17ronb" path="res://ui/widgets/scenes/clock_widget.tscn" id="3_n57jq"]
+
+[node name="DefaultLocationDisplay" type="Control" unique_id=962371701]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgqo8")
+
+[node name="ActionPanel" parent="." unique_id=1499358185 instance=ExtResource("2_oww7b")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 204.0
+offset_right = 381.0
+offset_bottom = 356.0
+
+[node name="ActionPanel2" parent="." unique_id=1077741519 instance=ExtResource("2_oww7b")]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 27.0
+offset_right = 827.0
+offset_bottom = 179.0
+
+[node name="ActionPanel3" parent="." unique_id=2076365155 instance=ExtResource("2_oww7b")]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 297.0
+offset_right = 1055.0
+offset_bottom = 449.0
+
+[node name="ClockWidget" parent="." unique_id=1818651294 instance=ExtResource("3_n57jq")]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 466.0
+offset_right = 492.0
+offset_bottom = 522.0
+
+[node name="ClockWidget2" parent="." unique_id=1782228650 instance=ExtResource("3_n57jq")]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 566.0
+offset_right = 726.0
+offset_bottom = 622.0
+
+[node name="ClockWidget3" parent="." unique_id=699471915 instance=ExtResource("3_n57jq")]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 488.0
+offset_right = 1050.0
+offset_bottom = 544.0

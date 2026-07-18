@@ -19,6 +19,7 @@ var action : Action :
 		return _action
 var active : bool = false
 var actionIndex : int = 0
+var position_index : int = -1
 
 const cardKeys : Array[Enums.EffectClasses] = [
 	Enums.EffectClasses.POSITIVE,

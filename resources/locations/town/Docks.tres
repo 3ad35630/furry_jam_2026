@@ -105,6 +105,7 @@ script = ExtResource("8_4urkh")
 item_type = 1
 result = SubResource("Resource_hhmcg")
 action_clock_id = "learning_to_fish_the_ribbon"
+access_test = SubResource("Resource_72w5p")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_8mvnj"]

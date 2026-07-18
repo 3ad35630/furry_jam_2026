@@ -14,6 +14,8 @@ class_name ClockWidget
 @export var segment_container : HBoxContainer
 @export var infoPanel : Control
 
+var position_index = -1
+
 var _clock : Clock
 var clock : Clock :
 	set(val) :

@@ -22,7 +22,6 @@ func change_mode(mode : Enums.GameplayMode) -> void:
 [sub_resource type="GDScript" id="GDScript_g746w"]
 script/source = "extends ScrollContainer
 
-
 @export var button_control : Control
 @export var line_container : VBoxContainer
 @export var choice_container : VBoxContainer
