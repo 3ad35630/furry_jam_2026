@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:
 	visible = mode != Enums.GameplayMode.MAINMENU
+	$\"MoonLakeUltra\".play()
 
 
 func _on_location_button_pressed() -> void:
@@ -258,7 +259,6 @@ script = SubResource("GDScript_vimbc")
 [node name="MoonLakeUltra" type="AudioStreamPlayer" parent="." unique_id=144380484]
 stream = ExtResource("21_3kxh1")
 volume_db = -12.0
-autoplay = true
 playback_type = 1
 parameters/looping = true
 
