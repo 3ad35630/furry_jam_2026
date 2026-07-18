@@ -494,26 +494,26 @@ offset_right = 1148.0
 anchors_preset = 0
 script = ExtResource("24_a4q2h")
 
-[node name="ActionPanel" parent="ActionPanelManager" unique_id=2049888376 instance=ExtResource("22_a4q2h")]
+[node name="ActionPanel" parent="ActionPanelManager" unique_id=1499358185 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
-offset_left = 888.0
-offset_top = 88.0
-offset_right = 1144.0
-offset_bottom = 360.0
+offset_left = 376.0
+offset_top = 40.0
+offset_right = 712.0
+offset_bottom = 192.0
 
-[node name="ActionPanel2" parent="ActionPanelManager" unique_id=1316076641 instance=ExtResource("22_a4q2h")]
+[node name="ActionPanel2" parent="ActionPanelManager" unique_id=1528752734 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
-offset_left = 624.0
-offset_top = 88.0
-offset_right = 880.0
-offset_bottom = 360.0
+offset_left = 712.0
+offset_top = 200.0
+offset_right = 1048.0
+offset_bottom = 352.0
 
-[node name="ActionPanel3" parent="ActionPanelManager" unique_id=1044755012 instance=ExtResource("22_a4q2h")]
+[node name="ActionPanel3" parent="ActionPanelManager" unique_id=502430552 instance=ExtResource("22_a4q2h")]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 88.0
-offset_right = 616.0
-offset_bottom = 360.0
+offset_left = 216.0
+offset_top = 384.0
+offset_right = 552.0
+offset_bottom = 536.0
 
 [connection signal="pressed" from="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" to="LegacyUI/VBoxContainer/ModeContainer/LocationDisplay/ReturnToMap" method="_on_pressed"]
 [connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]

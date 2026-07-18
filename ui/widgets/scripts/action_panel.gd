@@ -5,10 +5,10 @@ class_name ActionPanel
 ## gives access to all Actions in a Location using TAB
 @export var noManager : bool = false
 
-@onready var infoPanel : ActionPanelInfo = $ActionPanelInfo
+@onready var infoPanel : ActionPanelInfo = $PanelContainer/MarginContainer/VBoxContainer/ActionPanelInfo
 @onready var skillPanel : ActionPanelSkill = $ActionPanelSkill
 @onready var itemPanel : ActionPanelItem = $ActionPanelItem
-@onready var rewards : VBoxContainer = $Rewards
+@onready var rewards : VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/Rewards
 
 var _action : Action
 var action : Action :

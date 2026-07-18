@@ -8,6 +8,7 @@ class_name SkillAction
 @export var neutral : ActionEffect
 @export var negative : ActionEffect
 
+
 func get_output_type(roll_data) -> Enums.DieActionOutcomeTypes:
 	var skill_value = roll_data['character'].get_skill(skill) + roll_data['die_value']
 	if skill_value > target_number:	
@@ -16,30 +17,46 @@ func get_output_type(roll_data) -> Enums.DieActionOutcomeTypes:
 		return Enums.DieActionOutcomeTypes.NEUTRAL
 	return Enums.DieActionOutcomeTypes.BAD
 
-func do_action(roll_data):
-	assert(roll_data is Dictionary)
-	var output = get_output_type(roll_data)
-	var result_roll = randf()
-	match output: # this is probably going to be tweaked
-		Enums.DieActionOutcomeTypes.GOOD:
-			if result_roll >= 0.5:
-				do_effect(positive)
-			else:
-				do_effect(neutral)
-		Enums.DieActionOutcomeTypes.NEUTRAL:
-			if result_roll >= 0.75:
-				do_effect(positive)
-			elif result_roll >= 0.25:
-				do_effect(neutral)
-			else:
-				do_effect(negative)
-		Enums.DieActionOutcomeTypes.BAD:
-			if result_roll <= 0.75:
-				do_effect(negative)
-			else:
-				do_effect(neutral)
-	super(roll_data)
 
 func do_effect(effect):
 	if effect:
 		effect.do()
+
+
+func do_action(roll_data):
+	assert(roll_data is Dictionary)
+	var probs = get_outcome_probabilities(roll_data)
+	var result_roll = randf()
+	if result_roll < probs[Enums.EffectClasses.POSITIVE]:
+		do_effect(positive)
+	elif result_roll < probs[Enums.EffectClasses.POSITIVE] + probs[Enums.EffectClasses.NEUTRAL]:
+		do_effect(neutral)
+	else:
+		do_effect(negative)
+	super(roll_data)
+
+
+## get probabilities of each outcome for each dice roll to communicate to player
+## NOTE: Can probably merge EffectClasses & DieActionOutcomeTypes ... former has one extra value
+##    used EffectClasses here to avoid confusion with meaning of DieActionOutcomeTypes as shown above
+func get_outcome_probabilities(rollData : Dictionary) -> Dictionary[Enums.EffectClasses,float]:
+	var outcomes : Dictionary[Enums.EffectClasses,float] = {
+		Enums.EffectClasses.POSITIVE : 0,
+		Enums.EffectClasses.NEUTRAL : 0,
+		Enums.EffectClasses.NEGATIVE : 0,
+	}
+	
+	var output = get_output_type(rollData)
+	match(output):
+		Enums.DieActionOutcomeTypes.GOOD:
+			outcomes[Enums.EffectClasses.POSITIVE] = 0.5
+			outcomes[Enums.EffectClasses.NEGATIVE] = 0.5
+		Enums.DieActionOutcomeTypes.NEUTRAL:
+			outcomes[Enums.EffectClasses.POSITIVE] = 0.25
+			outcomes[Enums.EffectClasses.NEUTRAL] = 0.5
+			outcomes[Enums.EffectClasses.NEGATIVE] = 0.25
+		Enums.DieActionOutcomeTypes.BAD:
+			outcomes[Enums.EffectClasses.NEUTRAL] = 0.25
+			outcomes[Enums.EffectClasses.NEGATIVE] = 0.75
+	
+	return outcomes

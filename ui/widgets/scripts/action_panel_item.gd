@@ -5,8 +5,6 @@ class_name ActionPanelItem
 @onready var itemLabel : Label = $ItemLabel
 @onready var itemDisplay : ItemDisplay = $ItemDisplay
 @onready var button : Button = $Button
-@onready var neededLabel : Label = $PanelContainer/MarginContainer/CountLabels/Needed
-@onready var inventoryLabel : Label = $PanelContainer/MarginContainer/CountLabels/Inventory
 @onready var sound : AudioStreamPlayer = $dicerolled
 
 
@@ -21,8 +19,7 @@ func update(a : ItemAction):
 	action = a
 	itemDisplay.update(a.item_type)
 	itemLabel.text = _format_item_label(action.item_type)
-	neededLabel.text = str(action.required_number)
-	inventoryLabel.text = str(Inventory.count(action.item_type))
+	itemDisplay.set_text(str(Inventory.count(action.item_type))+'/'+str(action.required_number))
 	button.disabled = not a.can_afford_action()
 
 
