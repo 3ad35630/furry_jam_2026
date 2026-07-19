@@ -22,18 +22,8 @@ func change_mode(mode : Enums.GameplayMode) -> void:
 [sub_resource type="GDScript" id="GDScript_g746w"]
 script/source = "extends ScrollContainer
 
-@export var button_control : Control
-@export var line_container : VBoxContainer
-@export var choice_container : VBoxContainer
-
 func _ready() -> void:
-	get_window().size_changed.connect(update_size)
 	NarrativeSystem.continued.connect(scroll_to_end)
-	call_deferred(\"update_size\")
-
-func update_size() -> void: 
-	var button_y = button_control.size.y
-	custom_minimum_size = Vector2(0.0, get_window().size.y - button_y)
 
 func scroll_to_end(_text, _tags) -> void:
 	scroll_vertical = int(get_v_scroll_bar().max_value)
@@ -119,32 +109,40 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="NarrativeContainer" type="ScrollContainer" parent="NarrativeBox" unique_id=979716617 node_paths=PackedStringArray("button_control", "line_container")]
+[node name="NarrativeContainer" type="ScrollContainer" parent="NarrativeBox" unique_id=979716617]
 custom_minimum_size = Vector2(0, 560.6)
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_vertical = 3
 script = SubResource("GDScript_g746w")
-button_control = NodePath("../ContinueButton_Margins")
-line_container = NodePath("NarrativeLines_Margins/VBoxContainer/NarrativeLines")
 
-[node name="NarrativeLines_Margins" type="MarginContainer" parent="NarrativeBox/NarrativeContainer" unique_id=2050756723]
+[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer" unique_id=1163880697]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=1922244790]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NarrativeLines_Margins" type="MarginContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=2050756723]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins" unique_id=1462386985]
+[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins" unique_id=1462386985]
 layout_mode = 2
 
-[node name="NarrativeLines" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
+[node name="NarrativeLines" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 script = SubResource("GDScript_lmn2s")
 line_widget = ExtResource("1_hu3pf")
 
-[node name="ChoiceContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
+[node name="ChoiceContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
 layout_mode = 2
 script = SubResource("GDScript_s3n1p")
 choice_widget = ExtResource("2_rnsc6")
