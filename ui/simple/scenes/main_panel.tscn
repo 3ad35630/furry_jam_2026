@@ -209,6 +209,7 @@ script = SubResource("GDScript_vimbc")
 [node name="MoonLakeUltra" type="AudioStreamPlayer" parent="." unique_id=144380484]
 stream = ExtResource("21_3kxh1")
 volume_db = -12.0
+bus = &"BGM"
 playback_type = 1
 parameters/looping = true
 
@@ -337,6 +338,7 @@ text = "End Hour"
 
 [node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/Button" unique_id=2123176034]
 stream = ExtResource("15_rd64i")
+bus = &"SFX"
 
 [node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=1747784301 node_paths=PackedStringArray("player", "button", "sound")]
 layout_mode = 2
