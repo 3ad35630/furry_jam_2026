@@ -165,11 +165,20 @@ func _on_dice_slot_data_changed(data: Variant) -> void:
 [sub_resource type="GDScript" id="GDScript_bkapc"]
 script/source = "extends CenterContainer
 
+var action_is_skilled = false
+
 func _on_die_display_data_changed(data: Variant) -> void:
-	if data:
+	if data and action_is_skilled:
 		show()
 	else:
 		hide()
+
+
+func _on_action_panel_action_set(action: Action) -> void:
+	action_is_skilled = false
+	if action is SkillAction:
+		action_is_skilled = action.skill != Enums.Skills.UNDEFINED
+		
 "
 
 [sub_resource type="GDScript" id="GDScript_f8umy"]
@@ -189,16 +198,31 @@ func _on_die_display_data_changed(data: Variant) -> void:
 [sub_resource type="GDScript" id="GDScript_3ey2a"]
 script/source = "extends Label
 
-func _on_die_display_data_changed(data: Variant) -> void:
-	if data:
-		var bonus = data['character'].get_skill(owner.action.skill)
-		if bonus > 0:
-			text = 'Bonus: +'+str(bonus)
+var is_skill_action = false
+var action_is_skilled = false
+
+func _on_dice_slot_data_changed(data: Variant) -> void:
+	if is_skill_action and action_is_skilled:
+		if data:
+			var bonus = data['character'].get_skill(owner.action.skill)
+			if bonus > 0:
+				text = 'Bonus: +'+str(bonus)
+			else:
+				text = 'Bonus: '+str(bonus)
+			visible = bonus != 0
 		else:
-			text = 'Bonus: '+str(bonus)
-		visible = bonus != 0
+			visible = false
 	else:
 		visible = false
+
+
+func _on_action_panel_action_set(action: Action) -> void:
+	is_skill_action = false
+	action_is_skilled = false
+	if action:
+		if action is SkillAction:
+			is_skill_action = true
+			action_is_skilled = action.skill != Enums.Skills.UNDEFINED
 "
 
 [sub_resource type="GDScript" id="GDScript_jn2pm"]
@@ -232,37 +256,88 @@ func _on_chance_labels_probability_changed(_pos: float, _neu: float, neg: float)
 		hide()
 "
 
+[sub_resource type="GDScript" id="GDScript_ix5sq"]
+script/source = "extends PanelContainer
+
+@export var timer : Timer
+var stored_action : Action
+
+func _on_action_panel_action_set(action: Action) -> void:
+	if stored_action:
+		stored_action.action_done.disconnect(show_results)
+	if action:
+		action.action_done.connect(show_results)
+	stored_action = action
+
+func show_results() -> void:
+	show()
+	timer.start()
+
+func _on_timer_timeout() -> void:
+	hide()
+"
+
+[sub_resource type="GDScript" id="GDScript_qgrgy"]
+script/source = "extends VBoxContainer
+
+var stored_action : Action
+
+func _on_action_panel_action_set(action: Action) -> void:
+	stored_action = action
+	if action:
+		action.action_done.connect(show_results)
+	
+func show_results():
+	for child in get_children():
+		child.queue_free()
+	if stored_action:
+		for result_string in stored_action.result_text:
+			var new_label = Label.new()
+			new_label.text = result_string
+			new_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+			add_child(new_label)
+
+
+func _on_hide_results_timeout() -> void:
+	for child in get_children():
+		child.queue_free()
+"
+
 [node name="ActionPanel" type="Panel" unique_id=1499358185]
 custom_minimum_size = Vector2(0.935, 0)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_fu8qa")
 script = ExtResource("1_hb8ws")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=51340490]
-custom_minimum_size = Vector2(520, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1064117575]
 layout_mode = 0
-offset_right = 520.0
-offset_bottom = 167.0
+offset_right = 40.0
+offset_bottom = 40.0
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1434978798]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=51340490]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1434978798]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
-[node name="MainMargins" type="MarginContainer" parent="HBoxContainer/PanelContainer" unique_id=818040509]
+[node name="MainMargins" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=818040509]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins" unique_id=38663182]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins" unique_id=38663182]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1874168882]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1874168882]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer" unique_id=731321564]
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer" unique_id=731321564]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -271,7 +346,7 @@ text = "Action Name"
 autowrap_mode = 2
 script = SubResource("GDScript_72w5p")
 
-[node name="SkillLabel" type="Label" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer" unique_id=1175735808]
+[node name="SkillLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer" unique_id=1175735808]
 modulate = Color(0.6662731, 0.5532349, 1, 1)
 layout_mode = 2
 size_flags_vertical = 0
@@ -279,15 +354,15 @@ text = "skill"
 horizontal_alignment = 2
 script = SubResource("GDScript_wsoa6")
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1020002705]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1020002705]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 color = Color(0.446777, 0.44677705, 0.44677705, 1)
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1144249826]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=1144249826]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2" unique_id=178581097]
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2" unique_id=178581097]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -297,23 +372,23 @@ label_settings = SubResource("LabelSettings_3xd07")
 autowrap_mode = 2
 script = SubResource("GDScript_c125g")
 
-[node name="Container" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2" unique_id=844394625 node_paths=PackedStringArray("skill_display", "item_display")]
+[node name="Container" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2" unique_id=844394625 node_paths=PackedStringArray("skill_display", "item_display")]
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
 script = SubResource("GDScript_ivlvs")
 skill_display = NodePath("DiceSlot")
 item_display = NodePath("VBoxContainer")
 
-[node name="DiceSlot" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" unique_id=173719601 instance=ExtResource("3_3ey2a")]
+[node name="DiceSlot" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" unique_id=173719601 instance=ExtResource("3_3ey2a")]
 layout_mode = 2
 
-[node name="DieReturner" type="Node" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" unique_id=849349850]
+[node name="DieReturner" type="Node" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" unique_id=849349850]
 script = SubResource("GDScript_ntd7w")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" unique_id=761615765]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" unique_id=761615765]
 layout_mode = 2
 
-[node name="ItemDisplay" type="TextureRect" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer" unique_id=1113446443]
+[node name="ItemDisplay" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer" unique_id=1113446443]
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 texture = ExtResource("12_ntgim")
@@ -332,83 +407,112 @@ type_to_texture = Dictionary[int, Texture]({
 9: ExtResource("13_riq6c")
 })
 
-[node name="ItemLabel" type="Label" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer" unique_id=1031309086]
+[node name="ItemLabel" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer" unique_id=1031309086]
 layout_mode = 2
 text = "2 / 6"
 horizontal_alignment = 1
 script = SubResource("GDScript_sqpgg")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=898897116]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer" unique_id=898897116]
 layout_mode = 2
 
-[node name="ActionButton" type="Button" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3" unique_id=657129999 node_paths=PackedStringArray("sound")]
+[node name="ActionButton" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3" unique_id=657129999 node_paths=PackedStringArray("sound")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "START"
 script = SubResource("GDScript_16uew")
 sound = NodePath("dicerolled")
 
-[node name="dicerolled" type="AudioStreamPlayer" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" unique_id=1684815874]
+[node name="dicerolled" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" unique_id=1684815874]
 stream = ExtResource("4_f8umy")
 
-[node name="ProbabilityDisplay" type="CenterContainer" parent="HBoxContainer" unique_id=769885379]
+[node name="ProbabilityDisplay" type="CenterContainer" parent="VBoxContainer/HBoxContainer" unique_id=769885379]
 visible = false
 layout_mode = 2
 script = SubResource("GDScript_bkapc")
 
-[node name="Panel" type="PanelContainer" parent="HBoxContainer/ProbabilityDisplay" unique_id=349642063]
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay" unique_id=349642063]
 propagate_maximum_size = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ProbabilityDisplay/Panel" unique_id=1875231406]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel" unique_id=1875231406]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ChanceLabels" type="VBoxContainer" parent="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer" unique_id=263916135]
+[node name="ChanceLabels" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer" unique_id=263916135]
 layout_mode = 2
 size_flags_horizontal = 0
 script = SubResource("GDScript_f8umy")
 
-[node name="Bonus" type="Label" parent="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=2053951560]
+[node name="Bonus" type="Label" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=2053951560]
 modulate = Color(0.6662731, 0.5532349, 1, 1)
 layout_mode = 2
 text = "Bonus: +10"
 script = SubResource("GDScript_3ey2a")
 
-[node name="Pos" type="Label" parent="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1807931965]
+[node name="Pos" type="Label" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1807931965]
 modulate = Color(0.4267911, 0.74041706, 0, 1)
 layout_mode = 2
 text = "Pos: 100%"
 script = SubResource("GDScript_jn2pm")
 
-[node name="Neu" type="Label" parent="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1811582797]
+[node name="Neu" type="Label" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1811582797]
 modulate = Color(0.9227854, 0.53208196, 1.1551381e-06, 1)
 layout_mode = 2
 text = "Neu: 100%"
 script = SubResource("GDScript_g746w")
 
-[node name="Neg" type="Label" parent="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1909366530]
+[node name="Neg" type="Label" parent="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" unique_id=1909366530]
 modulate = Color(0.912847, 0.21179098, 0.4351836, 1)
 layout_mode = 2
 text = "Neg: 100%"
 script = SubResource("GDScript_s3n1p")
 
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer/NameLabel" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer/SkillLabel" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/DescriptionLabel" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemDisplay" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemLabel" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_action_panel_action_set"]
-[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_dice_slot_data_changed"]
-[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_dice_slot_data_changed"]
-[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/ProbabilityDisplay" method="_on_die_display_data_changed"]
-[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" method="_on_die_display_data_changed"]
-[connection signal="pressed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_pressed"]
-[connection signal="probability_changed" from="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Pos" method="_on_chance_labels_probability_changed"]
-[connection signal="probability_changed" from="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Neu" method="_on_chance_labels_probability_changed"]
-[connection signal="probability_changed" from="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Neg" method="_on_chance_labels_probability_changed"]
+[node name="ResultsDisplay" type="PanelContainer" parent="VBoxContainer" unique_id=759382967 node_paths=PackedStringArray("timer")]
+visible = false
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_vertical = 3
+script = SubResource("GDScript_ix5sq")
+timer = NodePath("HideResults")
+
+[node name="HideResults" type="Timer" parent="VBoxContainer/ResultsDisplay" unique_id=1167803677]
+wait_time = 2.0
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ResultsDisplay" unique_id=1424180886]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+
+[node name="Results" type="VBoxContainer" parent="VBoxContainer/ResultsDisplay/MarginContainer" unique_id=2091451136]
+custom_maximum_size = Vector2(400, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+script = SubResource("GDScript_qgrgy")
+
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer/NameLabel" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer/SkillLabel" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/DescriptionLabel" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemDisplay" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemLabel" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/ProbabilityDisplay" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Bonus" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/ResultsDisplay" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="VBoxContainer/ResultsDisplay/MarginContainer/Results" method="_on_action_panel_action_set"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_dice_slot_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_dice_slot_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="VBoxContainer/HBoxContainer/ProbabilityDisplay" method="_on_die_display_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" method="_on_die_display_data_changed"]
+[connection signal="data_changed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Bonus" method="_on_dice_slot_data_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" to="VBoxContainer/HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_pressed"]
+[connection signal="probability_changed" from="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Pos" method="_on_chance_labels_probability_changed"]
+[connection signal="probability_changed" from="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Neu" method="_on_chance_labels_probability_changed"]
+[connection signal="probability_changed" from="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="VBoxContainer/HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Neg" method="_on_chance_labels_probability_changed"]
+[connection signal="timeout" from="VBoxContainer/ResultsDisplay/HideResults" to="VBoxContainer/ResultsDisplay" method="_on_timer_timeout"]
+[connection signal="timeout" from="VBoxContainer/ResultsDisplay/HideResults" to="VBoxContainer/ResultsDisplay/MarginContainer/Results" method="_on_hide_results_timeout"]

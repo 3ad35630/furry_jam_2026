@@ -23,12 +23,12 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	return data
 
 
-func _on_drag_started(display: Variant, data: Variant) -> void:
+func _on_drag_started(_display: Variant, _in_data: Variant) -> void:
 	if hide_on_drag:
 		hide()
 
 
-func _on_drag_ended(display: DieDisplay, data: Dictionary, success: bool) -> void:
+func _on_drag_ended(_display: DieDisplay, _in_data: Dictionary, success: bool) -> void:
 	if success:
 		if remove_if_successfully_dragged:
 			data = {}
