@@ -6,25 +6,25 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uylq5"]
 
-[node name="DiceSlot" type="PanelContainer" unique_id=173719601]
+[node name="DiceSlot" type="PanelContainer" unique_id=173719601 node_paths=PackedStringArray("display")]
+custom_minimum_size = Vector2(55, 55)
 offset_right = 72.0
 offset_bottom = 72.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uylq5")
 script = ExtResource("1_toclk")
+display = NodePath("CenterContainer/DieDisplay")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1956233453]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
 
 [node name="ColorRect" type="Panel" parent="MarginContainer" unique_id=2049066328]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_lev2n")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=857149944]
 layout_mode = 2
 
 [node name="DieDisplay" parent="CenterContainer" unique_id=1864076286 instance=ExtResource("2_v5mvh")]
+visible = false
 layout_mode = 2

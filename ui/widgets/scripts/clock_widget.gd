@@ -14,18 +14,22 @@ class_name ClockWidget
 @export var segment_container : HBoxContainer
 @export var infoPanel : Control
 
-var position_index = -1
-
-var _clock : Clock
+var _clock : String
 var clock : Clock :
 	set(val) :
 		if _clock:
-			_clock.ticked.disconnect(on_clock_ticked)
-		_clock = val
-		_clock.ticked.connect(on_clock_ticked)
-		update()
+			Locations.clocks[_clock].ticked.disconnect(on_clock_ticked)
+		if val:
+			_clock = val.clock_id
+			Locations.clocks[_clock].ticked.connect(on_clock_ticked)
+			update()
+		else:
+			_clock = ""
 	get :
-		return _clock
+		if _clock:
+			return Locations.clocks[_clock]
+		else:
+			return null
 
 var segment_displays : Array[PanelContainer]
 

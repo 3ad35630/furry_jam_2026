@@ -18,11 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://s1ynkl5sq7n1" path="res://ui/boxes/Screenshot 2026-07-14 165931.png" id="17_3kxh1"]
 [ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
-[ext_resource type="PackedScene" uid="uid://34rc83qfboyn" path="res://ui/widgets/scenes/action_panel.tscn" id="22_a4q2h"]
-[ext_resource type="PackedScene" uid="uid://65y728nmjlag" path="res://ui/widgets/scenes/location_panel.tscn" id="22_dvm1c"]
-[ext_resource type="Script" uid="uid://bl6qhr4ryvbuu" path="res://ui/widgets/scripts/widget_pool.gd" id="22_rtwym"]
 [ext_resource type="Script" uid="uid://dd6h7bqtik610" path="res://ui/widgets/scripts/action_panel_manager.gd" id="24_a4q2h"]
-[ext_resource type="PackedScene" uid="uid://bvy06nv17ronb" path="res://ui/widgets/scenes/clock_widget.tscn" id="24_dvm1c"]
 [ext_resource type="PackedScene" uid="uid://cntixcp24qe0k" path="res://ui/widgets/scenes/inventory.tscn" id="24_imvmo"]
 
 [sub_resource type="GDScript" id="GDScript_vimbc"]
@@ -199,14 +195,6 @@ visible = false
 layout_mode = 1
 offset_left = -500.0
 
-[node name="LocationPanel" parent="." unique_id=1116726895 instance=ExtResource("22_dvm1c")]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 296.0
-offset_bottom = 123.0
-
 [node name="Inventory" parent="." unique_id=1248200590 instance=ExtResource("24_imvmo")]
 layout_mode = 0
 offset_left = 720.0
@@ -215,14 +203,6 @@ offset_right = 1148.0
 [node name="PanelManager" type="Control" parent="." unique_id=265062037]
 anchors_preset = 0
 script = ExtResource("24_a4q2h")
-
-[node name="ActionPool" type="Node" parent="PanelManager" unique_id=1033966417]
-script = ExtResource("22_rtwym")
-widget_class = ExtResource("22_a4q2h")
-
-[node name="ClockPool" type="Node" parent="PanelManager" unique_id=755077820]
-script = ExtResource("22_rtwym")
-widget_class = ExtResource("24_dvm1c")
 
 [connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]
 [connection signal="pressed" from="NavButtons/Button3" to="." method="_on_button_pressed"]

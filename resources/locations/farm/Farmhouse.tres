@@ -107,6 +107,7 @@ target_number = 4
 skill = 3
 positive = SubResource("Resource_2mryd")
 neutral = SubResource("Resource_q2mwc")
+action_clock_id = "awaken_the_cows"
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_2mcle"]

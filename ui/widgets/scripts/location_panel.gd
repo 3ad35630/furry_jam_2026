@@ -9,14 +9,14 @@ var visible_actions :
 	get:
 		var result = []
 		for widget in used_action_widgets:
-			result.append(widget)
+			result.append(widget.action)
 		return result
 
 var visible_clocks :
 	get:
 		var result = []
 		for widget in used_clock_widgets:
-			result.append(widget)
+			result.append(widget.clock)
 		return result
 
 func _ready() -> void:
@@ -43,12 +43,13 @@ func next_widget(all, used):
 			return widget
 
 func update_display() -> void:
-	update_actions()
-	update_clocks()
+	if Modes.current_location:
+		update_actions()
+		update_clocks()
 	
 func update_actions() -> void:
 	var actions = Modes.current_location.accessible_actions
-	for panel in action_widgets: # have we lost an action?
+	for panel in used_action_widgets: # have we lost an action?
 		if not panel.action in actions:
 			panel.action = null
 			used_action_widgets.remove_at(used_action_widgets.find(panel))
@@ -63,14 +64,14 @@ func update_actions() -> void:
 			next_available.show()
 	
 func update_clocks() -> void:
-	var clocks = Modes.current_location.accessible_clocks
-	for panel in clock_widgets: # have we lost an action?
-		if not panel.clock in clocks:
+	var accessible_clocks = Modes.current_location.accessible_clocks
+	for panel in used_clock_widgets: # have we lost an action?
+		if not panel.clock in accessible_clocks:
 			panel.clock = null
 			used_clock_widgets.remove_at(used_clock_widgets.find(panel))
 			panel.hide()
 	var vc = visible_clocks
-	for clock in clocks:
+	for clock in accessible_clocks:
 		if not clock in vc:
 			var next_available = next_widget(clock_widgets, used_clock_widgets)
 			assert(next_available != null)

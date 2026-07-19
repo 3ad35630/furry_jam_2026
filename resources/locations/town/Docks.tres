@@ -117,6 +117,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 resource_name = "Learn to fish"
 script = ExtResource("6_0aqbr")
 clock_id = "learning_to_fish_the_ribbon"
+access_test = SubResource("Resource_fsmd6")
 max_segments = 8
 effect = SubResource("Resource_8mvnj")
 metadata/_custom_type_script = "uid://54wgke734i1m"

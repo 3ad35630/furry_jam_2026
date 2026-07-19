@@ -20,9 +20,24 @@ script = ExtResource("1_2pcgd")
 ink_path = "explore_docks"
 metadata/_custom_type_script = "uid://cxoadgbyfvuei"
 
+[sub_resource type="Resource" id="Resource_hh1f7"]
+script = ExtResource("5_dnujq")
+item_type = 3
+amount = 1
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_sudli"]
+script = ExtResource("5_dnujq")
+item_type = 3
+amount = 2
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
 [sub_resource type="Resource" id="Resource_goyih"]
 resource_name = "Chat with the locals"
 script = ExtResource("5_3pgym")
+skill = 3
+positive = SubResource("Resource_sudli")
+neutral = SubResource("Resource_hh1f7")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_cx67q"]

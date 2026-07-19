@@ -19,17 +19,7 @@ script = ExtResource("2_ya4x8")
 test = SubResource("Resource_paspp")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
 
-[sub_resource type="Resource" id="Resource_avmgi"]
-script = ExtResource("4_a48kk")
-path = "story_intro"
-metadata/_custom_type_script = "uid://b0frcg551aapm"
-
-[sub_resource type="Resource" id="Resource_xx0bf"]
-script = ExtResource("4_a48kk")
-path = "story_intro"
-metadata/_custom_type_script = "uid://b0frcg551aapm"
-
-[sub_resource type="Resource" id="Resource_lu4dx"]
+[sub_resource type="Resource" id="Resource_fd3s2"]
 script = ExtResource("4_a48kk")
 path = "story_intro"
 metadata/_custom_type_script = "uid://b0frcg551aapm"
@@ -37,9 +27,9 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_hnxtg"]
 resource_name = "Knock on the door!"
 script = ExtResource("3_jaxoa")
-positive = SubResource("Resource_lu4dx")
-neutral = SubResource("Resource_xx0bf")
-negative = SubResource("Resource_avmgi")
+positive = SubResource("Resource_fd3s2")
+neutral = SubResource("Resource_fd3s2")
+negative = SubResource("Resource_fd3s2")
 description = "Knock on the door, you're here to help!"
 access_test = SubResource("Resource_jkl28")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"

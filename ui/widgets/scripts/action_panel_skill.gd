@@ -3,7 +3,6 @@ class_name ActionPanelSkill
 
 signal skill_die_removed(data)
 
-@onready var target_number_label : Label = $TargetLabel
 @onready var dice_slot : DiceSlot = $DiceSlot
 @onready var button : Button = $Button
 @onready var sound : AudioStreamPlayer = $dicerolled
