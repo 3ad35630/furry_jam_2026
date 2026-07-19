@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://bp6xs7xodeenq" path="res://ui/widgets/scripts/action_panel.gd" id="1_hb8ws"]
 [ext_resource type="PackedScene" uid="uid://bu7iilhhjfa0m" path="res://ui/widgets/scenes/dice_slot.tscn" id="3_3ey2a"]
 [ext_resource type="AudioStream" uid="uid://dvtsdpvvkiquv" path="res://audio/ui_sfx/dice.ogg" id="4_f8umy"]
-[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="5_ej6s3"]
-[ext_resource type="Texture2D" uid="uid://bldxpo1cbu7xf" path="res://ui/icons/item_atlas/item_icon_money.tres" id="5_fjij5"]
-[ext_resource type="Texture2D" uid="uid://de1l3i3uwg4o7" path="res://ui/icons/item_atlas/item_icon_fish.tres" id="6_4hg1k"]
-[ext_resource type="Texture2D" uid="uid://lgg6cac8hj1u" path="res://ui/icons/item_atlas/item_icon_gossip.tres" id="7_5qgk5"]
-[ext_resource type="Texture2D" uid="uid://dsdkdrtg1bbn5" path="res://ui/icons/item_atlas/item_icon_milk.tres" id="8_761yd"]
-[ext_resource type="Texture2D" uid="uid://bm3q5mfyqjpqr" path="res://ui/icons/item_atlas/item_icon_tea.tres" id="9_emlje"]
-[ext_resource type="Texture2D" uid="uid://bxp01h25flbae" path="res://ui/icons/item_atlas/item_icon_cinnamon.tres" id="10_1l5mq"]
+[ext_resource type="Texture2D" uid="uid://wdjtoohrwn8t" path="res://ui/icons/circle_base.png" id="4_fjij5"]
+[ext_resource type="Texture2D" uid="uid://b4ybxto1vypim" path="res://ui/icons/Coin.png" id="5_4hg1k"]
+[ext_resource type="Texture2D" uid="uid://bku4vcbxj2u8m" path="res://ui/icons/Fish.png" id="6_5qgk5"]
+[ext_resource type="Texture2D" uid="uid://qebqgkkedy2s" path="res://ui/icons/Gossip.png" id="7_761yd"]
+[ext_resource type="Texture2D" uid="uid://28gic2p7fgci" path="res://ui/icons/Milk.png" id="8_emlje"]
+[ext_resource type="Texture2D" uid="uid://dkxyuv7dj01m1" path="res://ui/icons/Tea.png" id="9_1l5mq"]
+[ext_resource type="Texture2D" uid="uid://b2tjhv3hvur8e" path="res://ui/icons/Cinnamon.png" id="10_ntgim"]
+[ext_resource type="Texture2D" uid="uid://c622k76yb484i" path="res://ui/icons/Oil.png" id="11_fjskd"]
+[ext_resource type="Texture2D" uid="uid://d2qgs563w6awa" path="res://ui/icons/Blossoms.png" id="12_4ju74"]
 [ext_resource type="Texture2D" uid="uid://43he57s6mx58" path="res://ui/icons/item_atlas/item_icon_blossoms.tres" id="12_ntgim"]
-[ext_resource type="Texture2D" uid="uid://c3mbqc7bh1ng" path="res://ui/icons/item_atlas/item_icon_pumpkins_magic_stick.tres" id="12_y0eg1"]
-[ext_resource type="Texture2D" uid="uid://bkjhmnraxtigi" path="res://ui/icons/item_atlas/item_icon_undefined.tres" id="13_fjskd"]
+[ext_resource type="Texture2D" uid="uid://b4c1ka0ay5iv3" path="res://ui/icons/Stick.png" id="13_riq6c"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu8qa"]
 
@@ -90,16 +91,12 @@ func _on_action_panel_action_set(action: Action) -> void:
 
 [sub_resource type="GDScript" id="GDScript_riq6c"]
 script/source = "extends TextureRect
-@export var type_to_texture : Dictionary[Enums.ItemTypes, AtlasTexture]
+@export var type_to_texture : Dictionary[Enums.ItemTypes, Texture]
 
 func _on_action_panel_action_set(action: Action) -> void:
 	if action is ItemAction:
 		texture = type_to_texture[action.item_type]
 "
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ju74"]
-atlas = ExtResource("5_ej6s3")
-region = Rect2(48, 192, 48, 48)
 
 [sub_resource type="GDScript" id="GDScript_sqpgg"]
 script/source = "extends Label
@@ -323,16 +320,16 @@ texture = ExtResource("12_ntgim")
 expand_mode = 2
 script = SubResource("GDScript_riq6c")
 type_to_texture = Dictionary[int, AtlasTexture]({
-0: ExtResource("13_fjskd"),
-1: ExtResource("5_fjij5"),
-2: ExtResource("6_4hg1k"),
-3: ExtResource("7_5qgk5"),
-4: ExtResource("8_761yd"),
-5: ExtResource("9_emlje"),
-6: ExtResource("10_1l5mq"),
-7: SubResource("AtlasTexture_4ju74"),
-8: ExtResource("12_ntgim"),
-9: ExtResource("12_y0eg1")
+0: ExtResource("4_fjij5"),
+1: ExtResource("5_4hg1k"),
+2: ExtResource("6_5qgk5"),
+3: ExtResource("7_761yd"),
+4: ExtResource("8_emlje"),
+5: ExtResource("9_1l5mq"),
+6: ExtResource("10_ntgim"),
+7: ExtResource("11_fjskd"),
+8: ExtResource("12_4ju74"),
+9: ExtResource("13_riq6c")
 })
 
 [node name="ItemLabel" type="Label" parent="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer" unique_id=1031309086]

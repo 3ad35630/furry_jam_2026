@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bt613xfgvlc5d"]
 
-[ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
 [ext_resource type="Texture2D" uid="uid://dmld3w8yju7sj" path="res://ui/boxes/UI_Box.png" id="5_36tix"]
 [ext_resource type="Texture2D" uid="uid://ca6lte6hryk73" path="res://ui/character_profiles/ProfileTemp1.png" id="6_h5prc"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
+[ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="7_rd64i"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
 [ext_resource type="Resource" uid="uid://c2xj1g6inhls1" path="res://resources/characters/KittenWitch.tres" id="8_sjyj4"]
 [ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
@@ -289,7 +289,7 @@ expand_mode = 3
 [node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1442867779]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("8_hxpo2")
 
 [node name="KittyNecro" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=305704615]
@@ -303,7 +303,7 @@ expand_mode = 3
 [node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=2105353348]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("8_sjyj4")
 
 [node name="Serious" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1182856732]
@@ -317,7 +317,7 @@ expand_mode = 3
 [node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1355873595]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("10_h5prc")
 
 [node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1129817621]

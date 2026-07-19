@@ -1,55 +1,53 @@
 [gd_scene format=3 uid="uid://dyh4xp7i3arhh"]
 
-[ext_resource type="Script" uid="uid://bcc4w7utybeyx" path="res://ui/simple/scripts/draggable_die_display.gd" id="1_qiggk"]
-[ext_resource type="PackedScene" uid="uid://dfdth2aijxb2f" path="res://ui/simple/scenes/die_drag_display.tscn" id="1_wi8mw"]
-[ext_resource type="Texture2D" uid="uid://cqivw8uvbcm2l" path="res://ui/dice/Dice5.png" id="3_cnihe"]
+[ext_resource type="Script" uid="uid://dp7n5l5go01mt" path="res://ui/simple/scripts/die_display.gd" id="1_qiggk"]
+[ext_resource type="Texture2D" uid="uid://hiyut303qjn2" path="res://ui/dice/Die1.png" id="3_bydl0"]
+[ext_resource type="Texture2D" uid="uid://4ythfpxis1i6" path="res://ui/dice/Die2.png" id="4_12cr8"]
+[ext_resource type="Texture2D" uid="uid://b38jpby1yli2q" path="res://ui/dice/Die3.png" id="5_8xyva"]
+[ext_resource type="Texture2D" uid="uid://q5tov0q1sma7" path="res://ui/dice/Die4.png" id="6_2g5lc"]
+[ext_resource type="Texture2D" uid="uid://xm2n61jmx5eu" path="res://ui/dice/Die5.png" id="7_ms6y0"]
+[ext_resource type="Texture2D" uid="uid://baarrimv0ga86" path="res://ui/dice/Die6.png" id="8_prum2"]
 
-[sub_resource type="GDScript" id="GDScript_16uew"]
-script/source = "extends Node
+[sub_resource type="GDScript" id="GDScript_cnihe"]
+script/source = "extends ColorRect
 
-func _on_die_display_drag_ended(_display : SimpleDieDisplay, _data : Dictionary, success: bool) -> void:
-	if success:
-		get_parent().visible = false
+func _on_center_container_data_changed(data: Variant) -> void:
+	if not data.is_empty():
+		color = data['character'].color
 "
 
-[node name="DieDisplay" type="MarginContainer" unique_id=1864076286 node_paths=PackedStringArray("label", "color_rect", "icon")]
-custom_minimum_size = Vector2(55, 55)
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+[sub_resource type="GDScript" id="GDScript_g746w"]
+script/source = "extends TextureRect
+@export var icons : Array[Texture]
+
+func _on_center_container_data_changed(data: Variant) -> void:
+	if not data.is_empty():
+		texture = icons[int(data['die_value'])-1]
+"
+
+[node name="DieDisplay" type="CenterContainer" unique_id=1676174890]
+custom_minimum_size = Vector2(48, 48)
+custom_maximum_size = Vector2(48, 48)
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_qiggk")
-draggable = ExtResource("1_wi8mw")
-label = NodePath("Color/CenterContainer/DieValueLabel")
-color_rect = NodePath("Color")
-icon = NodePath("Color/CenterContainer/Sprite2D")
 
 [node name="Color" type="ColorRect" parent="." unique_id=1078944298]
+custom_minimum_size = Vector2(45, 45)
+custom_maximum_size = Vector2(45, 45)
 layout_mode = 2
 mouse_filter = 1
-color = Color(0.6523857, 0.20807877, 0.26839596, 1)
+color = Color(0.7323081, 0, 0.12070165, 1)
+script = SubResource("GDScript_cnihe")
 
-[node name="CenterContainer" type="CenterContainer" parent="Color" unique_id=399533060]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 47.0
-offset_bottom = 46.0
-
-[node name="DieValueLabel" type="Label" parent="Color/CenterContainer" unique_id=1998947084]
-visible = false
+[node name="DieTexture" type="TextureRect" parent="." unique_id=1125779719]
+custom_minimum_size = Vector2(48, 48)
+custom_maximum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "4"
+texture = ExtResource("3_bydl0")
+script = SubResource("GDScript_g746w")
+icons = Array[Texture]([ExtResource("3_bydl0"), ExtResource("4_12cr8"), ExtResource("5_8xyva"), ExtResource("6_2g5lc"), ExtResource("7_ms6y0"), ExtResource("8_prum2")])
 
-[node name="Sprite2D" type="Sprite2D" parent="Color/CenterContainer" unique_id=397147199]
-texture_filter = 1
-position = Vector2(19, 20.875)
-scale = Vector2(0.125, 0.124)
-texture = ExtResource("3_cnihe")
-hframes = 6
-
-[node name="HideWhenDragged" type="Node" parent="." unique_id=1206416336]
-script = SubResource("GDScript_16uew")
-
-[connection signal="drag_ended" from="." to="HideWhenDragged" method="_on_die_display_drag_ended"]
+[connection signal="data_changed" from="." to="Color" method="_on_center_container_data_changed"]
+[connection signal="data_changed" from="." to="DieTexture" method="_on_center_container_data_changed"]
+[connection signal="data_changed" from="." to="." method="_on_data_changed"]

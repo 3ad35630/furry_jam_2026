@@ -1,7 +1,7 @@
-extends SimpleDieDisplay
+extends DieDisplay
 		
 @export var draggable : PackedScene
-signal drag_ended(display : SimpleDieDisplay, data : Dictionary, success : bool)
+signal drag_ended(display : DieDisplay, data : Dictionary, success : bool)
 var is_dragging : bool = false
 
 func _notification(notification_type):

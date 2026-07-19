@@ -20,3 +20,6 @@ func roll_all_dice() -> void:
 	for character in Characters.characters:
 		character.roll_dice()
 	dice_rerolled.emit()
+
+
+# ui management stuff

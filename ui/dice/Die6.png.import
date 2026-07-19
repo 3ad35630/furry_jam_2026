@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://baarrimv0ga86"
-path="res://.godot/imported/Die6png.png-292033dfacb37ac0fb7bcd1e2de3efae.ctex"
+path="res://.godot/imported/Die6.png-3d1faf2c76725bc771c41685204a7d7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/dice/Die6png.png"
-dest_files=["res://.godot/imported/Die6png.png-292033dfacb37ac0fb7bcd1e2de3efae.ctex"]
+source_file="res://ui/dice/Die6.png"
+dest_files=["res://.godot/imported/Die6.png-3d1faf2c76725bc771c41685204a7d7e.ctex"]
 
 [params]
 
