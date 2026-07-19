@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
 [ext_resource type="Texture2D" uid="uid://dmld3w8yju7sj" path="res://ui/boxes/UI_Box.png" id="5_36tix"]
-[ext_resource type="PackedScene" uid="uid://drdeqhwwvm4s4" path="res://ui/simple/scenes/end_turn_widget.tscn" id="6_a4q2h"]
 [ext_resource type="Texture2D" uid="uid://ca6lte6hryk73" path="res://ui/character_profiles/ProfileTemp1.png" id="6_h5prc"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
@@ -11,12 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
 [ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/FlowerWitch.tres" id="10_h5prc"]
 [ext_resource type="Texture2D" uid="uid://daw8sd3hfg643" path="res://ui/character_profiles/ProfileTemp3.png" id="11_icdsa"]
-[ext_resource type="Texture2D" uid="uid://djlwlo0ubwce7" path="res://ui/boxes/Screenshot 2026-07-14 165944.png" id="14_iemfu"]
-[ext_resource type="AudioStream" uid="uid://bbill2uuieyse" path="res://audio/ui_sfx/location moon.ogg" id="14_s8cea"]
-[ext_resource type="Script" uid="uid://bydmhhunt2n6w" path="res://ui/simple/scripts/LocationButton.gd" id="15_c1mnc"]
-[ext_resource type="Texture2D" uid="uid://glvbgxw5utut" path="res://ui/boxes/Screenshot 2026-07-14 165937.png" id="16_s8cea"]
-[ext_resource type="Texture2D" uid="uid://s1ynkl5sq7n1" path="res://ui/boxes/Screenshot 2026-07-14 165931.png" id="17_3kxh1"]
-[ext_resource type="Texture2D" uid="uid://eylkjw4cwjqi" path="res://ui/boxes/Screenshot 2026-07-14 165925.png" id="18_rtwym"]
+[ext_resource type="Texture2D" uid="uid://dtgsewb8vm54h" path="res://ui/icons/Game-Jam-Paw.png" id="14_y3ayd"]
+[ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="15_rd64i"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
 [ext_resource type="Script" uid="uid://dd6h7bqtik610" path="res://ui/widgets/scripts/action_panel_manager.gd" id="24_a4q2h"]
 [ext_resource type="PackedScene" uid="uid://cntixcp24qe0k" path="res://ui/widgets/scenes/inventory.tscn" id="24_imvmo"]
@@ -49,20 +44,157 @@ func _on_location_button_pressed() -> void:
 	$\"Button SFX\".play()
 "
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
-texture = ExtResource("5_36tix")
-
-[sub_resource type="GDScript" id="GDScript_g746w"]
+[sub_resource type="GDScript" id="GDScript_16uew"]
 script/source = "extends Button
+
+func _ready() -> void:
+	Modes.gameplay_mode_changed.connect(mode_changed)
+	
+func mode_changed(new_mode : Enums.GameplayMode) -> void:
+	visible = new_mode == Enums.GameplayMode.LOCATION
 
 func _on_pressed() -> void:
 	Modes.exit_location()
-	$\"Ret\".play()
-	
 "
 
-[sub_resource type="Resource" id="Resource_imvmo"]
-metadata/__load_path__ = "res://resources/locations/TestLocation.tres"
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
+texture = ExtResource("5_36tix")
+
+[sub_resource type="Animation" id="Animation_36p3s"]
+resource_name = "Give"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndTurnWidget/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-85, 192), Vector2(-85, 11.85), Vector2(-85, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 192), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qjlpc"]
+resource_name = "Grab"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndTurnWidget/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-85, 192), Vector2(-85, 11.85), Vector2(-85, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_4nagh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndTurnWidget/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-84.55, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5cr83"]
+_data = {
+&"Give": SubResource("Animation_36p3s"),
+&"Grab": SubResource("Animation_qjlpc"),
+&"RESET": SubResource("Animation_4nagh")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36p3s"]
+
+[sub_resource type="GDScript" id="GDScript_y0vbl"]
+script/source = "extends Panel
+
+signal sceneTriggered()
+
+@export var player : AnimationPlayer
+@export var button : Button
+@export var sound : AudioStreamPlayer
+
+var sceneHasTriggered : bool = false
+
+
+func _ready() -> void:
+	Characters.all_dice_spent.connect(_on_all_dice_spent)
+	SkillDice.dice_rerolled.connect(_on_dice_rerolled)
+	button.pressed.connect(_on_pressed)
+
+
+func _on_pressed() -> void:
+	if not sceneHasTriggered:
+		var diceSpent = Characters.check_all_dice_spent()
+		if not diceSpent:
+			sceneTriggered.emit()
+			player.play(\"Grab\")
+			sceneHasTriggered = true
+			button.disabled = true
+			return
+	TurnSystem.end_round()
+	sound.play()
+
+
+func _on_all_dice_spent() -> void:
+	button.disabled = false
+	if sceneHasTriggered:
+		player.play(\"Give\")
+
+
+func _on_dice_rerolled() -> void:
+	player.play(\"RESET\") # TODO: have Dispatch return the button
+	if sceneHasTriggered:
+		button.disabled = true
+		player.play(\"Grab\")
+"
 
 [node name="MainPanel" type="Control" unique_id=89919495]
 layout_mode = 3
@@ -71,6 +203,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = SubResource("GDScript_vimbc")
 
 [node name="MoonLakeUltra" type="AudioStreamPlayer" parent="." unique_id=144380484]
@@ -79,131 +212,158 @@ volume_db = -12.0
 playback_type = 1
 parameters/looping = true
 
-[node name="CharacterBar" type="Panel" parent="." unique_id=171483873]
-layout_mode = 0
-offset_top = 552.0
-offset_right = 1008.0
-offset_bottom = 648.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=222441956]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="CharacterBar" unique_id=1931585888]
-layout_mode = 0
-offset_right = 888.0
-offset_bottom = 99.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2" unique_id=1661330205]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer" unique_id=303486276]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=855679851]
+layout_mode = 2
+
+[node name="ReturnToMap" type="Button" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer" unique_id=1015143152]
+custom_minimum_size = Vector2(158.495, 60)
+layout_mode = 2
+text = "Return to Map"
+script = SubResource("GDScript_16uew")
+
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1624826171]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 60.0
+mouse_filter = 2
+
+[node name="InventoryHBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1130000776]
+layout_mode = 2
+
+[node name="Inventory" parent="HBoxContainer2/VBoxContainer/HBox/InventoryHBox" unique_id=1248200590 instance=ExtResource("24_imvmo")]
+layout_mode = 2
+
+[node name="NarrativePanel" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1684202969 instance=ExtResource("4_y0vbl")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/VBoxContainer" unique_id=1931585888]
+custom_minimum_size = Vector2(65.805, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 60.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pb32r")
 
-[node name="BellWitch" type="HBoxContainer" parent="CharacterBar" unique_id=1891987525]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 26.0
-offset_right = 283.0
-offset_bottom = 77.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer" unique_id=554759375]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CharacterBar/BellWitch" unique_id=719448422]
+[node name="Control2" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer" unique_id=693149109]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="CharacterBar" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1109332299]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BellWitch" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1891987525]
+custom_minimum_size = Vector2(0, 72.345)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=719448422]
 layout_mode = 2
 texture = ExtResource("6_h5prc")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="CharacterBar/BellWitch" unique_id=1442867779]
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1442867779]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("8_hxpo2")
 
-[node name="KittyNecro" type="HBoxContainer" parent="CharacterBar" unique_id=305704615]
-layout_mode = 0
-offset_left = 302.0
-offset_top = 27.0
-offset_right = 536.0
-offset_bottom = 72.0
+[node name="KittyNecro" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=305704615]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CharacterBar/KittyNecro" unique_id=1974667155]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=1974667155]
 layout_mode = 2
 texture = ExtResource("9_css1y")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="CharacterBar/KittyNecro" unique_id=2105353348]
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=2105353348]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("8_sjyj4")
 
-[node name="Serious" type="HBoxContainer" parent="CharacterBar" unique_id=1182856732]
-layout_mode = 0
-offset_left = 581.0
-offset_top = 29.0
-offset_right = 815.0
-offset_bottom = 74.0
+[node name="Serious" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1182856732]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CharacterBar/Serious" unique_id=408914516]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=408914516]
 layout_mode = 2
 texture = ExtResource("11_icdsa")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="CharacterBar/Serious" unique_id=1355873595]
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1355873595]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("1_g6gw2")
 witch = ExtResource("10_h5prc")
 
-[node name="EndTurnWidget" parent="CharacterBar" unique_id=1747784301 instance=ExtResource("6_a4q2h")]
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1129817621]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="EndTurnButton" type="BoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=677169747]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=692552887]
+libraries/ = SubResource("AnimationLibrary_5cr83")
+
+[node name="Button" type="Button" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=744542445]
+layout_mode = 2
+offset_transform_enabled = true
+text = "End Hour"
+
+[node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/Button" unique_id=2123176034]
+stream = ExtResource("15_rd64i")
+
+[node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=1747784301 node_paths=PackedStringArray("player", "button", "sound")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_36p3s")
+script = SubResource("GDScript_y0vbl")
+player = NodePath("../AnimationPlayer")
+button = NodePath("../Button")
+sound = NodePath("../Button/Button SFX")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/EndTurnWidget" unique_id=261589541]
+custom_maximum_size = Vector2(75, 75)
 layout_mode = 0
-offset_left = 1024.0
-offset_right = 1151.9993
+offset_left = -84.55
+offset_top = 150.0
+offset_right = -9.550003
+offset_bottom = 225.0
+texture = ExtResource("14_y3ayd")
 
-[node name="NavButtons" type="GridContainer" parent="." unique_id=323151439]
-visible = false
-layout_mode = 0
-offset_left = 425.00003
-offset_top = 2.000001
-offset_right = 2281.0
-offset_bottom = 522.0
-scale = Vector2(0.17, 0.17)
-columns = 4
-
-[node name="ReturnToMap" type="Button" parent="NavButtons" unique_id=1531691174]
+[node name="Control3" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1883908575]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-icon = ExtResource("14_iemfu")
-script = SubResource("GDScript_g746w")
-
-[node name="LocationButton" type="Button" parent="NavButtons" unique_id=1263363124]
-layout_mode = 2
-text = "Woodland Landing Site"
-icon = ExtResource("18_rtwym")
-icon_alignment = 1
-vertical_icon_alignment = 0
-script = ExtResource("15_c1mnc")
-_location = SubResource("Resource_imvmo")
-metadata/_custom_type_script = "uid://bydmhhunt2n6w"
-
-[node name="Button3" type="Button" parent="NavButtons" unique_id=1205582336]
-layout_mode = 2
-icon = ExtResource("17_3kxh1")
-
-[node name="Button4" type="Button" parent="NavButtons" unique_id=1534490631]
-layout_mode = 2
-icon = ExtResource("16_s8cea")
-
-[node name="Swoosh" type="AudioStreamPlayer" parent="NavButtons" unique_id=1013233229]
-stream = ExtResource("14_s8cea")
-
-[node name="Ret" type="AudioStreamPlayer" parent="NavButtons" unique_id=1257971124]
-stream = ExtResource("14_s8cea")
-pitch_scale = 2.8
-
-[node name="NarrativePanel" parent="." unique_id=1684202969 instance=ExtResource("4_y0vbl")]
-visible = false
-layout_mode = 1
-offset_left = -500.0
-
-[node name="Inventory" parent="." unique_id=1248200590 instance=ExtResource("24_imvmo")]
-layout_mode = 0
-offset_left = 720.0
-offset_right = 1148.0
+size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="PanelManager" type="Control" parent="." unique_id=265062037]
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("24_a4q2h")
 
-[connection signal="pressed" from="NavButtons/LocationButton" to="." method="_on_location_button_pressed"]
-[connection signal="pressed" from="NavButtons/Button3" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="NavButtons/Button4" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/ReturnToMap" to="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/ReturnToMap" method="_on_pressed"]

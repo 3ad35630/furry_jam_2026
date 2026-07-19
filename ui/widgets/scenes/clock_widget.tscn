@@ -2,6 +2,42 @@
 
 [ext_resource type="Script" uid="uid://eu2vd14qnoe" path="res://ui/widgets/scripts/clock_widget.gd" id="1_xaj82"]
 
+[sub_resource type="GDScript" id="GDScript_xaj82"]
+script/source = "extends HFlowContainer
+
+@export var bg_color : StyleBoxFlat
+@export var fill_color : StyleBoxFlat
+@export var reward_color : StyleBoxFlat
+@export var penalty_color : StyleBoxFlat
+
+func _on_clock_widget_on_clock_changed(clock: Clock) -> void:
+	if clock:
+		var children = get_children()
+		var template = children.pop_front()
+		for child in children:
+			child.queue_free()
+		# add new segments
+		var delta = clock.max_segments - 1
+		if delta > 0:
+			for i in range(delta):
+				var newSeg = template.duplicate()
+				add_child(newSeg)
+		update(clock)
+	
+func update(clock) -> void:
+	var finished_segments = clock.current_segments
+	for x in range(get_child_count()):
+		var seg = get_child(x)
+		var c = bg_color
+		if x < finished_segments:
+			c = fill_color
+		seg['theme_override_styles/panel'] = c
+		
+func _on_clock_widget_clock_ticked(clock: Clock) -> void:
+	if clock:
+		update(clock)
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaj82"]
 bg_color = Color(0, 0, 0, 1)
 
@@ -26,63 +62,71 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_3xd07"]
 font_size = 12
 
-[node name="ClockWidget" type="Panel" unique_id=1818651294 node_paths=PackedStringArray("title_label", "button", "title_label_info", "description_label", "segment_container", "infoPanel")]
-custom_minimum_size = Vector2(256, 56)
-offset_right = 256.0
-offset_bottom = 56.0
+[node name="ClockWidget" type="HBoxContainer" unique_id=1060448442 node_paths=PackedStringArray("title_label", "button", "title_label_info", "description_label", "infoPanel")]
+offset_right = 240.0
+offset_bottom = 84.0
 script = ExtResource("1_xaj82")
-bg_color = SubResource("StyleBoxFlat_xaj82")
-fill_color = SubResource("StyleBoxFlat_a1bnx")
-reward_color = SubResource("StyleBoxFlat_bkapc")
-penalty_color = SubResource("StyleBoxFlat_3ey2a")
-title_label = NodePath("MarginContainer/TitleLabel")
-button = NodePath("MarginContainer/Button")
+title_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TitleLabel")
+button = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button")
 title_label_info = NodePath("InfoPanel/MarginContainer/VBoxContainer/Title")
 description_label = NodePath("InfoPanel/MarginContainer/VBoxContainer/MarginContainer/Description")
-segment_container = NodePath("MarginContainer/Segments")
 infoPanel = NodePath("InfoPanel")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=504875065]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 56.0
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=166842555]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1071491069]
+layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="TitleLabel" type="Label" parent="MarginContainer" unique_id=399684174]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=90998523]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=689426251]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=399684174]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Clock Name"
 
-[node name="Button" type="PanelContainer" parent="MarginContainer" unique_id=246296619]
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=803668225]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=246296619]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="MarginContainer/Button" unique_id=1730656587]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Button" unique_id=1730656587]
 layout_mode = 2
 text = "?"
 horizontal_alignment = 1
 
-[node name="Segments" type="HBoxContainer" parent="MarginContainer" unique_id=449653738]
-custom_minimum_size = Vector2(0, 16)
+[node name="Segments" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=808453918]
+custom_minimum_size = Vector2(240, 16)
 layout_mode = 2
 size_flags_vertical = 8
+script = SubResource("GDScript_xaj82")
+bg_color = SubResource("StyleBoxFlat_xaj82")
+fill_color = SubResource("StyleBoxFlat_a1bnx")
+reward_color = SubResource("StyleBoxFlat_bkapc")
+penalty_color = SubResource("StyleBoxFlat_3ey2a")
 
-[node name="Segment" type="Panel" parent="MarginContainer/Segments" unique_id=495767319]
-custom_minimum_size = Vector2(16, 0)
+[node name="Segment" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/Segments" unique_id=495767319]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jq8tk")
 
 [node name="InfoPanel" type="PanelContainer" parent="." unique_id=2017454084]
 visible = false
-layout_mode = 0
-offset_left = 256.0
-offset_right = 448.0
-offset_bottom = 80.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoPanel" unique_id=892126742]
 layout_mode = 2
@@ -117,3 +161,6 @@ layout_mode = 2
 text = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 label_settings = SubResource("LabelSettings_3xd07")
 autowrap_mode = 2
+
+[connection signal="clock_ticked" from="." to="PanelContainer/MarginContainer/VBoxContainer/Segments" method="_on_clock_widget_clock_ticked"]
+[connection signal="on_clock_changed" from="." to="PanelContainer/MarginContainer/VBoxContainer/Segments" method="_on_clock_widget_on_clock_changed"]
