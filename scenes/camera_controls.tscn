@@ -180,8 +180,7 @@ func tween_to_location(new_location : Location, duration : float = 1.0) -> void:
 	tween.tween_property(self, \"global_position\", target_camera.global_position, duration).from(global_position)
 	tween.tween_property(self, \"global_rotation\", target_camera.global_rotation, duration).from(global_rotation)
 	tween.tween_property(self, \"fov\", target_camera.fov, duration).from(fov)
-	await tween.finished
-	camera_transition_ended.emit()
+	tween.connect(\"finished\", tween_done)
 
 func tween_to_map(duration : float = 1.0) -> void:
 	camera_transition_started.emit()
@@ -192,7 +191,9 @@ func tween_to_map(duration : float = 1.0) -> void:
 	tween.tween_property(self, \"position\", Vector3(), duration).from(position)
 	tween.tween_property(self, \"rotation\", Vector3(), duration).from(rotation)
 	tween.tween_property(self, \"fov\", default_fov, duration).from(fov)
-	await tween.finished
+	tween.connect(\"finished\", tween_done)
+	
+func tween_done() -> void:
 	camera_transition_ended.emit()
 "
 
