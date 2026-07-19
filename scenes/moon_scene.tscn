@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://5mmt1t7y4b2s" path="res://ui/simple/scenes/location_buttons.tscn" id="3_js7sh"]
 [ext_resource type="PackedScene" uid="uid://d1p0qwf8hr5g8" path="res://scenes/camera_controls.tscn" id="3_jtt53"]
 [ext_resource type="Texture2D" uid="uid://dgduacdiqttv1" path="res://models/skybox/stars.png" id="3_ugxro"]
-[ext_resource type="Script" uid="uid://hkoqfw1w4t6l" path="res://ui/simple/scripts/button.gd" id="4_0pwpi"]
 [ext_resource type="Script" uid="uid://cq231a0tgv55i" path="res://ui/widgets/scripts/camera_panel_placement.gd" id="6_p7y8p"]
 [ext_resource type="PackedScene" uid="uid://ckymjbamevrha" path="res://ui/widgets/scenes/default_location_display.tscn" id="7_722th"]
 [ext_resource type="Script" uid="uid://ddys7b3ulp58x" path="res://ui/widgets/scripts/camera_panel_target.gd" id="7_cmfwq"]
@@ -94,7 +93,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.2070074, -0.10391674, 0.97280306, -0.9780988, 4.542345e-09, 0.20813417, -0.021628635, -0.994586, -0.101640806, 0, 0, 0)
+transform = Transform3D(0.20700736, -0.10391674, 0.9728029, -0.97809863, 4.542345e-09, 0.20813413, -0.021628631, -0.994586, -0.10164079, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
 light_energy = 1.77
@@ -521,21 +520,9 @@ stream = ExtResource("14_p7y8p")
 playback_type = 1
 parameters/looping = true
 
-[node name="LocationButtons" parent="." unique_id=123706040 instance=ExtResource("3_js7sh")]
-
 [node name="MainPanel" parent="." unique_id=89919495 instance=ExtResource("2_tsr5y")]
 visible = false
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="MainPanel" unique_id=71911852]
-
-[node name="ReturnButton" type="Button" parent="MainPanel/CanvasLayer2" unique_id=882022772]
-visible = false
-offset_left = 814.0
-offset_top = 514.0
-offset_right = 876.0
-offset_bottom = 545.0
-text = "Return"
-script = ExtResource("4_0pwpi")
-
-[connection signal="pressed" from="MainPanel/CanvasLayer2/ReturnButton" to="." method="_on_return_button_pressed"]
-[connection signal="pressed" from="MainPanel/CanvasLayer2/ReturnButton" to="MainPanel/CanvasLayer2/ReturnButton" method="_on_pressed"]
+[node name="LocationButtons" parent="." unique_id=123706040 instance=ExtResource("3_js7sh")]
+mouse_filter = 2
+mouse_behavior_recursive = 2
