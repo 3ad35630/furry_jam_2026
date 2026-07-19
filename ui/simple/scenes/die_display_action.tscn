@@ -9,14 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://xm2n61jmx5eu" path="res://ui/dice/Die5.png" id="6_ff1d3"]
 [ext_resource type="Texture2D" uid="uid://baarrimv0ga86" path="res://ui/dice/Die6.png" id="7_cimbh"]
 
-[sub_resource type="GDScript" id="GDScript_16uew"]
-script/source = "extends Node
-
-func _on_die_display_drag_ended(display : DieDisplay, data : Dictionary, success: bool) -> void:
-	if not success:
-		display.data = {}
-"
-
 [sub_resource type="GDScript" id="GDScript_cnihe"]
 script/source = "extends ColorRect
 
@@ -42,11 +34,6 @@ offset_bottom = 55.0
 script = ExtResource("1_reewh")
 draggable = ExtResource("2_cjd75")
 
-[node name="WipeDataWhenFailed" type="Control" parent="." unique_id=259452665]
-layout_mode = 2
-mouse_filter = 2
-script = SubResource("GDScript_16uew")
-
 [node name="Color" type="ColorRect" parent="." unique_id=1078944298]
 custom_minimum_size = Vector2(45, 45)
 custom_maximum_size = Vector2(45, 45)
@@ -66,4 +53,5 @@ icons = Array[Texture]([ExtResource("2_ys1f8"), ExtResource("3_cjd75"), ExtResou
 [connection signal="data_changed" from="." to="." method="_on_data_changed"]
 [connection signal="data_changed" from="." to="Color" method="_on_center_container_data_changed"]
 [connection signal="data_changed" from="." to="DieTexture" method="_on_center_container_data_changed"]
-[connection signal="drag_ended" from="." to="WipeDataWhenFailed" method="_on_die_display_drag_ended"]
+[connection signal="drag_ended" from="." to="." method="_on_drag_ended"]
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]
