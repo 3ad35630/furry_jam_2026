@@ -45,7 +45,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:
 	visible = mode != Enums.GameplayMode.MAINMENU
-	$\"MoonLakeUltra\".play()
+	if !$\"MoonLakeUltra\".playing:
+		$\"MoonLakeUltra\".play()
 
 
 func _on_location_button_pressed() -> void:
