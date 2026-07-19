@@ -192,7 +192,8 @@ func _on_die_display_data_changed(data: Variant) -> void:
 [sub_resource type="GDScript" id="GDScript_3ey2a"]
 script/source = "extends Label
 
-func _on_die_display_data_changed(data: Variant) -> void:
+
+func _on_dice_slot_data_changed(data: Variant) -> void:
 	if data:
 		var bonus = data['character'].get_skill(owner.action.skill)
 		if bonus > 0:
@@ -355,7 +356,6 @@ sound = NodePath("dicerolled")
 stream = ExtResource("4_f8umy")
 
 [node name="ProbabilityDisplay" type="CenterContainer" parent="HBoxContainer" unique_id=769885379]
-visible = false
 layout_mode = 2
 script = SubResource("GDScript_bkapc")
 
@@ -403,14 +403,15 @@ script = SubResource("GDScript_s3n1p")
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer/SkillLabel" method="_on_action_panel_action_set"]
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/DescriptionLabel" method="_on_action_panel_action_set"]
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container" method="_on_action_panel_action_set"]
+[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_action_panel_action_set"]
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemDisplay" method="_on_action_panel_action_set"]
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/VBoxContainer/ItemLabel" method="_on_action_panel_action_set"]
 [connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_action_panel_action_set"]
-[connection signal="action_set" from="." to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_action_panel_action_set"]
+[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_dice_slot_data_changed"]
 [connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_dice_slot_data_changed"]
 [connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/ProbabilityDisplay" method="_on_die_display_data_changed"]
 [connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" method="_on_die_display_data_changed"]
-[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot/DieReturner" method="_on_dice_slot_data_changed"]
+[connection signal="data_changed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer2/Container/DiceSlot" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Bonus" method="_on_dice_slot_data_changed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" to="HBoxContainer/PanelContainer/MainMargins/VBoxContainer/HBoxContainer3/ActionButton" method="_on_pressed"]
 [connection signal="probability_changed" from="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Pos" method="_on_chance_labels_probability_changed"]
 [connection signal="probability_changed" from="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels" to="HBoxContainer/ProbabilityDisplay/Panel/MarginContainer/ChanceLabels/Neu" method="_on_chance_labels_probability_changed"]
