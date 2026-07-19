@@ -319,7 +319,7 @@ layout_mode = 2
 texture = ExtResource("12_ntgim")
 expand_mode = 2
 script = SubResource("GDScript_riq6c")
-type_to_texture = Dictionary[int, AtlasTexture]({
+type_to_texture = Dictionary[int, Texture]({
 0: ExtResource("4_fjij5"),
 1: ExtResource("5_4hg1k"),
 2: ExtResource("6_5qgk5"),

@@ -286,7 +286,10 @@ layout_mode = 2
 texture = ExtResource("6_h5prc")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1442867779]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1185698168]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch/CenterContainer" unique_id=1442867779]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("7_rd64i")
@@ -300,7 +303,10 @@ layout_mode = 2
 texture = ExtResource("9_css1y")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=2105353348]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=505136173]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro/CenterContainer" unique_id=2105353348]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("7_rd64i")
@@ -314,7 +320,10 @@ layout_mode = 2
 texture = ExtResource("11_icdsa")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1355873595]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1782053568]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious/CenterContainer" unique_id=1355873595]
 layout_mode = 2
 script = ExtResource("7_isi12")
 char_dice = ExtResource("7_rd64i")
