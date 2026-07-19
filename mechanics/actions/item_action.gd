@@ -14,7 +14,8 @@ func do_action(_input):
 	if spend_items:
 		Inventory.remove(item_type, required_number)
 		result_text.append("You spent " + str(required_number) + " of your " + Enums.ItemTypes.keys()[item_type].to_lower()+"!")
-	result_text.append_array(result.get_result_text())
+	if result:
+		result_text.append_array(result.get_result_text())
 	super(_input)
 
 func can_afford_action() -> bool:

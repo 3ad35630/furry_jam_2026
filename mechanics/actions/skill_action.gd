@@ -21,6 +21,7 @@ func get_output_type(roll_data) -> Enums.DieActionOutcomeTypes:
 func do_effect(effect):
 	if effect:
 		effect.do()
+		result_text.append_array(effect.get_result_text())
 
 
 func do_action(roll_data):
@@ -30,13 +31,10 @@ func do_action(roll_data):
 	result_text.clear()
 	if result_roll < probs[Enums.EffectClasses.POSITIVE]:
 		do_effect(positive)
-		result_text.append_array(positive.get_result_text())
 	elif result_roll < probs[Enums.EffectClasses.POSITIVE] + probs[Enums.EffectClasses.NEUTRAL]:
 		do_effect(neutral)
-		result_text.append_array(neutral.get_result_text())
 	else:
 		do_effect(negative)
-		result_text.append_array(negative.get_result_text())
 	super(roll_data)
 
 

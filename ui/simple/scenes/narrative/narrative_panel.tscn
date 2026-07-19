@@ -2,12 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/line_widget.tscn" id="1_hu3pf"]
 [ext_resource type="PackedScene" uid="uid://c5jbevs3ipdaa" path="res://ui/simple/scenes/narrative/choice_widget.tscn" id="2_rnsc6"]
+[ext_resource type="Texture2D" uid="uid://u8veuhsf7js5" path="res://ui/character_profiles/AT_mirabelle_portrait.tres" id="3_blwr1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vimbc"]
 bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
 
 [sub_resource type="GDScript" id="GDScript_c4p16"]
-script/source = "extends Panel
+script/source = "extends Control
 
 func _ready() -> void:
 	Modes.gameplay_mode_changed.connect(change_mode)
@@ -90,7 +91,7 @@ func _on_pressed() -> void:
 		NarrativeSystem.advance_narrative()
 "
 
-[node name="NarrativePanel" type="Panel" unique_id=1684202969]
+[node name="NarrativePanel" type="PanelContainer" unique_id=1047118372]
 custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,65 +101,92 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vimbc")
 script = SubResource("GDScript_c4p16")
 
-[node name="NarrativeBox" type="VBoxContainer" parent="." unique_id=1046601329]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=739170434]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="NarrativeBox" type="VBoxContainer" parent="MarginContainer" unique_id=1046601329]
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NarrativeContainer" type="ScrollContainer" parent="NarrativeBox" unique_id=979716617]
+[node name="NarrativeContainer" type="ScrollContainer" parent="MarginContainer/NarrativeBox" unique_id=979716617]
 custom_minimum_size = Vector2(0, 560.6)
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_vertical = 3
 script = SubResource("GDScript_g746w")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer" unique_id=1163880697]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer" unique_id=1163880697]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Spacer" type="Control" parent="NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=1922244790]
+[node name="Spacer" type="Control" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=1922244790]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NarrativeLines_Margins" type="MarginContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=2050756723]
+[node name="NarrativeLines_Margins" type="MarginContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer" unique_id=2050756723]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins" unique_id=1462386985]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins" unique_id=1462386985]
 layout_mode = 2
 
-[node name="NarrativeLines" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
+[node name="NarrativeLines" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 script = SubResource("GDScript_lmn2s")
 line_widget = ExtResource("1_hu3pf")
 
-[node name="ChoiceContainer" type="VBoxContainer" parent="NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
+[node name="ChoiceContainer" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
 layout_mode = 2
 script = SubResource("GDScript_s3n1p")
 choice_widget = ExtResource("2_rnsc6")
 
-[node name="ContinueButton_Margins" type="MarginContainer" parent="NarrativeBox" unique_id=1227112551]
+[node name="ContinueButton_Margins" type="MarginContainer" parent="MarginContainer/NarrativeBox" unique_id=1227112551]
 layout_mode = 2
 theme_override_constants/margin_left = 82
 theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 56
 theme_override_constants/margin_bottom = 21
 
-[node name="ContinueButton" type="Button" parent="NarrativeBox/ContinueButton_Margins" unique_id=1566303226]
+[node name="ContinueButton" type="Button" parent="MarginContainer/NarrativeBox/ContinueButton_Margins" unique_id=1566303226]
 custom_minimum_size = Vector2(0, 36.415)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_16uew")
 text = "Continue"
 script = SubResource("GDScript_16uew")
 
-[connection signal="pressed" from="NarrativeBox/ContinueButton_Margins/ContinueButton" to="NarrativeBox/ContinueButton_Margins/ContinueButton" method="_on_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=655354068]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=775864276]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 14.51
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1132524009]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 30.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-323.4, 0)
+texture = ExtResource("3_blwr1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="VBoxContainer" unique_id=87943564]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 25.0
+mouse_filter = 2
+
+[connection signal="pressed" from="MarginContainer/NarrativeBox/ContinueButton_Margins/ContinueButton" to="MarginContainer/NarrativeBox/ContinueButton_Margins/ContinueButton" method="_on_pressed"]

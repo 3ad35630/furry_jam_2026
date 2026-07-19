@@ -247,12 +247,12 @@ mouse_filter = 2
 
 [node name="InventoryHBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1130000776]
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="Inventory" parent="HBoxContainer2/VBoxContainer/HBox/InventoryHBox" unique_id=1248200590 instance=ExtResource("24_imvmo")]
 layout_mode = 2
 
 [node name="NarrativePanel" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1684202969 instance=ExtResource("4_y0vbl")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 40.0
