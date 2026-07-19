@@ -64,7 +64,11 @@ func update_actions() -> void:
 			next_available.show()
 	
 func update_clocks() -> void:
-	var accessible_clocks = Modes.current_location.accessible_clocks
+	#var accessible_clocks = Modes.current_location.accessible_clocks
+	# if this works im going to be mad
+	var accessible_clocks = []
+	for clock in Modes.current_location.accessible_clocks:
+		accessible_clocks.append(Locations.clocks[clock.clock_id])
 	for panel in used_clock_widgets: # have we lost an action?
 		if not panel.clock in accessible_clocks:
 			panel.clock = null

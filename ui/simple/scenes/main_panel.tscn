@@ -159,6 +159,7 @@ signal sceneTriggered()
 
 @export var player : AnimationPlayer
 @export var button : Button
+@export var sound : AudioStreamPlayer
 
 var sceneHasTriggered : bool = false
 
@@ -179,7 +180,7 @@ func _on_pressed() -> void:
 			button.disabled = true
 			return
 	TurnSystem.end_round()
-	$\"Button SFX\".play()
+	sound.play()
 
 
 func _on_all_dice_spent() -> void:
@@ -337,12 +338,13 @@ text = "End Hour"
 [node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/Button" unique_id=2123176034]
 stream = ExtResource("15_rd64i")
 
-[node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=1747784301 node_paths=PackedStringArray("player", "button")]
+[node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=1747784301 node_paths=PackedStringArray("player", "button", "sound")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_36p3s")
 script = SubResource("GDScript_y0vbl")
 player = NodePath("../AnimationPlayer")
 button = NodePath("../Button")
+sound = NodePath("../Button/Button SFX")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/EndTurnWidget" unique_id=261589541]
 custom_maximum_size = Vector2(75, 75)
