@@ -58,7 +58,7 @@ background_mode = 2
 sky = SubResource("Sky_tsr5y")
 glow_enabled = true
 glow_intensity = 0.68
-glow_bloom = 0.5
+glow_bloom = 0.25
 fog_mode = 1
 fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
 fog_density = 1.0
@@ -220,7 +220,7 @@ script = ExtResource("7_cmfwq")
 is_clock = true
 
 [node name="cave_shrine" type="Camera3D" parent="LocationCameras" unique_id=2002006989]
-transform = Transform3D(-0.0348997, 0.41444042, 0.9094071, 0, 0.9099614, -0.41469303, -0.99939084, -0.0144726625, -0.03175738, -1.8833933, -3.3738747, -2.8652887)
+transform = Transform3D(0.39394188, -0.15328304, 0.90626377, 0, 0.985996, 0.16676874, -0.91913533, -0.06569719, 0.3884251, 0.635, -6.508, -3.101)
 script = ExtResource("6_p7y8p")
 location_display_widget = ExtResource("7_722th")
 
