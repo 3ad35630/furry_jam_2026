@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjl3yt8wcky66"]
+
+[resource]
+resource_name = "Lemon"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063476, 0.71938723, 0.6414787, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
