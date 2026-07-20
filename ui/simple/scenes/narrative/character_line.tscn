@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bi5rj3umcqwt8"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Control
+
+signal line_set(line : String)
+
+var _line : String
+var line : String :
+	set(val):
+		_line = val
+		line_set.emit(val)
+	get : 
+		return _line
+"
+
+[sub_resource type="GDScript" id="GDScript_o8oll"]
+script/source = "extends Label
+
+# don't like this but don't want to break things
+@export var name_to_color : Dictionary[String, Color]
+
+func _on_character_line_line_set(line: String) -> void:
+	var splits = line.split(\":\")
+	var character_name = splits[0].strip_edges(true,true)
+	text = character_name
+	if name_to_color.has(character_name):
+		self[\"theme_override_colors/font_color\"] = name_to_color[character_name]
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_g746w"]
+script/source = "extends Label
+
+func _on_character_line_line_set(line: String) -> void:
+	var splits = line.split(\":\")
+	var dialog_result = \"\"
+	for x in range(1, splits.size()):
+		dialog_result += splits[x]
+		if x < (splits.size() - 1):
+			dialog_result += \":\"		
+	text = dialog_result
+"
+
+[node name="CharacterLine" type="VBoxContainer" unique_id=1976154357]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1543.0
+offset_bottom = -1030.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_16uew")
+
+[node name="NameLabel" type="Label" parent="." unique_id=269564630]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97371453, 0.34575403, 0.71466565, 1)
+text = "Mirabelle: "
+script = SubResource("GDScript_o8oll")
+name_to_color = Dictionary[String, Color]({
+"Dispatcher": Color(0.4390725, 0.29191962, 0.9400778, 1),
+"Madame Oolong": Color(0.33514303, 0.4045149, 0.092319615, 1),
+"Mirabelle": Color(0.99999994, 0.21532312, 0.2641248, 1),
+"Mittens": Color(0.7757185, 0.3131881, 0.73990166, 1),
+"Willow": Color(0.5723619, 0.81575286, 7.70092e-07, 1)
+})
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1053796549]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="LineLabel" type="Label" parent="MarginContainer" unique_id=353012459]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+text = "Hi! I'm Mirabelle! This is really cool!"
+autowrap_mode = 2
+script = SubResource("GDScript_g746w")
+
+[connection signal="line_set" from="." to="NameLabel" method="_on_character_line_line_set"]
+[connection signal="line_set" from="." to="MarginContainer/LineLabel" method="_on_character_line_line_set"]

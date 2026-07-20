@@ -8,9 +8,9 @@ script = ExtResource("1_0at2u")
 max_energy = 3
 name = "Mirabelle"
 icon = ExtResource("1_b6y8r")
-color = Color(0.4766041, 0.5067471, 0.9658118, 1)
+color = Color(0.99999994, 0.21532312, 0.2641248, 1)
 skills = Dictionary[int, int]({
-1: 1,
+1: 2,
 4: -1
 })
 metadata/_custom_type_script = "uid://cxdw6osj350ux"

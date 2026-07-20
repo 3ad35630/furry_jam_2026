@@ -2,7 +2,52 @@ VAR test_variable = false
 
 === story_intro
 
-This is the start of the story. You meet Madame Oolong and she gives you the list of ingredients then goes inside and shuts her door.
+The famous tea-house is quiet but not abandoned. It has taken you quite a long way to get here. This moon is isolated and the climb up here is very long.
+
+Mittens: We also got lost!
+
+Mirabelle: We didn't get lost!
+Mirabelle: We took the scenic route.
+Mirabelle: Twice!
+
+Dispatcher: Six times.
+Dispatcher: You got lost six times.
+
+Willow: I tried to tell her!
+
+Mirabelle: Did not!
+
+Willow: Did too! I told you I told you I told you!
+
+Dispatcher: Please just knock on the door!
+
+You knock on the door. A moment passes, and then you hear the sound of a walking stick against boards. Eventually, an elderly red panda peers out at the three of you.
+
+Madame Oolong: Yes?
+
+She does not sound particularly impressed. 
+
+Madame Oolong: If you're here selling those food subscription boxes again I don't want any!
+
+She goes to close the door. 
+
+Mirabelle: No no! Wait! We're the Space Witches!
+
+Mittens: Ma'am!
+
+Madame Oolong is a High Tea Sorceress. Some respect is due.
+
+Mirabelle: Right! Yes! We're the Space Witches ma'am!!
+Mirabelle: And we're here to help!
+
+Considerably more respect than that, but she does not close the door.
+
+Madame Oolong: You're here to help me with my Tea are you?
+
+Mirabelle: Yes ma'am!
+Willow: If you'll let us.
+
+She thinks about this for some time. She taps her stick on the floor and makes a face.
 
 -> DONE
 
