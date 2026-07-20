@@ -5,12 +5,12 @@
 
 [resource]
 script = ExtResource("1_fwx7q")
-max_energy = 2
-name = "Kat"
+max_energy = 3
+name = "Mittens"
 icon = ExtResource("1_7n4nj")
 color = Color(0.7757185, 0.3131881, 0.73990166, 1)
 skills = Dictionary[int, int]({
 1: -1,
-2: 1
+2: 2
 })
 metadata/_custom_type_script = "uid://cxdw6osj350ux"

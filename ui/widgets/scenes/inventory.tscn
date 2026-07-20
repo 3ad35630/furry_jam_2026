@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="3_7o0yc"]
 [ext_resource type="Texture2D" uid="uid://bku4vcbxj2u8m" path="res://ui/icons/Fish.png" id="3_15hac"]
 [ext_resource type="Texture2D" uid="uid://qebqgkkedy2s" path="res://ui/icons/Gossip.png" id="4_67ais"]
+[ext_resource type="Texture2D" uid="uid://bio4cqot2lgpb" path="res://ui/icons/Stick2.png" id="5_15hac"]
 [ext_resource type="Texture2D" uid="uid://28gic2p7fgci" path="res://ui/icons/Milk.png" id="5_kmla4"]
 [ext_resource type="Texture2D" uid="uid://dkxyuv7dj01m1" path="res://ui/icons/Tea.png" id="6_5abwp"]
 [ext_resource type="Texture2D" uid="uid://b2tjhv3hvur8e" path="res://ui/icons/Cinnamon.png" id="7_hubn2"]
@@ -44,6 +45,13 @@ itemKey = 3
 [node name="TextureRect" parent="HBoxContainer/Gossip" index="0" unique_id=736762699]
 texture = ExtResource("4_67ais")
 
+[node name="MagicStick" parent="HBoxContainer" unique_id=1354539492 instance=ExtResource("1_righx")]
+layout_mode = 2
+itemKey = 9
+
+[node name="TextureRect" parent="HBoxContainer/MagicStick" index="0" unique_id=736762699]
+texture = ExtResource("5_15hac")
+
 [node name="Milk" parent="HBoxContainer" unique_id=1791147285 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 4
@@ -74,7 +82,7 @@ texture = ExtResource("8_olhbr")
 
 [node name="Blossoms" parent="HBoxContainer" unique_id=693267511 instance=ExtResource("1_righx")]
 layout_mode = 2
-itemKey = 7
+itemKey = 8
 
 [node name="TextureRect" parent="HBoxContainer/Blossoms" index="0" unique_id=736762699]
 texture = ExtResource("9_li0im")
@@ -91,6 +99,7 @@ script = ExtResource("3_7o0yc")
 [editable path="HBoxContainer/Money"]
 [editable path="HBoxContainer/Fish"]
 [editable path="HBoxContainer/Gossip"]
+[editable path="HBoxContainer/MagicStick"]
 [editable path="HBoxContainer/Milk"]
 [editable path="HBoxContainer/Tea"]
 [editable path="HBoxContainer/Cinnamon"]

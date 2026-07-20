@@ -50,6 +50,7 @@ script = ExtResource("3_jaxoa")
 positive = SubResource("Resource_rt1kv")
 neutral = SubResource("Resource_rt1kv")
 negative = SubResource("Resource_rt1kv")
+description = "You have them all! Finally! Let's do this thing!!"
 access_test = SubResource("Resource_a14y6")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 

@@ -42,10 +42,11 @@ amount = 1
 metadata/_custom_type_script = "uid://vwo5xo7yd545"
 
 [sub_resource type="Resource" id="Resource_wbdjj"]
-resource_name = "Tell stories"
+resource_name = "Put on a puppet show"
 script = ExtResource("8_rfu6o")
 item_type = 3
 result = SubResource("Resource_h0typ")
+description = "The crowds are thing, but people always put money into the hat at the end if the show was good."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_1uilk"]
@@ -85,7 +86,7 @@ skill = 1
 positive = SubResource("Resource_q368j")
 neutral = SubResource("Resource_bkiji")
 negative = SubResource("Resource_1uilk")
-description = "It's eye catching and ear catching."
+description = "The crowds are bored and still have money and the main stage is conveniently empty. You're not supposed to be up there, but you might be able to sneak in a quick performance if security doesn't catch you first."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_vf4k1"]
@@ -133,12 +134,14 @@ skill = 4
 positive = SubResource("Resource_lks2n")
 neutral = SubResource("Resource_j1qi7")
 negative = SubResource("Resource_vf4k1")
+description = "Strictly speaking, rapidly growing potatoes with magic, cutting them into strips and frying them in oil until they're crispy isn't illegal. It should be though, with how good these taste."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_uq6wx"]
 resource_name = "Festival Security"
 script = ExtResource("2_75igq")
 clock_id = "kicked_out_of_the_festival"
+description = "You don't have a ticket. You're not supposed to be in here."
 max_segments = 5
 metadata/_custom_type_script = "uid://54wgke734i1m"
 

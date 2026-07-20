@@ -48,6 +48,6 @@ texture = ExtResource("3_bydl0")
 script = SubResource("GDScript_g746w")
 icons = Array[Texture]([ExtResource("3_bydl0"), ExtResource("4_12cr8"), ExtResource("5_8xyva"), ExtResource("6_2g5lc"), ExtResource("7_ms6y0"), ExtResource("8_prum2")])
 
+[connection signal="data_changed" from="." to="." method="_on_data_changed"]
 [connection signal="data_changed" from="." to="Color" method="_on_center_container_data_changed"]
 [connection signal="data_changed" from="." to="DieTexture" method="_on_center_container_data_changed"]
-[connection signal="data_changed" from="." to="." method="_on_data_changed"]

@@ -6,11 +6,12 @@
 [resource]
 script = ExtResource("2_wdb3w")
 max_energy = 3
-name = "Laserina"
+name = "Willow"
 icon = ExtResource("1_rva83")
 color = Color(0.5723619, 0.81575286, 7.70092e-07, 1)
 skills = Dictionary[int, int]({
 2: -1,
-4: 1
+4: 2,
+5: 1
 })
 metadata/_custom_type_script = "uid://cxdw6osj350ux"

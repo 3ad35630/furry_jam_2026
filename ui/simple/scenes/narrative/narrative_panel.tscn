@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bltswcx4yopx1"]
 
-[ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/line_widget.tscn" id="1_hu3pf"]
+[ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/narration_line.tscn" id="1_hu3pf"]
+[ext_resource type="PackedScene" uid="uid://bi5rj3umcqwt8" path="res://ui/simple/scenes/narrative/character_line.tscn" id="2_okymu"]
 [ext_resource type="PackedScene" uid="uid://c5jbevs3ipdaa" path="res://ui/simple/scenes/narrative/choice_widget.tscn" id="2_rnsc6"]
 [ext_resource type="Texture2D" uid="uid://u8veuhsf7js5" path="res://ui/character_profiles/AT_mirabelle_portrait.tres" id="3_blwr1"]
 
@@ -24,15 +25,16 @@ func change_mode(mode : Enums.GameplayMode) -> void:
 script/source = "extends ScrollContainer
 
 func _ready() -> void:
-	NarrativeSystem.continued.connect(scroll_to_end)
+	get_v_scroll_bar().changed.connect(scroll_to_end)
 
-func scroll_to_end(_text, _tags) -> void:
+func scroll_to_end() -> void:
 	scroll_vertical = int(get_v_scroll_bar().max_value)
 "
 
 [sub_resource type="GDScript" id="GDScript_lmn2s"]
 script/source = "extends VBoxContainer
-@export var line_widget : PackedScene
+@export var narration_widget : PackedScene
+@export var character_widget : PackedScene
 
 func _ready() -> void :
 	Modes.gameplay_mode_changed.connect(change_mode)
@@ -43,10 +45,16 @@ func change_mode(mode : Enums.GameplayMode) -> void:
 		for child in get_children():
 			child.queue_free()
 	
-func update_narrative(text, _tags) -> void:
-	var new_line_widget = line_widget.instantiate()
-	new_line_widget.line = text
-	add_child(new_line_widget)
+func update_narrative(text : String, _tags) -> void:
+	if text.strip_edges(true,true).length() > 0:
+		var splits = text.split(\":\")
+		var new_line_widget
+		if splits.size() > 1:
+			new_line_widget = character_widget.instantiate()
+		else:
+			new_line_widget = narration_widget.instantiate()
+		new_line_widget.line = text
+		add_child(new_line_widget)
 			
 "
 
@@ -139,9 +147,9 @@ layout_mode = 2
 [node name="NarrativeLines" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=587205956]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
 script = SubResource("GDScript_lmn2s")
-line_widget = ExtResource("1_hu3pf")
+narration_widget = ExtResource("1_hu3pf")
+character_widget = ExtResource("2_okymu")
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="MarginContainer/NarrativeBox/NarrativeContainer/VBoxContainer/NarrativeLines_Margins/VBoxContainer" unique_id=1676637773]
 layout_mode = 2

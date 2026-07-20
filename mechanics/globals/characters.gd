@@ -33,3 +33,10 @@ func check_all_dice_spent() -> bool:
 func _on_dice_updated(_c : Character) -> void:
 	if check_all_dice_spent():
 		all_dice_spent.emit()
+
+
+func get_color(character_name : String) -> Color:
+	for character in characters:
+		if character.name == character_name:
+			return character.color
+	return Color.CORAL

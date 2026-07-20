@@ -258,7 +258,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 40.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/VBoxContainer" unique_id=1931585888]
-custom_minimum_size = Vector2(65.805, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 60.0
@@ -276,6 +275,7 @@ mouse_filter = 2
 [node name="CharacterBar" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1109332299]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="BellWitch" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1891987525]
 custom_minimum_size = Vector2(0, 72.345)

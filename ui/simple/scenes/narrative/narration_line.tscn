@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://crallti1cqkmn"]
+
+[sub_resource type="GDScript" id="GDScript_jtyxt"]
+script/source = "extends RichTextLabel
+var _line : String
+var line : String :
+	set(val):
+		_line = val
+		text = _line
+	get : 
+		return _line
+"
+
+[node name="LineLabel" type="RichTextLabel" unique_id=730696564]
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 1080.0
+bbcode_enabled = true
+text = "This is a rich text label."
+fit_content = true
+script = SubResource("GDScript_jtyxt")
