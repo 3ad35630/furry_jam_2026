@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://i76gf7gfb40o" path="res://models/moon/MoonBase.fbx" id="1_l4n0l"]
 [ext_resource type="Script" uid="uid://dupx3vuub4m1c" path="res://models/scripts/rotation.gd" id="2_eoifi"]
+[ext_resource type="PackedScene" uid="uid://dge68edg6eww2" path="res://scenes/moon_base_plants_fix.tscn" id="3_5e4k3"]
+[ext_resource type="PackedScene" uid="uid://dxqjulosxenpc" path="res://models/moon/MoonBasePathFix.fbx" id="4_5e4k3"]
 
 [node name="MoonBase" unique_id=249059132 instance=ExtResource("1_l4n0l")]
 script = ExtResource("2_eoifi")
@@ -25,3 +27,7 @@ visible = false
 
 [node name="Soul Cow_002" parent="." index="10" unique_id=1566694583]
 visible = false
+
+[node name="MoonBasePlantsFix2" parent="." index="14" unique_id=1280478877 instance=ExtResource("3_5e4k3")]
+
+[node name="MoonBasePathFix" parent="." index="15" unique_id=1481972265 instance=ExtResource("4_5e4k3")]
