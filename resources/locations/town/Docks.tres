@@ -37,6 +37,7 @@ script = ExtResource("5_8mvnj")
 positive = SubResource("Resource_jkl28")
 neutral = SubResource("Resource_jkl28")
 negative = SubResource("Resource_jkl28")
+description = "The fishing town is not very large but it is loud and friendly and full of life."
 access_test = SubResource("Resource_paspp")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 

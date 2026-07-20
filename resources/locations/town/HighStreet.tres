@@ -12,9 +12,12 @@
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_7el5q"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="8_p6i3w"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="9_nl8s1"]
-[ext_resource type="Script" uid="uid://dybcll7k5xh4r" path="res://mechanics/access_tests/access_tests_or.gd" id="10_7el5q"]
+[ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="10_7el5q"]
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="11_mf60b"]
+[ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_nl8s1"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="12_ycba2"]
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="13_84ka5"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="15_dfh30"]
 
 [sub_resource type="Resource" id="Resource_b2fl3"]
 script = ExtResource("1_2pcgd")
@@ -73,7 +76,18 @@ action_clock_id = "fish_for_sale"
 description = "There are a few Rainbow Trout for sale, better buy them while you can."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
+[sub_resource type="Resource" id="Resource_3omq5"]
+script = ExtResource("11_nl8s1")
+location_id = "town_highstreet"
+key = "rented_oil_press"
+metadata/_custom_type_script = "uid://deia8b341vkjq"
+
 [sub_resource type="Resource" id="Resource_7el5q"]
+script = ExtResource("10_7el5q")
+test = SubResource("Resource_3omq5")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_84dvb"]
 script = ExtResource("9_nl8s1")
 location_id = "town_highstreet"
 key = "rented_oil_press"
@@ -84,13 +98,31 @@ resource_name = "Rent an Oil Press"
 script = ExtResource("8_p6i3w")
 item_type = 1
 required_number = 5
-result = SubResource("Resource_7el5q")
+result = SubResource("Resource_84dvb")
 description = "A press of sufficient volume and magical potency to press Rainbow Trout is tricky to come by. You know someone who might rent one to you, but the price is high."
+access_test = SubResource("Resource_7el5q")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
-[sub_resource type="Resource" id="Resource_jkl28"]
+[sub_resource type="Resource" id="Resource_yherr"]
+script = ExtResource("11_nl8s1")
+location_id = "town_highstreet"
+key = "rented_oil_press"
+metadata/_custom_type_script = "uid://deia8b341vkjq"
+
+[sub_resource type="Resource" id="Resource_quuuu"]
+script = ExtResource("15_dfh30")
+item_type = 7
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_3cb85"]
 script = ExtResource("10_7el5q")
-metadata/_custom_type_script = "uid://dybcll7k5xh4r"
+test = SubResource("Resource_quuuu")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_vcquf"]
+script = ExtResource("13_84ka5")
+tests = Array[ExtResource("11_mf60b")]([SubResource("Resource_yherr"), SubResource("Resource_3cb85")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
 
 [sub_resource type="Resource" id="Resource_84ka5"]
 script = ExtResource("5_dnujq")
@@ -115,7 +147,7 @@ item_type = 2
 required_number = 10
 result = SubResource("Resource_ycba2")
 description = "This process is less grousome than it probably should be. They turn to mist and music first, then precipitate into a shining oil on the top of the glass."
-access_test = SubResource("Resource_jkl28")
+access_test = SubResource("Resource_vcquf")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_7fuam"]
