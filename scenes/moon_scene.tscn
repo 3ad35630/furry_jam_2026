@@ -59,6 +59,17 @@ fog_mode = 1
 fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
 fog_density = 1.0
 
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Node
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Inventory.add(Enums.ItemTypes.MONEY, 30)
+	Inventory.add(Enums.ItemTypes.FISH, 30)
+	Inventory.add(Enums.ItemTypes.GOSSIP, 30)
+	Inventory.add(Enums.ItemTypes.PUMPKINS_MAGIC_STICK, 1)
+"
+
 [node name="Moon" type="Node3D" unique_id=1671707619]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
@@ -93,7 +104,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.20700736, -0.10391674, 0.9728026, -0.97809863, 4.542345e-09, 0.20813407, -0.021628631, -0.994586, -0.10164076, 0, 0, 0)
+transform = Transform3D(0.20700736, -0.10391674, 0.97280246, -0.97809863, 4.542345e-09, 0.20813406, -0.021628631, -0.994586, -0.101640746, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
 light_energy = 1.77
@@ -527,3 +538,6 @@ visible = false
 [node name="LocationButtons" parent="." unique_id=123706040 instance=ExtResource("3_js7sh")]
 mouse_filter = 2
 mouse_behavior_recursive = 2
+
+[node name="GiveMeAllResources" type="Node" parent="." unique_id=195708757]
+script = SubResource("GDScript_16uew")

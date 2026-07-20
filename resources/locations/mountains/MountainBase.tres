@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="8_qhxa6"]
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="9_sx0ym"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="9_y23a2"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="10_b8sha"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="11_2lxnl"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="11_b8sha"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="12_4pj0a"]
@@ -57,17 +58,26 @@ neutral = SubResource("Resource_kh636")
 action_clock_id = "path_to_the_heights"
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
-[sub_resource type="Resource" id="Resource_3xlfh"]
+[sub_resource type="Resource" id="Resource_b8sha"]
 script = ExtResource("9_sx0ym")
-location_id = "mountain_base"
+location_id = "mountain_heights"
 key = "used_magic_stick"
 metadata/_custom_type_script = "uid://deia8b341vkjq"
 
-[sub_resource type="Resource" id="Resource_bskcy"]
-resource_name = "You can only use this one."
+[sub_resource type="Resource" id="Resource_15hac"]
 script = ExtResource("4_b8sha")
-test = SubResource("Resource_3xlfh")
+test = SubResource("Resource_b8sha")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_3l5yu"]
+script = ExtResource("10_b8sha")
+item_type = 9
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_fgqo8"]
+script = ExtResource("1_1ss57")
+tests = Array[ExtResource("2_km0f0")]([SubResource("Resource_15hac"), SubResource("Resource_3l5yu")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
 
 [sub_resource type="Resource" id="Resource_r7ikn"]
 script = ExtResource("7_dp31f")
@@ -92,7 +102,7 @@ script = ExtResource("9_y23a2")
 item_type = 9
 result = SubResource("Resource_dvm1c")
 spend_items = false
-access_test = SubResource("Resource_bskcy")
+access_test = SubResource("Resource_fgqo8")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_npw3c"]

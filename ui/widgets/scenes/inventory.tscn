@@ -82,7 +82,7 @@ texture = ExtResource("8_olhbr")
 
 [node name="Blossoms" parent="HBoxContainer" unique_id=693267511 instance=ExtResource("1_righx")]
 layout_mode = 2
-itemKey = 7
+itemKey = 8
 
 [node name="TextureRect" parent="HBoxContainer/Blossoms" index="0" unique_id=736762699]
 texture = ExtResource("9_li0im")

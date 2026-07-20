@@ -34,6 +34,13 @@ offset_top = 374.0
 offset_right = 1631.0
 offset_bottom = 526.0
 
+[node name="ActionPanel4" parent="." unique_id=649418725 instance=ExtResource("2_oww7b")]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 409.0
+offset_right = 1086.0
+offset_bottom = 561.0
+
 [node name="ClockWidget" parent="." unique_id=1818651294 instance=ExtResource("3_n57jq")]
 layout_mode = 0
 offset_left = 462.0

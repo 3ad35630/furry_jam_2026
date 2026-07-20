@@ -57,6 +57,8 @@ script = ExtResource("11_q0fqv")
 target_number = 5
 skill = 4
 positive = SubResource("Resource_4pj0a")
+neutral = SubResource("Resource_4pj0a")
+negative = SubResource("Resource_4pj0a")
 description = "It is difficult to pick them for they are fragile and so very cold."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
