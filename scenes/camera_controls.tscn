@@ -59,6 +59,20 @@ var rotating = false
 
 func _process(delta: float) -> void:
 	if Modes.current_mode == Enums.GameplayMode.MAP:
+		if Input.is_action_pressed(\"camera_move_right\") and Modes.current_mode == Enums.GameplayMode.MAP:
+			velocity += accelleration * delta
+		elif Input.is_action_pressed(\"camera_move_left\") and Modes.current_mode == Enums.GameplayMode.MAP:
+			velocity += -accelleration * delta
+		else:
+			if abs(velocity) <= 0.3:
+				velocity = 0
+			else:
+				if velocity > 0:
+					velocity -= velocity_decay * delta
+				else:
+					velocity += velocity_decay * delta
+		
+		#rotation.y = deg_to_rad(rad_to_deg(rotation.y) + velocity)
 		if Input.is_action_just_pressed(\"rotate\"):
 			#velocity += -accelleration * delta
 			Input.action_press(\"rotate\")
@@ -73,7 +87,8 @@ func _process(delta: float) -> void:
 			rotate_y((mouse_next.x - mouse_prev.x) * -0.7 * delta)
 			rotate_z((mouse_next.y - mouse_prev.y) * 0.4 * delta)
 			mouse_prev = mouse_next 
-		#rotation.y = deg_to_rad(rad_to_deg(rotation.y) + velocity)
+		velocity = clampf(velocity, -max_speed, max_speed)
+		rotation.y = deg_to_rad(rad_to_deg(rotation.y) + velocity)
 "
 
 [sub_resource type="GDScript" id="GDScript_js7sh"]
