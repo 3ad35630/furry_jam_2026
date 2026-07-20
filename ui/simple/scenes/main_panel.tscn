@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="7_rd64i"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
 [ext_resource type="Resource" uid="uid://c2xj1g6inhls1" path="res://resources/characters/KittenWitch.tres" id="8_sjyj4"]
-[ext_resource type="Texture2D" uid="uid://dn1i65kqqd7k6" path="res://ui/character_profiles/icon_necro.png" id="8_y3ayd"]
+[ext_resource type="Texture2D" uid="uid://dn1i65kqqd7k6" path="res://ui/character_profiles/icon_mittens.png" id="8_y3ayd"]
 [ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/FlowerWitch.tres" id="10_h5prc"]
-[ext_resource type="Texture2D" uid="uid://cmg67fwc3su47" path="res://ui/character_profiles/icon_plant.png" id="10_rd64i"]
+[ext_resource type="Texture2D" uid="uid://cmg67fwc3su47" path="res://ui/character_profiles/icon_willow.png" id="10_rd64i"]
+[ext_resource type="Texture2D" uid="uid://cvq2g3vpd7v6b" path="res://ui/main_menu_textures/SpaceWitchs_UI_EndHour.png" id="11_66feg"]
+[ext_resource type="Texture2D" uid="uid://dj0n5x38xy8gg" path="res://ui/main_menu_textures/SpaceWitchs_UI_EndHour_OnClick.png" id="12_iemfu"]
+[ext_resource type="Texture2D" uid="uid://bxbna3iiv1vfo" path="res://ui/main_menu_textures/SpaceWitchs_UI_EndHour_OnHover.png" id="13_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://dtgsewb8vm54h" path="res://ui/icons/Game-Jam-Paw.png" id="14_y3ayd"]
 [ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="15_rd64i"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
@@ -157,7 +160,7 @@ script/source = "extends Panel
 signal sceneTriggered()
 
 @export var player : AnimationPlayer
-@export var button : Button
+@export var button : TextureButton
 @export var sound : AudioStreamPlayer
 
 var sceneHasTriggered : bool = false
@@ -378,11 +381,15 @@ size_flags_vertical = 3
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=1348084652]
 libraries/ = SubResource("AnimationLibrary_5cr83")
 
-[node name="Button" type="Button" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=211048938]
+[node name="Button" type="TextureButton" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=1341065634]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 offset_transform_enabled = true
-text = "End Hour"
+texture_normal = ExtResource("11_66feg")
+texture_pressed = ExtResource("12_iemfu")
+texture_hover = ExtResource("13_c1mnc")
+texture_disabled = ExtResource("11_66feg")
+texture_focused = ExtResource("11_66feg")
 
 [node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton/Button" unique_id=682008188]
 stream = ExtResource("15_rd64i")
