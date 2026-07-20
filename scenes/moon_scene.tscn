@@ -106,27 +106,28 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="DayNightCycle" type="Node3D" parent="." unique_id=1837301946]
 script = ExtResource("1_ltsy3")
-day_time = 5.7596
+day_time = 5.8512
 latitude = -7.180000000000007
 planet_axial_tilt = -17.139999999999986
 moon_orbital_inclination = -29.139999999999983
 moon_orbital_period = 120.1
 clouds_cutoff = 0.6
+time_scale = 0.0
 sun_base_enegry = 1.0
-moon_base_enegry = 1.77
+moon_base_enegry = 1.31
 
 [node name="Sun" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1562214062]
-transform = Transform3D(0.95212764, 0.12473945, 0.2790931, -0.10163105, 0.9901941, -0.095848024, -0.28831232, 0.06289504, 0.9554686, 0, 0, 0)
+transform = Transform3D(0.951264, 0.12489208, 0.28195506, -0.108495615, 0.99140567, -0.073099345, -0.28866133, 0.038945895, 0.9566388, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.7882353, 0.7372549, 0.79607844, 1)
 light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.99619955, -0.01593086, -0.08561267, 0.08292853, -0.12646073, 0.9884966, -0.026574265, -0.9918437, -0.124658875, 0, 0, 0)
+transform = Transform3D(0.99630225, -0.01297854, -0.08491252, 0.083135396, -0.10302493, 0.99119586, -0.0216124, -0.9945941, -0.10156489, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.7865726, 0.73917943, 0.79775226, 1)
-light_energy = 1.77
+light_energy = 1.31
 shadow_enabled = true
 
 [node name="CameraRotation" parent="." unique_id=517386831 instance=ExtResource("3_jtt53")]
