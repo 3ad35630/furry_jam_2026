@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_yqyhv"]
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="4_h4e3s"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="5_ii6op"]
+[ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="7_hrpx5"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_oeblf"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="8_vkrjc"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="9_p7cw3"]
@@ -36,6 +37,11 @@ script = ExtResource("1_vtvur")
 tests = Array[ExtResource("2_hrpx5")]([SubResource("Resource_dp31f"), SubResource("Resource_qhxa6")])
 metadata/_custom_type_script = "uid://60w7olhaehda"
 
+[sub_resource type="Resource" id="Resource_vtvur"]
+script = ExtResource("7_hrpx5")
+text = "You gather some, but they burst between your fingers. You'll have to try again."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
 [sub_resource type="Resource" id="Resource_u3pif"]
 script = ExtResource("8_vkrjc")
 item_type = 8
@@ -58,8 +64,8 @@ target_number = 5
 skill = 4
 positive = SubResource("Resource_4pj0a")
 neutral = SubResource("Resource_4pj0a")
-negative = SubResource("Resource_4pj0a")
-description = "It is difficult to pick them for they are fragile and so very cold."
+negative = SubResource("Resource_vtvur")
+description = "The blossoms! Finally! It is difficult to pick them for they are fragile and so very cold."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [resource]
