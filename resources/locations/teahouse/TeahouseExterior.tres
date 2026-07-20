@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_jii7u"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="4_a48kk"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="4_avmgi"]
-[ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="6_avmgi"]
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="8_6sqyj"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="9_fd3s2"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="10_8yh3t"]
 
 [sub_resource type="Resource" id="Resource_paspp"]
 script = ExtResource("3_a48kk")
@@ -40,24 +42,59 @@ description = "Knock on the door, you're here to help!"
 access_test = SubResource("Resource_jkl28")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
-[sub_resource type="Resource" id="Resource_a14y6"]
-script = ExtResource("6_avmgi")
-clock_id = "main_ingredient_clock"
-metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+[sub_resource type="Resource" id="Resource_722th"]
+script = ExtResource("10_8yh3t")
+item_type = 4
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
 
-[sub_resource type="Resource" id="Resource_rt1kv"]
-resource_name = "Deliver Ingredients"
-script = ExtResource("2_jii7u")
-metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+[sub_resource type="Resource" id="Resource_p7y8p"]
+script = ExtResource("10_8yh3t")
+item_type = 5
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_cmfwq"]
+script = ExtResource("10_8yh3t")
+item_type = 6
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_mj4fj"]
+script = ExtResource("10_8yh3t")
+item_type = 7
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_g3ryr"]
+script = ExtResource("10_8yh3t")
+item_type = 8
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_3l5yu"]
+script = ExtResource("8_6sqyj")
+tests = Array[ExtResource("9_fd3s2")]([SubResource("Resource_722th"), SubResource("Resource_p7y8p"), SubResource("Resource_cmfwq"), SubResource("Resource_mj4fj"), SubResource("Resource_g3ryr")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_avmgi"]
+script = ExtResource("4_a48kk")
+path = "story_conclusion"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_xx0bf"]
+script = ExtResource("4_a48kk")
+path = "story_conclusion"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_fjij5"]
+script = ExtResource("4_a48kk")
+path = "story_conclusion"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
 
 [sub_resource type="Resource" id="Resource_b2fl3"]
-resource_name = "Deliver Ingredients"
+resource_name = "Make Tea"
 script = ExtResource("3_jaxoa")
-positive = SubResource("Resource_rt1kv")
-neutral = SubResource("Resource_rt1kv")
-negative = SubResource("Resource_rt1kv")
+positive = SubResource("Resource_fjij5")
+neutral = SubResource("Resource_xx0bf")
+negative = SubResource("Resource_avmgi")
 description = "You have them all! Finally! Let's do this thing!!"
-access_test = SubResource("Resource_a14y6")
+access_test = SubResource("Resource_3l5yu")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_4t3wr"]

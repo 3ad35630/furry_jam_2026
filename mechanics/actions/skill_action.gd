@@ -11,6 +11,7 @@ class_name SkillAction
 
 func get_output_type(roll_data) -> Enums.DieActionOutcomeTypes:
 	var skill_value = roll_data['character'].get_skill(skill) + roll_data['die_value']
+	#print("Skill Value: " + str(skill_value) + " VS Target: " + str(target_number))
 	if skill_value > target_number:	
 		return Enums.DieActionOutcomeTypes.GOOD
 	if skill_value == target_number:
@@ -52,13 +53,13 @@ func get_outcome_probabilities(rollData : Dictionary) -> Dictionary[Enums.Effect
 	match(output):
 		Enums.DieActionOutcomeTypes.GOOD:
 			outcomes[Enums.EffectClasses.POSITIVE] = 0.5
-			outcomes[Enums.EffectClasses.NEGATIVE] = 0.5
+			outcomes[Enums.EffectClasses.NEUTRAL] = 0.5
 		Enums.DieActionOutcomeTypes.NEUTRAL:
 			outcomes[Enums.EffectClasses.POSITIVE] = 0.25
 			outcomes[Enums.EffectClasses.NEUTRAL] = 0.5
 			outcomes[Enums.EffectClasses.NEGATIVE] = 0.25
 		Enums.DieActionOutcomeTypes.BAD:
-			outcomes[Enums.EffectClasses.NEUTRAL] = 0.25
-			outcomes[Enums.EffectClasses.NEGATIVE] = 0.75
+			outcomes[Enums.EffectClasses.NEUTRAL] = 0.5
+			outcomes[Enums.EffectClasses.NEGATIVE] = 0.5
 	
 	return outcomes

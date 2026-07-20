@@ -6,7 +6,7 @@ extends MainMenuButton
 func _on_press() -> void:
 	Modes.change_gameplay_mode(setMode)
 
-func _on_mode_changed(mode : Enums.GameplayMode) -> void:
-	match(mode):
-		Enums.GameplayMode.MAP:
-			text = resumeText
+#func _on_mode_changed(mode : Enums.GameplayMode) -> void:
+	#match(mode):
+		#Enums.GameplayMode.MAP:
+			#text = resumeText

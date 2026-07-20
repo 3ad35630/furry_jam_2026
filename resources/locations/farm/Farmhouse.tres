@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_8khma"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="8_hh1f7"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="9_flyg6"]
-[ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_yhclw"]
 [ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="11_2agq0"]
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="12_0yt3h"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="13_yhclw"]
@@ -135,7 +134,7 @@ metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_8o7y0"]
 script = ExtResource("3_ujqdw")
-clock_id = "explore_farm"
+clock_id = "awaken_the_cows"
 metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
 
 [sub_resource type="Resource" id="Resource_koebr"]
@@ -156,6 +155,7 @@ metadata/_custom_type_script = "uid://60w7olhaehda"
 [sub_resource type="Resource" id="Resource_etdsb"]
 script = ExtResource("9_flyg6")
 item_type = 4
+amount = 1
 metadata/_custom_type_script = "uid://vwo5xo7yd545"
 
 [sub_resource type="Resource" id="Resource_qmwbj"]
@@ -188,24 +188,6 @@ script = ExtResource("3_rjrsa")
 ink_path = "explore_farm"
 metadata/_custom_type_script = "uid://cxoadgbyfvuei"
 
-[sub_resource type="Resource" id="Resource_lks2n"]
-resource_name = "Get ye milk!"
-script = ExtResource("9_flyg6")
-item_type = 4
-amount = 1
-metadata/_custom_type_script = "uid://vwo5xo7yd545"
-
-[sub_resource type="Resource" id="Resource_i7xln"]
-resource_name = "Milk the spirit cows"
-script = ExtResource("4_sudli")
-path = "milk_the_spirit_cows"
-metadata/_custom_type_script = "uid://b0frcg551aapm"
-
-[sub_resource type="Resource" id="Resource_c1crs"]
-script = ExtResource("10_yhclw")
-effects = Array[ExtResource("8_hh1f7")]([SubResource("Resource_lks2n"), SubResource("Resource_i7xln")])
-metadata/_custom_type_script = "uid://bchlp1lq87y8u"
-
 [sub_resource type="Resource" id="Resource_jkl28"]
 resource_name = "Awaken the Cows"
 script = ExtResource("6_bsk6t")
@@ -213,7 +195,6 @@ clock_id = "awaken_the_cows"
 description = "There are definitely spirit cows out here, you can feel them. They're just sleeping. You'll need to wake them up if you want any of their milk."
 access_test = SubResource("Resource_2mcle")
 max_segments = 10
-effect = SubResource("Resource_c1crs")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [sub_resource type="Resource" id="Resource_udg7n"]

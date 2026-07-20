@@ -82,6 +82,7 @@ func _on_dice_slot_data_changed(data: Variant) -> void:
 
 
 func _on_action_panel_action_set(action: Action) -> void:
+	get_parent().clear_data()
 	if action:
 		held_action = action
 		held_action.action_done.connect(get_parent().clear_data)
@@ -154,7 +155,7 @@ func update_can_press() -> void:
 	else:
 		if not owner.action:
 			self.disabled = true
-		else:
+		elif owner.action is ItemAction:
 			self.disabled = not owner.action.can_afford_action()
 		
 func _on_dice_slot_data_changed(data: Variant) -> void:

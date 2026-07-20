@@ -1,113 +1,158 @@
 [gd_scene format=3 uid="uid://cjehic72qfqx2"]
 
 [ext_resource type="Script" uid="uid://1ftxc4kwmmxl" path="res://ui/widgets/scripts/button_start.gd" id="1_ewfhh"]
+[ext_resource type="Texture2D" uid="uid://csxinr67du3un" path="res://ui/main_menu_textures/SpaceWitchs_UI_BACKGROUND.png" id="1_s0y5o"]
+[ext_resource type="Texture2D" uid="uid://cuq4pv8a2s1ph" path="res://ui/main_menu_textures/SpaceWitchs_UI_StartGame.png" id="2_uftg2"]
+[ext_resource type="Texture2D" uid="uid://knkygeucr13" path="res://ui/main_menu_textures/SpaceWitchs_UI_StartGame_OnClick.png" id="3_7tv1f"]
 [ext_resource type="Script" uid="uid://ccjk3yevq7fhr" path="res://ui/widgets/scripts/button_quit.gd" id="3_ct2aj"]
 [ext_resource type="Script" uid="uid://b4ggk2q81tsem" path="res://ui/widgets/scripts/settings_panel.gd" id="4_ct2aj"]
+[ext_resource type="Texture2D" uid="uid://cyo8wr2i0cdwx" path="res://ui/main_menu_textures/SpaceWitchs_UI_StartGame_OnHover.png" id="4_h6hga"]
 [ext_resource type="Script" uid="uid://cckwp4kx3y7k5" path="res://ui/widgets/scripts/audio_control.gd" id="4_kytxy"]
+[ext_resource type="Texture2D" uid="uid://cld6mwumc1wwh" path="res://ui/main_menu_textures/SpaceWitchs_UI_SettingsButton.png" id="4_lpoq0"]
+[ext_resource type="Texture2D" uid="uid://d3pahy8hwjsbb" path="res://ui/main_menu_textures/SpaceWitchs_UI_CreditsButton.png" id="5_kery5"]
 [ext_resource type="Script" uid="uid://jl123n5hsurt" path="res://ui/widgets/scripts/fullscreen_control.gd" id="5_kytxy"]
+[ext_resource type="Script" uid="uid://7s83p04w4l8v" path="res://ui/widgets/scripts/button_main_menu.gd" id="5_uftg2"]
+[ext_resource type="Texture2D" uid="uid://bs7eavqi4hb13" path="res://ui/main_menu_textures/SpaceWitchs_UI_QuitButton.png" id="6_sbx46"]
+[ext_resource type="Texture2D" uid="uid://jwxv2brh8y14" path="res://ui/main_menu_textures/SpaceWitchs_UI_Settings_OnClick.png" id="7_avarx"]
+[ext_resource type="Texture2D" uid="uid://p8aayep5dqd" path="res://ui/main_menu_textures/SpaceWitchs_UI_Setting_OnHover.png" id="8_avarx"]
+[ext_resource type="Texture2D" uid="uid://csm168dkeyxq8" path="res://ui/main_menu_textures/SpaceWitchs_UI_Credits_OnClick.png" id="11_xh57i"]
+[ext_resource type="Texture2D" uid="uid://denfrq7283014" path="res://ui/main_menu_textures/SpaceWitchs_UI_Credits_OnHover.png" id="12_t1irh"]
+[ext_resource type="Texture2D" uid="uid://ct6ny3qjslkik" path="res://ui/main_menu_textures/SpaceWitchs_UI_Quit_OnClick.png" id="14_xh57i"]
+[ext_resource type="Texture2D" uid="uid://cysis6t62ajkj" path="res://ui/main_menu_textures/SpaceWitchs_UI_Quit_OnHover.png" id="15_hswys"]
+[ext_resource type="Texture2D" uid="uid://41qd0uvm0s85" path="res://ui/main_menu_textures/UI Panal.png" id="18_h6hga"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16uew"]
+texture = ExtResource("1_s0y5o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g746w"]
+texture = ExtResource("18_h6hga")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3n1p"]
+texture = ExtResource("18_h6hga")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xufs"]
 bg_color = Color(0, 0, 0, 0)
 
-[node name="MainMenu" type="Panel" unique_id=1857706283]
+[node name="MainMenu" type="PanelContainer" unique_id=750663601]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1636.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_16uew")
 
-[node name="Label" type="Label" parent="." unique_id=2094960589]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 20
-text = "~ Much Ado about Tea ~"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1600997407]
+layout_mode = 2
 
-[node name="Button" type="Button" parent="." unique_id=1039189792]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 128.0
-offset_right = 216.0
-offset_bottom = 192.0
-pivot_offset = Vector2(96, 32)
-text = "Start Game"
+[node name="MenuColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=410325856]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/MenuColumn" unique_id=1906784587]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="StartGameButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=203168881]
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("2_uftg2")
+texture_pressed = ExtResource("3_7tv1f")
+texture_hover = ExtResource("4_h6hga")
+texture_disabled = ExtResource("2_uftg2")
+texture_focused = ExtResource("2_uftg2")
+stretch_mode = 3
 script = ExtResource("1_ewfhh")
 
-[node name="Button2" type="Button" parent="." unique_id=886093287]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 224.0
-offset_right = 216.0
-offset_bottom = 288.0
-pivot_offset = Vector2(96, 32)
-text = "Settings"
+[node name="SettingsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=2005155270]
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("4_lpoq0")
+texture_pressed = ExtResource("7_avarx")
+texture_hover = ExtResource("8_avarx")
+texture_disabled = ExtResource("4_lpoq0")
+texture_focused = ExtResource("4_lpoq0")
+stretch_mode = 3
+script = ExtResource("5_uftg2")
 
-[node name="Button3" type="Button" parent="." unique_id=1836637805]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 320.0
-offset_right = 216.0
-offset_bottom = 384.0
-pivot_offset = Vector2(96, 32)
-text = "Credits"
+[node name="CreditsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=206791228]
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("5_kery5")
+texture_pressed = ExtResource("11_xh57i")
+texture_hover = ExtResource("12_t1irh")
+texture_disabled = ExtResource("5_kery5")
+texture_focused = ExtResource("5_kery5")
+stretch_mode = 3
+script = ExtResource("5_uftg2")
 
-[node name="Button4" type="Button" parent="." unique_id=1806127632]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 416.0
-offset_right = 216.0
-offset_bottom = 480.0
-pivot_offset = Vector2(96, 32)
-text = "Quit"
+[node name="QuitButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=1345577587]
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("6_sbx46")
+texture_pressed = ExtResource("14_xh57i")
+texture_hover = ExtResource("15_hswys")
+texture_disabled = ExtResource("6_sbx46")
+texture_focused = ExtResource("6_sbx46")
+stretch_mode = 3
 script = ExtResource("3_ct2aj")
 
-[node name="Label2" type="Label" parent="." unique_id=755073148]
-layout_mode = 0
-offset_top = 584.0
-offset_right = 256.0
-offset_bottom = 648.0
+[node name="Control3" type="Control" parent="HBoxContainer/MenuColumn" unique_id=754241708]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Label2" type="Label" parent="HBoxContainer/MenuColumn" unique_id=755073148]
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Furry Game Jam 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=395642637]
-visible = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="Control2" type="Control" parent="HBoxContainer/MenuColumn" unique_id=359912816]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DisplayColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=2114904385]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.5
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DisplayColumn" unique_id=395642637]
+layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("4_ct2aj")
 
-[node name="CreditsPanel" type="Panel" parent="CenterContainer" unique_id=1635506719]
+[node name="CreditsPanel" type="PanelContainer" parent="HBoxContainer/DisplayColumn/CenterContainer" unique_id=722832919]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g746w")
 
-[node name="Label" type="Label" parent="CenterContainer/CreditsPanel" unique_id=146313864]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 60.0
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel" unique_id=1005504359]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer" unique_id=557374895]
+layout_mode = 2
+theme_override_constants/margin_top = 47
+theme_override_constants/margin_bottom = 42
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer" unique_id=1557536987]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=146313864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 39
 text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/CreditsPanel" unique_id=593651514]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -161.0
-offset_right = 226.0
-offset_bottom = 159.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CreditsLabel" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=407233591]
+custom_minimum_size = Vector2(423.595, 0)
+layout_mode = 2
+size_flags_vertical = 3
 text = "Squishy: Project Lead, Programming, Concepting
 
 Muffin ^_^: 3D Lead, Concepting
@@ -121,135 +166,123 @@ Phorzaeken: Audio Lead, Programming, Concepting
 Special Thanks to:
 krzmig and AlexRazor1337 (Oleksandr Huliakov) for the skybox
  https://github.com/krzmig/godot-simple-sky-project/tree/main"
+autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="CenterContainer/CreditsPanel" unique_id=1510115377]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -47.0
-offset_top = 57.0
-offset_right = 42.0
-offset_bottom = 80.0
-grow_horizontal = 2
-text = "Created By:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" type="Button" parent="CenterContainer/CreditsPanel" unique_id=559652158]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.83100003
-anchor_right = 1.0
-anchor_bottom = 0.90900004
-offset_left = 38.0
-offset_top = -6.4720154
-offset_right = -32.0
-offset_bottom = 19.847961
-grow_horizontal = 2
-grow_vertical = 0
+[node name="BackButton" type="Button" parent="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=559652158]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Back"
 icon_alignment = 1
 
-[node name="SettingsPanel" type="Panel" parent="CenterContainer" unique_id=1347277828]
+[node name="SettingsPanel" type="PanelContainer" parent="HBoxContainer/DisplayColumn/CenterContainer" unique_id=1983463697]
+unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s3n1p")
 
-[node name="SettingsTabs" type="TabContainer" parent="CenterContainer/SettingsPanel" unique_id=965098292]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -235.0
-offset_top = -203.0
-offset_right = 235.0
-offset_bottom = 240.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel" unique_id=947450841]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer" unique_id=649316473]
+layout_mode = 2
+theme_override_constants/margin_top = 46
+theme_override_constants/margin_bottom = 49
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer" unique_id=1119575190]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=1393147154]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTabs" type="TabContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=965098292]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3xufs")
 tab_alignment = 1
 current_tab = 0
 
-[node name="General" type="Control" parent="CenterContainer/SettingsPanel/SettingsTabs" unique_id=540528063]
+[node name="General" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs" unique_id=265401091]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="AudioSlider" type="HSlider" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=1852645057]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 71.0
-offset_right = 357.0
-offset_bottom = 140.0
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General" unique_id=1005433507]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer" unique_id=1758495444]
+layout_mode = 2
+text = "Music"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer" unique_id=1904610260]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer/VBoxContainer" unique_id=517218547]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioSlider" type="HSlider" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer/VBoxContainer" unique_id=1852645057]
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("4_kytxy")
 audio_bus = "BGM"
 
-[node name="Label" type="Label" parent="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" unique_id=1758495444]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Music"
+[node name="Control2" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer/VBoxContainer" unique_id=1639168842]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="AudioSlider2" type="HSlider" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=276428455]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 172.0
-offset_right = 356.0
-offset_bottom = 243.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General" unique_id=1175492230]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2" unique_id=767703110]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2" unique_id=644975978]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer" unique_id=703963462]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioSlider2" type="HSlider" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer" unique_id=276428455]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 max_value = 1.0
 step = 0.05
 value = 1.0
 script = ExtResource("4_kytxy")
 audio_bus = "SFX"
 
-[node name="Label" type="Label" parent="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" unique_id=767703110]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "SFX"
+[node name="Control2" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer" unique_id=276591749]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="FullscreenControl" type="CheckButton" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=1400378622]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 274.0
-offset_right = 339.0
-offset_bottom = 305.0
+[node name="FullscreenControl" type="CheckButton" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General" unique_id=1400378622]
+layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("5_kytxy")
 
-[node name="Controls" type="Control" parent="CenterContainer/SettingsPanel/SettingsTabs" unique_id=183802172]
+[node name="Controls" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs" unique_id=1661092224]
 visible = false
+custom_minimum_size = Vector2(350, 350)
 layout_mode = 2
+theme_override_constants/margin_top = 21
+theme_override_constants/margin_bottom = 17
 metadata/_tab_index = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/SettingsPanel/SettingsTabs/Controls" unique_id=1577576912]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.5
-offset_top = -180.0
-offset_right = 189.5
-offset_bottom = 131.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="RichTextLabel" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/Controls" unique_id=1287363747]
+custom_minimum_size = Vector2(418.75, 0)
+layout_mode = 2
 text = "Moon Navigation:
 - Left click & drag with the mouse to rotate around the moon!
 - Mouse scroll  or W/D keys to zoom in!
@@ -263,34 +296,17 @@ Character Panel:
 Location Navigation:
 - Dragging dice onto the various actions at a location will let you attempt to complete the task!
 - Pressing 'Return to Map' in the top left corner will bring you back to the world moon view!"
+autowrap_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/SettingsPanel" unique_id=1393147154]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 60.0
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" type="Button" parent="CenterContainer/SettingsPanel" unique_id=2038582729]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.83100003
-anchor_right = 1.0
-anchor_bottom = 0.90900004
-offset_left = 38.0
-offset_top = -6.4720154
-offset_right = -32.0
-offset_bottom = 19.847961
-grow_horizontal = 2
-grow_vertical = 0
+[node name="BackButton" type="Button" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=2038582729]
+layout_mode = 2
 text = "Back"
 icon_alignment = 1
 
-[connection signal="pressed" from="Button2" to="CenterContainer" method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="CenterContainer" method="_on_button_3_pressed"]
-[connection signal="pressed" from="CenterContainer/CreditsPanel/BackButton" to="CenterContainer" method="_on_back_button_pressed"]
-[connection signal="value_changed" from="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" to="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" method="_on_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" to="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" method="_on_value_changed"]
-[connection signal="toggled" from="CenterContainer/SettingsPanel/SettingsTabs/General/FullscreenControl" to="CenterContainer/SettingsPanel/SettingsTabs/General/FullscreenControl" method="_on_toggled"]
-[connection signal="pressed" from="CenterContainer/SettingsPanel/BackButton" to="CenterContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuColumn/SettingsButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_button_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuColumn/CreditsButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_button_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer/VBoxContainer/AudioSlider" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer/VBoxContainer/AudioSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer/AudioSlider2" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer/AudioSlider2" method="_on_value_changed"]
+[connection signal="toggled" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/FullscreenControl" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/FullscreenControl" method="_on_toggled"]
+[connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]

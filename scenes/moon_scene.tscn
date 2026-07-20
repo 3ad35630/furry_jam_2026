@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ddys7b3ulp58x" path="res://ui/widgets/scripts/camera_panel_target.gd" id="7_cmfwq"]
 [ext_resource type="PackedScene" uid="uid://cjehic72qfqx2" path="res://ui/widgets/scenes/main_menu.tscn" id="13_3l5yu"]
 [ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
+[ext_resource type="PackedScene" uid="uid://chrjcqsxmvmrm" path="res://ui/widgets/scenes/overlay_widget.tscn" id="14_cmfwq"]
 [ext_resource type="AudioStream" uid="uid://burr2oclfioy0" path="res://audio/ui_sfx/much ado about tea.mp3" id="14_p7y8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
@@ -62,12 +63,24 @@ fog_density = 1.0
 [sub_resource type="GDScript" id="GDScript_16uew"]
 script/source = "extends Node
 
+@export var currency_items : bool = false
+@export var give_stick : bool = false
+@export var all_ingredients : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Inventory.add(Enums.ItemTypes.MONEY, 30)
-	Inventory.add(Enums.ItemTypes.FISH, 30)
-	Inventory.add(Enums.ItemTypes.GOSSIP, 30)
-	Inventory.add(Enums.ItemTypes.PUMPKINS_MAGIC_STICK, 1)
+	if currency_items:
+		Inventory.add(Enums.ItemTypes.MONEY, 30)
+		Inventory.add(Enums.ItemTypes.FISH, 30)
+		Inventory.add(Enums.ItemTypes.GOSSIP, 30)
+	if give_stick:
+		Inventory.add(Enums.ItemTypes.PUMPKINS_MAGIC_STICK, 1)
+	if all_ingredients:
+		Inventory.add(Enums.ItemTypes.MILK, 1)
+		Inventory.add(Enums.ItemTypes.OIL, 1)
+		Inventory.add(Enums.ItemTypes.CINNAMON, 1)
+		Inventory.add(Enums.ItemTypes.TEA, 1)
+		Inventory.add(Enums.ItemTypes.BLOSSOMS, 1)
 "
 
 [node name="Moon" type="Node3D" unique_id=1671707619]
@@ -77,7 +90,6 @@ environment = SubResource("Environment_mcndj")
 
 [node name="MoonBase" parent="." unique_id=249059132 instance=ExtResource("3_3l5yu")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-farm_clock = "awaken_the_cows"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="MoonBase" unique_id=1353406696]
 light_color = Color(0.7840259, 0.5236658, 0.8944897, 1)
@@ -105,7 +117,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.20700736, -0.10391674, 0.97280234, -0.97809863, 4.542345e-09, 0.20813403, -0.021628631, -0.994586, -0.10164074, 0, 0, 0)
+transform = Transform3D(0.20700736, -0.10391674, 0.97280216, -0.97809863, 4.542345e-09, 0.20813398, -0.021628631, -0.994586, -0.101640716, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.999332, 0.6812532, 0.25062352, 1)
 light_energy = 1.77
@@ -540,5 +552,7 @@ visible = false
 mouse_filter = 2
 mouse_behavior_recursive = 2
 
-[node name="GiveMeAllResources" type="Node" parent="." unique_id=195708757]
+[node name="OverlayWidget" parent="." unique_id=35101285 instance=ExtResource("14_cmfwq")]
+
+[node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
 script = SubResource("GDScript_16uew")

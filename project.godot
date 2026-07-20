@@ -41,6 +41,10 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-coi-serviceworker-7319d9ff0033cdd8f15cb14376b8832e28a9cb0a/godot-coi-serviceworker-7319d9ff0033cdd8f15cb14376b8832e28a9cb0a/addons/coi_serviceworker/plugin.cfg", "res://addons/inkgd/plugin.cfg")

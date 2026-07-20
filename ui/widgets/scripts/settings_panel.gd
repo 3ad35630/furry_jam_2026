@@ -1,7 +1,7 @@
 extends CenterContainer
 
-@onready var credits = $CreditsPanel
-@onready var settings = $SettingsPanel
+@onready var credits = %CreditsPanel
+@onready var settings = %SettingsPanel
 
 func _on_button_2_pressed() -> void:
 	visible = true

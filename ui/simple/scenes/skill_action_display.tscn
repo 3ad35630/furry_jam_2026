@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cdc64l2yt2i8e"]
+[gd_scene format=3 uid="uid://bcsco880f83bs"]
 
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="1_ig7cr"]
 [ext_resource type="AudioStream" uid="uid://dvtsdpvvkiquv" path="res://audio/ui_sfx/dice.ogg" id="2_q8yy3"]
@@ -136,6 +136,8 @@ display = NodePath("DieDisplay")
 
 [node name="DieDisplay" parent="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" unique_id=1864076286 instance=ExtResource("1_ig7cr")]
 layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="DoAction" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=677246513]
 layout_mode = 2

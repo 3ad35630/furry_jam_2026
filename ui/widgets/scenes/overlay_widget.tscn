@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://chrjcqsxmvmrm"]
+
+[ext_resource type="Texture2D" uid="uid://id00inpnk6m6" path="res://ui/boxes/Ending.png" id="1_qntt8"]
+[ext_resource type="Script" uid="uid://bw7lbj8myyvl1" path="res://ui/widgets/scripts/fade_in_and_out.gd" id="2_1xp64"]
+
+[sub_resource type="GDScript" id="GDScript_1xp64"]
+script/source = "extends Control
+
+@export var fade_duration : float = 1.0
+var _show_black_panel : bool = false
+var show_black_panel : bool : 
+	set(val):
+		if val:
+			if not _show_black_panel:
+				%BlackPanel.fade_in(fade_duration)
+		else:
+			if _show_black_panel:
+				%BlackPanel.fade_out(fade_duration)
+		_show_black_panel = val
+
+var _show_end_screen : bool = false
+var show_end_screen : bool : 
+	set(val):
+		if val:
+			if not _show_end_screen:
+				%EndScreen.fade_in(fade_duration)
+		else:
+			if _show_end_screen:
+				%EndScreen.fade_out(fade_duration)
+		_show_end_screen = val
+"
+
+[node name="OverlayWidget" type="Control" unique_id=35101285]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1900.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = SubResource("GDScript_1xp64")
+
+[node name="BlackPanel" type="PanelContainer" parent="." unique_id=242552863]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_1xp64")
+
+[node name="EndScreen" type="TextureRect" parent="." unique_id=52007332]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_maximum_size = Vector2(1900, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_qntt8")
+script = ExtResource("2_1xp64")

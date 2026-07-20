@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="12_ycba2"]
 [ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="13_84ka5"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="15_dfh30"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="16_dfh30"]
 
 [sub_resource type="Resource" id="Resource_b2fl3"]
 script = ExtResource("1_2pcgd")
@@ -124,28 +125,33 @@ script = ExtResource("13_84ka5")
 tests = Array[ExtResource("11_mf60b")]([SubResource("Resource_yherr"), SubResource("Resource_3cb85")])
 metadata/_custom_type_script = "uid://60w7olhaehda"
 
-[sub_resource type="Resource" id="Resource_84ka5"]
+[sub_resource type="Resource" id="Resource_u21dl"]
 script = ExtResource("5_dnujq")
 item_type = 7
 amount = 1
 metadata/_custom_type_script = "uid://vwo5xo7yd545"
 
-[sub_resource type="Resource" id="Resource_dfh30"]
-script = ExtResource("12_ycba2")
-metadata/_custom_type_script = "uid://b0frcg551aapm"
+[sub_resource type="Resource" id="Resource_wxg2o"]
+script = ExtResource("4_dnujq")
+clock_id = "main_ingredient_clock"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
 
-[sub_resource type="Resource" id="Resource_ycba2"]
-resource_name = "Press the fish"
-script = ExtResource("7_3pgym")
-effects = Array[ExtResource("4_bgoi0")]([SubResource("Resource_84ka5"), SubResource("Resource_dfh30")])
-metadata/_custom_type_script = "uid://bchlp1lq87y8u"
+[sub_resource type="Resource" id="Resource_52csp"]
+script = ExtResource("16_dfh30")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_5854s"]
+script = ExtResource("12_ycba2")
+path = "press_the_fish"
+post_effects = Array[ExtResource("4_bgoi0")]([SubResource("Resource_u21dl"), SubResource("Resource_wxg2o"), SubResource("Resource_52csp")])
+metadata/_custom_type_script = "uid://b0frcg551aapm"
 
 [sub_resource type="Resource" id="Resource_mf60b"]
 resource_name = "Press the fish"
 script = ExtResource("8_p6i3w")
 item_type = 2
 required_number = 10
-result = SubResource("Resource_ycba2")
+result = SubResource("Resource_5854s")
 description = "This process is less grousome than it probably should be. They turn to mist and music first, then precipitate into a shining oil on the top of the glass."
 access_test = SubResource("Resource_vcquf")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"

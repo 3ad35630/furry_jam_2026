@@ -1,5 +1,3 @@
-VAR test_variable = false
-
 === story_intro
 
 The famous tea-house is quiet but not abandoned. It has taken you quite a long way to get here. This moon is isolated and the climb up here is very long.
