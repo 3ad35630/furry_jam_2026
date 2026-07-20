@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vm1anxrr6iv"
-path="res://.godot/imported/plant_portrait.png-e72086db377e841cd5396f6522df071c.ctex"
+uid="uid://dm4kd75ltus7i"
+path="res://.godot/imported/mittens_portrait.png-48558eec8662e2a32a5235b3b28866c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/character_profiles/plant_portrait.png"
-dest_files=["res://.godot/imported/plant_portrait.png-e72086db377e841cd5396f6522df071c.ctex"]
+source_file="res://ui/character_profiles/mittens_portrait.png"
+dest_files=["res://.godot/imported/mittens_portrait.png-48558eec8662e2a32a5235b3b28866c6.ctex"]
 
 [params]
 

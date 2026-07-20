@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmg67fwc3su47"
-path="res://.godot/imported/icon_plant.png-6aeab069faa17d9acbe093831f1bcb27.ctex"
+uid="uid://dn1i65kqqd7k6"
+path="res://.godot/imported/icon_mittens.png-13d5c86dd646b4e2295a53ac812e49ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/character_profiles/icon_plant.png"
-dest_files=["res://.godot/imported/icon_plant.png-6aeab069faa17d9acbe093831f1bcb27.ctex"]
+source_file="res://ui/character_profiles/icon_mittens.png"
+dest_files=["res://.godot/imported/icon_mittens.png-13d5c86dd646b4e2295a53ac812e49ce.ctex"]
 
 [params]
 
