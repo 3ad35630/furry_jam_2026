@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="6_ecxp1"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="7_5jljg"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="9_rp7we"]
+[ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="11_n8qgr"]
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_w0iyi"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="12_n8qgr"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="12_tycou"]
@@ -92,10 +93,20 @@ action_clock_id = "path_to_the_hidden_valley"
 description = "There are spirits up here, wind and cold mostly. Of the two, the wind spirits are much friendlier. They appreciate good stories and memories of warmer places."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
-[sub_resource type="Resource" id="Resource_cd7hs"]
+[sub_resource type="Resource" id="Resource_3fc04"]
+script = ExtResource("11_n8qgr")
+text = "The ground shifts,rocks fall, the snow takes notice."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_t1s1m"]
 script = ExtResource("4_eqem1")
 clock_id = "danger_of_avalanche"
 metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_hrpx5"]
+script = ExtResource("5_it5ub")
+effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_3fc04"), SubResource("Resource_t1s1m")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
 
 [sub_resource type="Resource" id="Resource_3rhko"]
 script = ExtResource("4_eqem1")
@@ -115,7 +126,7 @@ target_number = 4
 skill = 5
 positive = SubResource("Resource_6yn2q")
 neutral = SubResource("Resource_3rhko")
-negative = SubResource("Resource_cd7hs")
+negative = SubResource("Resource_hrpx5")
 action_clock_id = "path_to_the_hidden_valley"
 description = "Brute force is not an elegant solution, but even mountains yield to it in time. You'll find the valley eventually if you can just keep going."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_2pcgd"]
 [ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_4ev8a"]
+[ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="3_7el5q"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="4_bgoi0"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_dnujq"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_3pgym"]
@@ -19,6 +20,11 @@
 script = ExtResource("1_2pcgd")
 ink_path = "explore_docks"
 metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_72w5p"]
+script = ExtResource("3_7el5q")
+text = "You learn a lot of things, but none of them particularly juicy."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
 
 [sub_resource type="Resource" id="Resource_hh1f7"]
 script = ExtResource("5_dnujq")
@@ -38,6 +44,7 @@ script = ExtResource("5_3pgym")
 skill = 3
 positive = SubResource("Resource_sudli")
 neutral = SubResource("Resource_hh1f7")
+negative = SubResource("Resource_72w5p")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_cx67q"]
@@ -63,6 +70,7 @@ item_type = 1
 required_number = 2
 result = SubResource("Resource_hhmcg")
 action_clock_id = "fish_for_sale"
+description = "There are a few Rainbow Trout for sale, better buy them while you can."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_7el5q"]
@@ -77,6 +85,7 @@ script = ExtResource("8_p6i3w")
 item_type = 1
 required_number = 5
 result = SubResource("Resource_7el5q")
+description = "A press of sufficient volume and magical potency to press Rainbow Trout is tricky to come by. You know someone who might rent one to you, but the price is high."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_jkl28"]
@@ -105,6 +114,7 @@ script = ExtResource("8_p6i3w")
 item_type = 2
 required_number = 10
 result = SubResource("Resource_ycba2")
+description = "This process is less grousome than it probably should be. They turn to mist and music first, then precipitate into a shining oil on the top of the glass."
 access_test = SubResource("Resource_jkl28")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
@@ -112,6 +122,7 @@ metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 resource_name = "Fish For Sale"
 script = ExtResource("6_p6i3w")
 clock_id = "fish_for_sale"
+description = "There are a lot of fish for sale, but Rainbow Trout are rare even here."
 max_segments = 6
 metadata/_custom_type_script = "uid://54wgke734i1m"
 

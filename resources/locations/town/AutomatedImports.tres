@@ -39,6 +39,7 @@ script = ExtResource("5_3ymir")
 positive = SubResource("Resource_eatcb")
 neutral = SubResource("Resource_eatcb")
 negative = SubResource("Resource_eatcb")
+description = "The warehouse is very well kept up. The walls are brightly painted. The floors are meticulously clean."
 access_test = SubResource("Resource_oi1bc")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
@@ -74,6 +75,7 @@ script = ExtResource("10_pt4k1")
 item_type = 1
 required_number = 15
 result = SubResource("Resource_xc77l")
+description = "The price is dear, but there's nowhere else to get this."
 access_test = SubResource("Resource_6wrq2")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 

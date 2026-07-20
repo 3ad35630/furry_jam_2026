@@ -22,6 +22,7 @@ script = ExtResource("4_meypx")
 positive = SubResource("Resource_t4f7e")
 neutral = SubResource("Resource_t4f7e")
 negative = SubResource("Resource_t4f7e")
+description = "It's what you're here to do. Oolong waits, but not patiently."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [resource]
