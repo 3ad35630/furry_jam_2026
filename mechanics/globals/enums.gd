@@ -48,7 +48,8 @@ enum GameplayMode {
 	LOCATION,
 	NARRATIVE,
 	CONVERSATION, # currently unused
-	CAMERA_MOVEMENT
+	CAMERA_MOVEMENT,
+	ENDING_SLIDE
 }
 
 

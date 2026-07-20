@@ -28,6 +28,18 @@ var show_end_screen : bool :
 			if _show_end_screen:
 				%EndScreen.fade_out(fade_duration)
 		_show_end_screen = val
+
+func _ready() -> void:
+	Modes.gameplay_mode_changed.connect(on_mode_changed)
+
+func on_mode_changed(new_mode : Enums.GameplayMode) -> void:
+	match new_mode:
+		Enums.GameplayMode.ENDING_SLIDE:
+			show_end_screen = true
+		_:
+			show_end_screen = false
+			
+	
 "
 
 [node name="OverlayWidget" type="Control" unique_id=35101285]

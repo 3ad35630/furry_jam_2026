@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpvn2eme75dnx"
-path="res://.godot/imported/SpaceWitchs_UI_QuitButton_OnClick.png-fb6320a6a370bf449dc032a5f8734a5d.ctex"
+uid="uid://cysis6t62ajkj"
+path="res://.godot/imported/SpaceWitchs_UI_Quit_OnHover.png-16f3a60df94746fe13de7add24c9119a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu_textures/SpaceWitchs_UI_QuitButton_OnClick.png"
-dest_files=["res://.godot/imported/SpaceWitchs_UI_QuitButton_OnClick.png-fb6320a6a370bf449dc032a5f8734a5d.ctex"]
+source_file="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnHover.png"
+dest_files=["res://.godot/imported/SpaceWitchs_UI_Quit_OnHover.png-16f3a60df94746fe13de7add24c9119a.ctex"]
 
 [params]
 

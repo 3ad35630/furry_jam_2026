@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cysis6t62ajkj"
-path="res://.godot/imported/SpaceWitchs_UI_Quit_OnHover.png-cb4c7ab309ba8093d300fda7d42c82b7.ctex"
+uid="uid://d3pahy8hwjsbb"
+path="res://.godot/imported/SpaceWitchs_UI_CreditsButton.png-58587e221dd0f8da91182ffc0f69509a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu_textures/SpaceWitchs_UI_Quit_OnHover.png"
-dest_files=["res://.godot/imported/SpaceWitchs_UI_Quit_OnHover.png-cb4c7ab309ba8093d300fda7d42c82b7.ctex"]
+source_file="res://ui/menu_textures/SpaceWitchs_UI_CreditsButton.png"
+dest_files=["res://.godot/imported/SpaceWitchs_UI_CreditsButton.png-58587e221dd0f8da91182ffc0f69509a.ctex"]
 
 [params]
 

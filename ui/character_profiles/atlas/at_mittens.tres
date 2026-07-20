@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b23ea0i3ychxw"]
+
+[ext_resource type="Texture2D" uid="uid://dm4kd75ltus7i" path="res://ui/character_profiles/mittens_portrait.png" id="1_y271w"]
+
+[resource]
+atlas = ExtResource("1_y271w")
+region = Rect2(133, 168, 1668, 1818)

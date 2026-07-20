@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dewafpyc65a5x"]
+
+[ext_resource type="Texture2D" uid="uid://b1fclunqd6v82" path="res://ui/character_profiles/oolong_portrait.png" id="1_rvkvj"]
+
+[resource]
+atlas = ExtResource("1_rvkvj")
+region = Rect2(307, 354, 1553, 1575)

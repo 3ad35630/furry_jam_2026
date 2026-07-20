@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b5b7v48abfhlu"]
+
+[ext_resource type="Texture2D" uid="uid://cjih4bel2nf2f" path="res://ui/character_profiles/dispatch_portrait_alt.png" id="1_8pc32"]
+
+[resource]
+atlas = ExtResource("1_8pc32")
+region = Rect2(370, 316, 1390, 1638)

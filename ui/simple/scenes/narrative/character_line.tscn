@@ -54,6 +54,7 @@ script = SubResource("GDScript_16uew")
 
 [node name="NameLabel" type="Label" parent="." unique_id=269564630]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.97371453, 0.34575403, 0.71466565, 1)
 text = "Mirabelle: "
 script = SubResource("GDScript_o8oll")
@@ -62,6 +63,8 @@ name_to_color = Dictionary[String, Color]({
 "Madame Oolong": Color(0.33514303, 0.4045149, 0.092319615, 1),
 "Mirabelle": Color(0.99999994, 0.21532312, 0.2641248, 1),
 "Mittens": Color(0.7757185, 0.3131881, 0.73990166, 1),
+"Pumpkin": Color(0.245, 0.8329998, 0.98, 1),
+"Robot": Color(0.77150685, 0.7805617, 0.58129215, 1),
 "Willow": Color(0.5723619, 0.81575286, 7.70092e-07, 1)
 })
 

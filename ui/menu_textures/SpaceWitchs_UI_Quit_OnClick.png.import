@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuq4pv8a2s1ph"
-path="res://.godot/imported/SpaceWitchs_UI_StartGame.png-2dcc1e41cdcb9b08e5f9ed6aa94fd553.ctex"
+uid="uid://ct6ny3qjslkik"
+path="res://.godot/imported/SpaceWitchs_UI_Quit_OnClick.png-cebc0eaa4897fa164d6f49ef1151680c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu_textures/SpaceWitchs_UI_StartGame.png"
-dest_files=["res://.godot/imported/SpaceWitchs_UI_StartGame.png-2dcc1e41cdcb9b08e5f9ed6aa94fd553.ctex"]
+source_file="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnClick.png"
+dest_files=["res://.godot/imported/SpaceWitchs_UI_Quit_OnClick.png-cebc0eaa4897fa164d6f49ef1151680c.ctex"]
 
 [params]
 
