@@ -65,7 +65,7 @@ func _on_do_action_pressed() -> void:
 
 
 ## process die removal
-func _on_die_display_drag_ended(_display: SimpleDieDisplay, data : Dictionary, _success: bool) -> void:
+func _on_die_display_drag_ended(_display: DieDisplay, data : Dictionary, _success: bool) -> void:
 	skill_die_removed.emit(data)
 
 

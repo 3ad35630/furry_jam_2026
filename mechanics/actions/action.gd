@@ -6,6 +6,7 @@ class_name Action
 
 signal action_done
 
+var result_text : Array[String]
 @export var description : String 
 var action_count : int = 0
 @export var access_test : AccessTest = null
@@ -24,3 +25,5 @@ var accessible :
 func do_action(_input):
 	action_count += 1
 	action_done.emit()
+	return []
+	

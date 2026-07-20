@@ -21,12 +21,14 @@ func get_output_type(roll_data) -> Enums.DieActionOutcomeTypes:
 func do_effect(effect):
 	if effect:
 		effect.do()
+		result_text.append_array(effect.get_result_text())
 
 
 func do_action(roll_data):
 	assert(roll_data is Dictionary)
 	var probs = get_outcome_probabilities(roll_data)
 	var result_roll = randf()
+	result_text.clear()
 	if result_roll < probs[Enums.EffectClasses.POSITIVE]:
 		do_effect(positive)
 	elif result_roll < probs[Enums.EffectClasses.POSITIVE] + probs[Enums.EffectClasses.NEUTRAL]:

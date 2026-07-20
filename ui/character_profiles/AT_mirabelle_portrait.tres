@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://u8veuhsf7js5"]
+
+[ext_resource type="Texture2D" uid="uid://qx8i7w7ykro4" path="res://ui/character_profiles/mirabelle_portrait.png" id="1_ruydr"]
+
+[resource]
+atlas = ExtResource("1_ruydr")
+region = Rect2(104, 200, 1745, 1746)

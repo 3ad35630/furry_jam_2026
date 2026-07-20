@@ -145,6 +145,7 @@ script = SubResource("GDScript_ig7cr")
 
 [node name="dicerolled" type="AudioStreamPlayer" parent="VBoxContainer/HBoxContainer2" unique_id=576698281]
 stream = ExtResource("2_q8yy3")
+bus = &"SFX"
 
 [connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent" method="_on_die_display_data_changed"]
 [connection signal="data_changed" from="VBoxContainer/HBoxContainer2/MarginContainer/DieDisplayParent/DieDisplay" to="VBoxContainer/HBoxContainer2/DoAction" method="_on_die_display_data_changed"]

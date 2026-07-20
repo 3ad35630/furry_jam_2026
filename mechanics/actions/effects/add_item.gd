@@ -6,3 +6,6 @@ class_name AddItem
 
 func do() -> void:
 	Inventory.add(item_type, amount)
+
+func get_result_text() -> Array[String]:
+	return ["You got " + str(amount) + " x " + Enums.ItemTypes.keys()[item_type].to_lower() + "!"]

@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://cjehic72qfqx2"]
 
 [ext_resource type="Script" uid="uid://1ftxc4kwmmxl" path="res://ui/widgets/scripts/button_start.gd" id="1_ewfhh"]
-[ext_resource type="Script" uid="uid://7s83p04w4l8v" path="res://ui/widgets/scripts/button_main_menu.gd" id="1_gf5yy"]
 [ext_resource type="Script" uid="uid://ccjk3yevq7fhr" path="res://ui/widgets/scripts/button_quit.gd" id="3_ct2aj"]
+[ext_resource type="Script" uid="uid://b4ggk2q81tsem" path="res://ui/widgets/scripts/settings_panel.gd" id="4_ct2aj"]
+[ext_resource type="Script" uid="uid://cckwp4kx3y7k5" path="res://ui/widgets/scripts/audio_control.gd" id="4_kytxy"]
+[ext_resource type="Script" uid="uid://jl123n5hsurt" path="res://ui/widgets/scripts/fullscreen_control.gd" id="5_kytxy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xufs"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="MainMenu" type="Panel" unique_id=1857706283]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -896.0
+offset_right = -1636.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -16,6 +21,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
 text = "~ Much Ado about Tea ~"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -37,9 +43,7 @@ offset_top = 224.0
 offset_right = 216.0
 offset_bottom = 288.0
 pivot_offset = Vector2(96, 32)
-disabled = true
 text = "Settings"
-script = ExtResource("1_gf5yy")
 
 [node name="Button3" type="Button" parent="." unique_id=1836637805]
 layout_mode = 0
@@ -48,9 +52,7 @@ offset_top = 320.0
 offset_right = 216.0
 offset_bottom = 384.0
 pivot_offset = Vector2(96, 32)
-disabled = true
 text = "Credits"
-script = ExtResource("1_gf5yy")
 
 [node name="Button4" type="Button" parent="." unique_id=1806127632]
 layout_mode = 0
@@ -67,6 +69,7 @@ layout_mode = 0
 offset_top = 584.0
 offset_right = 256.0
 offset_bottom = 648.0
+theme_override_font_sizes/font_size = 20
 text = "Furry Game Jam 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -76,14 +79,190 @@ visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
+script = ExtResource("4_ct2aj")
 
 [node name="CreditsPanel" type="Panel" parent="CenterContainer" unique_id=1635506719]
+visible = false
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="CenterContainer/CreditsPanel" unique_id=146313864]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 60.0
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/CreditsPanel" unique_id=593651514]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -161.0
+offset_right = 226.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Squishy: Project Lead, Programming, Concepting
+
+Muffin ^_^: 3D Lead, Concepting
+
+Spiral: 2D Lead/Concepting, Programming 
+
+ShadowFlameDragn: 2D Lead/Concepting, Programming
+
+Phorzaeken: Audio Lead, Programming, Concepting
+
+Special Thanks to:
+krzmig and AlexRazor1337 (Oleksandr Huliakov) for the skybox
+ https://github.com/krzmig/godot-simple-sky-project/tree/main"
+
+[node name="Label2" type="Label" parent="CenterContainer/CreditsPanel" unique_id=1510115377]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = 57.0
+offset_right = 42.0
+offset_bottom = 80.0
+grow_horizontal = 2
+text = "Created By:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/CreditsPanel" unique_id=559652158]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.83100003
+anchor_right = 1.0
+anchor_bottom = 0.90900004
+offset_left = 38.0
+offset_top = -6.4720154
+offset_right = -32.0
+offset_bottom = 19.847961
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+icon_alignment = 1
+
 [node name="SettingsPanel" type="Panel" parent="CenterContainer" unique_id=1347277828]
+visible = false
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 2
+
+[node name="SettingsTabs" type="TabContainer" parent="CenterContainer/SettingsPanel" unique_id=965098292]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -203.0
+offset_right = 235.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xufs")
+tab_alignment = 1
+current_tab = 0
+
+[node name="General" type="Control" parent="CenterContainer/SettingsPanel/SettingsTabs" unique_id=540528063]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="AudioSlider" type="HSlider" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=1852645057]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 71.0
+offset_right = 357.0
+offset_bottom = 140.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_kytxy")
+audio_bus = "BGM"
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" unique_id=1758495444]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Music"
+
+[node name="AudioSlider2" type="HSlider" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=276428455]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 172.0
+offset_right = 356.0
+offset_bottom = 243.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_kytxy")
+audio_bus = "SFX"
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" unique_id=767703110]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "SFX"
+
+[node name="FullscreenControl" type="CheckButton" parent="CenterContainer/SettingsPanel/SettingsTabs/General" unique_id=1400378622]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 274.0
+offset_right = 339.0
+offset_bottom = 305.0
+text = "Fullscreen"
+script = ExtResource("5_kytxy")
+
+[node name="Controls" type="Control" parent="CenterContainer/SettingsPanel/SettingsTabs" unique_id=183802172]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/SettingsPanel/SettingsTabs/Controls" unique_id=1577576912]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.5
+offset_top = -180.0
+offset_right = 189.5
+offset_bottom = 131.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Moon Navigation:
+- Left click & drag with the mouse to rotate around the moon!
+- Mouse scroll  or W/D keys to zoom in!
+- Q/E to control vertical rotation!
+- Left click on locations to move to view that location, and any available actions!
+
+Character Panel:
+- Drag dice from panel to complete actions at locations!
+- End hour will reset your dice, but you must spend all of your dice beforehand!
+
+Location Navigation:
+- Dragging dice onto the various actions at a location will let you attempt to complete the task!
+- Pressing 'Return to Map' in the top left corner will bring you back to the world moon view!"
 
 [node name="Label" type="Label" parent="CenterContainer/SettingsPanel" unique_id=1393147154]
 layout_mode = 0
@@ -92,3 +271,26 @@ offset_bottom = 60.0
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="CenterContainer/SettingsPanel" unique_id=2038582729]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.83100003
+anchor_right = 1.0
+anchor_bottom = 0.90900004
+offset_left = 38.0
+offset_top = -6.4720154
+offset_right = -32.0
+offset_bottom = 19.847961
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+icon_alignment = 1
+
+[connection signal="pressed" from="Button2" to="CenterContainer" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="CenterContainer" method="_on_button_3_pressed"]
+[connection signal="pressed" from="CenterContainer/CreditsPanel/BackButton" to="CenterContainer" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" to="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" to="CenterContainer/SettingsPanel/SettingsTabs/General/AudioSlider2" method="_on_value_changed"]
+[connection signal="toggled" from="CenterContainer/SettingsPanel/SettingsTabs/General/FullscreenControl" to="CenterContainer/SettingsPanel/SettingsTabs/General/FullscreenControl" method="_on_toggled"]
+[connection signal="pressed" from="CenterContainer/SettingsPanel/BackButton" to="CenterContainer" method="_on_back_button_pressed"]

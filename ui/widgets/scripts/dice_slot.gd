@@ -1,7 +1,7 @@
 extends Control
 class_name DiceSlot
 
-@export var display : SimpleDieDisplay
+@export var display : DieDisplay
 
 signal data_changed(data)
 

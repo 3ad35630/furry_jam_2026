@@ -45,3 +45,11 @@ func _ready() -> void:
 			for clock in new_location.clocks:
 				clocks[clock.clock_id] = clock
 				clock.subscribe_to_turn_system() # we do this here because we need to do it somewhere...
+	# fix duplicate clocks problem, clocks with the same id will be clobbered
+	for location in locations.values():
+		var clock_ids = []
+		for clock in location.clocks:
+			clock_ids.append(clock.clock_id)
+		location.clocks.clear()
+		for clock_id in clock_ids:
+			location.clocks.append(Locations.clocks[clock_id])

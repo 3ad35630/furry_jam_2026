@@ -1,48 +1,15 @@
 [gd_scene format=3 uid="uid://cntixcp24qe0k"]
 
 [ext_resource type="PackedScene" uid="uid://b0rw1lepvwpcj" path="res://ui/widgets/scenes/item_slot.tscn" id="1_righx"]
-[ext_resource type="Texture2D" uid="uid://crcejdt8r5tl4" path="res://ui/icons/items_0_large.png" id="2_ulbew"]
+[ext_resource type="Texture2D" uid="uid://b4ybxto1vypim" path="res://ui/icons/Coin.png" id="2_fky7s"]
 [ext_resource type="Script" uid="uid://dsqahfc5vumum" path="res://ui/widgets/scripts/ingredient_counter.gd" id="3_7o0yc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_righx"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ulbew"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7o0yc"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6i0cs"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8w4ff"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0oefu"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pfcbt"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(48, 144, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fky7s"]
-resource_local_to_scene = true
-atlas = ExtResource("2_ulbew")
-region = Rect2(96, 96, 48, 48)
+[ext_resource type="Texture2D" uid="uid://bku4vcbxj2u8m" path="res://ui/icons/Fish.png" id="3_15hac"]
+[ext_resource type="Texture2D" uid="uid://qebqgkkedy2s" path="res://ui/icons/Gossip.png" id="4_67ais"]
+[ext_resource type="Texture2D" uid="uid://28gic2p7fgci" path="res://ui/icons/Milk.png" id="5_kmla4"]
+[ext_resource type="Texture2D" uid="uid://dkxyuv7dj01m1" path="res://ui/icons/Tea.png" id="6_5abwp"]
+[ext_resource type="Texture2D" uid="uid://b2tjhv3hvur8e" path="res://ui/icons/Cinnamon.png" id="7_hubn2"]
+[ext_resource type="Texture2D" uid="uid://c622k76yb484i" path="res://ui/icons/Oil.png" id="8_olhbr"]
+[ext_resource type="Texture2D" uid="uid://d2qgs563w6awa" path="res://ui/icons/Blossoms.png" id="9_li0im"]
 
 [node name="Inventory" type="VBoxContainer" unique_id=352457918]
 anchors_preset = 15
@@ -61,56 +28,56 @@ layout_mode = 2
 itemKey = 1
 
 [node name="TextureRect" parent="HBoxContainer/Money" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_righx")
+texture = ExtResource("2_fky7s")
 
 [node name="Fish" parent="HBoxContainer" unique_id=556314243 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 2
 
 [node name="TextureRect" parent="HBoxContainer/Fish" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_ulbew")
+texture = ExtResource("3_15hac")
 
 [node name="Gossip" parent="HBoxContainer" unique_id=1684646445 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 3
 
 [node name="TextureRect" parent="HBoxContainer/Gossip" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_7o0yc")
+texture = ExtResource("4_67ais")
 
 [node name="Milk" parent="HBoxContainer" unique_id=1791147285 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 4
 
 [node name="TextureRect" parent="HBoxContainer/Milk" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_6i0cs")
+texture = ExtResource("5_kmla4")
 
 [node name="Tea" parent="HBoxContainer" unique_id=35603356 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 5
 
 [node name="TextureRect" parent="HBoxContainer/Tea" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_8w4ff")
+texture = ExtResource("6_5abwp")
 
 [node name="Cinnamon" parent="HBoxContainer" unique_id=565246109 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 6
 
 [node name="TextureRect" parent="HBoxContainer/Cinnamon" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_0oefu")
+texture = ExtResource("7_hubn2")
 
 [node name="Oil" parent="HBoxContainer" unique_id=862336681 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 7
 
 [node name="TextureRect" parent="HBoxContainer/Oil" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_pfcbt")
+texture = ExtResource("8_olhbr")
 
 [node name="Blossoms" parent="HBoxContainer" unique_id=693267511 instance=ExtResource("1_righx")]
 layout_mode = 2
 itemKey = 7
 
 [node name="TextureRect" parent="HBoxContainer/Blossoms" index="0" unique_id=736762699]
-texture = SubResource("AtlasTexture_fky7s")
+texture = ExtResource("9_li0im")
 
 [node name="Center" type="CenterContainer" parent="." unique_id=1101169273]
 layout_mode = 2

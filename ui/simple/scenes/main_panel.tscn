@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bt613xfgvlc5d"]
 
-[ext_resource type="PackedScene" uid="uid://dyh4xp7i3arhh" path="res://ui/simple/scenes/die_display.tscn" id="1_g6gw2"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
 [ext_resource type="Texture2D" uid="uid://dmld3w8yju7sj" path="res://ui/boxes/UI_Box.png" id="5_36tix"]
 [ext_resource type="Texture2D" uid="uid://ca6lte6hryk73" path="res://ui/character_profiles/ProfileTemp1.png" id="6_h5prc"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
+[ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="7_rd64i"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
 [ext_resource type="Resource" uid="uid://c2xj1g6inhls1" path="res://resources/characters/KittenWitch.tres" id="8_sjyj4"]
 [ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
@@ -209,6 +209,7 @@ script = SubResource("GDScript_vimbc")
 [node name="MoonLakeUltra" type="AudioStreamPlayer" parent="." unique_id=144380484]
 stream = ExtResource("21_3kxh1")
 volume_db = -12.0
+bus = &"BGM"
 playback_type = 1
 parameters/looping = true
 
@@ -246,12 +247,12 @@ mouse_filter = 2
 
 [node name="InventoryHBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1130000776]
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="Inventory" parent="HBoxContainer2/VBoxContainer/HBox/InventoryHBox" unique_id=1248200590 instance=ExtResource("24_imvmo")]
 layout_mode = 2
 
 [node name="NarrativePanel" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1684202969 instance=ExtResource("4_y0vbl")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 40.0
@@ -285,10 +286,13 @@ layout_mode = 2
 texture = ExtResource("6_h5prc")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1442867779]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1185698168]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch/CenterContainer" unique_id=1442867779]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("8_hxpo2")
 
 [node name="KittyNecro" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=305704615]
@@ -299,10 +303,13 @@ layout_mode = 2
 texture = ExtResource("9_css1y")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=2105353348]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=505136173]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro/CenterContainer" unique_id=2105353348]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("8_sjyj4")
 
 [node name="Serious" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1182856732]
@@ -313,10 +320,13 @@ layout_mode = 2
 texture = ExtResource("11_icdsa")
 expand_mode = 3
 
-[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1355873595]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1782053568]
+layout_mode = 2
+
+[node name="CharacterDice" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious/CenterContainer" unique_id=1355873595]
 layout_mode = 2
 script = ExtResource("7_isi12")
-char_dice = ExtResource("1_g6gw2")
+char_dice = ExtResource("7_rd64i")
 witch = ExtResource("10_h5prc")
 
 [node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=1129817621]
@@ -337,6 +347,7 @@ text = "End Hour"
 
 [node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/Button" unique_id=2123176034]
 stream = ExtResource("15_rd64i")
+bus = &"SFX"
 
 [node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=1747784301 node_paths=PackedStringArray("player", "button", "sound")]
 layout_mode = 2

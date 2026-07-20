@@ -1,7 +1,12 @@
-extends SimpleDieDisplay
+extends DieDisplay
 		
 @export var draggable : PackedScene
-signal drag_ended(display : SimpleDieDisplay, data : Dictionary, success : bool)
+@export var hide_on_drag = true
+@export var remove_data_on_failed_drop = false
+@export var remove_if_successfully_dragged = false
+
+signal drag_started(display, data)
+signal drag_ended(display : DieDisplay, data : Dictionary, success : bool)
 var is_dragging : bool = false
 
 func _notification(notification_type):
@@ -14,4 +19,21 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	drag_display.data = data
 	set_drag_preview(drag_display)
 	is_dragging = true
+	drag_started.emit(self, data)
 	return data
+
+
+func _on_drag_started(_display: Variant, _in_data: Variant) -> void:
+	if hide_on_drag:
+		hide()
+
+
+func _on_drag_ended(_display: DieDisplay, _in_data: Dictionary, success: bool) -> void:
+	if success:
+		if remove_if_successfully_dragged:
+			data = {}
+	else:
+		if remove_data_on_failed_drop:
+			data = {}
+		elif hide_on_drag:
+			show()
