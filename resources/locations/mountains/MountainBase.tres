@@ -56,6 +56,7 @@ skill = 5
 positive = SubResource("Resource_wffqv")
 neutral = SubResource("Resource_kh636")
 action_clock_id = "path_to_the_heights"
+description = "Slow and steady finds the way up the mountain. It can also get you lost and eaten by wolves. Slow and steady can do lots of things."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_b8sha"]
@@ -102,6 +103,7 @@ script = ExtResource("9_y23a2")
 item_type = 9
 result = SubResource("Resource_dvm1c")
 spend_items = false
+description = "The stick glows and points towards cold. It points mostly uphill, which is useful."
 access_test = SubResource("Resource_fgqo8")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
@@ -118,7 +120,7 @@ item_type = 1
 required_number = 3
 result = SubResource("Resource_npw3c")
 action_clock_id = "path_to_the_heights"
-description = "The guides are well travelled. For coins they will lead the way."
+description = "There are locals in the mountains, mostly hunters and trappers and wild novelists. They are polite but distant. You might be able to get their help in finding a path but it will cost you."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_j18bt"]
@@ -134,6 +136,7 @@ metadata/_custom_type_script = "uid://bchlp1lq87y8u"
 resource_name = "Find a path to the heights"
 script = ExtResource("2_r1uyr")
 clock_id = "path_to_the_heights"
+description = "Even the lower slopes of the mountains are steep and confusing. You will need to find a careful path if you want to go higher."
 max_segments = 12
 effect = SubResource("Resource_t4f7e")
 metadata/_custom_type_script = "uid://54wgke734i1m"
