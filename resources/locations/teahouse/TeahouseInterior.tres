@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxcbjtvose5df" path="res://mechanics/actions/action.gd" id="1_1jijw"]
 [ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="1_6fyxa"]
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_favlx"]
-[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="3_trora"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="3_trora"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_y5nlt"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="4_meypx"]
 

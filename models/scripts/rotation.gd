@@ -4,7 +4,7 @@ extends Node3D
 @onready var mill = $WindMill
 @onready var cow1 = $"Soul Cow_001"
 @onready var cow2 = $"Soul Cow_002"
-@onready var sign = $NoEntrySign
+@onready var festival_sign = $NoEntrySign
 @onready var shrine = $OtterShrineBroken
 
 @export var farm_clock: String = "awaken_the_cows"
@@ -27,7 +27,7 @@ func farm_completed(_clock) -> void:
 	cow2.show()
 
 func sign_completed(_clock) -> void:
-	sign.show()
+	festival_sign.show()
 	
 func shrine_completed(_clock) -> void:
 	shrine.hide()

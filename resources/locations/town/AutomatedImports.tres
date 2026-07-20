@@ -5,12 +5,14 @@
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_iwix4"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_2cvnt"]
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_rcfo6"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_c0kwb"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="4_c0kwb"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_3ymir"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="6_34bww"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_fts65"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="8_g5qek"]
+[ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_3ymir"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="9_865m0"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="10_34bww"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="10_pt4k1"]
 
 [sub_resource type="Resource" id="Resource_4t3wr"]
@@ -53,28 +55,32 @@ script = ExtResource("3_rcfo6")
 test = SubResource("Resource_jutr1")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
 
-[sub_resource type="Resource" id="Resource_2gx6s"]
+[sub_resource type="Resource" id="Resource_n8qgr"]
 script = ExtResource("8_g5qek")
 item_type = 6
-amount = 1
 metadata/_custom_type_script = "uid://vwo5xo7yd545"
 
-[sub_resource type="Resource" id="Resource_q33pw"]
+[sub_resource type="Resource" id="Resource_8ssvk"]
+script = ExtResource("9_3ymir")
+clock_id = "main_ingredient_clock"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_t1s1m"]
+script = ExtResource("10_34bww")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_w0iyi"]
 script = ExtResource("4_c0kwb")
 path = "buy_cinnamon"
+post_effects = Array[ExtResource("7_fts65")]([SubResource("Resource_n8qgr"), SubResource("Resource_8ssvk"), SubResource("Resource_t1s1m")])
 metadata/_custom_type_script = "uid://b0frcg551aapm"
-
-[sub_resource type="Resource" id="Resource_xc77l"]
-script = ExtResource("9_865m0")
-effects = Array[ExtResource("7_fts65")]([SubResource("Resource_2gx6s"), SubResource("Resource_q33pw")])
-metadata/_custom_type_script = "uid://bchlp1lq87y8u"
 
 [sub_resource type="Resource" id="Resource_71yox"]
 resource_name = "Buy cinnamon"
 script = ExtResource("10_pt4k1")
 item_type = 1
 required_number = 15
-result = SubResource("Resource_xc77l")
+result = SubResource("Resource_w0iyi")
 description = "The price is dear, but there's nowhere else to get this."
 access_test = SubResource("Resource_6wrq2")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"

@@ -12,12 +12,12 @@
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="5_it5ub"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="6_ecxp1"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="7_5jljg"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="9_rp7we"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="9_rp7we"]
 [ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="11_n8qgr"]
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_w0iyi"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="12_n8qgr"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="12_tycou"]
-[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="14_68286"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="14_68286"]
 
 [sub_resource type="Resource" id="Resource_8ssvk"]
 script = ExtResource("1_v522e")

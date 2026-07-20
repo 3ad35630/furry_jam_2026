@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="3_rjrsa"]
 [ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="3_ujqdw"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_spvmj"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_sudli"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="4_sudli"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_7mkxp"]
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="6_bsk6t"]
 [ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="7_hh1f7"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_yhclw"]
 [ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="11_2agq0"]
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="12_0yt3h"]
+[ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="13_yhclw"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="15_2agq0"]
 
 [sub_resource type="Resource" id="Resource_nj27u"]
 script = ExtResource("1_sudli")
@@ -131,6 +133,56 @@ action_clock_id = "awaken_the_cows"
 description = "This process is effective but moderately embarrassing. It involves a lot of mooing."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
+[sub_resource type="Resource" id="Resource_8o7y0"]
+script = ExtResource("3_ujqdw")
+clock_id = "explore_farm"
+metadata/_custom_type_script = "uid://d2nbs6e61o8jt"
+
+[sub_resource type="Resource" id="Resource_koebr"]
+script = ExtResource("13_yhclw")
+item_type = 4
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_nvxcu"]
+script = ExtResource("2_fki5g")
+test = SubResource("Resource_koebr")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_ml3kh"]
+script = ExtResource("11_2agq0")
+tests = Array[ExtResource("12_0yt3h")]([SubResource("Resource_8o7y0"), SubResource("Resource_nvxcu")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
+
+[sub_resource type="Resource" id="Resource_etdsb"]
+script = ExtResource("9_flyg6")
+item_type = 4
+metadata/_custom_type_script = "uid://vwo5xo7yd545"
+
+[sub_resource type="Resource" id="Resource_qmwbj"]
+script = ExtResource("4_spvmj")
+clock_id = "main_ingredient_clock"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_iwuri"]
+script = ExtResource("15_2agq0")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_idax2"]
+script = ExtResource("4_sudli")
+path = "milk_the_spirit_cows"
+post_effects = Array[ExtResource("8_hh1f7")]([SubResource("Resource_etdsb"), SubResource("Resource_qmwbj"), SubResource("Resource_iwuri")])
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_lu4dx"]
+resource_name = "Milk those ghosts!"
+script = ExtResource("5_7mkxp")
+positive = SubResource("Resource_idax2")
+neutral = SubResource("Resource_idax2")
+negative = SubResource("Resource_idax2")
+description = "The ghostly specters of cows float happily around the farm. It's time for milk!"
+access_test = SubResource("Resource_ml3kh")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
 [sub_resource type="Resource" id="Resource_2mcle"]
 script = ExtResource("3_rjrsa")
 ink_path = "explore_farm"
@@ -205,6 +257,6 @@ script = ExtResource("8_8khma")
 name = "The Spirit Farm"
 location_id = "farm_house"
 access_test = SubResource("Resource_nj27u")
-actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji")])
+actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji"), SubResource("Resource_lu4dx")])
 clocks = Array[ExtResource("6_bsk6t")]([SubResource("Resource_jkl28"), SubResource("Resource_x4jqs")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

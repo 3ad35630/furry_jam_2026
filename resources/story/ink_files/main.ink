@@ -149,6 +149,19 @@ You have awoken the spirit cows and you milk them. The process is a bit messy an
 
 -> DONE
 
+=== harvest_the_blossoms
+
+You finally gather the last of the little blossoms and pack them carefully away.
+
+-> DONE
+
+
+=== take_the_tea
+
+You take the tea leaves and escape the cave, waving goodbye to Pumpkin on the way out.
+
+-> DONE
+
 === explore_mountain
 
 You search around the base of the mountain for a trail.

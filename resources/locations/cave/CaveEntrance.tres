@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_f2a7q"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_iydsy"]
 [ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="4_7rdun"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="5_chyld"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="5_chyld"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="6_31t04"]
 [ext_resource type="Script" uid="uid://d2nbs6e61o8jt" path="res://mechanics/access_tests/clock_completed_test.gd" id="7_vvcu5"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="8_pq1a3"]

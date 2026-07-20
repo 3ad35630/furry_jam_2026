@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="10_7el5q"]
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="11_mf60b"]
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_nl8s1"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="12_ycba2"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="12_ycba2"]
 [ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="13_84ka5"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="15_dfh30"]
 
