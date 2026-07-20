@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cx4f1offwyii"]
+
+[resource]
+resource_name = "Lemonaid"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.90588236, 0.8862745, 0.6666667, 0.6)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

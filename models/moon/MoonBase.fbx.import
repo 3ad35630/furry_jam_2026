@@ -46,30 +46,85 @@ _subresources={
 "use_external/fallback_path": "res://models/moon/Base mat.tres",
 "use_external/path": "uid://3m8kkofdkk5e"
 },
+"Black": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Black.tres",
+"use_external/path": "uid://dn8hqwcqr7yna"
+},
 "Cloth": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Cloth.tres",
 "use_external/path": "uid://dtvqiqf4273id"
 },
-"Concreat": {
+"DarkPurple": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://models/moon/Concreat.tres",
-"use_external/path": "uid://5xafgwqe2md0"
+"use_external/fallback_path": "res://models/moon/updated_materials/DarkPurple.tres",
+"use_external/path": "uid://n6h5bx5rmqm3"
+},
+"Darkwood": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Darkwood.tres",
+"use_external/path": "uid://dusmvqsexrjd1"
 },
 "Foladge": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Foladge.tres",
 "use_external/path": "uid://dsyxdhqul3brh"
 },
+"Ghost": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Ghost.tres",
+"use_external/path": "uid://foosxttvqoam"
+},
+"Glass": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Glass.tres",
+"use_external/path": "uid://yrb0ubyaqciv"
+},
 "Grass": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Grass.tres",
 "use_external/path": "uid://lxwqsuemj3nt"
 },
+"Lemon": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Lemon.tres",
+"use_external/path": "uid://cjl3yt8wcky66"
+},
+"Lemon Inside": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Lemon Inside.tres",
+"use_external/path": "uid://cphdhwlebdslq"
+},
+"Lemonaid": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Lemonaid.tres",
+"use_external/path": "uid://cx4f1offwyii"
+},
+"Light Yellow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Light Yellow.tres",
+"use_external/path": "uid://drug6xea8i8c0"
+},
+"LightBlue": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/LightBlue.tres",
+"use_external/path": "uid://v72k8ijxf4fm"
+},
+"LightGreen": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/LightGreen.tres",
+"use_external/path": "uid://b03pddsnapgpq"
+},
 "Material": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Material.tres",
 "use_external/path": "uid://du7p6juujm88v"
+},
+"Moon": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Moon.tres",
+"use_external/path": "uid://cgbrtp0lym3tf"
 },
 "Otter": {
 "use_external/enabled": true,
@@ -81,10 +136,20 @@ _subresources={
 "use_external/fallback_path": "res://models/moon/Path.tres",
 "use_external/path": "uid://cdple2j8ff0r8"
 },
+"Pink": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Pink.tres",
+"use_external/path": "uid://bvp2yp6162wni"
+},
 "Rock": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Rock.tres",
 "use_external/path": "uid://cufwkik25kgo6"
+},
+"Roof": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/Roof.tres",
+"use_external/path": "uid://b14jcdu1x5c7f"
 },
 "Rope": {
 "use_external/enabled": true,
@@ -95,6 +160,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/fallback_path": "res://models/moon/Water.tres",
 "use_external/path": "uid://dfmx8alsxec31"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/moon/updated_materials/White.tres",
+"use_external/path": "uid://4da3r5kwg1mv"
 },
 "Wood": {
 "use_external/enabled": true,

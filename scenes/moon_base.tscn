@@ -8,14 +8,17 @@ script = ExtResource("2_eoifi")
 fish_speed = -20.0
 mill_speed = 40.0
 
-[node name="FishLake" parent="." index="2" unique_id=1361856273]
+[node name="FishLake" parent="." index="2" unique_id=1344966142]
 transform = Transform3D(-0.5066141, -0.08102285, 0.23385641, 0.23422502, 0.015146565, 0.5126602, -0.07995109, 0.55777884, 0.020048575, 0.0386263, -0.7620565, 0.18650374)
 
-[node name="NoEntrySign" parent="." index="5" unique_id=621107927]
+[node name="FishPond" parent="." index="3" unique_id=1200334870]
+transform = Transform3D(0.11411666, -0.20154724, 0.5140695, -0.19528574, 0.476275, 0.2300803, -0.5164807, -0.22461559, 0.026588598, -0.4590755, -0.18462415, 0.08346603)
+
+[node name="NoEntrySign" parent="." index="5" unique_id=1716492479]
 visible = false
 
-[node name="Soul Cow_001" parent="." index="9" unique_id=218677848]
+[node name="Soul Cow_001" parent="." index="9" unique_id=1553366878]
 visible = false
 
-[node name="Soul Cow_002" parent="." index="10" unique_id=1421664217]
+[node name="Soul Cow_002" parent="." index="10" unique_id=2139740674]
 visible = false
