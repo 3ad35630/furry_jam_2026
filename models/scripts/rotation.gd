@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var fish = $FishLake
+@onready var fish2 = $FishPond
 @onready var mill = $WindMill
 @onready var cow1 = $"Soul Cow_001"
 @onready var cow2 = $"Soul Cow_002"
@@ -21,6 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	fish.rotation.z = deg_to_rad(rad_to_deg(fish.rotation.z) + (fish_speed * delta))
 	mill.rotation.z = deg_to_rad(rad_to_deg(mill.rotation.z) + (mill_speed * delta))
+	fish2.rotation.z = deg_to_rad(rad_to_deg(fish2.rotation.z) + (fish_speed * delta))
 
 func farm_completed(_clock) -> void:
 	cow1.show()
