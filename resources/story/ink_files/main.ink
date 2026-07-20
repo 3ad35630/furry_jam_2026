@@ -36,6 +36,16 @@ Maybe!
 
 -> DONE
 
+
+=== shrine_repaired
+
+You repaired the shrine! Hurray!
+
+Pumpkin is impressed, and gifts you a magic stick as a thank you.
+
+-> DONE
+
+
 === made_friends_with_pumpkin
 
 You've calmed down the annoyed little water goddess and made friends!

@@ -15,42 +15,42 @@ script = ExtResource("1_fgqo8")
 
 [node name="ActionPanel" parent="." unique_id=1499358185 instance=ExtResource("2_oww7b")]
 layout_mode = 0
-offset_left = 193.0
-offset_top = 501.0
-offset_right = 529.0
-offset_bottom = 653.0
+offset_left = 219.0
+offset_top = 302.0
+offset_right = 555.0
+offset_bottom = 454.0
 
 [node name="ActionPanel2" parent="." unique_id=1077741519 instance=ExtResource("2_oww7b")]
 layout_mode = 0
-offset_left = 767.0
-offset_top = 162.0
-offset_right = 1103.0
-offset_bottom = 314.0
+offset_left = 759.0
+offset_top = 128.0
+offset_right = 1095.0
+offset_bottom = 280.0
 
 [node name="ActionPanel3" parent="." unique_id=2076365155 instance=ExtResource("2_oww7b")]
 layout_mode = 0
-offset_left = 1327.0
-offset_top = 453.0
-offset_right = 1663.0
-offset_bottom = 605.0
+offset_left = 1295.0
+offset_top = 374.0
+offset_right = 1631.0
+offset_bottom = 526.0
 
 [node name="ClockWidget" parent="." unique_id=1818651294 instance=ExtResource("3_n57jq")]
 layout_mode = 0
-offset_left = 413.0
-offset_top = 913.0
-offset_right = 669.0
-offset_bottom = 969.0
+offset_left = 462.0
+offset_top = 647.0
+offset_right = 718.0
+offset_bottom = 707.0
 
 [node name="ClockWidget2" parent="." unique_id=1782228650 instance=ExtResource("3_n57jq")]
 layout_mode = 0
-offset_left = 824.0
-offset_top = 1025.0
-offset_right = 1080.0
-offset_bottom = 1081.0
+offset_left = 802.0
+offset_top = 687.0
+offset_right = 1058.0
+offset_bottom = 747.0
 
 [node name="ClockWidget3" parent="." unique_id=699471915 instance=ExtResource("3_n57jq")]
 layout_mode = 0
-offset_left = 1294.0
-offset_top = 849.0
-offset_right = 1550.0
-offset_bottom = 905.0
+offset_left = 1131.0
+offset_top = 641.0
+offset_right = 1387.0
+offset_bottom = 701.0

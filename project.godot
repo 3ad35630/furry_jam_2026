@@ -31,12 +31,12 @@ SkillDice="*uid://b6e8eq7x5hum2"
 Modes="*uid://likd0f662swj"
 InkRuntime="*uid://d07nagcdcann2"
 NarrativeSystem="*uid://bx6v06jafjhcp"
-CameraTransition="uid://dk8d1faij34qg"
 
 [display]
 
 window/size/viewport_width=1900
-window/size/viewport_height=1280
+window/size/viewport_height=1080
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

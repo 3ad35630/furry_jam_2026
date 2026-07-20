@@ -42,7 +42,7 @@ func next_widget(all, used):
 		if not widget in used:
 			return widget
 
-func update_display() -> void:
+func update_display(_clock = null) -> void:
 	if Modes.current_location:
 		update_actions()
 		update_clocks()

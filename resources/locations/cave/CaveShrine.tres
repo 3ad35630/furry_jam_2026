@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="2_ux3v1"]
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="3_35qk5"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="3_vsyhn"]
-[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/story_moment.gd" id="4_d21ua"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/exit_location.gd" id="4_g7je5"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_yrg63"]
+[ext_resource type="Script" uid="uid://bbx8y3g0h4fr4" path="res://mechanics/actions/effects/result_description.gd" id="6_n5ec7"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="7_35qk5"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_vsw7n"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="9_g7je5"]
@@ -28,19 +29,106 @@ script = ExtResource("3_35qk5")
 test = SubResource("Resource_a14y6")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
 
-[sub_resource type="Resource" id="Resource_b2fl3"]
-resource_name = "explore_shrine"
-script = ExtResource("4_d21ua")
+[sub_resource type="Resource" id="Resource_xqr6t"]
+script = ExtResource("4_g7je5")
 path = "explore_shrine"
-metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_q66pf"]
+script = ExtResource("4_g7je5")
+path = "explore_shrine"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
+[sub_resource type="Resource" id="Resource_fgqo8"]
+script = ExtResource("4_g7je5")
+path = "explore_shrine"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
 
 [sub_resource type="Resource" id="Resource_x4jqs"]
-resource_name = "explore_shrine"
+resource_name = "Explore the damaged shrine"
 script = ExtResource("5_yrg63")
-positive = SubResource("Resource_b2fl3")
-neutral = SubResource("Resource_b2fl3")
-negative = SubResource("Resource_b2fl3")
+positive = SubResource("Resource_fgqo8")
+neutral = SubResource("Resource_q66pf")
+negative = SubResource("Resource_xqr6t")
 access_test = SubResource("Resource_rt1kv")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_ax5ao"]
+script = ExtResource("6_n5ec7")
+text = "You sweep but the cats are not particularly helpful."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_ij8xr"]
+script = ExtResource("7_35qk5")
+clock_id = "shrine_repairs"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_n57jq"]
+script = ExtResource("7_35qk5")
+clock_id = "shrine_repairs"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_oww7b"]
+resource_name = "Sweep the steps and path"
+script = ExtResource("5_yrg63")
+target_number = 4
+skill = 2
+positive = SubResource("Resource_n57jq")
+neutral = SubResource("Resource_ij8xr")
+negative = SubResource("Resource_ax5ao")
+action_clock_id = "shrine_repairs"
+description = "The path and steps are full of tiny weeds, and the shrine itself could use a good dusting. Cats aren't great at household chores as a rule, but they can be coerced into assistance when appropriately bribed with snacks."
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_k61nq"]
+script = ExtResource("6_n5ec7")
+text = "You almost slip on the roof. Careful!"
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_j3u2v"]
+script = ExtResource("7_35qk5")
+clock_id = "shrine_repairs"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_434qp"]
+script = ExtResource("7_35qk5")
+clock_id = "shrine_repairs"
+amount = 2
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_q1eda"]
+resource_name = "Repair the shingles"
+script = ExtResource("5_yrg63")
+target_number = 3
+skill = 5
+positive = SubResource("Resource_434qp")
+neutral = SubResource("Resource_j3u2v")
+negative = SubResource("Resource_k61nq")
+action_clock_id = "shrine_repairs"
+description = "This place took quite a beating. The roof will need fixing, and there is some water damage to the interior.Nothing impossible to manage, but long hard work."
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
+[sub_resource type="Resource" id="Resource_ymqka"]
+script = ExtResource("6_n5ec7")
+text = "You knock and shout but really just make more dents."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_xq6fv"]
+script = ExtResource("7_35qk5")
+clock_id = "shrine_repairs"
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_txdhv"]
+resource_name = "Knock the dents out"
+script = ExtResource("5_yrg63")
+target_number = 5
+skill = 1
+positive = SubResource("Resource_xq6fv")
+neutral = SubResource("Resource_xq6fv")
+negative = SubResource("Resource_ymqka")
+action_clock_id = "shrine_repairs"
+description = "It might seem impossible to fix a broken roof through sheer percussive maintenance but to a sufficiently skilled Bell Witch, it can be done!"
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_k6a1l"]
@@ -48,21 +136,26 @@ script = ExtResource("1_7ndyd")
 ink_path = "explore_shrine"
 metadata/_custom_type_script = "uid://cxoadgbyfvuei"
 
-[sub_resource type="Resource" id="Resource_7dg7n"]
-script = ExtResource("7_35qk5")
-clock_id = "friends_with_pumpkin"
-amount = 12
-metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
-
 [sub_resource type="Resource" id="Resource_paspp"]
 script = ExtResource("9_g7je5")
 item_type = 9
 amount = 1
 metadata/_custom_type_script = "uid://vwo5xo7yd545"
 
+[sub_resource type="Resource" id="Resource_7dg7n"]
+script = ExtResource("7_35qk5")
+clock_id = "friends_with_pumpkin"
+amount = 12
+metadata/_custom_type_script = "uid://b6ymhm6smb8yf"
+
+[sub_resource type="Resource" id="Resource_5la87"]
+script = ExtResource("4_g7je5")
+path = "shrine_repaired"
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
 [sub_resource type="Resource" id="Resource_jkl28"]
 script = ExtResource("10_n5ec7")
-effects = Array[ExtResource("7_vsw7n")]([SubResource("Resource_7dg7n"), SubResource("Resource_paspp")])
+effects = Array[ExtResource("7_vsw7n")]([SubResource("Resource_paspp"), SubResource("Resource_7dg7n"), SubResource("Resource_5la87")])
 metadata/_custom_type_script = "uid://bchlp1lq87y8u"
 
 [sub_resource type="Resource" id="Resource_d21ua"]
@@ -79,6 +172,6 @@ script = ExtResource("3_vsyhn")
 name = "Otter Shrine"
 location_id = "cave_shrine"
 access_test = SubResource("Resource_4t3wr")
-actions = Array[ExtResource("1_s7par")]([SubResource("Resource_x4jqs")])
+actions = Array[ExtResource("1_s7par")]([SubResource("Resource_x4jqs"), SubResource("Resource_oww7b"), SubResource("Resource_q1eda"), SubResource("Resource_txdhv")])
 clocks = Array[ExtResource("2_ux3v1")]([SubResource("Resource_d21ua")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"
