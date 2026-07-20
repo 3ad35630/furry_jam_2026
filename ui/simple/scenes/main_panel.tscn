@@ -1,15 +1,14 @@
 [gd_scene format=3 uid="uid://bt613xfgvlc5d"]
 
+[ext_resource type="Texture2D" uid="uid://dxmedcahvf2yp" path="res://ui/character_profiles/icon_mirabelle.png" id="4_icdsa"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
-[ext_resource type="Texture2D" uid="uid://dmld3w8yju7sj" path="res://ui/boxes/UI_Box.png" id="5_36tix"]
-[ext_resource type="Texture2D" uid="uid://ca6lte6hryk73" path="res://ui/character_profiles/ProfileTemp1.png" id="6_h5prc"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="7_rd64i"]
 [ext_resource type="Resource" uid="uid://by37hkmqcch2e" path="res://resources/characters/BellWitch.tres" id="8_hxpo2"]
 [ext_resource type="Resource" uid="uid://c2xj1g6inhls1" path="res://resources/characters/KittenWitch.tres" id="8_sjyj4"]
-[ext_resource type="Texture2D" uid="uid://cegj725nfetiq" path="res://ui/character_profiles/ProfileTemp2.png" id="9_css1y"]
+[ext_resource type="Texture2D" uid="uid://dn1i65kqqd7k6" path="res://ui/character_profiles/icon_mittens.png" id="8_y3ayd"]
 [ext_resource type="Resource" uid="uid://7dpgfl3brqjl" path="res://resources/characters/FlowerWitch.tres" id="10_h5prc"]
-[ext_resource type="Texture2D" uid="uid://daw8sd3hfg643" path="res://ui/character_profiles/ProfileTemp3.png" id="11_icdsa"]
+[ext_resource type="Texture2D" uid="uid://cmg67fwc3su47" path="res://ui/character_profiles/icon_willow.png" id="10_rd64i"]
 [ext_resource type="Texture2D" uid="uid://dtgsewb8vm54h" path="res://ui/icons/Game-Jam-Paw.png" id="14_y3ayd"]
 [ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="15_rd64i"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
@@ -56,9 +55,6 @@ func mode_changed(new_mode : Enums.GameplayMode) -> void:
 func _on_pressed() -> void:
 	Modes.exit_location()
 "
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb32r"]
-texture = ExtResource("5_36tix")
 
 [sub_resource type="Animation" id="Animation_36p3s"]
 resource_name = "Give"
@@ -261,7 +257,6 @@ size_flags_stretch_ratio = 40.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 60.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_pb32r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer" unique_id=554759375]
 layout_mode = 2
@@ -283,7 +278,8 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=719448422]
 layout_mode = 2
-texture = ExtResource("6_h5prc")
+tooltip_text = "Mirabelle"
+texture = ExtResource("4_icdsa")
 expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch" unique_id=1185698168]
@@ -300,7 +296,8 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=1974667155]
 layout_mode = 2
-texture = ExtResource("9_css1y")
+tooltip_text = "Mittens"
+texture = ExtResource("8_y3ayd")
 expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro" unique_id=505136173]
@@ -317,7 +314,8 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=408914516]
 layout_mode = 2
-texture = ExtResource("11_icdsa")
+tooltip_text = "Willow"
+texture = ExtResource("10_rd64i")
 expand_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious" unique_id=1782053568]

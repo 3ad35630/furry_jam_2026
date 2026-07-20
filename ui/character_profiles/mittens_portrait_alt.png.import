@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn1i65kqqd7k6"
-path="res://.godot/imported/icon_necro.png-f3c2994b1f4a547c817e25f4878f4ebb.ctex"
+uid="uid://cho1octkw4yhr"
+path="res://.godot/imported/mittens_portrait_alt.png-2327ee6d49534413a6058dd024c481c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/character_profiles/icon_necro.png"
-dest_files=["res://.godot/imported/icon_necro.png-f3c2994b1f4a547c817e25f4878f4ebb.ctex"]
+source_file="res://ui/character_profiles/mittens_portrait_alt.png"
+dest_files=["res://.godot/imported/mittens_portrait_alt.png-2327ee6d49534413a6058dd024c481c7.ctex"]
 
 [params]
 

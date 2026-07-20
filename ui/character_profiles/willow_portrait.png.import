@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cho1octkw4yhr"
-path="res://.godot/imported/necro_portrait_alt.png-c8c609b441abfdf8b76b475fc152fc95.ctex"
+uid="uid://vm1anxrr6iv"
+path="res://.godot/imported/willow_portrait.png-d6062bf1aec9f18c4ba0e78b88f702a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/character_profiles/necro_portrait_alt.png"
-dest_files=["res://.godot/imported/necro_portrait_alt.png-c8c609b441abfdf8b76b475fc152fc95.ctex"]
+source_file="res://ui/character_profiles/willow_portrait.png"
+dest_files=["res://.godot/imported/willow_portrait.png-d6062bf1aec9f18c4ba0e78b88f702a0.ctex"]
 
 [params]
 
