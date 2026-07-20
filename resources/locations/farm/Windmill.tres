@@ -99,6 +99,7 @@ positive = SubResource("Resource_7tyld")
 neutral = SubResource("Resource_msqny")
 negative = SubResource("Resource_2pbeo")
 action_clock_id = "sacks_of_grain"
+description = "It has been a long time since this mill ground anything but dust. There are still some sacks of grain left. You could probably get a little money from the villagers if you sold the flour."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_kfpcl"]
@@ -154,6 +155,7 @@ metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 resource_name = "Cats in the mill"
 script = ExtResource("2_xf7k1")
 clock_id = "accessible_cats"
+description = "The grain attracts rodents. Don't expect the cats to hang around though. They have places to go."
 max_segments = 5
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
@@ -161,6 +163,8 @@ metadata/_custom_type_script = "uid://54wgke734i1m"
 resource_name = "Sacks of grain"
 script = ExtResource("2_xf7k1")
 clock_id = "sacks_of_grain"
+description = "A dwindling supply of elderly sacks, well guarded by the local cat population."
+max_segments = 4
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]

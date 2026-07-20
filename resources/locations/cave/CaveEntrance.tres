@@ -50,6 +50,7 @@ script = ExtResource("6_31t04")
 positive = SubResource("Resource_15bq7")
 neutral = SubResource("Resource_0aj7a")
 negative = SubResource("Resource_p8qrv")
+description = "The cave might be dark but the entrance is wide and polished smooth. Clearly, this place is used regularly."
 access_test = SubResource("Resource_jkl28")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
@@ -100,6 +101,7 @@ positive = SubResource("Resource_4ff2f")
 neutral = SubResource("Resource_18k85")
 negative = SubResource("Resource_imvmo")
 action_clock_id = "friends_with_pumpkin"
+description = "Pumpkin seems a little cranky, but surely nobody is immune to the power of friendship!"
 access_test = SubResource("Resource_vvcu5")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
@@ -114,6 +116,7 @@ script = ExtResource("13_8p111")
 item_type = 2
 result = SubResource("Resource_b5f48")
 action_clock_id = "friends_with_pumpkin"
+description = "She might be a Goddess, but she is still an otter, and all otters can be bribed with a sufficient number of delicious fish."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_g7je5"]
@@ -128,6 +131,7 @@ item_type = 3
 required_number = 2
 result = SubResource("Resource_g7je5")
 action_clock_id = "friends_with_pumpkin"
+description = "Little known fact about small gods, they love to gossip! Pumpkin might look upon you more favorably if you share some juicy stories with her."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_yq3dt"]
@@ -146,6 +150,7 @@ resource_name = "Trade fish for some juicy gossip"
 script = ExtResource("13_8p111")
 item_type = 2
 result = SubResource("Resource_8p111")
+description = "Even though she likes you now she's not going to tell you anything for free. No, no, no - fish first THEN you get the good stuff."
 access_test = SubResource("Resource_yq3dt")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
@@ -159,6 +164,7 @@ metadata/_custom_type_script = "uid://cxoadgbyfvuei"
 resource_name = "FriendsWithPumpkin"
 script = ExtResource("2_5np8m")
 clock_id = "friends_with_pumpkin"
+description = "Pumpkin is in a bad mood and is the size of a large bull elephant. She also lives in the cave. You're not going to be able to get in there without her permission."
 access_test = SubResource("Resource_8xgl7")
 max_segments = 18
 metadata/_custom_type_script = "uid://54wgke734i1m"
@@ -167,6 +173,7 @@ metadata/_custom_type_script = "uid://54wgke734i1m"
 resource_name = "Pumpkin Irritation"
 script = ExtResource("2_5np8m")
 clock_id = "pumpkin_irritation"
+description = "The river goddess is irritable and already in a bad mood. Tick her off any more and she'll stop listening to you entirely."
 max_segments = 6
 metadata/_custom_type_script = "uid://54wgke734i1m"
 

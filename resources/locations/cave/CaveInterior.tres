@@ -76,6 +76,7 @@ script = ExtResource("4_kicwl")
 positive = SubResource("Resource_qmwbj")
 neutral = SubResource("Resource_0ouyt")
 negative = SubResource("Resource_flaac")
+description = "There is a lot of tea in here. A lot! More than you thought. The smell is intense, almost overwhelming. You only need one small package. Best not to get greedy."
 access_test = SubResource("Resource_imvmo")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
