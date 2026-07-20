@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dge68edg6eww2"]
+
+[ext_resource type="PackedScene" uid="uid://clhaefsw558s5" path="res://models/moon/MoonBasePlantsFix.fbx" id="1_c7ipe"]
+[ext_resource type="Material" uid="uid://by2ldcvu38t37" path="res://models/skybox/EarthLand.tres" id="2_64tuq"]
+[ext_resource type="Material" uid="uid://4da3r5kwg1mv" path="res://models/moon/updated_materials/White.tres" id="3_syaky"]
+[ext_resource type="Material" uid="uid://bvp2yp6162wni" path="res://models/moon/updated_materials/Pink.tres" id="4_htnio"]
+
+[node name="MoonBasePlantsFix" unique_id=1280478877 instance=ExtResource("1_c7ipe")]
+
+[node name="Floating Island Plants" parent="." index="0" unique_id=350648628]
+surface_material_override/0 = ExtResource("2_64tuq")
+surface_material_override/1 = ExtResource("3_syaky")
+surface_material_override/2 = ExtResource("4_htnio")
