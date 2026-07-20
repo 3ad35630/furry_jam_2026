@@ -43,4 +43,5 @@ func print_children(n):
 		print_children(child)
 
 func find_cameras() -> void:
-	print_children(get_tree().get_root().find_child("LocationCameras", true, false))
+	#print_children(get_tree().get_root().find_child("LocationCameras", true, false))
+	print
