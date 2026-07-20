@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://5463aga24h6i"]
+
+[ext_resource type="Texture2D" uid="uid://dgxrojvfhyboa" path="res://ui/character_profiles/pumpkin_portrait.png" id="1_l5rhf"]
+
+[resource]
+atlas = ExtResource("1_l5rhf")
+region = Rect2(90, 190, 1736, 1580)

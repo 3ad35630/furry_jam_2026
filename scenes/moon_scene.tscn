@@ -123,7 +123,7 @@ light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.99619955, -0.01593086, -0.08561266, 0.08292853, -0.12646073, 0.9884966, -0.026574265, -0.9918437, -0.12465887, 0, 0, 0)
+transform = Transform3D(0.99619955, -0.01593086, -0.08561267, 0.08292853, -0.12646073, 0.9884966, -0.026574265, -0.9918437, -0.124658875, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.7865726, 0.73917943, 0.79775226, 1)
 light_energy = 1.77

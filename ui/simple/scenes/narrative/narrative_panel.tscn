@@ -3,7 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/narration_line.tscn" id="1_hu3pf"]
 [ext_resource type="PackedScene" uid="uid://bi5rj3umcqwt8" path="res://ui/simple/scenes/narrative/character_line.tscn" id="2_okymu"]
 [ext_resource type="PackedScene" uid="uid://c5jbevs3ipdaa" path="res://ui/simple/scenes/narrative/choice_widget.tscn" id="2_rnsc6"]
-[ext_resource type="Texture2D" uid="uid://u8veuhsf7js5" path="res://ui/character_profiles/AT_mirabelle_portrait.tres" id="3_blwr1"]
+[ext_resource type="Texture2D" uid="uid://u8veuhsf7js5" path="res://ui/character_profiles/atlas/at_mirabelle.tres" id="3_blwr1"]
+[ext_resource type="Texture2D" uid="uid://b5b7v48abfhlu" path="res://ui/character_profiles/atlas/at_dispatch.tres" id="5_l02ys"]
+[ext_resource type="Texture2D" uid="uid://b23ea0i3ychxw" path="res://ui/character_profiles/atlas/at_mittens.tres" id="6_r2mxc"]
+[ext_resource type="Texture2D" uid="uid://dewafpyc65a5x" path="res://ui/character_profiles/atlas/at_oolong.tres" id="7_on87r"]
+[ext_resource type="Texture2D" uid="uid://5463aga24h6i" path="res://ui/character_profiles/atlas/at_pumpkin.tres" id="8_fxdg6"]
+[ext_resource type="Texture2D" uid="uid://dwfd57rb5p0s6" path="res://ui/character_profiles/atlas/at_willow.tres" id="9_6bu6o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vimbc"]
 bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
@@ -99,6 +104,25 @@ func _on_pressed() -> void:
 		NarrativeSystem.advance_narrative()
 "
 
+[sub_resource type="GDScript" id="GDScript_1xp64"]
+script/source = "extends TextureRect
+
+# don't do this, this should be in the character definition
+@export var character_to_texture : Dictionary[String, Texture]
+
+func _ready() -> void:
+	NarrativeSystem.continued.connect(on_narrative_continued)
+	
+func on_narrative_continued(text, _tags) -> void:
+	if text.strip_edges(true,true).length() > 0:
+		var splits = text.split(\":\")
+		if splits.size() > 1:
+			var character_name = splits[0].strip_edges(true,true)
+			if character_to_texture.has(character_name):
+				texture = character_to_texture[character_name]
+				visible = true
+"
+
 [node name="NarrativePanel" type="PanelContainer" unique_id=1047118372]
 custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
@@ -170,28 +194,36 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_16uew")
 text = "Continue"
 script = SubResource("GDScript_16uew")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=655354068]
-visible = false
+[node name="CharacterDisplay" type="VBoxContainer" parent="." unique_id=655354068]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="VBoxContainer" unique_id=775864276]
+[node name="Control" type="Control" parent="CharacterDisplay" unique_id=775864276]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 14.51
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1132524009]
+[node name="CharacterPortrait" type="TextureRect" parent="CharacterDisplay" unique_id=1132524009]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 30.0
 offset_transform_enabled = true
-offset_transform_position = Vector2(-323.4, 0)
+offset_transform_position = Vector2(-386.05, 0)
 texture = ExtResource("3_blwr1")
 expand_mode = 1
 stretch_mode = 4
+script = SubResource("GDScript_1xp64")
+character_to_texture = Dictionary[String, Texture]({
+"Dispatcher": ExtResource("5_l02ys"),
+"Madame Oolong": ExtResource("7_on87r"),
+"Mirabelle": ExtResource("3_blwr1"),
+"Mittens": ExtResource("6_r2mxc"),
+"Pumpkin": ExtResource("8_fxdg6"),
+"Willow": ExtResource("9_6bu6o")
+})
 
-[node name="Control2" type="Control" parent="VBoxContainer" unique_id=87943564]
+[node name="Control2" type="Control" parent="CharacterDisplay" unique_id=87943564]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 25.0

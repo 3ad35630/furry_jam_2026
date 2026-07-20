@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dwfd57rb5p0s6"]
+
+[ext_resource type="Texture2D" uid="uid://vm1anxrr6iv" path="res://ui/character_profiles/willow_portrait.png" id="1_c61g4"]
+
+[resource]
+atlas = ExtResource("1_c61g4")
+region = Rect2(85, 34, 1730, 1948)
