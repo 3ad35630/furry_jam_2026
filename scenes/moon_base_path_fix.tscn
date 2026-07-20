@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c5i8a0qo714cl"]
+
+[ext_resource type="PackedScene" uid="uid://dxqjulosxenpc" path="res://models/moon/MoonBasePathFix.fbx" id="1_h70ad"]
+
+[node name="MoonBasePathFix" unique_id=1481972265 instance=ExtResource("1_h70ad")]
+
+[node name="Floating Island Path" parent="." index="0" unique_id=344010448]
+cast_shadow = 0
