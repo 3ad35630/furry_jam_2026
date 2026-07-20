@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://6b752j2jlifk"]
+
+[ext_resource type="PackedScene" uid="uid://bw27jko1p0uv0" path="res://models/skybox/MoonBaseSkyBox.fbx" id="1_5hyhe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5hyhe"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4y4yv"]
+sky_material = SubResource("ProceduralSkyMaterial_5hyhe")
+
+[sub_resource type="Environment" id="Environment_iojt3"]
+background_mode = 2
+sky = SubResource("Sky_4y4yv")
+glow_enabled = true
+glow_intensity = 1.11
+glow_bloom = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7y8p"]
+albedo_color = Color(0.15236962, 0.020120723, 0.24149889, 1)
+
+[node name="MoonBaseSkyBox" unique_id=702406835 instance=ExtResource("1_5hyhe")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0" unique_id=934717711]
+environment = SubResource("Environment_iojt3")
+
+[node name="Skybox" parent="." index="1" unique_id=1769878543]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_p7y8p")
