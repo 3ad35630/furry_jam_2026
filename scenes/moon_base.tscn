@@ -8,3 +8,9 @@ script = ExtResource("2_eoifi")
 
 [node name="FishLake" parent="." index="2" unique_id=1878412606]
 transform = Transform3D(-0.5066141, -0.08102285, 0.23385641, 0.23422502, 0.015146565, 0.5126602, -0.07995109, 0.55777884, 0.020048575, 0.0386263, -0.7620565, 0.18650374)
+
+[node name="Soul Cow_001" parent="." index="9" unique_id=1951661661]
+visible = false
+
+[node name="Soul Cow_002" parent="." index="10" unique_id=1502870782]
+visible = false
