@@ -203,6 +203,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 script = SubResource("GDScript_vimbc")
 
@@ -259,9 +261,10 @@ size_flags_stretch_ratio = 40.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/VBoxContainer" unique_id=1931585888]
 custom_minimum_size = Vector2(65.805, 0)
+layout_direction = 4
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 60.0
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_pb32r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer" unique_id=554759375]
@@ -335,14 +338,18 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="EndTurnButton" type="BoxContainer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar" unique_id=677169747]
+layout_direction = 1
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=692552887]
 libraries/ = SubResource("AnimationLibrary_5cr83")
 
 [node name="Button" type="Button" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton" unique_id=744542445]
+layout_direction = 4
 layout_mode = 2
-offset_transform_enabled = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 text = "End Hour"
 
 [node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/Button" unique_id=2123176034]
@@ -358,12 +365,11 @@ button = NodePath("../Button")
 sound = NodePath("../Button/Button SFX")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/EndTurnButton/EndTurnWidget" unique_id=261589541]
-custom_maximum_size = Vector2(75, 75)
 layout_mode = 0
 offset_left = -84.55
 offset_top = 150.0
-offset_right = -9.550003
-offset_bottom = 225.0
+offset_right = 939.45
+offset_bottom = 1174.0
 texture = ExtResource("14_y3ayd")
 
 [node name="Control3" type="Control" parent="HBoxContainer2/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1883908575]
