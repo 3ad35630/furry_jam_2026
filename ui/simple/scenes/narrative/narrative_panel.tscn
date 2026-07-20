@@ -1,17 +1,21 @@
 [gd_scene format=3 uid="uid://bltswcx4yopx1"]
 
 [ext_resource type="PackedScene" uid="uid://crallti1cqkmn" path="res://ui/simple/scenes/narrative/narration_line.tscn" id="1_hu3pf"]
+[ext_resource type="Texture2D" uid="uid://bvkna8u6uriwy" path="res://ui/menu_textures/SpaceWitchs_UI_ChatBox.png" id="1_r2mxc"]
 [ext_resource type="PackedScene" uid="uid://bi5rj3umcqwt8" path="res://ui/simple/scenes/narrative/character_line.tscn" id="2_okymu"]
 [ext_resource type="PackedScene" uid="uid://c5jbevs3ipdaa" path="res://ui/simple/scenes/narrative/choice_widget.tscn" id="2_rnsc6"]
 [ext_resource type="Texture2D" uid="uid://u8veuhsf7js5" path="res://ui/character_profiles/atlas/at_mirabelle.tres" id="3_blwr1"]
+[ext_resource type="Texture2D" uid="uid://bqqf8x4mvy1mh" path="res://ui/menu_textures/SpaceWitchs_UI_Continue.png" id="5_6bu6o"]
 [ext_resource type="Texture2D" uid="uid://b5b7v48abfhlu" path="res://ui/character_profiles/atlas/at_dispatch.tres" id="5_l02ys"]
+[ext_resource type="Texture2D" uid="uid://kvbjfpg5hsf7" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnClick.png" id="6_em4pd"]
 [ext_resource type="Texture2D" uid="uid://b23ea0i3ychxw" path="res://ui/character_profiles/atlas/at_mittens.tres" id="6_r2mxc"]
+[ext_resource type="Texture2D" uid="uid://dqbolfei5oyng" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnHover.png" id="7_m2b1h"]
 [ext_resource type="Texture2D" uid="uid://dewafpyc65a5x" path="res://ui/character_profiles/atlas/at_oolong.tres" id="7_on87r"]
 [ext_resource type="Texture2D" uid="uid://5463aga24h6i" path="res://ui/character_profiles/atlas/at_pumpkin.tres" id="8_fxdg6"]
 [ext_resource type="Texture2D" uid="uid://dwfd57rb5p0s6" path="res://ui/character_profiles/atlas/at_willow.tres" id="9_6bu6o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vimbc"]
-bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b0ake"]
+texture = ExtResource("1_r2mxc")
 
 [sub_resource type="GDScript" id="GDScript_c4p16"]
 script/source = "extends Control
@@ -88,11 +92,8 @@ func update_narrative(_text, _tags) -> void:
 			
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16uew"]
-bg_color = Color(0.76128906, 0.4103079, 0.98066896, 1)
-
 [sub_resource type="GDScript" id="GDScript_16uew"]
-script/source = "extends Button
+script/source = "extends TextureButton
 func _ready() -> void:
 	NarrativeSystem.continued.connect(update)
 	
@@ -124,13 +125,14 @@ func on_narrative_continued(text, _tags) -> void:
 "
 
 [node name="NarrativePanel" type="PanelContainer" unique_id=1047118372]
+self_modulate = Color(0.11367249, 0.27582133, 0.43051645, 1)
 custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vimbc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_b0ake")
 script = SubResource("GDScript_c4p16")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=739170434]
@@ -187,11 +189,16 @@ theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 56
 theme_override_constants/margin_bottom = 21
 
-[node name="ContinueButton" type="Button" parent="MarginContainer/NarrativeBox/ContinueButton_Margins" unique_id=1566303226]
+[node name="ContinueButton" type="TextureButton" parent="MarginContainer/NarrativeBox/ContinueButton_Margins" unique_id=1675897818]
+self_modulate = Color(0.6502908, 0.7581575, 0.91544265, 1)
 custom_minimum_size = Vector2(0, 36.415)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_16uew")
-text = "Continue"
+texture_normal = ExtResource("5_6bu6o")
+texture_pressed = ExtResource("6_em4pd")
+texture_hover = ExtResource("7_m2b1h")
+texture_disabled = ExtResource("5_6bu6o")
+texture_focused = ExtResource("5_6bu6o")
+stretch_mode = 3
 script = SubResource("GDScript_16uew")
 
 [node name="CharacterDisplay" type="VBoxContainer" parent="." unique_id=655354068]

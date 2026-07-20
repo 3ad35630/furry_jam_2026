@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cld6mwumc1wwh"
-path="res://.godot/imported/SpaceWitchs_UI_SettingsButton.png-1ef5ed08c5ba062e3313b90700f082eb.ctex"
+uid="uid://cymqsrb2rpjqy"
+path="res://.godot/imported/SpaceWitchs_UI_Settings_Hover.png-0953188211acffaa9a71b790b6736d57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu_textures/SpaceWitchs_UI_SettingsButton.png"
-dest_files=["res://.godot/imported/SpaceWitchs_UI_SettingsButton.png-1ef5ed08c5ba062e3313b90700f082eb.ctex"]
+source_file="res://ui/menu_textures/SpaceWitchs_UI_Settings_Hover.png"
+dest_files=["res://.godot/imported/SpaceWitchs_UI_Settings_Hover.png-0953188211acffaa9a71b790b6736d57.ctex"]
 
 [params]
 

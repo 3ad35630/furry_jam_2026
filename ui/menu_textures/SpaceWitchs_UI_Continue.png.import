@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxbna3iiv1vfo"
-path="res://.godot/imported/SpaceWitchs_UI_EndHour_OnHover.png-29de7dc8d9a256ada571e5b48c909d25.ctex"
+uid="uid://bqqf8x4mvy1mh"
+path="res://.godot/imported/SpaceWitchs_UI_Continue.png-1205bfc920c232602e8c62cc9a3c2cc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu_textures/SpaceWitchs_UI_EndHour_OnHover.png"
-dest_files=["res://.godot/imported/SpaceWitchs_UI_EndHour_OnHover.png-29de7dc8d9a256ada571e5b48c909d25.ctex"]
+source_file="res://ui/menu_textures/SpaceWitchs_UI_Continue.png"
+dest_files=["res://.godot/imported/SpaceWitchs_UI_Continue.png-1205bfc920c232602e8c62cc9a3c2cc2.ctex"]
 
 [params]
 
