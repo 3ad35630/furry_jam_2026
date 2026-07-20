@@ -183,6 +183,37 @@ description = "The ghostly specters of cows float happily around the farm. It's 
 access_test = SubResource("Resource_ml3kh")
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
+[sub_resource type="Resource" id="Resource_emlje"]
+script = ExtResource("13_yhclw")
+item_type = 4
+metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
+
+[sub_resource type="Resource" id="Resource_761yd"]
+script = ExtResource("7_hh1f7")
+text = "You pet a cow. She moos in a ghostly kind of way."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_5qgk5"]
+script = ExtResource("7_hh1f7")
+text = "You pet a cow. You're not any less tired, but you feel a little bit happier."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_4hg1k"]
+script = ExtResource("7_hh1f7")
+text = "You pet a cow. She flicks her ears in delight."
+metadata/_custom_type_script = "uid://bbx8y3g0h4fr4"
+
+[sub_resource type="Resource" id="Resource_fjij5"]
+resource_name = "Pet the Soul Cows"
+script = ExtResource("5_7mkxp")
+target_number = 3
+positive = SubResource("Resource_4hg1k")
+neutral = SubResource("Resource_5qgk5")
+negative = SubResource("Resource_761yd")
+description = "Despite popular misconception, it is actually possible to pet a ghost."
+access_test = SubResource("Resource_emlje")
+metadata/_custom_type_script = "uid://rfr4bn03v1jh"
+
 [sub_resource type="Resource" id="Resource_2mcle"]
 script = ExtResource("3_rjrsa")
 ink_path = "explore_farm"
@@ -238,6 +269,6 @@ script = ExtResource("8_8khma")
 name = "The Spirit Farm"
 location_id = "farm_house"
 access_test = SubResource("Resource_nj27u")
-actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji"), SubResource("Resource_lu4dx")])
+actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji"), SubResource("Resource_lu4dx"), SubResource("Resource_fjij5")])
 clocks = Array[ExtResource("6_bsk6t")]([SubResource("Resource_jkl28"), SubResource("Resource_x4jqs")])
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

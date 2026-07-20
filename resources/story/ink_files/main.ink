@@ -172,6 +172,12 @@ You caused an avalanche! You're fine, but the snow has shifted, the paths are ch
 
 -> DONE
 
+=== kicked_out_of_the_festival
+
+It really was only a matter of time before you got kicked out.
+
+-> DONE
+
 === story_conclusion
 
 You make tea with Madame Oolong! 

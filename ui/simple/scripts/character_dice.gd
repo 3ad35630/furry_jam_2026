@@ -9,16 +9,20 @@ func _ready() -> void:
 		if character == witch:
 			witch = character # we want them to be the same Resource
 			character.dice_updated.connect(update_dice_display_for_character)
+			character.die_returned_to_hand.connect(add_new_die_display_for_die)
 			update_dice_display_for_character(character)
+		
+func add_new_die_display_for_die(die : Dictionary) -> void:
+	var new_dice_display = char_dice.instantiate()
+	new_dice_display.data = die
+	new_dice_display.remove_if_successfully_dragged = true
+	add_child(new_dice_display)	
 		
 func update_dice_display_for_character(character : Character) -> void:
 	for child in get_children():
 		child.queue_free()
 	for die in character.dice_dicts:
-		var new_dice_display = char_dice.instantiate()
-		new_dice_display.data = die
-		new_dice_display.remove_if_successfully_dragged = true
-		add_child(new_dice_display)
+		add_new_die_display_for_die(die)
 		
 func on_gameplay_mode_changed(new_mode : Enums.GameplayMode) -> void:
 	match new_mode:

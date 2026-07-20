@@ -1,6 +1,8 @@
 extends Resource
 class_name Character
 
+# this should not be here, we do actually need a die controller
+signal die_returned_to_hand(data : Dictionary)
 signal dice_updated(character : Character)
 
 @export var max_energy : int
@@ -13,8 +15,6 @@ var current_energy : int
 var dice : Array[int]
 var dice_dicts : Array[Dictionary]:
 	get = get_dice_dictionary
-
-
 
 func reset_energy():
 	current_energy = max_energy

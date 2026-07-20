@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="10_65rfi"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="11_5bpjm"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_gkyry"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="14_d5yrb"]
+[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="15_6g73k"]
 
 [sub_resource type="Resource" id="Resource_vnwtw"]
 script = ExtResource("1_75igq")
@@ -137,12 +139,23 @@ negative = SubResource("Resource_vf4k1")
 description = "Strictly speaking, rapidly growing potatoes with magic, cutting them into strips and frying them in oil until they're crispy isn't illegal. It should be though, with how good these taste."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
+[sub_resource type="Resource" id="Resource_ml3kh"]
+script = ExtResource("14_d5yrb")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="Resource" id="Resource_lu4dx"]
+script = ExtResource("15_6g73k")
+path = "kicked_out_of_the_festival"
+post_effects = Array[ExtResource("10_65rfi")]([SubResource("Resource_ml3kh")])
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
 [sub_resource type="Resource" id="Resource_uq6wx"]
 resource_name = "Festival Security"
 script = ExtResource("2_75igq")
 clock_id = "kicked_out_of_the_festival"
 description = "You don't have a ticket. You're not supposed to be in here."
 max_segments = 5
+effect = SubResource("Resource_lu4dx")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]

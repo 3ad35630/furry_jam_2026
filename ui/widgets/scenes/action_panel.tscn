@@ -74,12 +74,10 @@ var existing_data = {}
 var held_action
 
 func _on_dice_slot_data_changed(data: Variant) -> void:
-	if data.is_empty():
-		if not existing_data.is_empty():
-			existing_data['character'].dice_updated.emit(existing_data['character'])
-	else:
-		existing_data = data
-
+	if not existing_data.is_empty():
+		if existing_data != data:
+			existing_data['character'].die_returned_to_hand.emit(existing_data)
+	existing_data = data
 
 func _on_action_panel_action_set(action: Action) -> void:
 	get_parent().clear_data()
