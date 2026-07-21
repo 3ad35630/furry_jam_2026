@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_w0iyi"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="12_n8qgr"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="12_tycou"]
-[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="14_68286"]
+[ext_resource type="Script" uid="uid://dclumivpy08nu" path="res://mechanics/actions/effects/go_to_location.gd" id="16_w0iyi"]
 
 [sub_resource type="Resource" id="Resource_8ssvk"]
 script = ExtResource("1_v522e")
@@ -131,27 +131,26 @@ action_clock_id = "path_to_the_hidden_valley"
 description = "Brute force is not an elegant solution, but even mountains yield to it in time. You'll find the valley eventually if you can just keep going."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
-[sub_resource type="Resource" id="Resource_sx0ym"]
+[sub_resource type="Resource" id="Resource_y1rpn"]
 script = ExtResource("11_w0iyi")
 location_id = "mountain_heights"
 key = "used_magic_stick"
 metadata/_custom_type_script = "uid://deia8b341vkjq"
 
-[sub_resource type="Resource" id="Resource_r7ikn"]
+[sub_resource type="Resource" id="Resource_5ttwx"]
+script = ExtResource("4_tycou")
+test = SubResource("Resource_y1rpn")
+metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_mxjfd"]
 script = ExtResource("12_tycou")
 item_type = 9
 metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
 
-[sub_resource type="Resource" id="Resource_w0iyi"]
+[sub_resource type="Resource" id="Resource_qnhuy"]
 script = ExtResource("1_ij07w")
-tests = Array[ExtResource("2_68286")]([SubResource("Resource_sx0ym"), SubResource("Resource_r7ikn")])
+tests = Array[ExtResource("2_68286")]([SubResource("Resource_5ttwx"), SubResource("Resource_mxjfd")])
 metadata/_custom_type_script = "uid://60w7olhaehda"
-
-[sub_resource type="Resource" id="Resource_sc1f2"]
-resource_name = "You can only use this one."
-script = ExtResource("4_tycou")
-test = SubResource("Resource_w0iyi")
-metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
 
 [sub_resource type="Resource" id="Resource_iiemc"]
 script = ExtResource("4_eqem1")
@@ -176,20 +175,29 @@ script = ExtResource("7_5jljg")
 item_type = 9
 result = SubResource("Resource_fy56g")
 spend_items = false
-access_test = SubResource("Resource_sc1f2")
+action_clock_id = "path_to_the_hidden_valley"
+description = "Pumpkins magic stick might prove helpful again. The only liquid water up here must be the valley!"
+access_test = SubResource("Resource_qnhuy")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
-[sub_resource type="Resource" id="Resource_n8qgr"]
-script = ExtResource("14_68286")
-metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+[sub_resource type="Resource" id="Resource_8d8a0"]
+script = ExtResource("16_w0iyi")
+location_id = "mountain_valley"
+metadata/_custom_type_script = "uid://dclumivpy08nu"
+
+[sub_resource type="Resource" id="Resource_7571q"]
+script = ExtResource("9_rp7we")
+path = "find_path_to_valley"
+post_effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_8d8a0")])
+metadata/_custom_type_script = "uid://b0frcg551aapm"
 
 [sub_resource type="Resource" id="Resource_tycou"]
 resource_name = "A path to the Hidden Valley"
 script = ExtResource("2_o3hvl")
 clock_id = "path_to_the_hidden_valley"
 description = "It's very cold up here, and dry, and windy. There is a valley somewhere in all the snow and rock, but they named it 'Hidden Valley' for a reason. It will not be easily found."
-max_segments = 12
-effect = SubResource("Resource_n8qgr")
+max_segments = 8
+effect = SubResource("Resource_7571q")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [sub_resource type="Resource" id="Resource_yf74f"]
