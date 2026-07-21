@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://id00inpnk6m6" path="res://ui/boxes/Ending.png" id="1_qntt8"]
 [ext_resource type="Script" uid="uid://bw7lbj8myyvl1" path="res://ui/widgets/scripts/fade_in_and_out.gd" id="2_1xp64"]
+[ext_resource type="Texture2D" uid="uid://bs7eavqi4hb13" path="res://ui/menu_textures/SpaceWitchs_UI_QuitButton.png" id="2_d8fuv"]
+[ext_resource type="Texture2D" uid="uid://ct6ny3qjslkik" path="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnClick.png" id="3_ic183"]
+[ext_resource type="Texture2D" uid="uid://cysis6t62ajkj" path="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnHover.png" id="4_tupk6"]
+[ext_resource type="Script" uid="uid://ccjk3yevq7fhr" path="res://ui/widgets/scripts/button_quit.gd" id="5_lv5h7"]
 
 [sub_resource type="GDScript" id="GDScript_1xp64"]
 script/source = "extends Control
@@ -31,26 +35,37 @@ var show_end_screen : bool :
 
 func _ready() -> void:
 	Modes.gameplay_mode_changed.connect(on_mode_changed)
+	%Timer.wait_time = fade_duration
+	%Timer.timeout.connect(%QuitButton.fade_in.bind(fade_duration))
+	%Timer.timeout.connect(%QuitButton.show)
 
 func on_mode_changed(new_mode : Enums.GameplayMode) -> void:
 	match new_mode:
 		Enums.GameplayMode.ENDING_SLIDE:
 			show_end_screen = true
+			show_black_panel = true
+			%Timer.start()
 		_:
 			show_end_screen = false
+			show_black_panel = false
+			%QuitButton.fade_out(fade_duration)
 			
 	
 "
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3xd07"]
+
 [node name="OverlayWidget" type="Control" unique_id=35101285]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1900.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = SubResource("GDScript_1xp64")
 
-[node name="BlackPanel" type="PanelContainer" parent="." unique_id=242552863]
+[node name="BlackPanel" type="ColorRect" parent="." unique_id=1418531465]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -60,18 +75,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0, 0, 0, 1)
 script = ExtResource("2_1xp64")
 
-[node name="EndScreen" type="TextureRect" parent="." unique_id=52007332]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=736032487]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3xd07")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=2135895333]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EndScreen" type="TextureRect" parent="PanelContainer/CenterContainer" unique_id=52007332]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 custom_maximum_size = Vector2(1900, 1080)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("1_qntt8")
 script = ExtResource("2_1xp64")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1681683590]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="QuitButton" type="TextureButton" parent="PanelContainer/MarginContainer" unique_id=365961330]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("2_d8fuv")
+texture_pressed = ExtResource("3_ic183")
+texture_hover = ExtResource("4_tupk6")
+script = ExtResource("5_lv5h7")
+
+[node name="Timer" type="Timer" parent="." unique_id=1792791805]
+unique_name_in_owner = true
+one_shot = true
