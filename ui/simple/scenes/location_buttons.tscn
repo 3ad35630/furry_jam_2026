@@ -5,9 +5,12 @@
 [sub_resource type="GDScript" id="GDScript_16uew"]
 script/source = "extends Control
 
+signal location_buttons_updated(buttons : Dictionary[String, Control])
+
 @export var location_map_button_scene : PackedScene
 
 var location_cameras : Dictionary[String, Camera3D]
+var location_buttons : Dictionary[String, Control]
 
 func _ready() -> void:
 	var location_camera_node = get_tree().get_root().find_child(\"LocationCameras\", true, false)
@@ -20,6 +23,7 @@ func _ready() -> void:
 func update(new_mode : Enums.GameplayMode) -> void:
 	for child in get_children():
 		child.queue_free()
+	location_buttons.clear()
 	match new_mode:
 		Enums.GameplayMode.MAP:
 			visible = true
@@ -28,8 +32,10 @@ func update(new_mode : Enums.GameplayMode) -> void:
 				new_button.location = location
 				new_button.camera = location_cameras[location.location_id]
 				add_child(new_button)
+				location_buttons[location.location_id] = new_button
 		_ : 
 			visible = false
+	location_buttons_updated.emit(location_buttons)
 "
 
 [node name="LocationButtons" type="Control" unique_id=123706040]

@@ -15,6 +15,10 @@
 [ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
 [ext_resource type="PackedScene" uid="uid://chrjcqsxmvmrm" path="res://ui/widgets/scenes/overlay_widget.tscn" id="14_cmfwq"]
 [ext_resource type="AudioStream" uid="uid://burr2oclfioy0" path="res://audio/bgm/much ado about tea.mp3" id="14_p7y8p"]
+[ext_resource type="Script" uid="uid://c2yjon615r386" path="res://audio/global_music_player.gd" id="16_cmfwq"]
+[ext_resource type="PackedScene" uid="uid://btog0ocqae6vu" path="res://ui/tutorial/click_here.tscn" id="16_g3ryr"]
+[ext_resource type="PackedScene" uid="uid://dd2oj6f54g8lg" path="res://ui/tutorial/dice_tutorial.tscn" id="17_fxdpg"]
+[ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/bgm/moon lake ultra clean.ogg" id="17_mj4fj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
 shader = ExtResource("2_ugxro")
@@ -85,6 +89,144 @@ func _ready() -> void:
 		Inventory.add(Enums.ItemTypes.TEA, 1)
 		Inventory.add(Enums.ItemTypes.BLOSSOMS, 1)
 "
+
+[sub_resource type="Animation" id="Animation_mj4fj"]
+resource_name = "Global_to_Location"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.363585, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Global_Music:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.42044812, 1),
+"update": 0,
+"values": [-80.0, -12.0]
+}
+
+[sub_resource type="Animation" id="Animation_g3ryr"]
+resource_name = "Location_to_Global"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.32987672, 1),
+"update": 0,
+"values": [-80.0, -12.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Location_Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.3635848, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fxdpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-12.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Global_Music:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Location_Music:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxdpg"]
+_data = {
+&"Global_to_Location": SubResource("Animation_mj4fj"),
+&"Location_to_Global": SubResource("Animation_g3ryr"),
+&"RESET": SubResource("Animation_fxdpg")
+}
 
 [node name="Moon" type="Node3D" unique_id=1671707619]
 
@@ -561,5 +703,39 @@ mouse_behavior_recursive = 2
 
 [node name="OverlayWidget" parent="." unique_id=35101285 instance=ExtResource("14_cmfwq")]
 
+[node name="TutorialWidgets" type="Control" parent="." unique_id=1548902522]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ClickHere" parent="TutorialWidgets" unique_id=1422604781 instance=ExtResource("16_g3ryr")]
+layout_mode = 0
+
+[node name="DiceTutorial" parent="TutorialWidgets" unique_id=2063063613 instance=ExtResource("17_fxdpg")]
+visible = false
+layout_mode = 0
+offset_left = 83.725
+offset_top = 791.57
+offset_right = 83.725
+offset_bottom = 791.57
+
 [node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
 script = SubResource("GDScript_16uew")
+
+[node name="Global_Music_Player" type="Node" parent="." unique_id=1126211576]
+script = ExtResource("16_cmfwq")
+world_audio = ExtResource("17_mj4fj")
+menu_audio = ExtResource("14_p7y8p")
+
+[node name="Global_Music" type="AudioStreamPlayer" parent="Global_Music_Player" unique_id=2060326572]
+volume_db = -12.0
+
+[node name="Location_Music" type="AudioStreamPlayer" parent="Global_Music_Player" unique_id=435746000]
+volume_db = -80.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Global_Music_Player" unique_id=680687684]
+libraries/ = SubResource("AnimationLibrary_fxdpg")
+
+[connection signal="location_buttons_updated" from="LocationButtons" to="TutorialWidgets/ClickHere" method="_on_location_buttons_location_buttons_updated"]

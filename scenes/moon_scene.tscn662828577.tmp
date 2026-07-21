@@ -1,0 +1,718 @@
+[gd_scene format=3 uid="uid://by6yql2umertj"]
+
+[ext_resource type="Script" uid="uid://cf8y83e2jaf2s" path="res://models/skybox/main.gd" id="1_ltsy3"]
+[ext_resource type="PackedScene" uid="uid://bt613xfgvlc5d" path="res://ui/simple/scenes/main_panel.tscn" id="2_tsr5y"]
+[ext_resource type="Shader" uid="uid://8c51s2di2x41" path="res://models/skybox/sky.gdshader" id="2_ugxro"]
+[ext_resource type="PackedScene" uid="uid://dkeftvjywrw5o" path="res://scenes/moon_base.tscn" id="3_3l5yu"]
+[ext_resource type="PackedScene" uid="uid://5mmt1t7y4b2s" path="res://ui/simple/scenes/location_buttons.tscn" id="3_js7sh"]
+[ext_resource type="PackedScene" uid="uid://d1p0qwf8hr5g8" path="res://scenes/camera_controls.tscn" id="3_jtt53"]
+[ext_resource type="Texture2D" uid="uid://dgduacdiqttv1" path="res://models/skybox/stars.png" id="3_ugxro"]
+[ext_resource type="PackedScene" uid="uid://6b752j2jlifk" path="res://scenes/moon_base_sky_box.tscn" id="4_p7y8p"]
+[ext_resource type="Script" uid="uid://cq231a0tgv55i" path="res://ui/widgets/scripts/camera_panel_placement.gd" id="6_p7y8p"]
+[ext_resource type="PackedScene" uid="uid://ckymjbamevrha" path="res://ui/widgets/scenes/default_location_display.tscn" id="7_722th"]
+[ext_resource type="Script" uid="uid://ddys7b3ulp58x" path="res://ui/widgets/scripts/camera_panel_target.gd" id="7_cmfwq"]
+[ext_resource type="PackedScene" uid="uid://cjehic72qfqx2" path="res://ui/widgets/scenes/main_menu.tscn" id="13_3l5yu"]
+[ext_resource type="Script" uid="uid://mpefha4s3wei" path="res://ui/widgets/scripts/main_menu.gd" id="14_722th"]
+[ext_resource type="PackedScene" uid="uid://chrjcqsxmvmrm" path="res://ui/widgets/scenes/overlay_widget.tscn" id="14_cmfwq"]
+[ext_resource type="AudioStream" uid="uid://burr2oclfioy0" path="res://audio/bgm/much ado about tea.mp3" id="14_p7y8p"]
+[ext_resource type="Script" uid="uid://c2yjon615r386" path="res://audio/global_music_player.gd" id="16_cmfwq"]
+[ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/bgm/moon lake ultra clean.ogg" id="17_mj4fj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
+shader = ExtResource("2_ugxro")
+shader_parameter/day_top_color = Color(0.66520697, 0.5027283, 0.8164693, 1)
+shader_parameter/day_bottom_color = Color(0.6666667, 0.5019608, 0.8156863, 1)
+shader_parameter/sunset_top_color = Color(0.8964028, 0.6899389, 0.8539022, 1)
+shader_parameter/sunset_bottom_color = Color(0.9474545, 0.549255, 0.697786, 1)
+shader_parameter/night_top_color = Color(0.12437653, 0.07422561, 0.21553484, 1)
+shader_parameter/night_bottom_color = Color(0.12806377, 0.06386508, 0.18061778, 1)
+shader_parameter/horizon_color = Color(0.67583627, 0.50336325, 0.79092145, 1)
+shader_parameter/horizon_blur = 0.05
+shader_parameter/sun_color = Color(10, 8, 1, 1)
+shader_parameter/sun_sunset_color = Color(10, 0, 0, 1)
+shader_parameter/sun_size = 0.2
+shader_parameter/sun_blur = 10.0
+shader_parameter/moon_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/moon_size = 0.06
+shader_parameter/moon_blur = 0.1
+shader_parameter/clouds_edge_color = Color(0.8, 0.8, 0.98, 1)
+shader_parameter/clouds_top_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_middle_color = Color(0.92, 0.92, 0.98, 1)
+shader_parameter/clouds_bottom_color = Color(0.83, 0.83, 0.94, 1)
+shader_parameter/clouds_speed = 2.0
+shader_parameter/clouds_direction = 0.2
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_cutoff = 0.6
+shader_parameter/clouds_fuzziness = 0.5
+shader_parameter/clouds_weight = 0.0
+shader_parameter/clouds_blur = 0.25
+shader_parameter/stars_texture = ExtResource("3_ugxro")
+shader_parameter/stars_speed = 1.0
+shader_parameter/stars_scale = 1.0
+shader_parameter/stars_opacity = 1.0
+shader_parameter/overwritten_time = 0.0
+
+[sub_resource type="Sky" id="Sky_tsr5y"]
+sky_material = SubResource("ShaderMaterial_je4f3")
+
+[sub_resource type="Environment" id="Environment_mcndj"]
+background_mode = 2
+sky = SubResource("Sky_tsr5y")
+glow_enabled = true
+glow_intensity = 0.68
+glow_bloom = 0.25
+fog_mode = 1
+fog_light_color = Color(0.63199615, 0.4980386, 0.6354826, 1)
+fog_density = 1.0
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Node
+
+@export var currency_items : bool = false
+@export var give_stick : bool = false
+@export var all_ingredients : bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if currency_items:
+		Inventory.add(Enums.ItemTypes.MONEY, 30)
+		Inventory.add(Enums.ItemTypes.FISH, 30)
+		Inventory.add(Enums.ItemTypes.GOSSIP, 30)
+	if give_stick:
+		Inventory.add(Enums.ItemTypes.PUMPKINS_MAGIC_STICK, 1)
+	if all_ingredients:
+		Inventory.add(Enums.ItemTypes.MILK, 1)
+		Inventory.add(Enums.ItemTypes.OIL, 1)
+		Inventory.add(Enums.ItemTypes.CINNAMON, 1)
+		Inventory.add(Enums.ItemTypes.TEA, 1)
+		Inventory.add(Enums.ItemTypes.BLOSSOMS, 1)
+"
+
+[sub_resource type="Animation" id="Animation_mj4fj"]
+resource_name = "Global_to_Location"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(6.27667, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Global_Music:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.16493858, 1),
+"update": 0,
+"values": [-80.0, -12.0]
+}
+
+[sub_resource type="Animation" id="Animation_g3ryr"]
+resource_name = "Location_to_Global"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.14358735, 1),
+"update": 0,
+"values": [-80.0, -12.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Location_Music:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(6.276668, 1),
+"update": 0,
+"values": [-12.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fxdpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Global_Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-12.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Global_Music:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Location_Music:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Location_Music:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxdpg"]
+_data = {
+&"Global_to_Location": SubResource("Animation_mj4fj"),
+&"Location_to_Global": SubResource("Animation_g3ryr"),
+&"RESET": SubResource("Animation_fxdpg")
+}
+
+[node name="Moon" type="Node3D" unique_id=1671707619]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2090341946]
+environment = SubResource("Environment_mcndj")
+
+[node name="MoonBase" parent="." unique_id=249059132 instance=ExtResource("3_3l5yu")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MoonBase" unique_id=1353406696]
+light_color = Color(0.7840259, 0.5236658, 0.8944897, 1)
+light_energy = 0.312
+light_angular_distance = 90.0
+light_specular = 0.0
+sky_mode = 1
+
+[node name="MoonBaseSkyBox" parent="." unique_id=702406835 instance=ExtResource("4_p7y8p")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="DayNightCycle" type="Node3D" parent="." unique_id=1837301946]
+script = ExtResource("1_ltsy3")
+day_time = 5.8512
+latitude = -7.180000000000007
+planet_axial_tilt = -17.139999999999986
+moon_orbital_inclination = -29.139999999999983
+moon_orbital_period = 120.1
+clouds_cutoff = 0.6
+time_scale = 0.0
+sun_base_enegry = 1.0
+moon_base_enegry = 1.31
+
+[node name="Sun" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1562214062]
+transform = Transform3D(0.951264, 0.12489208, 0.28195503, -0.108495615, 0.99140567, -0.07309934, -0.28866133, 0.038945895, 0.9566387, 0, 0, 0)
+rotation_order = 4
+light_color = Color(0.7882353, 0.7372549, 0.79607844, 1)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
+transform = Transform3D(0.99630225, -0.01297854, -0.0849125, 0.083135396, -0.10302493, 0.9911956, -0.0216124, -0.9945941, -0.10156487, 0, 0, 0)
+rotation_order = 4
+light_color = Color(0.7865726, 0.73917943, 0.79775226, 1)
+light_energy = 1.31
+shadow_enabled = true
+
+[node name="CameraRotation" parent="." unique_id=517386831 instance=ExtResource("3_jtt53")]
+
+[node name="LocationCameras" type="Control" parent="." unique_id=2122730447]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="farm_windmill" type="Camera3D" parent="LocationCameras" unique_id=1245062115]
+transform = Transform3D(0.30901673, 0.44649425, 0.83973306, 0, 0.8829475, -0.46947178, -0.9510566, 0.14507464, 0.27284557, -2.6477718, -2.0680003, 6.229522)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/farm_windmill" unique_id=360813804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/farm_windmill" unique_id=1995493058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/farm_windmill" unique_id=1261587505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/farm_windmill" unique_id=1143520610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/farm_windmill" unique_id=1261289368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="farm_house" type="Camera3D" parent="LocationCameras" unique_id=1168980877]
+transform = Transform3D(0.104526885, 0.73029995, 0.67508227, 0, 0.6788007, -0.73432255, -0.99452204, 0.07675645, 0.07095292, -3.089222, -2.6023521, 4.5531697)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/farm_house" unique_id=491969623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/farm_house" unique_id=310589507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/farm_house" unique_id=1504847494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/farm_house" unique_id=657084717]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/farm_house" unique_id=1544396036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="cave_entrance" type="Camera3D" parent="LocationCameras" unique_id=367372146]
+transform = Transform3D(0.13484588, 0.5934921, 0.7934632, 0, 0.80077696, -0.59896266, -0.9908666, 0.08076765, 0.10798147, 0.6488304, -7.3177304, 3.105158)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/cave_entrance" unique_id=1961249534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/cave_entrance" unique_id=445324851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/cave_entrance" unique_id=1183217757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/cave_entrance" unique_id=1640781620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/cave_entrance" unique_id=1397118344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="cave_shrine" type="Camera3D" parent="LocationCameras" unique_id=2002006989]
+transform = Transform3D(0.39394188, -0.15328304, 0.90626377, 0, 0.985996, 0.16676874, -0.91913533, -0.06569719, 0.3884251, 0.635, -6.508, -3.101)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/cave_shrine" unique_id=2065173236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/cave_shrine" unique_id=1035843301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/cave_shrine" unique_id=1407871861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/cave_shrine" unique_id=275624866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/cave_shrine" unique_id=1088748468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="cave_interior" type="Camera3D" parent="LocationCameras" unique_id=1637508061]
+transform = Transform3D(0.8115736, 0.18296593, 0.55486196, 0, 0.94969916, -0.31316367, -0.5842502, 0.25415537, 0.7707508, -1.9185915, -5.489797, 4.097971)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/cave_interior" unique_id=1762886969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/cave_interior" unique_id=1984654018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/cave_interior" unique_id=198613595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/cave_interior" unique_id=1629942685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/cave_interior" unique_id=580389414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="teahouse_exterior" type="Camera3D" parent="LocationCameras" unique_id=233576368]
+transform = Transform3D(0.9575716, -0.028873852, -0.2867454, 0, 0.9949685, -0.100188434, 0.28819546, 0.0959376, 0.9527536, -0.6603279, 14.474445, 5.9991045)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/teahouse_exterior" unique_id=1384805660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28654343, 0.26696402, -0.6354625)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/teahouse_exterior" unique_id=949014770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/teahouse_exterior" unique_id=1411954069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/teahouse_exterior" unique_id=936200872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24392337, 0.13232288, -0.6354618)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/teahouse_exterior" unique_id=1070216217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="teahouse_interior" type="Camera3D" parent="LocationCameras" unique_id=1052693694]
+transform = Transform3D(0.6658809, -0.24289249, 0.7054118, 0, 0.9455187, 0.3255678, -0.74605805, -0.2167894, 0.62960285, 3.4499607, 14.179094, 1.6276803)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/teahouse_interior" unique_id=1083913841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/teahouse_interior" unique_id=707642399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/teahouse_interior" unique_id=1072224323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/teahouse_interior" unique_id=279100419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/teahouse_interior" unique_id=703287319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="town_docks" type="Camera3D" parent="LocationCameras" unique_id=615670393]
+transform = Transform3D(0.35020733, -0.30881205, 0.88430196, 0, 0.94408906, 0.32969064, -0.9366722, -0.115460075, 0.3306269, 8.608, -7.476, 5.0179996)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/town_docks" unique_id=924606328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/town_docks" unique_id=2109111122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/town_docks" unique_id=1051400323]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/town_docks" unique_id=1089905260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/town_docks" unique_id=1443309636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="town_highstreet" type="Camera3D" parent="LocationCameras" unique_id=1940852869]
+transform = Transform3D(-0.39875025, -0.630732, 0.6657142, 0, 0.7259225, 0.6877765, -0.91705954, 0.27425104, -0.2894618, 8.422346, -5.6452317, 0.38162017)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/town_highstreet" unique_id=920766957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/town_highstreet" unique_id=1725073457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/town_highstreet" unique_id=1244638016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/town_highstreet" unique_id=1724728696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/town_highstreet" unique_id=339374256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="town_festival" type="Camera3D" parent="LocationCameras" unique_id=1530660607]
+transform = Transform3D(0.5807016, 0.33760887, -0.7408143, 0, 0.9099611, 0.4146936, 0.8141165, -0.24081323, 0.52841586, 2.2691064, -7.2174296, -1.331594)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/town_festival" unique_id=1314966863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/town_festival" unique_id=50790122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/town_festival" unique_id=156222606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/town_festival" unique_id=2049365304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/town_festival" unique_id=124181326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="town_warehouse" type="Camera3D" parent="LocationCameras" unique_id=654005619]
+transform = Transform3D(-0.16504478, -0.20506038, -0.96473336, 0, 0.9781476, -0.20791167, 0.98628604, -0.034314737, -0.16143817, 6.424219, -7.0340204, 1.5983825)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/town_warehouse" unique_id=2139883053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/town_warehouse" unique_id=383149507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/town_warehouse" unique_id=1985050322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/town_warehouse" unique_id=225308948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/town_warehouse" unique_id=1530674768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="ribbon" type="Camera3D" parent="LocationCameras" unique_id=826661762]
+transform = Transform3D(0.5735769, -0.16331272, 0.80270696, 0, 0.9799247, 0.1993681, -0.8191517, -0.11435294, 0.5620622, 8.914329, -6.572899, 13.104167)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/ribbon" unique_id=945530558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/ribbon" unique_id=1642053173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/ribbon" unique_id=1000759837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/ribbon" unique_id=1604614495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/ribbon" unique_id=288494095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="mountain_base" type="Camera3D" parent="LocationCameras" unique_id=344399956]
+transform = Transform3D(-0.25594974, 0.9666898, 0.00076975813, 0.22636972, 0.060709845, -0.9721477, -0.939812, -0.24864669, -0.23436797, -4.293434, -1.9882451, -4.104409)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/mountain_base" unique_id=1505506197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/mountain_base" unique_id=1439449754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/mountain_base" unique_id=1342724670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/mountain_base" unique_id=2010319231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/mountain_base" unique_id=796504261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="mountain_heights" type="Camera3D" parent="LocationCameras" unique_id=108581116]
+transform = Transform3D(-0.005441627, 0.9999849, 0.0007962625, 0, 0.0007962743, -0.9999997, -0.9999852, -0.0054416256, -4.333028e-06, -2.753743, -1.5765228, -1.2169021)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/mountain_heights" unique_id=1346130491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/mountain_heights" unique_id=1834639736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/mountain_heights" unique_id=1358273079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/mountain_heights" unique_id=1407366658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/mountain_heights" unique_id=1596868124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="mountain_valley" type="Camera3D" parent="LocationCameras" unique_id=1076267755]
+transform = Transform3D(-0.20896642, 0.9779225, 0.00077869475, 0, 0.0007962743, -0.9999997, -0.9779228, -0.20896636, -0.00016639459, -1.9434198, 1.9221573, -1.426454)
+script = ExtResource("6_p7y8p")
+location_display_widget = ExtResource("7_722th")
+
+[node name="panel" type="Node3D" parent="LocationCameras/mountain_valley" unique_id=665683180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42601603, 0.12129071, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="panel2" type="Node3D" parent="LocationCameras/mountain_valley" unique_id=1695982955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10164523, 0.061517525, -0.63546205)
+script = ExtResource("7_cmfwq")
+
+[node name="panel3" type="Node3D" parent="LocationCameras/mountain_valley" unique_id=1113958884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3334903, -0.083292276, -0.6354622)
+script = ExtResource("7_cmfwq")
+
+[node name="clock" type="Node3D" parent="LocationCameras/mountain_valley" unique_id=1429076205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27364022, -0.28856948, -0.63546187)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="clock2" type="Node3D" parent="LocationCameras/mountain_valley" unique_id=1716705177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24002182, -0.2637547, -0.635462)
+script = ExtResource("7_cmfwq")
+is_clock = true
+
+[node name="MainMenu" parent="." unique_id=1857706283 instance=ExtResource("13_3l5yu")]
+script = ExtResource("14_722th")
+
+[node name="MuchAdoAboutTea" type="AudioStreamPlayer" parent="MainMenu" unique_id=1634151150]
+stream = ExtResource("14_p7y8p")
+bus = &"BGM"
+playback_type = 1
+parameters/looping = true
+
+[node name="MainPanel" parent="." unique_id=89919495 instance=ExtResource("2_tsr5y")]
+visible = false
+
+[node name="LocationButtons" parent="." unique_id=123706040 instance=ExtResource("3_js7sh")]
+mouse_filter = 2
+mouse_behavior_recursive = 2
+
+[node name="OverlayWidget" parent="." unique_id=35101285 instance=ExtResource("14_cmfwq")]
+
+[node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
+script = SubResource("GDScript_16uew")
+
+[node name="Node" type="Node" parent="." unique_id=1126211576]
+script = ExtResource("16_cmfwq")
+world_audio = ExtResource("17_mj4fj")
+
+[node name="Global_Music" type="AudioStreamPlayer" parent="Node" unique_id=2060326572]
+volume_db = -12.0
+
+[node name="Location_Music" type="AudioStreamPlayer" parent="Node" unique_id=435746000]
+volume_db = -80.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node" unique_id=680687684]
+libraries/ = SubResource("AnimationLibrary_fxdpg")

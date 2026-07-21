@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="13_84ka5"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="15_dfh30"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="16_dfh30"]
+[ext_resource type="AudioStream" uid="uid://6o1tt1ymcqbk" path="res://audio/bgm/Markets.mp3" id="18_3omq5"]
 
 [sub_resource type="Resource" id="Resource_b2fl3"]
 script = ExtResource("1_2pcgd")
@@ -172,4 +173,5 @@ location_id = "town_highstreet"
 access_test = SubResource("Resource_b2fl3")
 actions = Array[ExtResource("1_4ev8a")]([SubResource("Resource_goyih"), SubResource("Resource_xw21o"), SubResource("Resource_nl8s1"), SubResource("Resource_mf60b")])
 clocks = Array[ExtResource("6_p6i3w")]([SubResource("Resource_7fuam")])
+audio = ExtResource("18_3omq5")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

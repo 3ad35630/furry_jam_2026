@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="7_4afpb"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="8_4urkh"]
 [ext_resource type="Script" uid="uid://cv41k7b1vqdkw" path="res://mechanics/locations/location.gd" id="8_64cfc"]
+[ext_resource type="AudioStream" uid="uid://gkqb6v5vmspw" path="res://audio/bgm/Fishing.mp3" id="11_u0ra7"]
 
 [sub_resource type="Resource" id="Resource_hh1f7"]
 script = ExtResource("1_4afpb")
@@ -136,4 +137,5 @@ location_id = "town_docks"
 access_test = SubResource("Resource_hh1f7")
 actions = Array[ExtResource("1_g73gj")]([SubResource("Resource_yhclw"), SubResource("Resource_b0mxf"), SubResource("Resource_4t3wr"), SubResource("Resource_7fuam")])
 clocks = Array[ExtResource("6_0aqbr")]([SubResource("Resource_0aqbr")])
+audio = ExtResource("11_u0ra7")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="9_fd3s2"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="10_8yh3t"]
 [ext_resource type="Script" uid="uid://c4m2hf30qbfy5" path="res://mechanics/actions/effects/show_ending_slide.gd" id="11_fd3s2"]
+[ext_resource type="AudioStream" uid="uid://ceaye2botifvp" path="res://audio/bgm/oolong.mp3" id="12_8yh3t"]
 
 [sub_resource type="Resource" id="Resource_paspp"]
 script = ExtResource("3_a48kk")
@@ -36,6 +37,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_hnxtg"]
 resource_name = "Knock on the door!"
 script = ExtResource("3_jaxoa")
+skill = null
 positive = SubResource("Resource_fd3s2")
 neutral = SubResource("Resource_fd3s2")
 negative = SubResource("Resource_fd3s2")
@@ -86,6 +88,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_b2fl3"]
 resource_name = "Make Tea"
 script = ExtResource("3_jaxoa")
+skill = null
 positive = SubResource("Resource_fjij5")
 neutral = SubResource("Resource_fjij5")
 negative = SubResource("Resource_fjij5")
@@ -118,4 +121,5 @@ name = "Tea House"
 location_id = "teahouse_exterior"
 actions = Array[ExtResource("1_ps74c")]([SubResource("Resource_hnxtg"), SubResource("Resource_b2fl3")])
 clocks = Array[ExtResource("2_te1he")]([SubResource("Resource_2mcle")])
+audio = ExtResource("12_8yh3t")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

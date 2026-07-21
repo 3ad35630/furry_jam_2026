@@ -8,6 +8,7 @@ class_name Location
 @export var access_test : AccessTest = null
 @export var actions : Array[Action] = []
 @export var clocks : Array[Clock] = []
+@export var audio : AudioStream
 
 var accessible : bool : 
 	get:

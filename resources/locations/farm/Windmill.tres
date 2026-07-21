@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="10_ht5tt"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="11_iykc2"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_nl5oy"]
+[ext_resource type="AudioStream" uid="uid://dl31eqv37xvy7" path="res://audio/bgm/SoulFarm.mp3" id="13_ft207"]
 
 [sub_resource type="Resource" id="Resource_wpyvr"]
 resource_name = "We've explored the farm"
@@ -174,4 +175,5 @@ location_id = "farm_windmill"
 access_test = SubResource("Resource_gawdx")
 actions = Array[ExtResource("1_dg7bk")]([SubResource("Resource_7ig2a"), SubResource("Resource_ca3af")])
 clocks = Array[ExtResource("2_xf7k1")]([SubResource("Resource_div1f"), SubResource("Resource_vf4k1")])
+audio = ExtResource("13_ft207")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

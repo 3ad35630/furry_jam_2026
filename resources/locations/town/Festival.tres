@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="10_65rfi"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="11_5bpjm"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="12_gkyry"]
+[ext_resource type="AudioStream" uid="uid://yxqgwln7yj7u" path="res://audio/bgm/Festivel.mp3" id="13_6g73k"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="14_d5yrb"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="15_6g73k"]
 
@@ -166,4 +167,5 @@ location_id = "town_festival"
 access_test = SubResource("Resource_wffqv")
 actions = Array[ExtResource("1_d7s2v")]([SubResource("Resource_wbdjj"), SubResource("Resource_pkqvc"), SubResource("Resource_c1crs")])
 clocks = Array[ExtResource("2_75igq")]([SubResource("Resource_uq6wx")])
+audio = ExtResource("13_6g73k")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

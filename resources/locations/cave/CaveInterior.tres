@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="9_1p5gj"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_sa07i"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="10_1crc3"]
+[ext_resource type="AudioStream" uid="uid://bhjrglhv50qi5" path="res://audio/bgm/Pumkins cave.mp3" id="13_sa07i"]
 
 [sub_resource type="Resource" id="Resource_1p5gj"]
 resource_name = "You are Pumpkins friend"
@@ -81,4 +82,5 @@ name = "Cave Interior"
 location_id = "cave_interior"
 access_test = SubResource("Resource_dvm1c")
 actions = Array[ExtResource("1_pntl0")]([SubResource("Resource_yq3dt")])
+audio = ExtResource("13_sa07i")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

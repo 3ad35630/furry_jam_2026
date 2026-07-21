@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="12_0yt3h"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="13_yhclw"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="15_2agq0"]
+[ext_resource type="AudioStream" uid="uid://dl31eqv37xvy7" path="res://audio/bgm/SoulFarm.mp3" id="16_yhclw"]
 
 [sub_resource type="Resource" id="Resource_nj27u"]
 script = ExtResource("1_sudli")
@@ -274,4 +275,5 @@ location_id = "farm_house"
 access_test = SubResource("Resource_nj27u")
 actions = Array[ExtResource("1_s7ajs")]([SubResource("Resource_a14y6"), SubResource("Resource_4t3wr"), SubResource("Resource_watsn"), SubResource("Resource_bkiji"), SubResource("Resource_lu4dx"), SubResource("Resource_fjij5")])
 clocks = Array[ExtResource("6_bsk6t")]([SubResource("Resource_jkl28"), SubResource("Resource_x4jqs")])
+audio = ExtResource("16_yhclw")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

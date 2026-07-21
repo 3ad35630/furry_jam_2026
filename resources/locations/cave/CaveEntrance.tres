@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_38kbb"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_chyld"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="13_8p111"]
+[ext_resource type="AudioStream" uid="uid://bhjrglhv50qi5" path="res://audio/bgm/Pumkins cave.mp3" id="13_vvcu5"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="16_chyld"]
 
 [sub_resource type="Resource" id="Resource_2mcle"]
@@ -185,4 +186,5 @@ location_id = "cave_entrance"
 access_test = SubResource("Resource_2mcle")
 actions = Array[ExtResource("1_0odj7")]([SubResource("Resource_ya4x8"), SubResource("Resource_7ndyd"), SubResource("Resource_xtktx"), SubResource("Resource_vsw7n"), SubResource("Resource_dbufb")])
 clocks = Array[ExtResource("2_5np8m")]([SubResource("Resource_38kbb"), SubResource("Resource_aihph")])
+audio = ExtResource("13_vvcu5")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

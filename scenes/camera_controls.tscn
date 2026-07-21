@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 			Input.action_press(\"rotate\")
 			rotating = true
 			mouse_prev = get_viewport().get_mouse_position()
-		elif Input.is_action_just_released(\"rotate\"):
+		elif Input.is_action_just_released(\"rotate\") or Input.is_action_just_pressed(\"ui_cancel\"):
 			#velocity += accelleration * delta
 			rotating = false
 		

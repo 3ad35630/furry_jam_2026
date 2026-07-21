@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/much ado about tea.mp3-14c367e3e0e6bab9a9b980
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

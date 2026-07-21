@@ -31,6 +31,10 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16uew"]
 texture = ExtResource("1_s0y5o")
 
+[sub_resource type="Resource" id="Resource_h6hga"]
+script = ExtResource("7_xh57i")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g746w"]
 texture = ExtResource("18_h6hga")
 
@@ -76,6 +80,7 @@ texture_disabled = ExtResource("2_uftg2")
 texture_focused = ExtResource("2_uftg2")
 stretch_mode = 3
 script = ExtResource("1_ewfhh")
+actions = Array[ExtResource("6_t1irh")]([SubResource("Resource_h6hga")])
 
 [node name="ContinueButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=363629928]
 visible = false

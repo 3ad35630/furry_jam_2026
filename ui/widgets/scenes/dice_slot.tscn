@@ -3,6 +3,24 @@
 [ext_resource type="Script" uid="uid://b16xvh65fhips" path="res://ui/widgets/scripts/dice_slot.gd" id="1_toclk"]
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="2_v5mvh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g746w"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.94622403, 0.6099426, 1)
+
+[sub_resource type="GDScript" id="GDScript_s3n1p"]
+script/source = "extends Panel
+
+func _ready() -> void:
+	DragSystem.drag_changed.connect(on_drag)
+
+func on_drag(is_dragging : bool) -> void:
+	visible = is_dragging
+"
+
 [node name="DiceSlot" type="CenterContainer" unique_id=2011351599 node_paths=PackedStringArray("display")]
 custom_minimum_size = Vector2(48, 48)
 custom_maximum_size = Vector2(48, 48)
@@ -17,6 +35,15 @@ layout_mode = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
+[node name="DraggableHighlight" type="Panel" parent="." unique_id=98142206]
+visible = false
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g746w")
+script = SubResource("GDScript_s3n1p")
+
 [node name="DieDisplay" parent="." unique_id=1864076286 instance=ExtResource("2_v5mvh")]
 visible = false
 layout_mode = 2
+remove_data_on_failed_drop = true
