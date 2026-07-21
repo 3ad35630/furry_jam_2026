@@ -5,6 +5,7 @@ extends Node
 @onready var animation = $AnimationPlayer
 
 @export var world_audio: AudioStream
+@export var menu_audio: AudioStream
 
 func _ready() -> void:
 	Modes.gameplay_mode_changed.connect(_location_music)
@@ -14,6 +15,12 @@ func _location_music(mode : Enums.GameplayMode) -> void:
 		crossfade_to(Modes.current_location.audio)
 	if mode == Enums.GameplayMode.MAP:
 		crossfade_to(world_audio)
+	if mode == Enums.GameplayMode.MAINMENU:
+		global.stop()
+		location.stop()
+		location.volume_db = 0.0
+		location.stream = menu_audio
+		location.play()
 
 func crossfade_to(audio: AudioStream) -> void:
 	if global.playing and location.playing:
