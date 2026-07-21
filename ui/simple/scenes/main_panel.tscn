@@ -38,7 +38,9 @@ func _input(event: InputEvent) -> void:
 				Modes.change_gameplay_mode(Enums.GameplayMode.MAINMENU)
 			Enums.GameplayMode.LOCATION:
 				Modes.exit_location()
-				
+			Enums.GameplayMode.MAINMENU:
+				if not Modes.newGame:
+					Modes.change_gameplay_mode(Enums.GameplayMode.MAP)
 
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:

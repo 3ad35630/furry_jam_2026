@@ -4,7 +4,7 @@ extends MainMenuButton
 
 func _on_ready() -> void:
 	Modes.gameplay_mode_changed.connect(_on_mode_changed)
-	hide()
+	visible = not Modes.newGame
 
 
 func _on_press() -> void:
@@ -12,5 +12,5 @@ func _on_press() -> void:
 
 
 func _on_mode_changed(mode : Enums.GameplayMode) -> void:
-	show()
+	visible = not Modes.newGame
 	Modes.gameplay_mode_changed.disconnect(_on_mode_changed)

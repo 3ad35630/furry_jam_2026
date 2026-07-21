@@ -72,6 +72,7 @@ stretch_mode = 3
 script = ExtResource("1_ewfhh")
 
 [node name="ContinueButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=363629928]
+visible = false
 modulate = Color(0.63858324, 0.68569475, 1, 1)
 layout_mode = 2
 offset_transform_enabled = true
