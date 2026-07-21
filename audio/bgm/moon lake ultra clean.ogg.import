@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/moon lake ultra clean.ogg-01720d6592b56a87a04
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

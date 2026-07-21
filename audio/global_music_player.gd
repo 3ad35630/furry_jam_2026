@@ -14,13 +14,12 @@ func _location_music(mode : Enums.GameplayMode) -> void:
 	if mode == Enums.GameplayMode.LOCATION and Modes.current_location.audio != null:
 		crossfade_to(Modes.current_location.audio)
 	if mode == Enums.GameplayMode.MAP:
-		crossfade_to(world_audio)
+		if !location.playing:
+			crossfade_to(world_audio)
 	if mode == Enums.GameplayMode.MAINMENU:
 		global.stop()
 		location.stop()
-		location.volume_db = 0.0
-		location.stream = menu_audio
-		location.play()
+		$"../MainMenu/MuchAdoAboutTea".play()
 
 func crossfade_to(audio: AudioStream) -> void:
 	if global.playing and location.playing:
