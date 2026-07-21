@@ -34,6 +34,12 @@ texture = ExtResource("18_h6hga")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xufs"]
 bg_color = Color(0, 0, 0, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_avarx"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1irh"]
+font_size = 24
+
 [node name="MainMenu" type="PanelContainer" unique_id=750663601]
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,6 +82,18 @@ texture_disabled = ExtResource("2_uftg2")
 texture_focused = ExtResource("2_uftg2")
 stretch_mode = 3
 script = ExtResource("6_avarx")
+
+[node name="ControlsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=1121575117]
+modulate = Color(0.6431373, 1, 1, 1)
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("4_lpoq0")
+texture_pressed = ExtResource("7_avarx")
+texture_hover = ExtResource("8_avarx")
+texture_disabled = ExtResource("4_lpoq0")
+texture_focused = ExtResource("4_lpoq0")
+stretch_mode = 3
+script = ExtResource("5_uftg2")
 
 [node name="SettingsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=2005155270]
 layout_mode = 2
@@ -125,6 +143,7 @@ vertical_alignment = 1
 [node name="Control2" type="Control" parent="HBoxContainer/MenuColumn" unique_id=359912816]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="DisplayColumn" type="VBoxContainer" parent="HBoxContainer" unique_id=2114904385]
 layout_mode = 2
@@ -316,6 +335,156 @@ layout_mode = 2
 text = "Back"
 icon_alignment = 1
 
+[node name="SettingsPanelMono" type="PanelContainer" parent="HBoxContainer/DisplayColumn/CenterContainer" unique_id=840263289]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s3n1p")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono" unique_id=849350423]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer" unique_id=1519702271]
+layout_mode = 2
+theme_override_constants/margin_top = 46
+theme_override_constants/margin_bottom = 49
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer" unique_id=1640254866]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer" unique_id=1859328609]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_avarx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="General" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer" unique_id=1038523514]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General" unique_id=1832572]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer" unique_id=112833429]
+layout_mode = 2
+text = "Music"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer" unique_id=275577588]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer/VBoxContainer" unique_id=371159382]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioSlider" type="HSlider" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer/VBoxContainer" unique_id=1441960981]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_kytxy")
+audio_bus = "BGM"
+
+[node name="Control2" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer/VBoxContainer" unique_id=875347491]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General" unique_id=1928066921]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2" unique_id=874042047]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2" unique_id=796256814]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2/VBoxContainer" unique_id=255145274]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioSlider2" type="HSlider" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2/VBoxContainer" unique_id=283737877]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("4_kytxy")
+audio_bus = "SFX"
+
+[node name="Control2" type="Control" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2/VBoxContainer" unique_id=2079153542]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FullscreenControl" type="CheckButton" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General" unique_id=1877502452]
+layout_mode = 2
+text = "Fullscreen"
+script = ExtResource("5_kytxy")
+
+[node name="BackButton" type="Button" parent="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer" unique_id=903204531]
+layout_mode = 2
+text = "Back"
+icon_alignment = 1
+
+[node name="ControlsPanel" type="PanelContainer" parent="HBoxContainer/DisplayColumn/CenterContainer" unique_id=1150662749]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s3n1p")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel" unique_id=2084929557]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer" unique_id=1060932360]
+layout_mode = 2
+theme_override_constants/margin_top = 46
+theme_override_constants/margin_bottom = 49
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer" unique_id=950340179]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=165351500]
+layout_mode = 2
+text = "Controls"
+label_settings = SubResource("LabelSettings_t1irh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="MarginContainer" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=1586088322]
+layout_mode = 2
+theme_override_constants/margin_bottom = 17
+
+[node name="RichTextLabel" type="Label" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer/VBoxContainer/Controls" unique_id=992364680]
+custom_minimum_size = Vector2(418.75, 0)
+layout_mode = 2
+text = "Moon Navigation:
+- Left click & drag with the mouse to rotate around the moon!
+- Mouse scroll  or W/D keys to zoom in!
+- Q/E to control vertical rotation!
+- Left click on locations to move to view that location, and any available actions!
+
+Character Panel:
+- Drag dice from panel to complete actions at locations!
+- End hour will reset your dice, but you must spend all of your dice beforehand!
+
+Location Navigation:
+- Dragging dice onto the various actions at a location will let you attempt to complete the task!
+- Pressing 'Return to Map' in the top left corner will bring you back to the world moon view!"
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer/VBoxContainer" unique_id=1029587918]
+layout_mode = 2
+text = "Back"
+icon_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/MenuColumn/ControlsButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_controls_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MenuColumn/SettingsButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_button_2_pressed"]
 [connection signal="pressed" from="HBoxContainer/MenuColumn/CreditsButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_button_3_pressed"]
 [connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/CreditsPanel/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]
@@ -323,3 +492,8 @@ icon_alignment = 1
 [connection signal="value_changed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer/AudioSlider2" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/HBoxContainer2/VBoxContainer/AudioSlider2" method="_on_value_changed"]
 [connection signal="toggled" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/FullscreenControl" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/SettingsTabs/General/FullscreenControl" method="_on_toggled"]
 [connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanel/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]
+[connection signal="value_changed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer/VBoxContainer/AudioSlider" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer/VBoxContainer/AudioSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2/VBoxContainer/AudioSlider2" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/HBoxContainer2/VBoxContainer/AudioSlider2" method="_on_value_changed"]
+[connection signal="toggled" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/FullscreenControl" to="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/General/FullscreenControl" method="_on_toggled"]
+[connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/SettingsPanelMono/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DisplayColumn/CenterContainer/ControlsPanel/CenterContainer/MarginContainer/VBoxContainer/BackButton" to="HBoxContainer/DisplayColumn/CenterContainer" method="_on_back_button_pressed"]
