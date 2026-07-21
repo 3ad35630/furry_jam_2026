@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="11_2lxnl"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="11_b8sha"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="13_u3pif"]
+[ext_resource type="AudioStream" uid="uid://dffbfc4o7hmck" path="res://audio/bgm/Forest_Mointais.mp3" id="17_qhxa6"]
 [ext_resource type="Script" uid="uid://dclumivpy08nu" path="res://mechanics/actions/effects/go_to_location.gd" id="18_dp31f"]
 
 [sub_resource type="Resource" id="Resource_h0typ"]
@@ -67,6 +68,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_qhxa6"]
 resource_name = "Explore the base of the mountain"
 script = ExtResource("8_qhxa6")
+skill = null
 positive = SubResource("Resource_8d8a0")
 neutral = SubResource("Resource_l5b7g")
 negative = SubResource("Resource_t4u08")
@@ -193,4 +195,5 @@ location_id = "mountain_base"
 access_test = SubResource("Resource_wbdjj")
 actions = Array[ExtResource("1_qx4n4")]([SubResource("Resource_qhxa6"), SubResource("Resource_4t3wr"), SubResource("Resource_imvmo"), SubResource("Resource_a14y6")])
 clocks = Array[ExtResource("2_r1uyr")]([SubResource("Resource_2mcle")])
+audio = ExtResource("17_qhxa6")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

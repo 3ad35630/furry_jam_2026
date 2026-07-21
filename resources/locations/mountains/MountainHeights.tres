@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://deia8b341vkjq" path="res://mechanics/access_tests/location_data_test.gd" id="11_w0iyi"]
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="12_n8qgr"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="12_tycou"]
+[ext_resource type="AudioStream" uid="uid://dffbfc4o7hmck" path="res://audio/bgm/Forest_Mointais.mp3" id="15_n8qgr"]
 [ext_resource type="Script" uid="uid://dclumivpy08nu" path="res://mechanics/actions/effects/go_to_location.gd" id="16_w0iyi"]
 
 [sub_resource type="Resource" id="Resource_8ssvk"]
@@ -240,4 +241,5 @@ location_id = "mountain_heights"
 access_test = SubResource("Resource_yhefo")
 actions = Array[ExtResource("1_w88f2")]([SubResource("Resource_v522e"), SubResource("Resource_4t3wr"), SubResource("Resource_pnlif"), SubResource("Resource_yycqj")])
 clocks = Array[ExtResource("2_o3hvl")]([SubResource("Resource_tycou"), SubResource("Resource_b8sha")])
+audio = ExtResource("15_n8qgr")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

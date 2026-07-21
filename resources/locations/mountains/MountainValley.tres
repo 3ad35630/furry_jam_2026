@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="10_3fc04"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="11_hrpx5"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="11_q0fqv"]
+[ext_resource type="AudioStream" uid="uid://dffbfc4o7hmck" path="res://audio/bgm/Forest_Mointais.mp3" id="14_h4e3s"]
 
 [sub_resource type="Resource" id="Resource_dp31f"]
 resource_name = "Found the path"
@@ -81,4 +82,5 @@ name = "The Hidden Valley"
 location_id = "mountain_valley"
 access_test = SubResource("Resource_r7ikn")
 actions = Array[ExtResource("1_5b5tj")]([SubResource("Resource_2lxnl")])
+audio = ExtResource("14_h4e3s")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

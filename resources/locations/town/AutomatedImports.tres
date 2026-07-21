@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="9_865m0"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="10_34bww"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="10_pt4k1"]
+[ext_resource type="AudioStream" uid="uid://6o1tt1ymcqbk" path="res://audio/bgm/Markets.mp3" id="13_34bww"]
 
 [sub_resource type="Resource" id="Resource_4t3wr"]
 script = ExtResource("1_iwix4")
@@ -38,6 +39,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_64cfc"]
 resource_name = "Explore"
 script = ExtResource("5_3ymir")
+skill = null
 positive = SubResource("Resource_eatcb")
 neutral = SubResource("Resource_eatcb")
 negative = SubResource("Resource_eatcb")
@@ -149,4 +151,5 @@ name = "Automated Imports Warehouse and Day Spa"
 location_id = "town_warehouse"
 access_test = SubResource("Resource_4t3wr")
 actions = Array[ExtResource("1_rkmn0")]([SubResource("Resource_64cfc"), SubResource("Resource_71yox"), SubResource("Resource_paspp")])
+audio = ExtResource("13_34bww")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"
