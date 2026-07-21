@@ -37,6 +37,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_hnxtg"]
 resource_name = "Knock on the door!"
 script = ExtResource("3_jaxoa")
+skill = null
 positive = SubResource("Resource_fd3s2")
 neutral = SubResource("Resource_fd3s2")
 negative = SubResource("Resource_fd3s2")
@@ -87,6 +88,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_b2fl3"]
 resource_name = "Make Tea"
 script = ExtResource("3_jaxoa")
+skill = null
 positive = SubResource("Resource_fjij5")
 neutral = SubResource("Resource_fjij5")
 negative = SubResource("Resource_fjij5")

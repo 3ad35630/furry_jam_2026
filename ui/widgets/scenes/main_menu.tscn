@@ -13,7 +13,9 @@
 [ext_resource type="Script" uid="uid://jl123n5hsurt" path="res://ui/widgets/scripts/fullscreen_control.gd" id="5_kytxy"]
 [ext_resource type="Script" uid="uid://7s83p04w4l8v" path="res://ui/widgets/scripts/button_main_menu.gd" id="5_uftg2"]
 [ext_resource type="Texture2D" uid="uid://bs7eavqi4hb13" path="res://ui/menu_textures/SpaceWitchs_UI_QuitButton.png" id="6_sbx46"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="6_t1irh"]
 [ext_resource type="Texture2D" uid="uid://jwxv2brh8y14" path="res://ui/menu_textures/SpaceWitchs_UI_Settings_OnClick.png" id="7_avarx"]
+[ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="7_xh57i"]
 [ext_resource type="Texture2D" uid="uid://p8aayep5dqd" path="res://ui/menu_textures/SpaceWitchs_UI_Setting_OnHover.png" id="8_avarx"]
 [ext_resource type="Texture2D" uid="uid://csm168dkeyxq8" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnClick.png" id="11_xh57i"]
 [ext_resource type="Texture2D" uid="uid://denfrq7283014" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnHover.png" id="12_t1irh"]
@@ -23,6 +25,10 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16uew"]
 texture = ExtResource("1_s0y5o")
+
+[sub_resource type="Resource" id="Resource_h6hga"]
+script = ExtResource("7_xh57i")
+metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g746w"]
 texture = ExtResource("18_h6hga")
@@ -63,6 +69,7 @@ texture_disabled = ExtResource("2_uftg2")
 texture_focused = ExtResource("2_uftg2")
 stretch_mode = 3
 script = ExtResource("1_ewfhh")
+actions = Array[ExtResource("6_t1irh")]([SubResource("Resource_h6hga")])
 
 [node name="SettingsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=2005155270]
 layout_mode = 2

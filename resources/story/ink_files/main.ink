@@ -1,15 +1,5 @@
 === story_intro
 
-It is sometimes necessary for the proper ordering of the universe to make a truly excellent pot of tea.
-
-For many years this burden has fallen on Madame Oolong. Many years is a long time, and this year she has, with considerable reluctance, called for aid.
-
-She is not, of course, infirm. Never that.
-
-But the years are not kind to an old lady's knees, and so she sends out a signal into space asking for help.
-
-The witches who answer the call are not the most powerful, or the oldest, or the cleverest - but they are the best witches who are here, now, which counts for a great deal. 
-
 The famous tea-house is quiet but not abandoned. It has taken you quite a long way to get here. This moon is isolated, and the climb up here is very long.
 
 Mittens: We also got lost!
@@ -97,6 +87,75 @@ She shuts the door.
 
 -> DONE
 
+=== grocery_list
+
+Mirabelle: I think that went pretty good!
+
+Willow: Well.
+
+Mirabelle: Shush, you understood what I meant.
+
+Mittens: Well, where can we find these ingredients?
+
+The radio crackles to life.
+
+Dispatcher: I did a bit of scrying from that list she gave you three. It's a bit fuzzy but this is what I gathered:
+
+Dispatcher: The farm, the mountains, and a cave by the waterfall.
+
+Mirabelle: ...Anything else?
+
+Dispatcher: Not really. Sometimes these tea leaves are more trouble than they're worth.
+
+Mirabelle: That doesn't cover all of the ingredients for possible locations.
+
+Willow: Well, even having some idea of where to go is certainly better than none!
+
+Mittens: Let's get started and not keep Madame Oolong waiting any longer!
+
+-> DONE
+
+=== exit_main_menu
+
+It is sometimes necessary for the proper ordering of the universe to make a truly excellent pot of tea.
+
+For many years this burden has fallen on Madame Oolong. Many years is a long time, and this year she has, with considerable reluctance, called for aid.
+
+She is not, of course, infirm. Never that.
+
+But the years are not kind to an old lady's knees, and so she sends out a signal into space asking for help.
+
+The witches who answer the call are not the most powerful, or the oldest, or the cleverest - but they are the best witches who are here, now, which counts for a great deal. 
+
+Dispatcher: Mic check, 1, 2, 3, does everyone copy?
+
+Mirabelle: I'm here!
+
+Mittens: Hello hello!
+
+Willow: Present!
+
+Dispatcher: Alright then, did everyone get the briefing?
+
+Willow: Yes! We were sent here to respond to Madame Oolong's si-
+
+Dispatcher: No need to repeat the whole thing, just a 'yes' will do.
+
+Willow: Right, sorry. Yes!
+
+Mirabelle: Where does she live on this moon?
+
+Dispatcher: Right at the very top.
+
+Mittens: Let's head right over then, I'm excited for her to meet my kitties!
+
+Dispatcher: Please try to keep things professional.
+
+Mirabelle: Don't worry Dispatcher, you can count on us!
+
+
+
+-> DONE
 
 === all_ingredients_found
 
@@ -557,6 +616,54 @@ Willow: We good?
 Mittens pets one of the cows who moos happily.
 
 Mittens: We good!
+
+-> DONE
+
+=== find_path_to_heights
+
+Navigating through the path is no easy feat, as the howling winds of these snowy peaks prove to be a whole different beast altogether.
+
+Mirabelle: Brrr! It's so cold up here!
+
+Willow: N-No kidding! How are we supposed to find the supposed Hidden Valley like this?
+
+Dispatcher: I would recommend regrouping back down at the base of the mountain, these winds are making this place very unsafe to be in for long.
+
+Mittens: But these spirits seem friendly! Maybe they can help point us in the right direction...
+
+Mirabelle: We're all going to freeze our tails off before we even get CLOSE to finding this valley!
+
+Willow: Wait! I see the path! Mittens was right, these spirits have been leading us in the right direction!
+
+Mirabelle: Ugh...carry on I suppose...
+
+-> DONE
+
+=== find_path_to_valley
+
+These howling winds and snowy peaks still prove no match as you navigate your way slowly yet surely through these heights.
+
+Mirabelle: There, I really think that's the valley!
+
+Willow: Are you sure?
+
+Mirabelle: Of course I'm sure!
+
+Willow: Sure like the other 8 times?
+
+Mittens: The spirits have also been leading us in this direction so I think we've found it this time.
+
+Willow: ...Alright, let's just get going.
+
+Making your way over to where Mirabelle surely believed was the Hidden Valley proved fruitful this time, as the witches finally found what they were searching for in this little valley.
+
+Willow: There, I see the blossoms!
+
+Mirabelle: Alright, finally! Let's grab a few of these flowers and be on our way!
+
+Willow: Let's be careful about this, the wind is blowing those blossoms around like crazy! I'm surprised they haven't been torn off of the branches.
+
+Willow: Hopefully it won't be too hard to remove them from the bushes.
 
 -> DONE
 
