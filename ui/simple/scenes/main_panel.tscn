@@ -187,7 +187,7 @@ const narrativePath : String = ''#dispatch_scold'
 # paths to character-specific Dispath scoldings
 # NOTE: setting a path to '' will cause narrativePath ^ to be used instead
 const characterNarratives : Dictionary[String,String] = {
-	'Mirabelle' : '',
+	'Mirabelle' : '',#dispatch_scold_mirabelle
 	'Willow' : '',
 	'Mittens' : ''
 }

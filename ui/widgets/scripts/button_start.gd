@@ -5,6 +5,7 @@ extends MainMenuButton
 
 func _on_press() -> void:
 	Modes.change_gameplay_mode(setMode)
+	hide()
 
 
 #func _on_mode_changed(mode : Enums.GameplayMode) -> void:

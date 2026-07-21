@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d3pahy8hwjsbb" path="res://ui/menu_textures/SpaceWitchs_UI_CreditsButton.png" id="5_kery5"]
 [ext_resource type="Script" uid="uid://jl123n5hsurt" path="res://ui/widgets/scripts/fullscreen_control.gd" id="5_kytxy"]
 [ext_resource type="Script" uid="uid://7s83p04w4l8v" path="res://ui/widgets/scripts/button_main_menu.gd" id="5_uftg2"]
+[ext_resource type="Script" uid="uid://c1flbmjvuhsio" path="res://ui/widgets/scripts/continue_button.gd" id="6_avarx"]
 [ext_resource type="Texture2D" uid="uid://bs7eavqi4hb13" path="res://ui/menu_textures/SpaceWitchs_UI_QuitButton.png" id="6_sbx46"]
 [ext_resource type="Texture2D" uid="uid://jwxv2brh8y14" path="res://ui/menu_textures/SpaceWitchs_UI_Settings_OnClick.png" id="7_avarx"]
 [ext_resource type="Texture2D" uid="uid://p8aayep5dqd" path="res://ui/menu_textures/SpaceWitchs_UI_Setting_OnHover.png" id="8_avarx"]
@@ -63,6 +64,18 @@ texture_disabled = ExtResource("2_uftg2")
 texture_focused = ExtResource("2_uftg2")
 stretch_mode = 3
 script = ExtResource("1_ewfhh")
+
+[node name="ContinueButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=948059438]
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("2_uftg2")
+texture_pressed = ExtResource("3_7tv1f")
+texture_hover = ExtResource("4_h6hga")
+texture_disabled = ExtResource("2_uftg2")
+texture_focused = ExtResource("2_uftg2")
+stretch_mode = 3
+script = ExtResource("6_avarx")
 
 [node name="SettingsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=2005155270]
 layout_mode = 2
