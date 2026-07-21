@@ -560,6 +560,12 @@ Mittens: We good!
 
 -> DONE
 
+=== find_path_to_heights
+
+Dispatcher: hey come check out this new moth i found
+
+-> DONE
+
 === harvest_the_blossoms
 
 The wind, even in the shelter of the valley, is cold this high up. The blossoms on the little bushes make tiny tinkling noises, like bells.
