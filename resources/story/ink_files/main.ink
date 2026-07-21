@@ -1,15 +1,5 @@
 === story_intro
 
-It is sometimes necessary for the proper ordering of the universe to make a truly excellent pot of tea.
-
-For many years this burden has fallen on Madame Oolong. Many years is a long time, and this year she has, with considerable reluctance, called for aid.
-
-She is not, of course, infirm. Never that.
-
-But the years are not kind to an old lady's knees, and so she sends out a signal into space asking for help.
-
-The witches who answer the call are not the most powerful, or the oldest, or the cleverest - but they are the best witches who are here, now, which counts for a great deal. 
-
 The famous tea-house is quiet but not abandoned. It has taken you quite a long way to get here. This moon is isolated, and the climb up here is very long.
 
 Mittens: We also got lost!
@@ -97,6 +87,47 @@ She shuts the door.
 
 -> DONE
 
+=== exit_main_menu
+
+It is sometimes necessary for the proper ordering of the universe to make a truly excellent pot of tea.
+
+For many years this burden has fallen on Madame Oolong. Many years is a long time, and this year she has, with considerable reluctance, called for aid.
+
+She is not, of course, infirm. Never that.
+
+But the years are not kind to an old lady's knees, and so she sends out a signal into space asking for help.
+
+The witches who answer the call are not the most powerful, or the oldest, or the cleverest - but they are the best witches who are here, now, which counts for a great deal. 
+
+Dispatcher: Mic check, 1, 2, 3, does everyone copy?
+
+Mirabelle: I'm here!
+
+Mittens: Hello hello!
+
+Willow: Present!
+
+Dispatcher: Alright then, did everyone get the briefing?
+
+Willow: Yes! We were sent here to respond to Madame Oolong's si-
+
+Dispatcher: No need to repeat the whole thing, just a 'yes' will do.
+
+Willow: Right, sorry. Yes!
+
+Mirabelle: Where does she live on this moon?
+
+Dispatcher: Right at the very top.
+
+Mittens: Let's head right over then, I'm excited for her to meet my kitties!
+
+Dispatcher: Please try to keep things professional.
+
+Mirabelle: Don't worry Dispatcher, you can count on us!
+
+
+
+-> DONE
 
 === all_ingredients_found
 
