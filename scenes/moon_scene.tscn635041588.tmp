@@ -99,7 +99,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(3.363585, 1),
+"transitions": PackedFloat32Array(6.27667, 1),
 "update": 0,
 "values": [-12.0, -80.0]
 }
@@ -123,7 +123,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.42044812, 1),
+"transitions": PackedFloat32Array(0.16493858, 1),
 "update": 0,
 "values": [-80.0, -12.0]
 }
@@ -139,7 +139,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.32987672, 1),
+"transitions": PackedFloat32Array(0.14358735, 1),
 "update": 0,
 "values": [-80.0, -12.0]
 }
@@ -151,7 +151,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(3.3635848, 1),
+"transitions": PackedFloat32Array(6.276668, 1),
 "update": 0,
 "values": [-12.0, -80.0]
 }
@@ -704,15 +704,15 @@ mouse_behavior_recursive = 2
 [node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
 script = SubResource("GDScript_16uew")
 
-[node name="Global_Music_Player" type="Node" parent="." unique_id=1126211576]
+[node name="Node" type="Node" parent="." unique_id=1126211576]
 script = ExtResource("16_cmfwq")
 world_audio = ExtResource("17_mj4fj")
 
-[node name="Global_Music" type="AudioStreamPlayer" parent="Global_Music_Player" unique_id=2060326572]
+[node name="Global_Music" type="AudioStreamPlayer" parent="Node" unique_id=2060326572]
 volume_db = -12.0
 
-[node name="Location_Music" type="AudioStreamPlayer" parent="Global_Music_Player" unique_id=435746000]
+[node name="Location_Music" type="AudioStreamPlayer" parent="Node" unique_id=435746000]
 volume_db = -80.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Global_Music_Player" unique_id=680687684]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node" unique_id=680687684]
 libraries/ = SubResource("AnimationLibrary_fxdpg")
