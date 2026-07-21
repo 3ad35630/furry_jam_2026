@@ -562,7 +562,53 @@ Mittens: We good!
 
 === find_path_to_heights
 
-Dispatcher: hey come check out this new moth i found
+Navigating through the path was no easy feat, but the howling winds of these snowy peaks may prove to be a whole different beast entirely.
+
+Mirabelle: Brrr! It's so cold up here!
+
+Willow: N-No kidding! How are we supposed to find the supposed Hidden Valley like this?
+
+Dispatcher: I would recommend regrouping back down at the base of the mountain, these winds are making this place very unsafe to be in for long.
+
+Mittens: But these spirits seem friendly! Maybe they can help point us in the right direction...
+
+Mirabelle: We're all going to freeze our tails off before we even get CLOSE to finding this valley!
+
+Mirabelle: We'll always b-be able to come back later, I promise I really know the path this time!
+
+Willow: ...
+
+Mittens: ...
+
+Mirabelle: UGH! Let's just get out of here, we'll figure it out later!
+
+-> DONE
+
+=== find_path_to_valley
+
+These howling winds and snowy peaks still prove no match as you navigate your way slowly yet surely through these heights.
+
+Mirabelle: There, I really think that's the valley!
+
+Willow: Are you sure?
+
+Mirabelle: Of course I'm sure!
+
+Willow: Sure like the other 8 times?
+
+Mittens: The spirits have also been leading us in this direction so I think we've found it this time.
+
+Willow: ...Alright, let's just get going.
+
+Making your way over to where Mirabelle surely believed was the Hidden Valley proved fruitful this time, as the witches finally found what they were searching for in this little valley.
+
+Willow: There, I see the blossoms!
+
+Mirabelle: Alright, finally! Let's grab a few of these flowers and be on our way!
+
+Willow: Let's be careful about this, the wind is blowing those blossoms around like crazy! I'm surprised they haven't been torn off of the branches.
+
+Willow: Hopefully it won't be too hard to remove them from the bushes.
 
 -> DONE
 
