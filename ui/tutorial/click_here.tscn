@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://btog0ocqae6vu"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Control
+
+var target_button : Control
+var completed : bool = false
+var can_check_narrative = false
+
+func _ready() -> void:
+	NarrativeSystem.loaded.connect(on_loaded)
+
+func on_loaded(success) -> void:
+	can_check_narrative = success
+
+func _process(delta: float) -> void:
+	if can_check_narrative:
+		if NarrativeSystem.visit_count_at_path(\"story_intro\") > 0:
+			queue_free() # delete yourself if we've passed the intro
+	if target_button:
+		position = target_button.position
+
+func _on_location_buttons_location_buttons_updated(buttons: Dictionary[String, Control]) -> void:
+	if buttons.has(\"teahouse_exterior\"):
+		target_button = buttons['teahouse_exterior']
+		show()
+	else:
+		target_button = null
+		hide()
+"
+
+[node name="ClickHere" type="Control" unique_id=1422604781]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = SubResource("GDScript_16uew")
+
+[node name="Label" type="Label" parent="." unique_id=223652062]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -34.0
+offset_right = -19.0
+offset_bottom = -11.0
+text = "Click here!"
