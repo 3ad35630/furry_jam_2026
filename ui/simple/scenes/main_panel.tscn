@@ -377,6 +377,12 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
+[node name="Control2" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer" unique_id=1931596888]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.33
+mouse_filter = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer" unique_id=2042122002]
 layout_mode = 2
 
@@ -425,6 +431,11 @@ offset_top = 128.05
 offset_right = 145.0
 offset_bottom = 203.05
 texture = ExtResource("14_y3ayd")
+
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer" unique_id=114055449]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1624826171]
 visible = false

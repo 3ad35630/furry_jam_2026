@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_3ymir"]
 [ext_resource type="Script" uid="uid://c2xtlvo7sl2ab" path="res://mechanics/access_tests/round_number_test.gd" id="6_34bww"]
 [ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="7_fts65"]
+[ext_resource type="Script" uid="uid://60w7olhaehda" path="res://mechanics/access_tests/access_tests_and.gd" id="7_g5qek"]
+[ext_resource type="Script" uid="uid://bx6eoox58852o" path="res://mechanics/access_tests/access_test.gd" id="8_865m0"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="8_g5qek"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="9_3ymir"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="9_865m0"]
@@ -52,10 +54,20 @@ script = ExtResource("6_34bww")
 item_type = 6
 metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
 
-[sub_resource type="Resource" id="Resource_6wrq2"]
+[sub_resource type="Resource" id="Resource_pt4k1"]
 script = ExtResource("3_rcfo6")
 test = SubResource("Resource_jutr1")
 metadata/_custom_type_script = "uid://dmpfhi2gx2m0h"
+
+[sub_resource type="Resource" id="Resource_5iy2k"]
+script = ExtResource("1_iwix4")
+ink_path = "explore_warehouse"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
+[sub_resource type="Resource" id="Resource_67c7f"]
+script = ExtResource("7_g5qek")
+tests = Array[ExtResource("8_865m0")]([SubResource("Resource_pt4k1"), SubResource("Resource_5iy2k")])
+metadata/_custom_type_script = "uid://60w7olhaehda"
 
 [sub_resource type="Resource" id="Resource_n8qgr"]
 script = ExtResource("8_g5qek")
@@ -85,7 +97,7 @@ item_type = 1
 required_number = 15
 result = SubResource("Resource_w0iyi")
 description = "The price is dear, but there's nowhere else to get this."
-access_test = SubResource("Resource_6wrq2")
+access_test = SubResource("Resource_67c7f")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
 [sub_resource type="Resource" id="Resource_2mcle"]
