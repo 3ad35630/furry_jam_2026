@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="7_fw238"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="8_wu2h0"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="9_fsmd6"]
+[ext_resource type="AudioStream" uid="uid://gkqb6v5vmspw" path="res://audio/bgm/Fishing.mp3" id="10_ellrp"]
 
 [sub_resource type="Resource" id="Resource_rt1kv"]
 script = ExtResource("1_lnk0c")
@@ -123,4 +124,5 @@ location_id = "ribbon"
 access_test = SubResource("Resource_rt1kv")
 actions = Array[ExtResource("1_y53yx")]([SubResource("Resource_64cfc"), SubResource("Resource_6wrq2")])
 clocks = Array[ExtResource("2_kntae")]([SubResource("Resource_gy532")])
+audio = ExtResource("10_ellrp")
 metadata/_custom_type_script = "uid://cv41k7b1vqdkw"

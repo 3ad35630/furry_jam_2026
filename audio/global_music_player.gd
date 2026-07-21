@@ -12,7 +12,8 @@ func _ready() -> void:
 	
 func _location_music(mode : Enums.GameplayMode) -> void:
 	if mode == Enums.GameplayMode.LOCATION and Modes.current_location.audio != null:
-		crossfade_to(Modes.current_location.audio)
+		if !global.playing:
+			crossfade_to(Modes.current_location.audio)
 	if mode == Enums.GameplayMode.MAP:
 		if !location.playing:
 			crossfade_to(world_audio)
