@@ -49,6 +49,7 @@ skill = 3
 positive = SubResource("Resource_sudli")
 neutral = SubResource("Resource_hh1f7")
 negative = SubResource("Resource_72w5p")
+description = "The people on the high street are friendly and eager to share stories with strangers."
 metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_cx67q"]

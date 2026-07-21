@@ -79,7 +79,7 @@ metadata/_custom_type_script = "uid://c4m2hf30qbfy5"
 
 [sub_resource type="Resource" id="Resource_fjij5"]
 script = ExtResource("4_a48kk")
-path = "story_conclusion"
+path = "deliver_ingredients"
 post_effects = Array[ExtResource("4_avmgi")]([SubResource("Resource_8yh3t")])
 metadata/_custom_type_script = "uid://b0frcg551aapm"
 
