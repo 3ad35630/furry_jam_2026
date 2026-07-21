@@ -22,6 +22,9 @@ cast_shadow = 0
 [node name="NoEntrySign" parent="." index="5" unique_id=1220483868]
 visible = false
 
+[node name="OtterShrine" parent="." index="7" unique_id=1140035950]
+visible = false
+
 [node name="Soul Cow_001" parent="." index="9" unique_id=1027190294]
 visible = false
 
