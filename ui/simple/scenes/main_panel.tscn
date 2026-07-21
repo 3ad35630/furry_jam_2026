@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bxbna3iiv1vfo" path="res://ui/menu_textures/SpaceWitchs_UI_EndHour_OnHover.png" id="13_c1mnc"]
 [ext_resource type="Texture2D" uid="uid://dtgsewb8vm54h" path="res://ui/icons/Game-Jam-Paw.png" id="14_y3ayd"]
 [ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="15_rd64i"]
-[ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/ui_sfx/moon lake ultra clean.ogg" id="21_3kxh1"]
+[ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/bgm/moon lake ultra clean.ogg" id="21_3kxh1"]
 [ext_resource type="Script" uid="uid://dd6h7bqtik610" path="res://ui/widgets/scripts/action_panel_manager.gd" id="24_a4q2h"]
 [ext_resource type="PackedScene" uid="uid://cntixcp24qe0k" path="res://ui/widgets/scenes/inventory.tscn" id="24_imvmo"]
 
