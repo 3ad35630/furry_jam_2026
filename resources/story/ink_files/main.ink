@@ -621,7 +621,7 @@ Mittens: We good!
 
 === find_path_to_heights
 
-Navigating through the path was no easy feat, but the howling winds of these snowy peaks may prove to be a whole different beast entirely.
+Navigating through the path is no easy feat, as the howling winds of these snowy peaks prove to be a whole different beast altogether.
 
 Mirabelle: Brrr! It's so cold up here!
 
@@ -633,13 +633,9 @@ Mittens: But these spirits seem friendly! Maybe they can help point us in the ri
 
 Mirabelle: We're all going to freeze our tails off before we even get CLOSE to finding this valley!
 
-Mirabelle: We'll always b-be able to come back later, I promise I really know the path this time!
+Willow: Wait! I see the path! Mittens was right, these spirits have been leading us in the right direction!
 
-Willow: ...
-
-Mittens: ...
-
-Mirabelle: UGH! Let's just get out of here, we'll figure it out later!
+Mirabelle: Ugh...carry on I suppose...
 
 -> DONE
 
