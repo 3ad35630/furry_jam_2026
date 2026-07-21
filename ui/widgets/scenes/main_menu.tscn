@@ -13,10 +13,16 @@
 [ext_resource type="Script" uid="uid://jl123n5hsurt" path="res://ui/widgets/scripts/fullscreen_control.gd" id="5_kytxy"]
 [ext_resource type="Script" uid="uid://7s83p04w4l8v" path="res://ui/widgets/scripts/button_main_menu.gd" id="5_uftg2"]
 [ext_resource type="Script" uid="uid://c1flbmjvuhsio" path="res://ui/widgets/scripts/continue_button.gd" id="6_avarx"]
+[ext_resource type="Texture2D" uid="uid://bqqf8x4mvy1mh" path="res://ui/menu_textures/SpaceWitchs_UI_Continue.png" id="6_lp58e"]
 [ext_resource type="Texture2D" uid="uid://bs7eavqi4hb13" path="res://ui/menu_textures/SpaceWitchs_UI_QuitButton.png" id="6_sbx46"]
+[ext_resource type="Texture2D" uid="uid://kvbjfpg5hsf7" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnClick.png" id="7_63mw4"]
 [ext_resource type="Texture2D" uid="uid://jwxv2brh8y14" path="res://ui/menu_textures/SpaceWitchs_UI_Settings_OnClick.png" id="7_avarx"]
+[ext_resource type="Texture2D" uid="uid://dqbolfei5oyng" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnHover.png" id="8_2jwqt"]
 [ext_resource type="Texture2D" uid="uid://p8aayep5dqd" path="res://ui/menu_textures/SpaceWitchs_UI_Setting_OnHover.png" id="8_avarx"]
+[ext_resource type="Texture2D" uid="uid://own8u42fdulu" path="res://ui/menu_textures/SpaceWitchs_UI_Controls.png" id="10_1r6mq"]
+[ext_resource type="Texture2D" uid="uid://bi5fa14wel1i6" path="res://ui/menu_textures/SpaceWitchs_UI_Controls_OnClick.png" id="11_fj5x4"]
 [ext_resource type="Texture2D" uid="uid://csm168dkeyxq8" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnClick.png" id="11_xh57i"]
+[ext_resource type="Texture2D" uid="uid://ddxgvicu5mtdx" path="res://ui/menu_textures/SpaceWitchs_UI_Controls_OnHover.png" id="12_ppjit"]
 [ext_resource type="Texture2D" uid="uid://denfrq7283014" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnHover.png" id="12_t1irh"]
 [ext_resource type="Texture2D" uid="uid://ct6ny3qjslkik" path="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnClick.png" id="14_xh57i"]
 [ext_resource type="Texture2D" uid="uid://cysis6t62ajkj" path="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnHover.png" id="15_hswys"]
@@ -73,26 +79,24 @@ script = ExtResource("1_ewfhh")
 
 [node name="ContinueButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=363629928]
 visible = false
-modulate = Color(0.63858324, 0.68569475, 1, 1)
 layout_mode = 2
 offset_transform_enabled = true
-texture_normal = ExtResource("2_uftg2")
-texture_pressed = ExtResource("3_7tv1f")
-texture_hover = ExtResource("4_h6hga")
-texture_disabled = ExtResource("2_uftg2")
-texture_focused = ExtResource("2_uftg2")
+texture_normal = ExtResource("6_lp58e")
+texture_pressed = ExtResource("7_63mw4")
+texture_hover = ExtResource("8_2jwqt")
+texture_disabled = ExtResource("6_lp58e")
+texture_focused = ExtResource("6_lp58e")
 stretch_mode = 3
 script = ExtResource("6_avarx")
 
 [node name="ControlsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=1121575117]
-modulate = Color(0.6431373, 1, 1, 1)
 layout_mode = 2
 offset_transform_enabled = true
-texture_normal = ExtResource("4_lpoq0")
-texture_pressed = ExtResource("7_avarx")
-texture_hover = ExtResource("8_avarx")
-texture_disabled = ExtResource("4_lpoq0")
-texture_focused = ExtResource("4_lpoq0")
+texture_normal = ExtResource("10_1r6mq")
+texture_pressed = ExtResource("11_fj5x4")
+texture_hover = ExtResource("12_ppjit")
+texture_disabled = ExtResource("10_1r6mq")
+texture_focused = ExtResource("10_1r6mq")
 stretch_mode = 3
 script = ExtResource("5_uftg2")
 

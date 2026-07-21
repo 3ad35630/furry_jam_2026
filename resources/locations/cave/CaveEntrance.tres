@@ -47,6 +47,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_ya4x8"]
 resource_name = "Explore the cave!"
 script = ExtResource("6_31t04")
+skill = null
 positive = SubResource("Resource_15bq7")
 neutral = SubResource("Resource_0aj7a")
 negative = SubResource("Resource_p8qrv")

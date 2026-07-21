@@ -67,6 +67,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_yq3dt"]
 resource_name = "Gather the tea"
 script = ExtResource("4_kicwl")
+skill = null
 positive = SubResource("Resource_jkl28")
 neutral = SubResource("Resource_jkl28")
 negative = SubResource("Resource_jkl28")

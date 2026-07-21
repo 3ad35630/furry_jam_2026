@@ -47,6 +47,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_x4jqs"]
 resource_name = "Explore the damaged shrine"
 script = ExtResource("5_yrg63")
+skill = null
 positive = SubResource("Resource_fgqo8")
 neutral = SubResource("Resource_q66pf")
 negative = SubResource("Resource_xqr6t")

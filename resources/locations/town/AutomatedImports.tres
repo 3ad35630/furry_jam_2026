@@ -38,6 +38,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_64cfc"]
 resource_name = "Explore"
 script = ExtResource("5_3ymir")
+skill = null
 positive = SubResource("Resource_eatcb")
 neutral = SubResource("Resource_eatcb")
 negative = SubResource("Resource_eatcb")

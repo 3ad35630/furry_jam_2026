@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dmpfhi2gx2m0h" path="res://mechanics/access_tests/access_tests_not.gd" id="2_4afpb"]
 [ext_resource type="Script" uid="uid://cxoadgbyfvuei" path="res://mechanics/access_tests/ink_intro_complete.gd" id="4_4urkh"]
 [ext_resource type="Script" uid="uid://b6ymhm6smb8yf" path="res://mechanics/actions/effects/tick_clock.gd" id="4_72w5p"]
+[ext_resource type="Script" uid="uid://bfgu3jobdry8f" path="res://mechanics/actions/effects/action_effect.gd" id="5_0aqbr"]
 [ext_resource type="Script" uid="uid://rfr4bn03v1jh" path="res://mechanics/actions/skill_action.gd" id="5_8mvnj"]
 [ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="5_72w5p"]
 [ext_resource type="Script" uid="uid://54wgke734i1m" path="res://mechanics/clocks/clock.gd" id="6_0aqbr"]
@@ -34,6 +35,7 @@ metadata/_custom_type_script = "uid://b0frcg551aapm"
 [sub_resource type="Resource" id="Resource_yhclw"]
 resource_name = "Explore the docks"
 script = ExtResource("5_8mvnj")
+skill = null
 positive = SubResource("Resource_jkl28")
 neutral = SubResource("Resource_jkl28")
 negative = SubResource("Resource_jkl28")
