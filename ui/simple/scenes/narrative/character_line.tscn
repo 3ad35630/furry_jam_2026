@@ -39,7 +39,7 @@ func _on_character_line_line_set(line: String) -> void:
 		dialog_result += splits[x]
 		if x < (splits.size() - 1):
 			dialog_result += \":\"		
-	text = dialog_result
+	text = dialog_result.strip_edges(true, true)
 "
 
 [node name="CharacterLine" type="VBoxContainer" unique_id=1976154357]

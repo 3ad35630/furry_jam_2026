@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bt613xfgvlc5d"]
 
+[ext_resource type="Texture2D" uid="uid://cvt8a32v05n2s" path="res://ui/menu_textures/SpaceWitchs_UI_Map.png" id="2_s8cea"]
+[ext_resource type="Texture2D" uid="uid://cw84s6gmlallp" path="res://ui/menu_textures/SpaceWitchs_UI_Map_OnClick.png" id="3_3kxh1"]
 [ext_resource type="Texture2D" uid="uid://dxmedcahvf2yp" path="res://ui/character_profiles/icon_mirabelle.png" id="4_icdsa"]
+[ext_resource type="Texture2D" uid="uid://jeegvwq57apw" path="res://ui/menu_textures/SpaceWitchs_UI_Map_OnHover.png" id="4_rtwym"]
 [ext_resource type="PackedScene" uid="uid://bltswcx4yopx1" path="res://ui/simple/scenes/narrative/narrative_panel.tscn" id="4_y0vbl"]
 [ext_resource type="Script" uid="uid://dxvvma056k04v" path="res://ui/simple/scripts/character_dice.gd" id="7_isi12"]
 [ext_resource type="PackedScene" uid="uid://4lhokr6pseyp" path="res://ui/simple/scenes/die_display_action.tscn" id="7_rd64i"]
@@ -47,7 +50,7 @@ func _on_location_button_pressed() -> void:
 "
 
 [sub_resource type="GDScript" id="GDScript_16uew"]
-script/source = "extends Button
+script/source = "extends TextureButton
 
 func _ready() -> void:
 	Modes.gameplay_mode_changed.connect(mode_changed)
@@ -58,9 +61,6 @@ func mode_changed(new_mode : Enums.GameplayMode) -> void:
 func _on_pressed() -> void:
 	Modes.exit_location()
 "
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_722th"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="Animation" id="Animation_36p3s"]
 resource_name = "Give"
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-85, 192), Vector2(-85, 11.85), Vector2(-85, 192)]
+"values": [Vector2(70, 128.05), Vector2(70, -71.88), Vector2(70, 128.05)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -103,7 +103,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-85, 192), Vector2(-85, 11.85), Vector2(-85, 192)]
+"values": [Vector2(70, 128.05), Vector2(70, -76.8), Vector2(70, 128.05)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-84.55, 150)]
+"values": [Vector2(70, 128.05)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -247,25 +247,51 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=855679851]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer" unique_id=1301395245]
 layout_mode = 2
 
-[node name="ReturnToMap" type="Button" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer" unique_id=1015143152]
+[node name="ReturnToMap" type="TextureButton" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer" unique_id=1976917272]
 custom_minimum_size = Vector2(158.495, 60)
 layout_mode = 2
-text = "Return to Map"
+texture_normal = ExtResource("2_s8cea")
+texture_pressed = ExtResource("3_3kxh1")
+texture_hover = ExtResource("4_rtwym")
+texture_disabled = ExtResource("2_s8cea")
+texture_focused = ExtResource("2_s8cea")
+stretch_mode = 3
 script = SubResource("GDScript_16uew")
+
+[node name="Control2" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer" unique_id=1225807325]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer" unique_id=286129396]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxInventory" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1312175011]
+layout_mode = 2
+
+[node name="InventoryHBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer/MarginContainer/VBoxInventory" unique_id=1130000776]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Inventory" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer/MarginContainer/VBoxInventory/InventoryHBox" unique_id=1248200590 instance=ExtResource("24_imvmo")]
+layout_mode = 2
 
 [node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer" unique_id=528721800]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer" unique_id=1931585888]
+[node name="PanelContainer" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer" unique_id=340604506]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 60.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_722th")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer" unique_id=554759375]
 layout_mode = 2
@@ -351,50 +377,24 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1624826171]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 60.0
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=286129396]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxInventory" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer" unique_id=1312175011]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer" unique_id=2042122002]
 layout_mode = 2
 
-[node name="InventoryHBox" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory" unique_id=1130000776]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Inventory" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/InventoryHBox" unique_id=1248200590 instance=ExtResource("24_imvmo")]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory" unique_id=60076906]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory" unique_id=2042122002]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer" unique_id=598141873]
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=598141873]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="EndTurnButton" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer" unique_id=1191575237]
+[node name="EndTurnButton" type="VBoxContainer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1191575237]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=400327294]
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton" unique_id=400327294]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=1348084652]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton" unique_id=1348084652]
 libraries/ = SubResource("AnimationLibrary_5cr83")
 
-[node name="Button" type="TextureButton" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=1341065634]
+[node name="Button" type="TextureButton" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton" unique_id=1341065634]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 offset_transform_enabled = true
@@ -405,11 +405,11 @@ texture_disabled = ExtResource("11_66feg")
 texture_focused = ExtResource("11_66feg")
 script = SubResource("GDScript_6bu6o")
 
-[node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton/Button" unique_id=682008188]
+[node name="Button SFX" type="AudioStreamPlayer" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton/Button" unique_id=682008188]
 stream = ExtResource("15_rd64i")
 bus = &"SFX"
 
-[node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton" unique_id=121127601 node_paths=PackedStringArray("player", "button", "sound")]
+[node name="EndTurnWidget" type="Panel" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton" unique_id=121127601 node_paths=PackedStringArray("player", "button", "sound")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_36p3s")
 script = SubResource("GDScript_y0vbl")
@@ -417,19 +417,24 @@ player = NodePath("../AnimationPlayer")
 button = NodePath("../Button")
 sound = NodePath("../Button/Button SFX")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/HBox/MarginContainer/VBoxInventory/HBoxContainer/EndTurnButton/EndTurnWidget" unique_id=717427259]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/HBoxContainer/EndTurnButton/EndTurnWidget" unique_id=717427259]
 custom_maximum_size = Vector2(75, 75)
 layout_mode = 0
-offset_left = -84.55
-offset_top = 150.0
-offset_right = -9.550003
-offset_bottom = 225.0
+offset_left = 70.0
+offset_top = 128.05
+offset_right = 145.0
+offset_bottom = 203.05
 texture = ExtResource("14_y3ayd")
 
-[node name="NarrativePanel" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1684202969 instance=ExtResource("4_y0vbl")]
+[node name="Control" type="Control" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1624826171]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 60.0
+mouse_filter = 2
+
+[node name="NarrativePanel" parent="HBoxContainer2/VBoxContainer/HBox" unique_id=1684202969 instance=ExtResource("4_y0vbl")]
+custom_maximum_size = Vector2(600, -1)
+layout_mode = 2
 
 [node name="PanelManager" type="Control" parent="." unique_id=265062037]
 anchors_preset = 0
