@@ -26,6 +26,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 func _on_drag_started(_display: Variant, _in_data: Variant) -> void:
 	if hide_on_drag:
 		hide()
+		DragSystem.start_dragging()
 
 
 func _on_drag_ended(_display: DieDisplay, _in_data: Dictionary, success: bool) -> void:
@@ -37,3 +38,4 @@ func _on_drag_ended(_display: DieDisplay, _in_data: Dictionary, success: bool) -
 			data = {}
 		elif hide_on_drag:
 			show()
+	DragSystem.stop_dragging()
