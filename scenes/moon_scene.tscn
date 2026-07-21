@@ -117,14 +117,14 @@ sun_base_enegry = 1.0
 moon_base_enegry = 1.31
 
 [node name="Sun" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1562214062]
-transform = Transform3D(0.951264, 0.12489208, 0.28195503, -0.108495615, 0.99140567, -0.07309934, -0.28866133, 0.038945895, 0.95663875, 0, 0, 0)
+transform = Transform3D(0.951264, 0.12489208, 0.28195503, -0.108495615, 0.99140567, -0.07309934, -0.28866133, 0.038945895, 0.9566387, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.7882353, 0.7372549, 0.79607844, 1)
 light_energy = 0.0
 shadow_enabled = true
 
 [node name="Moon" type="DirectionalLight3D" parent="DayNightCycle" unique_id=1631743486]
-transform = Transform3D(0.99630225, -0.01297854, -0.084912516, 0.083135396, -0.10302493, 0.9911958, -0.0216124, -0.9945941, -0.101564884, 0, 0, 0)
+transform = Transform3D(0.99630225, -0.01297854, -0.08491251, 0.083135396, -0.10302493, 0.99119574, -0.0216124, -0.9945941, -0.10156488, 0, 0, 0)
 rotation_order = 4
 light_color = Color(0.7865726, 0.73917943, 0.79775226, 1)
 light_energy = 1.31
@@ -563,3 +563,4 @@ mouse_behavior_recursive = 2
 
 [node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
 script = SubResource("GDScript_16uew")
+all_ingredients = true
