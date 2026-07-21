@@ -28,17 +28,13 @@ func _on_action_panel_action_set(action: Action) -> void:
 [sub_resource type="GDScript" id="GDScript_wsoa6"]
 script/source = "extends Label
 
-const defaultText = 'guaranteed'
-
 func _on_action_panel_action_set(action: Action) -> void:
 	if action:
 		show()
 		if action is SkillAction:
 			if action.skill == Enums.Skills.UNDEFINED:
-				#hide()
-				text = defaultText
-			else:
-				text = Enums.Skills.keys()[action.skill].to_lower()
+				hide()
+			text = Enums.Skills.keys()[action.skill].to_lower()
 		else:
 			text = Enums.ItemTypes.keys()[action.item_type].to_lower()
 "
