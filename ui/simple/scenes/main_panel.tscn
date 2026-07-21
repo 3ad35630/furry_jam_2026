@@ -178,6 +178,20 @@ signal sceneTriggered()
 
 var sceneHasTriggered : bool = false
 
+## Dispatch will not automatically steal the button on successive turns
+const resetTrigger : bool = true
+
+## path to default narrative with Dispatch interaction
+## set to '' to disable the narrative event (but not the button-stealing)
+const narrativePath : String = ''#dispatch_scold'
+# paths to character-specific Dispath scoldings
+# NOTE: setting a path to '' will cause narrativePath ^ to be used instead
+const characterNarratives : Dictionary[String,String] = {
+	'Mirabelle' : '',
+	'Willow' : '',
+	'Mittens' : ''
+}
+
 
 func _ready() -> void:
 	Characters.all_dice_spent.connect(_on_all_dice_spent)
@@ -190,12 +204,27 @@ func _on_pressed() -> void:
 		var diceSpent = Characters.check_all_dice_spent()
 		if not diceSpent:
 			sceneTriggered.emit()
+			_trigger_narrative()
 			player.play(\"Grab\")
 			sceneHasTriggered = true
 			button.disabled = true
 			return
 	TurnSystem.end_round()
 	sound.play()
+
+
+func _trigger_narrative() -> void:
+	var path : String = narrativePath
+	var hasDice = Characters.get_characters_with_dice() # sort of redundant with check_all_dice_spent()
+	if hasDice.size() > 0: # pick a random character to chew out
+		var idx = randi_range(0,hasDice.size()-1)
+		var c = hasDice[idx]
+		if c.name in characterNarratives.keys(): # probably not ideal?
+			path = characterNarratives[c.name]
+	if path.is_empty(): # in case we don't have keys for the other characters
+		path = narrativePath
+	if not path.is_empty():
+		NarrativeSystem.start_narrative(path)
 
 
 func _on_all_dice_spent() -> void:
@@ -206,6 +235,8 @@ func _on_all_dice_spent() -> void:
 
 func _on_dice_rerolled() -> void:
 	player.play(\"RESET\") # TODO: have Dispatch return the button
+	if resetTrigger:
+		sceneHasTriggered = false
 	if sceneHasTriggered:
 		button.disabled = true
 		player.play(\"Grab\")
