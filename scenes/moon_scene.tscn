@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://chrjcqsxmvmrm" path="res://ui/widgets/scenes/overlay_widget.tscn" id="14_cmfwq"]
 [ext_resource type="AudioStream" uid="uid://burr2oclfioy0" path="res://audio/bgm/much ado about tea.mp3" id="14_p7y8p"]
 [ext_resource type="Script" uid="uid://c2yjon615r386" path="res://audio/global_music_player.gd" id="16_cmfwq"]
+[ext_resource type="PackedScene" uid="uid://btog0ocqae6vu" path="res://ui/tutorial/click_here.tscn" id="16_g3ryr"]
+[ext_resource type="PackedScene" uid="uid://dd2oj6f54g8lg" path="res://ui/tutorial/dice_tutorial.tscn" id="17_fxdpg"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/bgm/moon lake ultra clean.ogg" id="17_mj4fj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_je4f3"]
@@ -701,6 +703,24 @@ mouse_behavior_recursive = 2
 
 [node name="OverlayWidget" parent="." unique_id=35101285 instance=ExtResource("14_cmfwq")]
 
+[node name="TutorialWidgets" type="Control" parent="." unique_id=1548902522]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ClickHere" parent="TutorialWidgets" unique_id=1422604781 instance=ExtResource("16_g3ryr")]
+layout_mode = 0
+
+[node name="DiceTutorial" parent="TutorialWidgets" unique_id=2063063613 instance=ExtResource("17_fxdpg")]
+visible = false
+layout_mode = 0
+offset_left = 83.725
+offset_top = 791.57
+offset_right = 83.725
+offset_bottom = 791.57
+
 [node name="ResourceCheats" type="Node" parent="." unique_id=195708757]
 script = SubResource("GDScript_16uew")
 
@@ -717,3 +737,5 @@ volume_db = -80.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Global_Music_Player" unique_id=680687684]
 libraries/ = SubResource("AnimationLibrary_fxdpg")
+
+[connection signal="location_buttons_updated" from="LocationButtons" to="TutorialWidgets/ClickHere" method="_on_location_buttons_location_buttons_updated"]

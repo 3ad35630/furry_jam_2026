@@ -32,6 +32,7 @@ Modes="*uid://likd0f662swj"
 InkRuntime="*uid://d07nagcdcann2"
 NarrativeSystem="*uid://bx6v06jafjhcp"
 PostNarrativeMomentEffectSystem="*uid://dv3amhemmfs1g"
+DragSystem="*uid://dahekb27dhd76"
 
 [display]
 
