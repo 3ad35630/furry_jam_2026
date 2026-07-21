@@ -87,6 +87,34 @@ She shuts the door.
 
 -> DONE
 
+=== grocery_list
+
+Mirabelle: I think that went pretty good!
+
+Willow: Well.
+
+Mirabelle: Shush, you understood what I meant.
+
+Mittens: Well, where can we find these ingredients?
+
+The radio crackles to life.
+
+Dispatcher: I did a bit of scrying from that list she gave you three. It's a bit fuzzy but this is what I gathered:
+
+Dispatcher: The farm, the mountains, and a cave by the waterfall.
+
+Mirabelle: ...Anything else?
+
+Dispatcher: Not really. Sometimes these tea leaves are more trouble than they're worth.
+
+Mirabelle: That doesn't cover all of the ingredients for possible locations.
+
+Willow: Well, even having some idea of where to go is certainly better than none!
+
+Mittens: Let's get started and not keep Madame Oolong waiting any longer!
+
+-> DONE
+
 === exit_main_menu
 
 It is sometimes necessary for the proper ordering of the universe to make a truly excellent pot of tea.

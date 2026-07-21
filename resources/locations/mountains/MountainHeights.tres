@@ -179,15 +179,9 @@ spend_items = false
 access_test = SubResource("Resource_sc1f2")
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
-[sub_resource type="Resource" id="Resource_ml3kh"]
+[sub_resource type="Resource" id="Resource_n8qgr"]
 script = ExtResource("14_68286")
 metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
-
-[sub_resource type="Resource" id="Resource_lu4dx"]
-script = ExtResource("9_rp7we")
-path = "find_path_to_valley"
-post_effects = Array[ExtResource("3_e8qyl")]([SubResource("Resource_ml3kh")])
-metadata/_custom_type_script = "uid://b0frcg551aapm"
 
 [sub_resource type="Resource" id="Resource_tycou"]
 resource_name = "A path to the Hidden Valley"
@@ -195,7 +189,7 @@ script = ExtResource("2_o3hvl")
 clock_id = "path_to_the_hidden_valley"
 description = "It's very cold up here, and dry, and windy. There is a valley somewhere in all the snow and rock, but they named it 'Hidden Valley' for a reason. It will not be easily found."
 max_segments = 12
-effect = SubResource("Resource_lu4dx")
+effect = SubResource("Resource_n8qgr")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [sub_resource type="Resource" id="Resource_yf74f"]

@@ -17,7 +17,6 @@
 [ext_resource type="Script" uid="uid://bacgob3gjxf2j" path="res://mechanics/actions/effects/set_location_flag.gd" id="11_b8sha"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="12_4pj0a"]
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="13_u3pif"]
-[ext_resource type="Script" uid="uid://b0frcg551aapm" path="res://mechanics/actions/effects/story_moment.gd" id="17_r7ikn"]
 
 [sub_resource type="Resource" id="Resource_h0typ"]
 script = ExtResource("3_sx0ym")
@@ -124,15 +123,14 @@ action_clock_id = "path_to_the_heights"
 description = "There are locals in the mountains, mostly hunters and trappers and wild novelists. They are polite but distant. You might be able to get their help in finding a path but it will cost you."
 metadata/_custom_type_script = "uid://qu5fc5nubcdh"
 
-[sub_resource type="Resource" id="Resource_ml3kh"]
+[sub_resource type="Resource" id="Resource_j18bt"]
 script = ExtResource("12_4pj0a")
 metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
 
-[sub_resource type="Resource" id="Resource_lu4dx"]
-script = ExtResource("17_r7ikn")
-path = "find_path_to_heights"
-post_effects = Array[ExtResource("11_2lxnl")]([SubResource("Resource_ml3kh")])
-metadata/_custom_type_script = "uid://b0frcg551aapm"
+[sub_resource type="Resource" id="Resource_t4f7e"]
+script = ExtResource("13_u3pif")
+effects = Array[ExtResource("11_2lxnl")]([SubResource("Resource_j18bt")])
+metadata/_custom_type_script = "uid://bchlp1lq87y8u"
 
 [sub_resource type="Resource" id="Resource_2mcle"]
 resource_name = "Find a path to the heights"
@@ -140,7 +138,7 @@ script = ExtResource("2_r1uyr")
 clock_id = "path_to_the_heights"
 description = "Even the lower slopes of the mountains are steep and confusing. You will need to find a careful path if you want to go higher."
 max_segments = 12
-effect = SubResource("Resource_lu4dx")
+effect = SubResource("Resource_t4f7e")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [resource]
