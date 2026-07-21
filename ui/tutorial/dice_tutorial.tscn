@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dd2oj6f54g8lg"]
+
+[sub_resource type="GDScript" id="GDScript_16uew"]
+script/source = "extends Control
+
+func _ready() -> void:
+	Modes.gameplay_mode_changed.connect(on_gameplay_mode_changed)
+	DragSystem.drag_changed.connect(drag_changed)
+	
+# go away when they drag
+func drag_changed(started):
+	queue_free()
+	
+func on_gameplay_mode_changed(mode) -> void:
+	if mode == Enums.GameplayMode.LOCATION:
+		show()
+	else:
+		hide()
+"
+
+[node name="DiceTutorial" type="Control" unique_id=2063063613]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 142.0
+offset_top = 859.0
+offset_right = 142.0
+offset_bottom = 859.0
+mouse_filter = 2
+script = SubResource("GDScript_16uew")
+
+[node name="Label" type="Label" parent="." unique_id=1148159033]
+layout_mode = 0
+offset_right = 494.0
+offset_bottom = 42.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 24
+text = "Try dragging a die onto the action!"
