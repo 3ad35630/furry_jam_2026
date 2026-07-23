@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Markets.mp3-6657ce5bc08a9c61ad864ec002624805.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

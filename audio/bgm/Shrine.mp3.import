@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Shrine.mp3-cc00e50af208334592d163472f311f8f.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

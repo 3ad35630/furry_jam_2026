@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Forest_Mointais.mp3-041eeafad3700c7785efdafcc
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
