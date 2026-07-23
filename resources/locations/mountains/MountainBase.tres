@@ -100,7 +100,7 @@ metadata/_custom_type_script = "uid://rfr4bn03v1jh"
 
 [sub_resource type="Resource" id="Resource_b8sha"]
 script = ExtResource("9_sx0ym")
-location_id = "mountain_heights"
+location_id = "mountain_base"
 key = "used_magic_stick"
 metadata/_custom_type_script = "uid://deia8b341vkjq"
 
@@ -114,9 +114,14 @@ script = ExtResource("10_b8sha")
 item_type = 9
 metadata/_custom_type_script = "uid://c2xtlvo7sl2ab"
 
+[sub_resource type="Resource" id="Resource_5yc08"]
+script = ExtResource("7_r7ikn")
+ink_path = "explore_mountain"
+metadata/_custom_type_script = "uid://cxoadgbyfvuei"
+
 [sub_resource type="Resource" id="Resource_fgqo8"]
 script = ExtResource("1_1ss57")
-tests = Array[ExtResource("2_km0f0")]([SubResource("Resource_15hac"), SubResource("Resource_3l5yu")])
+tests = Array[ExtResource("2_km0f0")]([SubResource("Resource_15hac"), SubResource("Resource_3l5yu"), SubResource("Resource_5yc08")])
 metadata/_custom_type_script = "uid://60w7olhaehda"
 
 [sub_resource type="Resource" id="Resource_r7ikn"]

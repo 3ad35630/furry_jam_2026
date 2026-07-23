@@ -176,6 +176,7 @@ resource_name = "Pumpkin Irritation"
 script = ExtResource("2_5np8m")
 clock_id = "pumpkin_irritation"
 description = "The river goddess is irritable and already in a bad mood. Tick her off any more and she'll stop listening to you entirely."
+access_test = SubResource("Resource_8xgl7")
 max_segments = 6
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
