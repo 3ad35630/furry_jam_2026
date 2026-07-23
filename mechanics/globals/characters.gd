@@ -30,15 +30,6 @@ func check_all_dice_spent() -> bool:
 	return diceSpent
 
 
-func get_characters_with_dice() -> Array[Character]:
-	var hasDice : Array[Character] = []
-	for c in characters:
-		if c.dice.size() > 0:
-			hasDice.append(c)
-			break
-	return hasDice
-
-
 func _on_dice_updated(_c : Character) -> void:
 	if check_all_dice_spent():
 		all_dice_spent.emit()

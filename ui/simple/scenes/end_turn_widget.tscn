@@ -15,9 +15,6 @@ signal sceneTriggered()
 
 var sceneHasTriggered : bool = false
 
-## Dispatch will not steal the button every successive turn
-const resetsEachRound : bool = true
-
 
 func _ready() -> void:
 	Characters.all_dice_spent.connect(_on_all_dice_spent)
@@ -44,11 +41,8 @@ func _on_all_dice_spent() -> void:
 		player.play(\"Give\")
 
 
-## legacy
 func _on_dice_rerolled() -> void:
-	player.play(\"RESET\")
-	if resetsEachRound:
-		sceneHasTriggered = false
+	player.play(\"RESET\") # TODO: have Dispatch return the button
 	if sceneHasTriggered:
 		button.disabled = true
 		player.play(\"Grab\")
