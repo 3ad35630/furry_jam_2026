@@ -34,6 +34,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(\"ui_cancel\"):
 		match(Modes.current_mode):
+			Enums.GameplayMode.MAINMENU:
+				if not Modes.newGame:
+					Modes.change_gameplay_mode(Enums.GameplayMode.MAP)
 			Enums.GameplayMode.MAP:
 				Modes.change_gameplay_mode(Enums.GameplayMode.MAINMENU)
 			Enums.GameplayMode.LOCATION:
