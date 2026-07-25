@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://jwxv2brh8y14" path="res://ui/menu_textures/SpaceWitchs_UI_Settings_OnClick.png" id="7_avarx"]
 [ext_resource type="Script" uid="uid://bml3b8h2n5a6q" path="res://mechanics/actions/effects/exit_location.gd" id="7_xh57i"]
 [ext_resource type="Texture2D" uid="uid://p8aayep5dqd" path="res://ui/menu_textures/SpaceWitchs_UI_Setting_OnHover.png" id="8_avarx"]
+[ext_resource type="Texture2D" uid="uid://bqqf8x4mvy1mh" path="res://ui/menu_textures/SpaceWitchs_UI_Continue.png" id="8_vym0c"]
+[ext_resource type="Texture2D" uid="uid://kvbjfpg5hsf7" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnClick.png" id="9_4wi2v"]
+[ext_resource type="Texture2D" uid="uid://dqbolfei5oyng" path="res://ui/menu_textures/SpaceWitchs_UI_Continue_OnHover.png" id="10_lp58e"]
 [ext_resource type="Texture2D" uid="uid://csm168dkeyxq8" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnClick.png" id="11_xh57i"]
 [ext_resource type="Texture2D" uid="uid://denfrq7283014" path="res://ui/menu_textures/SpaceWitchs_UI_Credits_OnHover.png" id="12_t1irh"]
 [ext_resource type="Texture2D" uid="uid://ct6ny3qjslkik" path="res://ui/menu_textures/SpaceWitchs_UI_Quit_OnClick.png" id="14_xh57i"]
@@ -29,6 +32,25 @@ texture = ExtResource("1_s0y5o")
 [sub_resource type="Resource" id="Resource_h6hga"]
 script = ExtResource("7_xh57i")
 metadata/_custom_type_script = "uid://bml3b8h2n5a6q"
+
+[sub_resource type="GDScript" id="GDScript_t1irh"]
+script/source = "extends MainMenuButton
+
+@export var setMode : Enums.GameplayMode = Enums.GameplayMode.MAP
+
+func _on_ready() -> void:
+	Modes.gameplay_mode_changed.connect(_on_mode_changed)
+	visible = not Modes.newGame
+
+
+func _on_press() -> void:
+	Modes.change_gameplay_mode(setMode)
+
+
+func _on_mode_changed(mode : Enums.GameplayMode) -> void:
+	visible = not Modes.newGame
+	Modes.gameplay_mode_changed.disconnect(_on_mode_changed)
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g746w"]
 texture = ExtResource("18_h6hga")
@@ -70,6 +92,18 @@ texture_focused = ExtResource("2_uftg2")
 stretch_mode = 3
 script = ExtResource("1_ewfhh")
 actions = Array[ExtResource("6_t1irh")]([SubResource("Resource_h6hga")])
+
+[node name="ContinueButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=383016309]
+visible = false
+layout_mode = 2
+offset_transform_enabled = true
+texture_normal = ExtResource("8_vym0c")
+texture_pressed = ExtResource("9_4wi2v")
+texture_hover = ExtResource("10_lp58e")
+texture_disabled = ExtResource("8_vym0c")
+texture_focused = ExtResource("8_vym0c")
+stretch_mode = 3
+script = SubResource("GDScript_t1irh")
 
 [node name="SettingsButton" type="TextureButton" parent="HBoxContainer/MenuColumn" unique_id=2005155270]
 layout_mode = 2

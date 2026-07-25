@@ -54,7 +54,6 @@ func _ready() -> void:
 
 
 func on_mode_changed(new_mode : Enums.GameplayMode) -> void:
-	print(new_mode)
 	match new_mode:
 		Enums.GameplayMode.ENDING_SLIDE:
 			visible = true
@@ -97,6 +96,7 @@ script = ExtResource("2_1xp64")
 
 [node name="ButtonContainer" type="MarginContainer" parent="." unique_id=1768651138]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 24

@@ -11,6 +11,7 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 	pressed.connect(_on_press)
 	Modes.gameplay_mode_changed.connect(_on_mode_changed)
+	_on_ready()
 
 
 func _on_mouse_entered() -> void:
@@ -31,6 +32,10 @@ func _on_mouse_exited() -> void:
 
 
 #region ----- Overridable Functions -----
+
+func _on_ready() -> void:
+	pass
+
 
 func _on_press() -> void:
 	pass
