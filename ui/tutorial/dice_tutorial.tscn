@@ -8,7 +8,7 @@ func _ready() -> void:
 	DragSystem.drag_changed.connect(drag_changed)
 	
 # go away when they drag
-func drag_changed(started):
+func drag_changed(_started):
 	queue_free()
 	
 func on_gameplay_mode_changed(mode) -> void:

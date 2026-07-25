@@ -13,7 +13,7 @@ func _ready() -> void:
 func on_loaded(success) -> void:
 	can_check_narrative = success
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if can_check_narrative:
 		if NarrativeSystem.visit_count_at_path(\"story_intro\") > 0:
 			queue_free() # delete yourself if we've passed the intro
