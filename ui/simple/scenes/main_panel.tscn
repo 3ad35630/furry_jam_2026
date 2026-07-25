@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dtgsewb8vm54h" path="res://ui/icons/Game-Jam-Paw.png" id="14_y3ayd"]
 [ext_resource type="AudioStream" uid="uid://bo4a5vq6ujh7y" path="res://audio/ui_sfx/end hour now.ogg" id="15_rd64i"]
 [ext_resource type="AudioStream" uid="uid://dpuelh5rp4oc6" path="res://audio/bgm/moon lake ultra clean.ogg" id="21_3kxh1"]
+[ext_resource type="PackedScene" uid="uid://ucxdradrn3yn" path="res://ui/widgets/scenes/character_info.tscn" id="21_rtwym"]
 [ext_resource type="Script" uid="uid://dd6h7bqtik610" path="res://ui/widgets/scripts/action_panel_manager.gd" id="24_a4q2h"]
 [ext_resource type="PackedScene" uid="uid://cntixcp24qe0k" path="res://ui/widgets/scenes/inventory.tscn" id="24_imvmo"]
 
@@ -479,5 +480,14 @@ layout_mode = 2
 anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("24_a4q2h")
+
+[node name="CharacterInfo" parent="." unique_id=1838480970 node_paths=PackedStringArray("sensors") instance=ExtResource("21_rtwym")]
+visible = false
+layout_mode = 0
+sensors = {
+NodePath("../HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/BellWitch/TextureRect"): ExtResource("8_hxpo2"),
+NodePath("../HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/KittyNecro/TextureRect"): ExtResource("8_sjyj4"),
+NodePath("../HBoxContainer2/VBoxContainer/HBox/VBoxContainer/PanelContainer/VBoxContainer/CharacterBar/Serious/TextureRect"): ExtResource("10_h5prc")
+}
 
 [connection signal="pressed" from="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer/ReturnToMap" to="HBoxContainer2/VBoxContainer/HBox/VBoxContainer/HBoxContainer/ReturnToMap" method="_on_pressed"]
