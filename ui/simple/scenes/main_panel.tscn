@@ -170,13 +170,25 @@ func on_mode_changed(mode : Enums.GameplayMode) -> void:
 [sub_resource type="GDScript" id="GDScript_y0vbl"]
 script/source = "extends Panel
 
-signal sceneTriggered()
-
 @export var player : AnimationPlayer
 @export var button : TextureButton
 @export var sound : AudioStreamPlayer
 
-var sceneHasTriggered : bool = false
+## Dispatch will not automatically steal the button on successive turns
+@export var resetTrigger : bool = true
+
+var sceneTriggered : bool = false
+
+## path to default narrative with Dispatch interaction
+## set to '' to disable the narrative event (but not the button-stealing)
+const narrativePath : String = ''#'dispatch_scold'
+# paths to character-specific Dispath scoldings
+# NOTE: setting a path to '' will cause narrativePath ^ to be used instead
+const characterNarratives : Dictionary[String,String] = {
+	'Mirabelle' : '',#'dispatch_scold_mirabelle'
+	'Willow' : '',
+	'Mittens' : ''
+}
 
 
 func _ready() -> void:
@@ -186,27 +198,43 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	if not sceneHasTriggered:
+	if not sceneTriggered:
 		var diceSpent = Characters.check_all_dice_spent()
 		if not diceSpent:
-			sceneTriggered.emit()
-			player.play(\"Grab\")
-			sceneHasTriggered = true
+			_trigger_narrative()
+			sceneTriggered = true
 			button.disabled = true
+			player.play(\"Grab\")
 			return
 	TurnSystem.end_round()
 	sound.play()
 
 
+func _trigger_narrative() -> void:
+	var path : String = narrativePath
+	var hasDice = Characters.get_characters_with_dice() # sort of redundant with check_all_dice_spent()
+	if hasDice.size() > 0: # pick a random character to chew out
+		var idx = randi_range(0,hasDice.size()-1)
+		var c = hasDice[idx]
+		if c.name in characterNarratives.keys(): # probably not ideal?
+			path = characterNarratives[c.name]
+		if path.is_empty(): # in case we don't have keys for the other characters
+			path = narrativePath
+	if not path.is_empty():
+		NarrativeSystem.start_narrative(path)
+
+
 func _on_all_dice_spent() -> void:
 	button.disabled = false
-	if sceneHasTriggered:
+	if sceneTriggered:
 		player.play(\"Give\")
 
 
 func _on_dice_rerolled() -> void:
-	player.play(\"RESET\") # TODO: have Dispatch return the button
-	if sceneHasTriggered:
+	player.play(\"RESET\")
+	if resetTrigger:
+		sceneTriggered = false
+	if sceneTriggered:
 		button.disabled = true
 		player.play(\"Grab\")
 "
