@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bchlp1lq87y8u" path="res://mechanics/actions/effects/multiple_effects.gd" id="10_chyld"]
 [ext_resource type="Script" uid="uid://qu5fc5nubcdh" path="res://mechanics/actions/item_action.gd" id="13_8p111"]
 [ext_resource type="AudioStream" uid="uid://bhjrglhv50qi5" path="res://audio/bgm/Pumkins cave.mp3" id="13_vvcu5"]
+[ext_resource type="Script" uid="uid://dclumivpy08nu" path="res://mechanics/actions/effects/go_to_location.gd" id="15_pq1a3"]
 [ext_resource type="Script" uid="uid://vwo5xo7yd545" path="res://mechanics/actions/effects/add_item.gd" id="16_chyld"]
 
 [sub_resource type="Resource" id="Resource_2mcle"]
@@ -162,6 +163,17 @@ script = ExtResource("4_7rdun")
 ink_path = "explore_cave"
 metadata/_custom_type_script = "uid://cxoadgbyfvuei"
 
+[sub_resource type="Resource" id="Resource_fxdpg"]
+script = ExtResource("15_pq1a3")
+location_id = "cave_interior"
+metadata/_custom_type_script = "uid://dclumivpy08nu"
+
+[sub_resource type="Resource" id="Resource_chyld"]
+script = ExtResource("5_chyld")
+path = "made_friends_with_pumpkin"
+post_effects = Array[ExtResource("8_pq1a3")]([SubResource("Resource_fxdpg")])
+metadata/_custom_type_script = "uid://b0frcg551aapm"
+
 [sub_resource type="Resource" id="Resource_38kbb"]
 resource_name = "FriendsWithPumpkin"
 script = ExtResource("2_5np8m")
@@ -169,6 +181,7 @@ clock_id = "friends_with_pumpkin"
 description = "Pumpkin is in a bad mood and is the size of a large bull elephant. She also lives in the cave. You're not going to be able to get in there without her permission."
 access_test = SubResource("Resource_8xgl7")
 max_segments = 18
+effect = SubResource("Resource_chyld")
 metadata/_custom_type_script = "uid://54wgke734i1m"
 
 [sub_resource type="Resource" id="Resource_aihph"]

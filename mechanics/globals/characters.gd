@@ -37,7 +37,7 @@ func get_characters_with_dice() -> Array[Character]:
 	for c in characters:
 		if c.dice.size() > 0:
 			hasDice.append(c)
-		break
+		#break
 	return hasDice
 
 

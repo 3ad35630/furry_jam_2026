@@ -127,13 +127,27 @@ But the years are not kind to an old lady's knees, and so she sends out a signal
 
 The witches who answer the call are not the most powerful, or the oldest, or the cleverest - but they are the best witches who are here, now, which counts for a great deal. 
 
+A radio crackles to life on the belt of one of these witches. A voice, tired but clipped, can be heard.
+
 Dispatcher: Mic check, 1, 2, 3, does everyone copy?
+
+Your dispatcher is certainly no stranger to these missions, ready to keep an eye out for this team. 
+
+Three voices pipe up in response to the dispatcher's question.
 
 Mirabelle: I'm here!
 
+Mirabelle gives what she believes to be a gentle tap to her bell, and what others see as a forceful slam into her bell staff, making sure everyone in a 10-mile radius can hear them.
+
+Mirabelle: I hope that wasn't too much...
+
 Mittens: Hello hello!
 
+One of Mitten's ghosts shouts a helpful mew into the radio, being rewarded with head scritches for a job well done.
+
 Willow: Present!
+
+With one of her many portable terrariums strapped securely to her back, Willow is more than ready to investigate this place for new and exciting flora.
 
 Dispatcher: Alright then, did everyone get the briefing?
 
@@ -149,11 +163,13 @@ Dispatcher: Right at the very top.
 
 Mittens: Let's head right over then, I'm excited for her to meet my kitties!
 
+The radio responds back with a sigh.
+
 Dispatcher: Please try to keep things professional.
 
 Mirabelle: Don't worry Dispatcher, you can count on us!
 
-
+Dispatcher: I'll be watching you three to make sure of that.
 
 -> DONE
 
@@ -627,6 +643,8 @@ Mirabelle: Brrr! It's so cold up here!
 
 Willow: N-No kidding! How are we supposed to find the supposed Hidden Valley like this?
 
+The radio faintly crackles to life once again, barely audible through the chilling winds.
+
 Dispatcher: I would recommend regrouping back down at the base of the mountain, these winds are making this place very unsafe to be in for long.
 
 Mittens: But these spirits seem friendly! Maybe they can help point us in the right direction...
@@ -634,6 +652,8 @@ Mittens: But these spirits seem friendly! Maybe they can help point us in the ri
 Mirabelle: We're all going to freeze our tails off before we even get CLOSE to finding this valley!
 
 Willow: Wait! I see the path! Mittens was right, these spirits have been leading us in the right direction!
+
+Mirabelle lets out a loud and clearly annoyed groan as Mittens and Mirabelle start to follow these spirits through the mountains.
 
 Mirabelle: Ugh...carry on I suppose...
 
@@ -753,5 +773,67 @@ Mittens: Aww... I was enjoying the fair!
 Mirabelle pats Mittens on the shoulder.
 
 Mirabelle: Come on, Mittens! We'd best get going. There will be other fairs!
+
+-> DONE
+
+=== dispatch_scold_mirabelle
+
+Dispatcher: {~Hey, you guys are still on the clock! You still have some tasks to do before your next break!"|Hey! Your break's not for another half an hour!|*Sigh* [Character], you can't clock out just yet, there's still work to do. |Hey, I'm still on the clock, which means you lot are, too! |No breaks yet, rookies -- you've still got work to do. If you're tired, you can ... uh ... I dunno, go fish or sell chips or something.}
+
+Mirabelle: But I'm tiiiiredddd!
+
+Dispatcher: Yep, me too. Welcome to having a job, kiddo.
+
+-> DONE
+
+=== dispatch_scold_mittens
+
+Dispatcher: {~Hey, you guys are still on the clock! You still have some tasks to do before your next break!"|Hey! Your break's not for another half an hour!|*Sigh* [Character], you can't clock out just yet, there's still work to do. |Hey, I'm still on the clock, which means you lot are, too! |No breaks yet, rookies -- you've still got work to do. If you're tired, you can ... uh ... I dunno, go fish or sell chips or something.}
+
+ \ {~-> mittens_alt_1|-> mittens_alt_2|-> mittens_alt_3}
+
+-> DONE
+
+=== dispatch_scold_willow
+
+Dispatcher: {~Hey, you guys are still on the clock! You still have some tasks to do before your next break!"|Hey! Your break's not for another half an hour!|*Sigh* [Character], you can't clock out just yet, there's still work to do. |Hey, I'm still on the clock, which means you lot are, too! |No breaks yet, rookies -- you've still got work to do. If you're tired, you can ... uh ... I dunno, go fish or sell chips or something.}
+
+Willow: Oops, sorry!
+
+-> DONE
+
+=== mittens_alt_1
+
+Mittens: But my cats are exhausted!
+
+Dispatcher: Mittens, I know for a fact that's not true because they're dead. Get movin', kiddo.
+
+Mittens: Well, worth a try!
+
+Willow: "..."
+
+-> DONE
+
+=== mittens_alt_2
+
+Mittens: But my little kitties are exhausted! 
+
+Dispatcher: "Sounds like the living might have to do some heavy lifting for a while, then."
+
+Mittens grumbles to herself but carries on.
+
+-> DONE
+
+=== mittens_alt_3
+
+Mittens: My cats aren't! You guys don't even pay them!
+
+Dispatcher: *Sigh* Mittens, we've been over this ...
+
+Mirabelle: Wait, we're paid for this??
+
+Dispatcher: ...Yes?
+
+Willow: Come on, you two! Let's keep going!
 
 -> DONE

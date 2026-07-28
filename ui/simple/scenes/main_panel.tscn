@@ -177,6 +177,7 @@ script/source = "extends Panel
 @export var player : AnimationPlayer
 @export var button : TextureButton
 @export var sound : AudioStreamPlayer
+@export var actions: Array[ActionEffect]
 
 ## Dispatch will not automatically steal the button on successive turns
 @export var resetTrigger : bool = true
@@ -189,9 +190,9 @@ const narrativePath : String = ''#'dispatch_scold'
 # paths to character-specific Dispath scoldings
 # NOTE: setting a path to '' will cause narrativePath ^ to be used instead
 const characterNarratives : Dictionary[String,String] = {
-	'Mirabelle' : '',#'dispatch_scold_mirabelle'
-	'Willow' : '',
-	'Mittens' : ''
+	'Mirabelle' : 'dispatch_scold_mirabelle',#'dispatch_scold_mirabelle'
+	'Willow' : 'dispatch_scold_willow',
+	'Mittens' : 'dispatch_scold_mittens'
 }
 
 
@@ -217,15 +218,18 @@ func _on_pressed() -> void:
 func _trigger_narrative() -> void:
 	var path : String = narrativePath
 	var hasDice = Characters.get_characters_with_dice() # sort of redundant with check_all_dice_spent()
+	print(hasDice)
 	if hasDice.size() > 0: # pick a random character to chew out
 		var idx = randi_range(0,hasDice.size()-1)
 		var c = hasDice[idx]
+		print(c.name)
 		if c.name in characterNarratives.keys(): # probably not ideal?
 			path = characterNarratives[c.name]
 		if path.is_empty(): # in case we don't have keys for the other characters
 			path = narrativePath
 	if not path.is_empty():
 		NarrativeSystem.start_narrative(path)
+		PostNarrativeMomentEffectSystem.register_events(actions)
 
 
 func _on_all_dice_spent() -> void:
